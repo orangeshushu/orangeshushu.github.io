@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Minimal Centered Portfolio Site">
+  <meta name="keywords" content="HTML, CSS, JavaScript, Portfolio, Design">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Portfolio | Your Name</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Montserrat for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+  <!-- Open Sans for body text -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <img src="assets/logo.png" alt="Logo" class="nav-logo">
+    <!-- Hamburger Menu Toggle -->
+    <div class="nav-toggle" onclick="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#how-to-use">How to Use</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#tcm-knowledge">TCM Knowledge</a></li>
+      <li><a href="#wellness-advice">Wellness Advice</a></li>
+      <li><a href="#symptoms-herbs">Symptoms & Herbs</a></li>
+      <li><a href="#dietary-therapy">Dietary Therapy</a></li>
+      <li><a href="#tongue-health">Tongue & Health</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="hero">
+    <div class="hero-content fade-in">
+      <h1>Your Companion for Traditional Chinese Medicine Insights</h1>
+      <p>“Blending ancient wisdom with modern AI—Your guide to Traditional Chinese Medicine.”</p>
+      <a href="#how-to-use" class="btn-hero">See How To Use BenCao</a>
+      <br>
+      <br>
+      <img src="assets/QR code.png" alt="QR Code" width="170">
+      <p style="margin: 20px 0;">
+        For more details or to access the app directly, 
+        <a href="https://chatgpt.com/g/g-6750c5262fb48191a08ef4d899a3dd1f-bencao" target="_blank">click here</a>
+      </p>
+    </div>
+  </header>
+
+  <!-- How To Use Section (formerly 'Portfolio') -->
+  <section id="how-to-use" class="section-padding">
+    <div class="section-title fade-in">
+      <h2>How to Use BenCao</h2>
+      <p>A quick demonstration of how to interact with the TCM assistant.</p>
+    </div>
+    <div class="gif-container fade-in" style="max-width: 800px; margin: 0 auto;">
+      <img src="assets/how-to-use.gif" alt="How to Use BenCao" style="width: 100%; height: auto;">
+      <p style="margin: 20px 0;">
+        For more details or to access the app directly, 
+        <a href="https://chatgpt.com/g/g-6750c5262fb48191a08ef4d899a3dd1f-bencao" target="_blank">click here</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section-padding fade-in">
+    <h2>About BenCaoGPT</h2>
+    <p>
+      BenCaoGPT is an AI-powered assistant specializing in Traditional Chinese Medicine (TCM). 
+      It provides insights, diagnoses, and treatment recommendations based on classical TCM texts. 
+      With expertise in syndrome differentiation, herbal prescriptions, and TCM principles, 
+      BenCaoGPT helps users understand and explore the rich knowledge of Chinese medicine.
+    </p>
+    <br>
+    <h3>Key Features</h3>
+    <ul>
+      <br><strong>TCM Syndrome Differentiation:</strong> Analyzes symptoms to determine the underlying TCM patterns (证候).</br>
+      <br><strong>Herbal Prescriptions:</strong> Suggests classic and modified herbal formulas based on established TCM practices.</br>
+      <br><strong>Bilingual Support:</strong> Offers consultations in both English and Chinese.</br>
+      <br><strong>Text-Based Knowledge:</strong> References classical texts such as <em>Shang Han Lun</em> (伤寒论), 
+        <em>Shen Nong Ben Cao Jing</em> (神农本草经), and other foundational works.</br>
+      <br><strong>Interactive Diagnosis:</strong> Uses a multi-question approach to refine diagnoses and ensure accuracy.</br>
+      <br><strong>Educational Resource:</strong> Assists students, practitioners, and enthusiasts in learning about Chinese medicine.</br>
+    </ul>
+    <br>
+    <p><strong>⚠ Disclaimer:</strong> All recommendations are for informational purposes only and should not replace 
+      professional medical advice. Always consult a qualified healthcare provider before making health decisions.
+    </p>
+  </section>
+
+  <!-- TCM Knowledge Section -->
+  <section id="tcm-knowledge" class="section-padding fade-in">
+    <div class="section-title">
+      <h2>TCM Knowledge</h2>
+      <p style="max-width: 800px; margin: 0 auto;">
+      <br><p><strong>Fundamental TCM Principles:</strong>
+        TCM is rooted in the belief that health depends on the dynamic balance of vital energies within the body. Concepts like Qi (vital energy), Blood, and Body Fluids play essential roles in maintaining wellness. 
+        Through diagnostic methods such as syndrome differentiation (辨证) and the Four Examinations (望闻问切), TCM practitioners assess imbalances and restore harmony using acupuncture, herbal medicine, and lifestyle adjustments.</p></br>
+      <br><strong>Yin-Yang:</strong>The fundamental principle of duality, representing opposing but complementary forces that maintain balance in the body.</br>
+      <br><strong>Five Elements:</strong> Wood, Fire, Earth, Metal, and Water—each associated with specific organs, emotions, and natural cycles that influence health.</br>
+      <br><strong>Zang-Fu Organs:</strong>A system of interconnected organ functions, emphasizing their physiological roles and emotional correspondences rather than just anatomical structures.</br>
+    </p>
+  </section>
+
+  <!-- Wellness Advice Section -->
+  <section id="wellness-advice" class="section-padding fade-in">
+    <div class="section-title">
+        <h2>Wellness Advice</h2>
+        <p style="max-width: 800px; margin: 0 auto;">
+        <br><p><strong>Traditional Chinese Wellness Practices:</strong>
+          TCM promotes balance through seasonal eating, gentle movement like Tai Chi, mindful rest, and herbal support. Simple daily habits, such as meditation and warm teas, help maintain harmony and well-being.</p></br>
+        <br><strong>Dietary Wisdom (饮食养生):</strong> Traditional Chinese Medicine emphasizes the importance of dietary balance for overall health. Seasonal eating guidelines encourage adjusting meals according to the 
+        climate and time of year, ensuring harmony between the body and its environment. Understanding food properties and combinations helps in selecting ingredients that balance warming, cooling, and neutral energies, 
+        promoting optimal digestion and well-being. Additionally, therapeutic diet recommendations focus on targeting specific health concerns through carefully tailored recipes, using food as a form of medicine 
+        to nourish and heal the body.</br>
+        <br><strong>Exercise & Qigong (运动气功):</strong> Traditional Chinese Medicine promotes movement as a key to maintaining health and vitality. Traditional exercise methods like Tai Chi and Qigong gently strengthen the body, 
+        improve flexibility, and enhance circulation. Breathing techniques emphasize slow, deep breaths to cultivate Qi (vital energy), calm the mind, and reduce stress. Additionally, meditation practices help promote mental clarity, 
+        relaxation, and emotional balance, fostering a deep connection between body and mind for overall well-being.</br>
+        <br><strong>Lifestyle Balance (起居养生):</strong> Maintaining a balanced lifestyle is essential for overall health in Traditional Chinese Medicine. Daily rhythm optimization encourages aligning your schedule with natural energy 
+        cycles, such as sleeping early and rising with the sun, to support the body’s internal clock. Seasonal lifestyle adjustments involve modifying clothing, activities, and diet according to the changing seasons, helping the body 
+        adapt and stay in harmony with nature. Additionally, sleep and rest guidelines emphasize the importance of adequate, high-quality sleep to replenish vital energy (Qi) and promote long-term well-being.</br>
+      </p>
+    </section>
+
+  <!-- Symptoms & Herbs Section -->
+  <section id="symptoms-herbs" class="section-padding fade-in">
+    <div class="section-title">
+      <h2>Symptoms & Herbs</h2>
+      <p style="max-width: 800px; margin: 0 auto;">
+        <br><p><strong>Fundamental TCM Principles:</strong>
+          TCM is rooted in the belief that health depends on the dynamic balance of vital energies within the body. Concepts like Qi (vital energy), Blood, and Body Fluids play essential roles in maintaining wellness. 
+          Through diagnostic methods such as syndrome differentiation (辨证) and the Four Examinations (望闻问切), TCM practitioners assess imbalances and restore harmony using acupuncture, herbal medicine, and lifestyle adjustments.</p></br>
+      </p>
+    </div>
+    <div style="max-width: 800px; margin: 1em auto; text-align: left;">
+      <ul>
+        <strong>Respiratory Issues (呼吸道症状):</strong>
+        <br>
+        <ul>
+          <li><strong>Xing Ren (杏仁, Apricot Kernel)</strong> - Relieves cough and asthma</li>
+          <li><strong>Bai Bu (百部, Stemona Root)</strong> - Suppresses cough and clears phlegm</li>
+          <li><strong>Jie Geng (桔梗, Platycodon Root)</strong> - Opens the lungs and expels phlegm</li>
+          <li><strong>Huang Qi (黄芪, Astragalus)</strong> - Strengthens immunity and supports lung function</li>
+        </ul>
+        <br>
+        <strong>Digestive Problems (消化道症状):</strong>
+        <br>
+        <ul>
+          <li><strong>Chen Pi (陈皮, Aged Tangerine Peel)</strong> - Regulates digestion and reduces bloating</li>
+          <li><strong>Shan Zha (山楂, Hawthorn Berry)</strong> - Aids in food digestion, especially fatty foods</li>
+          <li><strong>Mai Ya (麦芽, Barley Sprout)</strong> - Supports digestion and relieves food stagnation</li>
+          <li><strong>Huo Xiang (藿香, Patchouli)</strong> - Treats nausea and bloating due to dampness</li>
+        </ul>
+        <br>
+        <strong>Sleep Disorders (睡眠问题):</strong>
+        <br>
+        <ul>
+          <li><strong>Suan Zao Ren (酸枣仁, Ziziphus Seed)</strong> - Calms the mind and promotes deep sleep</li>
+          <li><strong>Ye Jiao Teng (夜交藤, Fleeceflower Vine)</strong> - Nourishes the heart and soothes insomnia</li>
+          <li><strong>Bai Zi Ren (柏子仁, Biota Seed)</strong> - Eases anxiety and supports restful sleep</li>
+          <li><strong>Long Gu (龙骨, Dragon Bone)</strong> - Anchors the spirit and alleviates restlessness</li>
+        </ul>
+        <br>
+        <strong>Pain & Inflammation (疼痛炎症):</strong>
+        <br>
+        <ul>
+          <li><strong>Yan Hu Suo (延胡索, Corydalis)</strong> - Relieves pain and improves circulation</li>
+          <li><strong>Du Huo (独活, Angelica Pubescens)</strong> - Treats joint pain and arthritis</li>
+          <li><strong>Bai Shao (白芍, White Peony Root)</strong> - Soothes muscle spasms and reduces pain</li>
+          <li><strong>Huang Qin (黄芩, Scutellaria)</strong> - Reduces inflammation and clears heat</li>
+        </ul>
+      </ul>
+      <br>
+      <p><em>Always consult a qualified practitioner before using herbal remedies.</em></p>
+    </div>
+  </section>
+
+  <!-- Dietary Therapy Section -->
+  <section id="dietary-therapy" class="section-padding fade-in">
+    <div class="section-title">
+      <h2>Dietary Therapy</h2>
+      <p style="max-width: 800px; margin: 0 auto;">
+        <br><p><strong>Principles of TCM Dietary Therapy:</strong>
+        TCM views food as medicine, emphasizing balance, seasonality, and individual needs. Ingredients are chosen based on their energetic properties (warm, cool, neutral) and effects on Qi, Blood, and organ function. Proper preparation and mindful eating enhance digestion and overall well-being.</p></br>
+      </p>
+    </div>
+    <div style="max-width: 800px; margin: 20px auto; text-align: left;">
+      <h4>Health Goals</h4>
+      <ul>
+        <li>Digestive Health</li>
+        <li>Energy Boost</li>
+        <li>Immune Support</li>
+        <li>Sleep & Relaxation</li>
+      </ul>
+      <br>
+      <h4>Food Properties (食物性质)</h4>
+      <ul>
+        <li><strong>Warming Foods (温性食物):</strong> Support yang energy; suitable for colder conditions or yang deficiency.</li>
+        <li><strong>Cooling Foods (凉性食物):</strong> Clear heat; best for excess heat or yin deficiency heat.</li>
+        <li><strong>Neutral Foods (平性食物):</strong> Neither strongly warming nor cooling; maintain baseline balance.</li>
+        <li><strong>Seasonal Foods (时令食物):</strong> Align with natural cycles; focus on fresh, local produce.</li>
+      </ul>
+      <br>
+      <h4>Therapeutic Applications (食疗应用)</h4>
+      <ul>
+        <li><strong>Digestive Health (消化调理):</strong> Gentle, soothing ingredients to strengthen Spleen & Stomach.</li>
+        <li><strong>Energy Boost (补气养血):</strong> Foods that replenish Qi and nourish blood, like red dates or goji berries.</li>
+        <li><strong>Immune Support (增强免疫):</strong> Mushrooms (e.g., shiitake) and warming herbs (e.g., ginger) to fortify defenses.</li>
+        <li><strong>Sleep & Relaxation (安神助眠):</strong> Calming foods like lotus seeds or jujubes for deeper rest.</li>
+      </ul>
+      <br>
+      <h4>Preparation Methods (烹饪方法)</h4>
+      <ul>
+        <li><strong>Seasonal Cooking Tips:</strong> Soups in winter for warmth; lighter cooking in summer to cool.</li>
+        <li><strong>Beneficial Combinations:</strong> Pair herbs and foods for synergy (e.g., ginger & spring onion for colds).</li>
+        <li><strong>Cooking Techniques:</strong> Steaming, stir-frying, simmering, or slow-cooking—choose based on desired effect.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Tongue & Health Section -->
+  <section id="tongue-health" class="section-padding fade-in">
+    <div class="section-title">
+      <h2>Tongue & Health</h2>
+      <p style="max-width: 800px; margin: 0 auto;">
+        <br><p><strong>Principles of TCM Tongue & Health:</strong>
+        The tongue provides valuable insights into the body's internal state in TCM. Observing color, coating, and shape helps diagnose imbalances and guide treatment.</p></br>
+      </p>
+    </div>
+    <div style="max-width: 800px; margin: 20px auto; text-align: left;">
+      <h3>Tongue Characteristics</h3>
+      <br>
+      <p><strong>Tongue Color (舌色)</strong></p>
+      <ul>
+        <li><strong>Pale (淡白):</strong> May indicate Qi and Blood deficiency</li>
+        <li><strong>Red (红色):</strong> Often suggests heat in the body</li>
+        <li><strong>Purple (紫色):</strong> Possible blood stagnation or severe cold/heat imbalance</li>
+      </ul>
+      <br>
+      <p><strong>Tongue Coating (舌苔)</strong></p>
+      <ul>
+        <li><strong>White (白苔):</strong> Can reflect cold or damp conditions</li>
+        <li><strong>Yellow (黄苔):</strong> Often points to heat or damp-heat</li>
+        <li><strong>None (无苔):</strong> Possible sign of yin deficiency or dryness</li>
+      </ul>
+      <br>
+      <p><strong>Tongue Shape (舌形)</strong></p>
+      <ul>
+        <li><strong>Swollen (胖大):</strong> May indicate damp retention or spleen deficiency</li>
+        <li><strong>Thin (瘦薄):</strong> Often relates to fluid or blood deficiency</li>
+        <li><strong>Cracked (裂纹):</strong> May result from yin deficiency or heat damaging fluids</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>
+      <br>
+      For more information or to consult BenCaoGPT, visit 
+      <a href="https://chatgpt.com/g/g-6750c5262fb48191a08ef4d899a3dd1f-bencao" target="_blank">[Open BenCao-TCM Assistant]</a>.
+    </p>
+    <p>© 2025 BenCao TCM Assistant. All rights reserved.</p>
+  </footer>
+
+  <!-- External JS -->
+  <script src="js/script.js"></script>
+</body>
+</html>
