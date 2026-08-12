@@ -115,23 +115,16 @@ h2 {
   line-height: 1.8;
 }
 
-.featured-product {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 8px;
-  margin: 6px 0 0;
+.tool-card td {
+  background-color: #f6f8fa;
 }
 
-.featured-product-label {
-  color: #666;
-  font-size: 12px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
+.tool-card td:first-child {
+  border-radius: 8px 0 0 8px;
 }
 
-.featured-product a {
-  font-weight: 700;
+.tool-card td:last-child {
+  border-radius: 0 8px 8px 0;
 }
 
 .one {
