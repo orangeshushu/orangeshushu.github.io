@@ -53,6 +53,23 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--orange); outli
 .site-header nav, footer nav { display: flex; gap: 26px; align-items: center; }
 .site-header nav a, footer nav a { color: var(--soft); font-size: 12px; font-weight: 650; }
 .site-header nav a:hover, footer nav a:hover { color: var(--orange); }
+.header-actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.language-switch {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 9px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--soft);
+  background: rgba(255,255,255,.45);
+  font: 700 11px/1 Georgia, serif;
+  letter-spacing: .04em;
+  transition: color .2s ease-out, border-color .2s ease-out, background-color .2s ease-out;
+}
+.language-switch:hover { color: var(--orange); border-color: rgba(215,103,44,.4); background: white; }
 .header-cta { min-height: 44px; padding: 11px 17px; display: inline-flex; align-items: center; border-radius: 999px; background: var(--ink); color: white; font: 12px Georgia, serif; }
 
 .hero {
@@ -69,6 +86,16 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--orange); outli
 .eyebrow span { width: 27px; height: 1px; background: currentColor; }
 h1, h2, h3, p { margin-top: 0; }
 h1, h2 { font-family: "Songti SC", STSong, Georgia, serif; font-weight: 500; letter-spacing: -.045em; }
+html[lang="en"] h1,
+html[lang="en"] h2,
+html[lang="en"] .feature h3,
+html[lang="en"] .screens-copy li b,
+html[lang="en"] .screen-gallery figcaption b,
+html[lang="en"] .trust-grid h3,
+html[lang="en"] summary,
+html[lang="en"] footer > p { font-family: Georgia, "Times New Roman", serif; }
+html[lang="en"] h1,
+html[lang="en"] h2 { letter-spacing: -.035em; }
 h1 { margin-bottom: 9px; font-size: clamp(54px, 6.5vw, 84px); line-height: 1.08; }
 h1 em { color: var(--orange); font-style: normal; }
 h2 { margin-bottom: 21px; font-size: clamp(42px, 5vw, 64px); line-height: 1.17; }
@@ -205,9 +232,10 @@ footer > small { color: rgba(255,255,255,.38); font-size: 9px; text-align: right
   .site-header { height: 62px; top: 9px; margin-top: 9px; }
   .brand img { width: 37px; height: 37px; }
   .brand strong { font-size: 16px; }
-  .header-cta { padding: 9px 13px; font-size: 10px; }
+  .header-cta { display: none; }
   .hero { width: 100%; padding: 64px 20px 72px; gap: 38px; }
   h1 { font-size: 50px; }
+  html[lang="en"] h1 { font-size: 47px; }
   .hero-body { font-size: 15px; }
   .actions { flex-direction: column; }
   .daily, .features, .screens, .trust, .faq { padding: 78px 20px; }
