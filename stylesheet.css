@@ -172,6 +172,11 @@ h2[id]:focus-visible {
   border-radius: 0 8px 8px 0;
 }
 
+.tool-card .paper-thumb {
+  aspect-ratio: 1;
+  height: auto;
+}
+
 .one {
   width: 160px;
   height: 160px;
