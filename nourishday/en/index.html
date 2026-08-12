@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script>
+    if (location.pathname.includes("/nourishday/en")) {
+      try { localStorage.setItem("nourishday-language", "en"); } catch (_) {}
+      location.replace("../");
+    }
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NourishDay | A meal photo, nutrition journal, and seasonal wellness</title>
@@ -9,13 +15,13 @@
   <meta name="author" content="Jianna Consulting, LLC">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="theme-color" content="#f5f0e4">
-  <link rel="canonical" href="https://jiacheng.website/nourishday/en/">
+  <link rel="canonical" href="https://jiacheng.website/nourishday/">
   <link rel="alternate" hreflang="zh-Hans" href="https://jiacheng.website/nourishday/">
-  <link rel="alternate" hreflang="en" href="https://jiacheng.website/nourishday/en/">
+  <link rel="alternate" hreflang="en" href="https://jiacheng.website/nourishday/">
   <link rel="alternate" hreflang="x-default" href="https://jiacheng.website/nourishday/">
   <link rel="icon" href="../assets/app-icon.png" type="image/png">
   <link rel="apple-touch-icon" href="../assets/app-icon.png">
-  <link rel="stylesheet" href="../styles.css?v=20260812-2">
+  <link rel="stylesheet" href="../styles.css?v=20260812-3">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
@@ -23,7 +29,7 @@
   <meta property="og:site_name" content="NourishDay · Food Calendar">
   <meta property="og:title" content="NourishDay | Snap a meal. Nourish your day.">
   <meta property="og:description" content="Turn everyday meals into a nutrition calendar, one photo at a time.">
-  <meta property="og:url" content="https://jiacheng.website/nourishday/en/">
+  <meta property="og:url" content="https://jiacheng.website/nourishday/">
   <meta property="og:image" content="https://jiacheng.website/nourishday/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -36,20 +42,20 @@
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://jiacheng.website/nourishday/en/#website",
-        "url": "https://jiacheng.website/nourishday/en/",
+        "@id": "https://jiacheng.website/nourishday/#website",
+        "url": "https://jiacheng.website/nourishday/",
         "name": "NourishDay · Food Calendar",
         "alternateName": ["食养日历", "TCMCalendar"],
         "inLanguage": "en-US"
       },
       {
         "@type": "SoftwareApplication",
-        "@id": "https://jiacheng.website/nourishday/en/#app",
+        "@id": "https://jiacheng.website/nourishday/#app",
         "name": "NourishDay: Food Calendar",
         "alternateName": ["食养日历", "中医养生日历", "TCMCalendar"],
         "applicationCategory": "HealthApplication",
         "operatingSystem": "iOS, iPadOS, watchOS",
-        "url": "https://jiacheng.website/nourishday/en/",
+        "url": "https://jiacheng.website/nourishday/",
         "description": "Photograph a meal, review foods and portions, track daily nutrition, and explore seasonal wellness guidance and a bilingual food library.",
         "inLanguage": ["en-US", "zh-CN"],
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
@@ -73,7 +79,7 @@
       <a href="#faq">FAQ</a>
     </nav>
     <div class="header-actions">
-      <a class="language-switch" href="../" lang="zh-CN" hreflang="zh-Hans" aria-label="以简体中文查看本页">中文</a>
+      <button class="language-switch" type="button" data-language-switch aria-label="Switch to Simplified Chinese">Switch language</button>
       <a class="header-cta" href="#availability" aria-label="App Store release in preparation">Coming soon</a>
     </div>
   </header>
@@ -93,8 +99,11 @@
           <span>Meal photo journal</span><span>24 solar terms</span><span>English &amp; Chinese</span><span>Apple Watch</span>
         </div>
       </div>
-      <figure class="hero-art">
-        <img src="../assets/og.png" alt="NourishDay brand artwork combining meal photography with a food calendar" width="1200" height="630">
+      <figure class="hero-art hero-still-life" aria-label="A food journal scene combining meals with a calendar grid">
+        <div class="hero-calendar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <img class="hero-meal hero-meal-main" src="../assets/bok-choy.jpg" alt="A vegetable meal" width="640" height="640">
+        <img class="hero-meal hero-meal-small" src="../assets/green-tea.jpg" alt="A cup of green tea" width="360" height="360">
+        <span class="hero-branch" aria-hidden="true">❧</span>
       </figure>
     </section>
 
@@ -141,7 +150,7 @@
           <span class="number">03</span><p class="feature-en">Live with the seasons</p>
           <h3>Follow the rhythm of the seasons</h3>
           <p>Connect weather, air quality, the lunar calendar, and the 24 solar terms with practical food, tea, and lifestyle references.</p>
-          <div class="seal">秋<small>Start of Autumn</small></div>
+          <div class="seal seal-en"><b aria-hidden="true">☼</b><small>Start of Autumn</small></div>
         </article>
         <article class="feature feature-warm">
           <span class="number">04</span><p class="feature-en">A bilingual wellness library</p>
@@ -208,11 +217,11 @@
         <h2>About NourishDay</h2>
       </div>
       <div class="faq-list">
-        <details open><summary>What are NourishDay, 食养日历, and TCMCalendar?<span>＋</span></summary><p>食养日历 is the Simplified Chinese name for NourishDay, while TCMCalendar is an earlier technical project name. They refer to the same app and the same core experience: connecting everyday meals with nutrition, seasonal context, and food knowledge.</p></details>
+        <details open><summary>What kind of app is NourishDay?<span>＋</span></summary><p>NourishDay connects everyday meals with nutrition records, seasonal context, and practical food knowledge. It supports meal photography, nutrition review, library search, and habit achievements.</p></details>
         <details><summary>How reliable are nutrition estimates from photos?<span>＋</span></summary><p>Image recognition supplies food candidates only. You review or edit the foods and portions first; nutrition is then calculated from the reviewed food catalog instead of treating a model guess as a final answer.</p></details>
         <details><summary>Does NourishDay provide medical diagnosis or treatment advice?<span>＋</span></summary><p>No. Seasonal, food, and lifestyle content is provided for health education and everyday reference only. It does not replace diagnosis, treatment, or individualized advice from a qualified professional.</p></details>
         <details><summary>Can I use NourishDay on Apple Watch?<span>＋</span></summary><p>Yes. Once paired, Apple Watch can show a recent seven-day meal and nutrition summary, including the latest valid data while temporarily offline.</p></details>
-        <details><summary>Does NourishDay support Simplified Chinese?<span>＋</span></summary><p>Yes. NourishDay supports English and Simplified Chinese across the calendar, library, nutrition, account, and Apple Watch experiences. Use “中文” at the top of this page to view the Chinese site.</p></details>
+        <details><summary>Does NourishDay support another language?<span>＋</span></summary><p>Yes. NourishDay supports English and Simplified Chinese across the calendar, library, nutrition, account, and Apple Watch experiences. Use the language button at the top of this page to switch.</p></details>
       </div>
     </section>
 
@@ -220,7 +229,7 @@
       <img src="../assets/app-icon.png" alt="NourishDay app icon" width="88" height="88">
       <p class="eyebrow"><span></span> START WITH TODAY</p>
       <h2>Today's meal can be<br>the first page of your calendar.</h2>
-      <p>NourishDay · Food Calendar<br><small>每天一拍，食养成历。</small></p>
+      <p>NourishDay · Food Calendar<br><small>Snap a meal. Nourish your day.</small></p>
       <span class="button light status-button" role="status">App Store release in preparation</span>
       <small class="availability-note">A download link will appear here after the public App Store release.</small>
     </section>
@@ -229,7 +238,7 @@
   <footer>
     <div class="footer-brand"><img src="../assets/app-icon.png" alt="" width="38" height="38"><span><strong>NourishDay</strong><small>Food Calendar</small></span></div>
     <p>Snap a meal. Nourish your day.</p>
-    <nav aria-label="Footer navigation"><a href="#features">Features</a><a href="#trust">Privacy &amp; trust</a><a href="#availability">Release status</a><a href="https://itongue.cn/">Support</a><a href="../" lang="zh-CN" hreflang="zh-Hans">简体中文</a></nav>
+    <nav aria-label="Footer navigation"><a href="#features">Features</a><a href="#trust">Privacy &amp; trust</a><a href="#availability">Release status</a><a href="https://itongue.cn/">Support</a><button type="button" data-language-switch>Switch language</button></nav>
     <small>© 2026 NourishDay · Jianna Consulting, LLC. Health content is for education and everyday reference only and is not medical advice.</small>
   </footer>
 </body>
