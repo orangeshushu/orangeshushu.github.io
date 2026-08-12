@@ -213,8 +213,69 @@ span.highlight {
     border-radius: 10px;
 }
 
+.back-to-top {
+  position: fixed;
+  right: calc(20px + env(safe-area-inset-right));
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .45);
+  border-radius: 50%;
+  color: #fff;
+  background: #1772d0;
+  box-shadow: 0 8px 24px rgba(27, 61, 94, .24);
+  cursor: grab;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  touch-action: none;
+  user-select: none;
+  transform: translateY(8px);
+  transition: opacity .2s ease, transform .2s ease, background-color .2s ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #125da9;
+}
+
+.back-to-top:focus-visible {
+  outline: 3px solid rgba(23, 114, 208, .35);
+  outline-offset: 4px;
+}
+
+.back-to-top.is-dragging {
+  cursor: grabbing;
+  transition: none;
+}
+
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .back-to-top {
+    transition: none;
   }
 }
