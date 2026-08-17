@@ -3,285 +3,238 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NourishDay: Food Calendar | Meal photos, nutrition, and seasonal wellness</title>
-  <meta name="description" content="NourishDay automatically recognizes meal photos, receipts, orders, and Nutrition Facts labels so you can review nutrition, build a food calendar, and follow seasonal wellness guidance.">
-  <meta name="keywords" content="NourishDay,Food Calendar,meal photo journal,nutrition tracker,Nutrition Facts scanner,seasonal wellness,solar terms,food library,Apple Watch,食养日历">
+  <title>NourishDay: Food Calendar | See how you eat</title>
+  <meta name="description" content="Turn meal photos into reviewed nutrition, a visual food calendar, and seasonal wellness context with NourishDay for iPhone, iPad, and Apple Watch.">
+  <meta name="keywords" content="NourishDay, Food Calendar, meal photo journal, nutrition tracker, seasonal wellness, Apple Watch, 食养日历">
   <meta name="author" content="Jianna Consulting, LLC">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-  <meta name="theme-color" content="#f5f0e4">
+  <meta name="theme-color" content="#f4f0e7">
   <link rel="canonical" href="https://jiacheng.website/nourishday/">
   <link rel="alternate" hreflang="en" href="https://jiacheng.website/nourishday/">
   <link rel="alternate" hreflang="zh-Hans" href="https://jiacheng.website/nourishday/zh/">
   <link rel="alternate" hreflang="x-default" href="https://jiacheng.website/nourishday/">
   <link rel="icon" href="assets/app-icon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
-  <link rel="stylesheet" href="styles.css?v=20260817-2">
-
+  <link rel="preload" href="assets/meal-balanced.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="styles.css?v=20260817-3">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="zh_CN">
   <meta property="og:site_name" content="NourishDay · Food Calendar">
-  <meta property="og:title" content="NourishDay | One photo. A clearer view of how you eat.">
-  <meta property="og:description" content="Review meals, nutrition, seasonal guidance, and your food calendar in one bilingual app.">
+  <meta property="og:title" content="NourishDay | See how you eat">
+  <meta property="og:description" content="One photo becomes reviewed nutrition, a food calendar, and a clearer daily rhythm.">
   <meta property="og:url" content="https://jiacheng.website/nourishday/">
   <meta property="og:image" content="https://jiacheng.website/nourishday/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="NourishDay brings meal photos, nutrition, and a seasonal food calendar together">
+  <meta property="og:image:alt" content="NourishDay meal photo, nutrition, and seasonal food calendar">
   <meta name="twitter:card" content="summary_large_image">
-
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "@id": "https://jiacheng.website/nourishday/#app",
-    "name": "NourishDay: Food Calendar",
-    "alternateName": ["食养日历", "TCMCalendar"],
-    "applicationCategory": "HealthApplication",
-    "operatingSystem": "iOS, iPadOS, watchOS",
-    "url": "https://jiacheng.website/nourishday/",
-    "description": "Photograph or choose one image, review automatically detected foods or printed nutrition, save confirmed meals, and explore seasonal wellness guidance.",
-    "softwareVersion": "1.5",
-    "inLanguage": ["en-US", "zh-CN"],
-    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-  }
+  {"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://jiacheng.website/nourishday/#app","name":"NourishDay: Food Calendar","alternateName":["食养日历","TCMCalendar"],"applicationCategory":"HealthApplication","operatingSystem":"iOS, iPadOS, watchOS","url":"https://jiacheng.website/nourishday/","description":"Review meals and nutrition from photos, build a food calendar, and explore seasonal wellness context.","softwareVersion":"1.5","inLanguage":["en-US","zh-CN"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
+  <script src="script.js?v=20260817-3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
     <a class="brand" href="#main-content" aria-label="NourishDay home">
-      <img src="assets/app-icon.png" alt="" width="44" height="44">
+      <img src="assets/app-icon.png" alt="" width="42" height="42">
       <span><strong>NourishDay</strong><small>Food Calendar</small></span>
     </a>
     <nav aria-label="Main navigation">
-      <a href="#how-it-works">How it works</a>
-      <a href="#nutrition-rhythm">14-day view</a>
-      <a href="#features">Features</a>
-      <a href="#screens">App screens</a>
+      <a href="#experience">Experience</a>
+      <a href="#nutrition-rhythm">14 days</a>
+      <a href="#inside">Inside the app</a>
       <a href="#plans">Plans</a>
     </nav>
     <div class="header-actions">
       <a class="language-switch" href="zh/" lang="zh-CN" hreflang="zh-Hans" aria-label="以简体中文查看本页">中文</a>
-      <a class="header-cta" href="#availability" aria-label="NourishDay is currently in private beta">Private beta</a>
+      <a class="header-cta" href="#availability">Private beta</a>
     </div>
   </header>
 
   <main id="main-content">
     <section class="hero">
-      <div class="hero-copy">
-        <p class="beta-badge"><span aria-hidden="true"></span><strong>Private beta now</strong><b>App Store launch coming soon</b></p>
-        <p class="eyebrow"><span></span> NOURISHDAY · FOOD CALENDAR</p>
-        <h1>One photo.<br>A clearer view of <em>how you eat.</em></h1>
-        <p class="hero-en">Snap a meal. Nourish your day.</p>
-        <p class="hero-body">Take or choose one image. NourishDay automatically identifies a meal, receipt, order, or Nutrition Facts label, then lets you review every detail before saving it to your food calendar.</p>
+      <div class="hero-copy reveal">
+        <p class="status-pill"><span aria-hidden="true"></span> Private beta · App Store soon</p>
+        <p class="eyebrow">NOURISHDAY · FOOD CALENDAR</p>
+        <h1>See how<br><em>you eat.</em></h1>
+        <p class="hero-body">One photo becomes reviewed nutrition, a food calendar, and a clearer daily rhythm.</p>
+        <ul class="hero-points" aria-label="NourishDay highlights">
+          <li>Snap or choose one image</li>
+          <li>Review every result</li>
+          <li>Follow patterns over time</li>
+        </ul>
         <div class="actions">
-          <a class="button primary" href="#availability">View beta status</a>
-          <a class="button text" href="#how-it-works">Explore the experience <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="hero-tags" aria-label="Availability and platform highlights">
-          <span>Free plan</span><span>English &amp; Chinese</span><span>iPhone &amp; iPad</span><span>Apple Watch</span>
+          <a class="button primary" href="#experience">Explore the app</a>
+          <a class="button text" href="#availability">Beta status <span aria-hidden="true">↘</span></a>
         </div>
       </div>
-      <figure class="hero-art hero-device">
-        <img src="assets/app-review.webp" alt="NourishDay review screen showing a meal photo and estimated nutrition before saving" width="900" height="1948" fetchpriority="high">
-      </figure>
+
+      <div class="hero-stage reveal" aria-label="Illustrative NourishDay daily nutrition view">
+        <div class="orbit orbit-one" aria-hidden="true"></div>
+        <div class="orbit orbit-two" aria-hidden="true"></div>
+        <div class="phone-shell">
+          <div class="phone-status" aria-hidden="true"><span>9:41</span><i></i><span>●●●</span></div>
+          <div class="phone-heading"><small>MONDAY · AUG 17</small><strong>Today</strong></div>
+          <img class="phone-meal" src="assets/meal-balanced.webp" alt="Balanced meal with chicken, rice, broccoli, carrots, and mushrooms" width="1400" height="1050" fetchpriority="high">
+          <div class="today-card ring-animate" data-energy="86" data-protein="92" data-fiber="79">
+            <div class="today-card-head"><span>Today’s nutrition</span><small>3 meals</small></div>
+            <div class="today-data">
+              <div class="large-rings" aria-hidden="true"><i></i><i></i><i></i><b>1,720<small>kcal</small></b></div>
+              <ul>
+                <li class="energy"><b>86%</b><span>1,720 / 2,000 kcal</span></li>
+                <li class="protein"><b>92%</b><span>46 / 50 g</span></li>
+                <li class="fiber"><b>79%</b><span>22 / 28 g</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="phone-nav" aria-hidden="true"><span>Today</span><span>Calendar</span><b>Scan</b><span>Library</span><span>Me</span></div>
+        </div>
+        <span class="float-note note-one"><b>14</b> day rhythm</span>
+        <span class="float-note note-two"><b>3</b> nutrients</span>
+      </div>
     </section>
 
-    <section class="proof-strip" aria-label="NourishDay highlights">
-      <article><strong>1 image</strong><span>No mode selection required</span></article>
-      <article><strong>4 sources</strong><span>Meal, receipt, order, or label</span></article>
-      <article><strong>You review</strong><span>Foods, portions, and printed values</span></article>
-      <article><strong>Private beta</strong><span>App Store launch coming soon</span></article>
+    <section class="signal-strip reveal" aria-label="Product highlights">
+      <span>✓ One image</span><span>✓ You confirm</span><span>✓ Bilingual</span><span>✓ iPhone · iPad · Watch</span>
     </section>
 
-    <section class="daily workflow" id="how-it-works">
-      <div class="section-copy light-copy">
-        <p class="eyebrow"><span></span> ONE IMAGE, THREE CLEAR STEPS</p>
-        <h2>Start quickly.<br>Stay in control.</h2>
-        <p>The latest capture experience puts the camera, photo library, and manual entry at the top of the screen. Image type is detected on your device before the existing upload flow begins.</p>
-        <ol class="workflow-steps">
-          <li><b>01</b><span><strong>Add one image</strong><small>Use a meal photo, receipt, order screenshot, or packaged Nutrition Facts label.</small></span></li>
-          <li><b>02</b><span><strong>Confirm before upload</strong><small>Correct the detected type if needed. Nothing is uploaded until you tap Upload &amp; Analyze.</small></span></li>
-          <li><b>03</b><span><strong>Review, adjust, and save</strong><small>Edit foods, portions, meal type, time, or consumed servings before the record enters your calendar.</small></span></li>
+    <section class="experience" id="experience">
+      <div class="experience-copy reveal">
+        <p class="eyebrow light">ONE MEAL. THREE MOMENTS.</p>
+        <h2>Snap.<br>Review.<br>See the pattern.</h2>
+        <ol class="step-list">
+          <li><b>01</b><span><strong>Add a photo</strong><small>Meal, receipt, order, or label.</small></span></li>
+          <li><b>02</b><span><strong>Make it yours</strong><small>Adjust foods, portions, and time.</small></span></li>
+          <li><b>03</b><span><strong>Build your calendar</strong><small>Watch each day add to the story.</small></span></li>
         </ol>
       </div>
-      <figure class="workflow-device">
-        <img src="assets/app-auto-scan.webp" alt="Current NourishDay Meal Scan screen with automatic image-type detection and camera, photo, and manual entry actions" width="900" height="1956" loading="lazy">
-      </figure>
+      <div class="meal-story reveal">
+        <img src="assets/meal-balanced.webp" alt="Balanced chicken and vegetable meal ready for review" width="1400" height="1050" loading="lazy">
+        <div class="meal-result">
+          <div><small>REVIEWED MEAL</small><strong>Balanced chicken bowl</strong></div>
+          <ul>
+            <li><span>Energy</span><b>619 kcal</b></li>
+            <li><span>Protein</span><b>52 g</b></li>
+            <li><span>Fiber</span><b>9.2 g</b></li>
+          </ul>
+          <span class="confirmed">✓ Ready to save</span>
+        </div>
+      </div>
     </section>
 
     <section class="nutrition-story" id="nutrition-rhythm">
-      <div class="nutrition-story-copy">
-        <p class="eyebrow"><span></span> A TWO-WEEK NUTRITION RHYTHM</p>
-        <h2>Fourteen days turn<br>rings into a pattern.</h2>
-        <p>One day is only a snapshot. After two weeks of confirmed meals, the calendar starts to show consistency, gaps, and changing nutrient balance at a glance.</p>
-        <div class="rhythm-stats" aria-label="Illustrative two-week summary">
-          <span><strong>14</strong><small>days logged</small></span>
-          <span><strong>32</strong><small>confirmed meals</small></span>
-          <span><strong>3</strong><small>focused nutrients</small></span>
-        </div>
-        <p class="sample-note">Illustrative data showing how the calendar can look after two weeks of use.</p>
+      <div class="nutrition-story-copy reveal">
+        <p class="eyebrow">A LIVING 14-DAY VIEW</p>
+        <h2>Every day<br>looks different.</h2>
+        <ul class="short-points">
+          <li>Spot consistent days</li>
+          <li>Notice gaps early</li>
+          <li>Tap any date for details</li>
+        </ul>
+        <p class="sample-note">Illustrative data · August 4–17</p>
       </div>
-      <div class="nutrition-dashboard">
+
+      <div class="nutrition-dashboard reveal" aria-label="Interactive illustrative fourteen-day nutrition calendar">
         <div class="nutrition-dashboard-head">
-          <div><small>AUGUST 4–17</small><strong>14-day streak</strong></div>
+          <div><small>AUGUST 4–17</small><strong>14-day rhythm</strong></div>
           <div class="ring-legend" aria-label="Ring order"><span class="energy">Energy</span><span class="protein">Protein</span><span class="fiber">Fiber</span></div>
         </div>
         <div class="week-labels" aria-hidden="true"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
         <div class="ring-calendar">
-          <article aria-label="August 4: Energy 72%, Protein 84%, Fiber 66%"><div class="day-rings" style="--energy:72%;--protein:84%;--fiber:66%"><i></i><i></i><i></i><b>4</b></div></article>
-          <article aria-label="August 5: Energy 81%, Protein 93%, Fiber 74%"><div class="day-rings" style="--energy:81%;--protein:93%;--fiber:74%"><i></i><i></i><i></i><b>5</b></div></article>
-          <article aria-label="August 6: Energy 88%, Protein 101%, Fiber 79%"><div class="day-rings" style="--energy:88%;--protein:100%;--fiber:79%"><i></i><i></i><i></i><b>6</b></div></article>
-          <article aria-label="August 7: Energy 64%, Protein 76%, Fiber 58%"><div class="day-rings" style="--energy:64%;--protein:76%;--fiber:58%"><i></i><i></i><i></i><b>7</b></div></article>
-          <article aria-label="August 8: Energy 92%, Protein 108%, Fiber 86%"><div class="day-rings" style="--energy:92%;--protein:100%;--fiber:86%"><i></i><i></i><i></i><b>8</b></div></article>
-          <article aria-label="August 9: Energy 85%, Protein 96%, Fiber 82%"><div class="day-rings" style="--energy:85%;--protein:96%;--fiber:82%"><i></i><i></i><i></i><b>9</b></div></article>
-          <article aria-label="August 10: Energy 78%, Protein 89%, Fiber 70%"><div class="day-rings" style="--energy:78%;--protein:89%;--fiber:70%"><i></i><i></i><i></i><b>10</b></div></article>
-          <article aria-label="August 11: Energy 95%, Protein 110%, Fiber 91%"><div class="day-rings" style="--energy:95%;--protein:100%;--fiber:91%"><i></i><i></i><i></i><b>11</b></div></article>
-          <article aria-label="August 12: Energy 87%, Protein 102%, Fiber 84%"><div class="day-rings" style="--energy:87%;--protein:100%;--fiber:84%"><i></i><i></i><i></i><b>12</b></div></article>
-          <article aria-label="August 13: Energy 90%, Protein 97%, Fiber 76%"><div class="day-rings" style="--energy:90%;--protein:97%;--fiber:76%"><i></i><i></i><i></i><b>13</b></div></article>
-          <article aria-label="August 14: Energy 73%, Protein 88%, Fiber 68%"><div class="day-rings" style="--energy:73%;--protein:88%;--fiber:68%"><i></i><i></i><i></i><b>14</b></div></article>
-          <article aria-label="August 15: Energy 98%, Protein 113%, Fiber 94%"><div class="day-rings" style="--energy:98%;--protein:100%;--fiber:94%"><i></i><i></i><i></i><b>15</b></div></article>
-          <article aria-label="August 16: Energy 83%, Protein 92%, Fiber 80%"><div class="day-rings" style="--energy:83%;--protein:92%;--fiber:80%"><i></i><i></i><i></i><b>16</b></div></article>
-          <article class="selected" aria-label="August 17: Energy 91%, Protein 105%, Fiber 87%"><div class="day-rings" style="--energy:91%;--protein:100%;--fiber:87%"><i></i><i></i><i></i><b>17</b></div></article>
+          <button type="button" data-day="Aug 4" data-energy="45" data-protein="62" data-fiber="38" data-kcal="900" data-protein-g="31" data-fiber-g="11" aria-label="August 4: Energy 45%, Protein 62%, Fiber 38%"><span class="day-rings"><i></i><i></i><i></i><b>4</b></span></button>
+          <button type="button" data-day="Aug 5" data-energy="72" data-protein="55" data-fiber="68" data-kcal="1,440" data-protein-g="28" data-fiber-g="19" aria-label="August 5: Energy 72%, Protein 55%, Fiber 68%"><span class="day-rings"><i></i><i></i><i></i><b>5</b></span></button>
+          <button type="button" data-day="Aug 6" data-energy="91" data-protein="82" data-fiber="77" data-kcal="1,820" data-protein-g="41" data-fiber-g="22" aria-label="August 6: Energy 91%, Protein 82%, Fiber 77%"><span class="day-rings"><i></i><i></i><i></i><b>6</b></span></button>
+          <button type="button" data-day="Aug 7" data-energy="54" data-protein="46" data-fiber="61" data-kcal="1,080" data-protein-g="23" data-fiber-g="17" aria-label="August 7: Energy 54%, Protein 46%, Fiber 61%"><span class="day-rings"><i></i><i></i><i></i><b>7</b></span></button>
+          <button type="button" data-day="Aug 8" data-energy="99" data-protein="109" data-fiber="88" data-kcal="1,980" data-protein-g="55" data-fiber-g="25" aria-label="August 8: Energy 99%, Protein 109%, Fiber 88%"><span class="day-rings"><i></i><i></i><i></i><b>8</b></span></button>
+          <button type="button" data-day="Aug 9" data-energy="68" data-protein="74" data-fiber="42" data-kcal="1,360" data-protein-g="37" data-fiber-g="12" aria-label="August 9: Energy 68%, Protein 74%, Fiber 42%"><span class="day-rings"><i></i><i></i><i></i><b>9</b></span></button>
+          <button type="button" data-day="Aug 10" data-energy="84" data-protein="96" data-fiber="70" data-kcal="1,680" data-protein-g="48" data-fiber-g="20" aria-label="August 10: Energy 84%, Protein 96%, Fiber 70%"><span class="day-rings"><i></i><i></i><i></i><b>10</b></span></button>
+          <button type="button" data-day="Aug 11" data-energy="37" data-protein="53" data-fiber="31" data-kcal="740" data-protein-g="27" data-fiber-g="9" aria-label="August 11: Energy 37%, Protein 53%, Fiber 31%"><span class="day-rings"><i></i><i></i><i></i><b>11</b></span></button>
+          <button type="button" data-day="Aug 12" data-energy="76" data-protein="105" data-fiber="83" data-kcal="1,520" data-protein-g="53" data-fiber-g="23" aria-label="August 12: Energy 76%, Protein 105%, Fiber 83%"><span class="day-rings"><i></i><i></i><i></i><b>12</b></span></button>
+          <button type="button" data-day="Aug 13" data-energy="88" data-protein="67" data-fiber="55" data-kcal="1,760" data-protein-g="34" data-fiber-g="15" aria-label="August 13: Energy 88%, Protein 67%, Fiber 55%"><span class="day-rings"><i></i><i></i><i></i><b>13</b></span></button>
+          <button type="button" data-day="Aug 14" data-energy="62" data-protein="81" data-fiber="94" data-kcal="1,240" data-protein-g="41" data-fiber-g="26" aria-label="August 14: Energy 62%, Protein 81%, Fiber 94%"><span class="day-rings"><i></i><i></i><i></i><b>14</b></span></button>
+          <button type="button" data-day="Aug 15" data-energy="95" data-protein="113" data-fiber="72" data-kcal="1,900" data-protein-g="57" data-fiber-g="20" aria-label="August 15: Energy 95%, Protein 113%, Fiber 72%"><span class="day-rings"><i></i><i></i><i></i><b>15</b></span></button>
+          <button type="button" data-day="Aug 16" data-energy="51" data-protein="39" data-fiber="64" data-kcal="1,020" data-protein-g="20" data-fiber-g="18" aria-label="August 16: Energy 51%, Protein 39%, Fiber 64%"><span class="day-rings"><i></i><i></i><i></i><b>16</b></span></button>
+          <button class="selected" type="button" data-day="Aug 17" data-energy="86" data-protein="92" data-fiber="79" data-kcal="1,720" data-protein-g="46" data-fiber-g="22" aria-pressed="true" aria-label="August 17: Energy 86%, Protein 92%, Fiber 79%"><span class="day-rings"><i></i><i></i><i></i><b>17</b></span></button>
         </div>
-        <div class="nutrition-dashboard-foot"><span><b>Week 1</b> More complete on 5 of 7 days</span><span><b>Week 2</b> More complete on 6 of 7 days</span></div>
+        <div class="day-detail" aria-live="polite">
+          <div><small>SELECTED DAY</small><strong id="detail-day">Aug 17</strong></div>
+          <ul>
+            <li class="energy"><span>Energy</span><b id="detail-energy">86% · 1,720 kcal</b></li>
+            <li class="protein"><span>Protein</span><b id="detail-protein">92% · 46 g</b></li>
+            <li class="fiber"><span>Fiber</span><b id="detail-fiber">79% · 22 g</b></li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="features" id="features">
-      <div class="section-copy centered">
-        <p class="eyebrow"><span></span> MORE THAN A CALORIE TRACKER</p>
-        <h2>Nutrition in context,<br>for everyday life.</h2>
-        <p class="section-intro">NourishDay connects confirmed meals with time, place, weather, seasonal rhythm, and practical food knowledge—without presenting estimates as medical facts.</p>
+    <section class="inside" id="inside">
+      <div class="section-heading reveal">
+        <p class="eyebrow">INSIDE NOURISHDAY</p>
+        <h2>More context.<br>Less guesswork.</h2>
       </div>
-      <div class="feature-grid">
-        <article class="feature feature-wide">
-          <span class="number">01</span><p class="feature-en">Automatic intake, optional correction</p>
-          <h3>One entry point for every meal record</h3>
-          <p>Use the camera or photo library without choosing a mode first. Local text evidence distinguishes meals, receipts, orders, and Nutrition Facts labels; uncertain images safely default to meal-photo handling.</p>
-          <div class="flow"><span>Meal</span><i>•</i><span>Receipt</span><i>•</i><span>Order</span><i>•</i><span>Nutrition label</span></div>
+      <div class="product-gallery" aria-label="NourishDay product views">
+        <article class="product-card card-season reveal">
+          <div class="product-copy"><span>01</span><h3>Eat with the season</h3><ul><li>Weather &amp; solar terms</li><li>Daily food guidance</li></ul></div>
+          <div class="screen-crop"><img src="assets/screen-today.jpg" alt="NourishDay Today screen with weather, solar term, and daily almanac" width="621" height="1344" loading="lazy"></div>
         </article>
-        <article class="feature feature-dark">
-          <span class="number">02</span><p class="feature-en">Reviewed nutrition, not a model guess</p>
-          <h3>Know where the numbers come from</h3>
-          <p>Recognition suggests visible foods and portions. Confirmed items map to reviewed catalog records; printed Nutrition Facts remain tied to the values you verify.</p>
-          <div class="progress"><span>Energy <b>84%</b></span><span>Protein <b>78 g</b></span><span>Fiber <b>25 g</b></span></div>
+        <article class="product-card card-calendar reveal">
+          <div class="product-copy"><span>02</span><h3>Your month at a glance</h3><ul><li>Weather or nutrition</li><li>Meals tied to each day</li></ul></div>
+          <div class="screen-crop"><img src="assets/screen-calendar.jpg" alt="NourishDay calendar screen with solar term timeline" width="621" height="1344" loading="lazy"></div>
         </article>
-        <article class="feature feature-sage">
-          <span class="number">03</span><p class="feature-en">A calendar that shows nutrition</p>
-          <h3>See patterns day by day</h3>
-          <p>Switch between weather and nutrition views, follow daily intake rings, and revisit confirmed meals and history over time.</p>
-          <div class="seal">日<small>DAY BY DAY</small></div>
-        </article>
-        <article class="feature feature-warm">
-          <span class="number">04</span><p class="feature-en">Weather and the 24 solar terms</p>
-          <h3>Follow the rhythm of the season</h3>
-          <p>See current weather, air quality, lunar dates, solar terms, food ideas, tea suggestions, and gentle lifestyle references for the day.</p>
-          <div class="chips"><span>Weather</span><span>Air quality</span><span>Solar terms</span><span>Tea</span></div>
-        </article>
-        <article class="feature feature-watch">
-          <span class="number">05</span><p class="feature-en">A bilingual food and wellness library</p>
-          <h3>Search every category at once</h3>
-          <p>Explore hundreds of ingredients, prepared dishes, herbs, teas, and wellness guides with English and Simplified Chinese names, properties, cautions, and reviewed nutrition where available.</p>
-          <div class="chips"><span>Foods</span><span>Dishes</span><span>Herbs</span><span>Teas</span></div>
-        </article>
-        <article class="feature feature-achievement">
-          <span class="number">06</span><p class="feature-en">Your day across Apple devices</p>
-          <h3>Keep recent nutrition close</h3>
-          <p>Home Screen widgets and the Apple Watch companion show privacy-bounded daily and seven-day summaries, with the nutrients you choose to follow.</p>
-          <div class="watch-summary" aria-label="Sample Apple Watch nutrition summary">
-            <span><b>84%</b><small>Energy</small></span><span><b>156%</b><small>Protein</small></span><span><b>89%</b><small>Fiber</small></span>
-          </div>
+        <article class="product-card card-library reveal">
+          <div class="product-copy"><span>03</span><h3>Search the whole library</h3><ul><li>Foods, dishes, herbs &amp; teas</li><li>English &amp; Chinese</li></ul></div>
+          <div class="screen-crop"><img src="assets/screen-library.jpg" alt="NourishDay food and wellness library" width="621" height="1344" loading="lazy"></div>
         </article>
       </div>
-    </section>
-
-    <section class="screens" id="screens">
-      <div class="screens-copy">
-        <p class="eyebrow"><span></span> CURRENT APP EXPERIENCE</p>
-        <h2>Built around the choices you confirm.</h2>
-        <p>Full app screens—without promotional headers or decorative cropping—so you can see more of the actual interface.</p>
-        <ul>
-          <li><b>Capture</b><span>One image, automatically classified</span></li>
-          <li><b>Review</b><span>Foods, portions, or printed values</span></li>
-          <li><b>Today</b><span>Weather, solar terms, and daily context</span></li>
-          <li><b>Library</b><span>Global bilingual search</span></li>
-        </ul>
-      </div>
-      <div class="screen-gallery" aria-label="Current NourishDay app screens">
-        <figure><div class="screen-frame"><img src="assets/app-auto-scan.webp" alt="Meal Scan screen with automatic image-type detection" width="900" height="1956" loading="lazy"></div><figcaption><b>Add one image</b><span>Camera, library, or manual entry</span></figcaption></figure>
-        <figure><div class="screen-frame"><img src="assets/app-review.webp" alt="Meal review screen with a meal photo and estimated nutrition" width="900" height="1948" loading="lazy"></div><figcaption><b>Review before saving</b><span>Foods, portions, and nutrition</span></figcaption></figure>
-        <figure><div class="screen-frame"><img src="assets/app-seasonal.webp" alt="Today screen with weather, solar term, and daily wellness guidance" width="900" height="1957" loading="lazy"></div><figcaption><b>Eat with the season</b><span>Weather, solar terms, and guidance</span></figcaption></figure>
-        <figure><div class="screen-frame"><img src="assets/app-library.webp" alt="Bilingual library global search results" width="900" height="1948" loading="lazy"></div><figcaption><b>Search the library</b><span>Foods, herbs, teas, and dishes</span></figcaption></figure>
-      </div>
+      <ul class="ecosystem-points reveal" aria-label="More NourishDay features">
+        <li><b>Apple Watch</b><span>Today and seven-day nutrition</span></li>
+        <li><b>Widgets</b><span>Your selected nutrients at a glance</span></li>
+        <li><b>Privacy-minded</b><span>Nothing uploads before confirmation</span></li>
+        <li><b>Editable</b><span>Foods, portions, meal type, and time</span></li>
+      </ul>
     </section>
 
     <section class="plans" id="plans">
-      <div class="section-copy centered">
-        <p class="eyebrow"><span></span> START FREE, UPGRADE ONLY IF USEFUL</p>
-        <h2>The core app stays available<br>without a subscription.</h2>
-        <p class="section-intro">Sign in and use NourishDay on its ongoing free plan. Premium is optional and adds higher limits and deeper history.</p>
-      </div>
+      <div class="section-heading centered reveal"><p class="eyebrow">SIMPLE BY DESIGN</p><h2>Start free.<br>Go further when useful.</h2></div>
       <div class="plan-grid">
-        <article class="plan-card">
-          <p class="plan-label">FREE</p><h3>Build a daily rhythm</h3><p>For getting started and keeping a recent record.</p>
-          <ul><li>Up to 3 image analyses per day</li><li>Latest 7 natural days of nutrition records</li><li>Today, Calendar, Scan, Library, and Me</li><li>English and Simplified Chinese</li></ul>
-          <span class="plan-status">No payment method required</span>
-        </article>
-        <article class="plan-card premium">
-          <p class="plan-label">OPTIONAL PREMIUM</p><h3>Go further back and scan more</h3><p>For fuller history, planning, and connected use.</p>
-          <ul><li>Up to 20 image analyses per day</li><li>All nutrition records without a time limit</li><li>Complete nutrition calendar</li><li>Personalized guidance and cross-device sync</li></ul>
-          <span class="plan-status">Eligible monthly users may start a 7-day trial</span>
-        </article>
+        <article class="plan-card reveal"><p class="plan-label">FREE</p><h3>Your daily rhythm</h3><ul><li>3 image analyses / day</li><li>Latest 7 days</li><li>All five core tabs</li><li>English &amp; Chinese</li></ul><span>No payment method</span></article>
+        <article class="plan-card premium reveal"><p class="plan-label">OPTIONAL PREMIUM</p><h3>More history. More scans.</h3><ul><li>20 image analyses / day</li><li>Full nutrition history</li><li>Complete calendar</li><li>Cross-device sync</li></ul><span>Trial eligibility varies</span></article>
       </div>
-      <p class="plan-note">Subscription availability, pricing, and trial eligibility are shown in the App Store purchase sheet and may vary by storefront.</p>
     </section>
 
-    <section class="trust" id="trust">
-      <div class="section-copy">
-        <p class="eyebrow"><span></span> DESIGNED FOR TRUST</p>
-        <h2>AI suggests.<br>You decide.</h2>
-      </div>
-      <div class="trust-grid">
-        <article><strong>01</strong><h3>Nothing uploads before confirmation</h3><p>Your selected image stays on the device until you explicitly tap Upload &amp; Analyze.</p></article>
-        <article><strong>02</strong><h3>Results remain editable</h3><p>Food identity, portions, meal type, time, and consumed servings stay under your control.</p></article>
-        <article><strong>03</strong><h3>Wellness content has clear limits</h3><p>Recognition, nutrition, body preferences, and traditional wellness content are estimates for education and general wellness—not diagnosis or treatment.</p></article>
-      </div>
+    <section class="trust">
+      <div class="section-heading reveal"><p class="eyebrow">YOU STAY IN CONTROL</p><h2>AI suggests.<br>You decide.</h2></div>
+      <ul class="trust-points reveal">
+        <li><b>Before upload</b><span>You choose when analysis begins.</span></li>
+        <li><b>Before saving</b><span>You review every food and portion.</span></li>
+        <li><b>After saving</b><span>You can revisit your own history.</span></li>
+      </ul>
     </section>
 
     <section class="faq" id="faq">
-      <div class="section-copy">
-        <p class="eyebrow"><span></span> QUESTIONS &amp; ANSWERS</p>
-        <h2>About NourishDay</h2>
-      </div>
-      <div class="faq-list">
-        <details open><summary>When will NourishDay be available on the App Store?<span>＋</span></summary><p>NourishDay is currently in private beta while we complete final validation and release preparation. The App Store launch is coming soon, and this page will show the public download link as soon as it is live.</p></details>
-        <details><summary>What can NourishDay recognize?<span>＋</span></summary><p>Choose one meal photo, receipt, order screenshot, or packaged Nutrition Facts label. Local text evidence selects the likely handling automatically, and a compact correction menu remains available before analysis.</p></details>
-        <details><summary>How reliable are nutrition estimates from photos?<span>＋</span></summary><p>Image recognition supplies candidates and estimated portions. You review or edit them first; confirmed foods are then mapped to reviewed catalog values. Printed Nutrition Facts are stored only from the values you confirm.</p></details>
-        <details><summary>Can I use the app without Premium?<span>＋</span></summary><p>Yes. The ongoing free plan keeps the five core tabs available, includes up to three image analyses per day, and provides the latest seven natural days of nutrition records without requiring a payment method.</p></details>
-        <details><summary>Does NourishDay provide medical advice?<span>＋</span></summary><p>No. Food recognition, nutrient totals, body preferences, and seasonal wellness content are estimates for education and general wellness only. Consult a qualified healthcare professional about medical conditions, allergies, pregnancy, medications, or dietary restrictions.</p></details>
-        <details><summary>What works on Apple Watch and widgets?<span>＋</span></summary><p>The iPhone publishes a bounded recent summary with your three selected nutrients. Widgets show today or the latest seven days, while Apple Watch adds today's totals, all supported nutrients, recent days, and an offline cache.</p></details>
-        <details><summary>Does NourishDay support Simplified Chinese?<span>＋</span></summary><p>Yes. The core iPhone, iPad, widget, and Apple Watch experiences support English and Simplified Chinese. Use “中文” at the top of this page for the Chinese product site.</p></details>
+      <div class="section-heading reveal"><p class="eyebrow">QUICK ANSWERS</p><h2>Good to know.</h2></div>
+      <div class="faq-list reveal">
+        <details open><summary>When is the App Store launch?<span>＋</span></summary><p>NourishDay is in private beta while final testing and release preparation continue. The public App Store link will appear here as soon as it is live.</p></details>
+        <details><summary>Is there a free plan?<span>＋</span></summary><p>Yes. It includes the five core tabs, three image analyses per day, and the latest seven days of nutrition history.</p></details>
+        <details><summary>Is this medical advice?<span>＋</span></summary><p>No. Recognition, nutrition, and seasonal wellness content are for education and general wellness, not diagnosis or treatment.</p></details>
       </div>
     </section>
 
     <section class="final-cta" id="availability">
-      <img src="assets/app-icon.png" alt="NourishDay app icon" width="88" height="88">
-      <p class="eyebrow"><span></span> PRIVATE BETA · LAUNCHING SOON</p>
-      <h2>In testing today.<br>Coming soon to the App Store.</h2>
-      <p>NourishDay · Food Calendar<br><small>Snap a meal. Nourish your day.</small></p>
+      <img src="assets/app-icon.png" alt="NourishDay app icon" width="86" height="86">
+      <p class="eyebrow light">PRIVATE BETA · APP STORE SOON</p>
+      <h2>Your next meal<br>can start the story.</h2>
       <span class="button light status-button" role="status">Private beta in progress</span>
-      <small class="availability-note">Final testing and App Store release preparation are underway. The public download link will appear here at launch.</small>
     </section>
   </main>
 
   <footer>
     <div class="footer-brand"><img src="assets/app-icon.png" alt="" width="38" height="38"><span><strong>NourishDay</strong><small>Food Calendar</small></span></div>
-    <p>Snap a meal. Nourish your day.</p>
-    <nav aria-label="Footer navigation"><a href="#how-it-works">How it works</a><a href="#plans">Plans</a><a href="#trust">Privacy &amp; trust</a><a href="https://itongue.cn/">Support</a><a href="zh/" lang="zh-CN" hreflang="zh-Hans">简体中文</a></nav>
-    <small>© 2026 NourishDay · Jianna Consulting, LLC. Health content is for education and everyday reference only and is not medical advice.</small>
+    <nav aria-label="Footer navigation"><a href="#experience">Experience</a><a href="#nutrition-rhythm">14 days</a><a href="#plans">Plans</a><a href="https://itongue.cn/">Support</a><a href="zh/" lang="zh-CN" hreflang="zh-Hans">中文</a></nav>
+    <small>© 2026 NourishDay · Jianna Consulting, LLC. Wellness content is educational and not medical advice.</small>
   </footer>
 </body>
 </html>
