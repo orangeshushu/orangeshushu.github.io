@@ -1,236 +1,250 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>食养日历 NourishDay｜每天拍一餐，记录营养与节气食养</title>
-  <meta name="description" content="NourishDay 食养日历：拍照确认餐食与份量，记录每日营养；结合天气、农历、二十四节气和中英双语食养百科，陪你形成可持续的饮食节奏。支持 iPhone、iPad 与 Apple Watch。">
-  <meta name="keywords" content="食养日历,NourishDay,中医养生日历,TCMCalendar,餐食拍照,营养记录,二十四节气,食养百科,Apple Watch,food journal,nutrition tracker">
+  <title>NourishDay: Food Calendar | Meal photos, nutrition, and seasonal wellness</title>
+  <meta name="description" content="NourishDay automatically recognizes meal photos, receipts, orders, and Nutrition Facts labels so you can review nutrition, build a food calendar, and follow seasonal wellness guidance.">
+  <meta name="keywords" content="NourishDay,Food Calendar,meal photo journal,nutrition tracker,Nutrition Facts scanner,seasonal wellness,solar terms,food library,Apple Watch,食养日历">
   <meta name="author" content="Jianna Consulting, LLC">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="theme-color" content="#f5f0e4">
   <link rel="canonical" href="https://jiacheng.website/nourishday/">
-  <link rel="alternate" hreflang="zh-Hans" href="https://jiacheng.website/nourishday/">
-  <link rel="alternate" hreflang="en" href="https://jiacheng.website/nourishday/en/">
+  <link rel="alternate" hreflang="en" href="https://jiacheng.website/nourishday/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://jiacheng.website/nourishday/zh/">
   <link rel="alternate" hreflang="x-default" href="https://jiacheng.website/nourishday/">
   <link rel="icon" href="assets/app-icon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
-  <link rel="stylesheet" href="styles.css?v=20260812-2">
+  <link rel="stylesheet" href="styles.css?v=20260817-1">
 
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:locale:alternate" content="en_US">
-  <meta property="og:site_name" content="食养日历 · NourishDay">
-  <meta property="og:title" content="食养日历 NourishDay｜每天拍一餐，记录营养与节气食养">
-  <meta property="og:description" content="每天拍一餐，让食养成为看得见的日历。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:site_name" content="NourishDay · Food Calendar">
+  <meta property="og:title" content="NourishDay | One photo. A clearer view of how you eat.">
+  <meta property="og:description" content="Review meals, nutrition, seasonal guidance, and your food calendar in one bilingual app.">
   <meta property="og:url" content="https://jiacheng.website/nourishday/">
   <meta property="og:image" content="https://jiacheng.website/nourishday/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="食养日历：每天一拍，食养成历">
+  <meta property="og:image:alt" content="NourishDay brings meal photos, nutrition, and a seasonal food calendar together">
   <meta name="twitter:card" content="summary_large_image">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://jiacheng.website/nourishday/#website",
-        "url": "https://jiacheng.website/nourishday/",
-        "name": "食养日历 · NourishDay",
-        "alternateName": ["中医养生日历", "TCMCalendar"],
-        "inLanguage": "zh-CN"
-      },
-      {
-        "@type": "SoftwareApplication",
-        "@id": "https://jiacheng.website/nourishday/#app",
-        "name": "NourishDay: Food Calendar",
-        "alternateName": ["食养日历", "中医养生日历", "TCMCalendar"],
-        "applicationCategory": "HealthApplication",
-        "operatingSystem": "iOS, iPadOS, watchOS",
-        "url": "https://jiacheng.website/nourishday/",
-        "description": "拍照确认餐食与份量，记录每日营养，并结合天气、农历、二十四节气与中英双语食养百科获得日常参考。",
-        "inLanguage": ["zh-CN", "en-US"],
-        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-      }
-    ]
+    "@type": "SoftwareApplication",
+    "@id": "https://jiacheng.website/nourishday/#app",
+    "name": "NourishDay: Food Calendar",
+    "alternateName": ["食养日历", "TCMCalendar"],
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "iOS, iPadOS, watchOS",
+    "url": "https://jiacheng.website/nourishday/",
+    "description": "Photograph or choose one image, review automatically detected foods or printed nutrition, save confirmed meals, and explore seasonal wellness guidance.",
+    "softwareVersion": "1.5",
+    "inLanguage": ["en-US", "zh-CN"],
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
   }
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header class="site-header">
-    <a class="brand" href="#main-content" aria-label="食养日历首页">
+    <a class="brand" href="#main-content" aria-label="NourishDay home">
       <img src="assets/app-icon.png" alt="" width="44" height="44">
-      <span><strong>食养日历</strong><small>NourishDay</small></span>
+      <span><strong>NourishDay</strong><small>Food Calendar</small></span>
     </a>
-    <nav aria-label="主要导航">
-      <a href="#daily">每日记录</a>
-      <a href="#features">核心功能</a>
-      <a href="#screens">真实界面</a>
-      <a href="#trust">隐私与信任</a>
-      <a href="#faq">常见问题</a>
+    <nav aria-label="Main navigation">
+      <a href="#how-it-works">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#screens">App screens</a>
+      <a href="#plans">Plans</a>
+      <a href="#trust">Trust</a>
     </nav>
     <div class="header-actions">
-      <a class="language-switch" href="en/" lang="en" hreflang="en" aria-label="View this page in English">EN</a>
-      <a class="header-cta" href="#availability" aria-label="App Store 版本准备中">即将上线</a>
+      <a class="language-switch" href="zh/" lang="zh-CN" hreflang="zh-Hans" aria-label="以简体中文查看本页">中文</a>
+      <a class="header-cta" href="#availability">App Store status</a>
     </div>
   </header>
 
   <main id="main-content">
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow"><span></span> 食养日历 · NOURISHDAY</p>
-        <h1>每天拍一餐，<br><em>食养</em>成为日历。</h1>
+        <p class="eyebrow"><span></span> NOURISHDAY · FOOD CALENDAR</p>
+        <h1>One photo.<br>A clearer view of <em>how you eat.</em></h1>
         <p class="hero-en">Snap a meal. Nourish your day.</p>
-        <p class="hero-body">从一张食物照片开始，记录每天吃了什么；再结合天气、节气与食养知识，慢慢看懂自己的饮食节奏。</p>
+        <p class="hero-body">Take or choose one image. NourishDay automatically identifies a meal, receipt, order, or Nutrition Facts label, then lets you review every detail before saving it to your food calendar.</p>
         <div class="actions">
-          <a class="button primary" href="#availability">查看发布进度</a>
-          <a class="button text" href="#daily">看看如何记录 <span aria-hidden="true">→</span></a>
+          <a class="button primary" href="#availability">View App Store status</a>
+          <a class="button text" href="#how-it-works">Explore the experience <span aria-hidden="true">→</span></a>
         </div>
-        <div class="hero-tags" aria-label="主要特点">
-          <span>餐食拍照记录</span><span>二十四节气</span><span>中英双语</span><span>Apple Watch</span>
+        <div class="hero-tags" aria-label="Availability and platform highlights">
+          <span>Free plan</span><span>English &amp; Chinese</span><span>iPhone &amp; iPad</span><span>Apple Watch</span>
         </div>
       </div>
-      <figure class="hero-art">
-        <img src="assets/og.png" alt="食养日历将每日餐食照片与日历结合的品牌画面" width="1200" height="630">
+      <figure class="hero-art hero-device">
+        <img src="assets/app-review.webp" alt="NourishDay review screen showing a meal photo and estimated nutrition before saving" width="900" height="1948" fetchpriority="high">
       </figure>
     </section>
 
-    <section class="daily" id="daily">
+    <section class="proof-strip" aria-label="NourishDay highlights">
+      <article><strong>1 image</strong><span>No mode selection required</span></article>
+      <article><strong>4 sources</strong><span>Meal, receipt, order, or label</span></article>
+      <article><strong>You review</strong><span>Foods, portions, and printed values</span></article>
+      <article><strong>7-day view</strong><span>Nutrition on iPhone and Apple Watch</span></article>
+    </section>
+
+    <section class="daily workflow" id="how-it-works">
       <div class="section-copy light-copy">
-        <p class="eyebrow"><span></span> ONE PHOTO A DAY</p>
-        <h2>你的一日三餐，<br>值得被温柔地看见。</h2>
-        <p>拍照不是为了追求完美饮食，而是让每一天都有迹可循。零散的一顿顿，会慢慢成为属于你的食养日历。</p>
+        <p class="eyebrow"><span></span> ONE IMAGE, THREE CLEAR STEPS</p>
+        <h2>Start quickly.<br>Stay in control.</h2>
+        <p>The latest capture experience puts the camera, photo library, and manual entry at the top of the screen. Image type is detected on your device before the existing upload flow begins.</p>
+        <ol class="workflow-steps">
+          <li><b>01</b><span><strong>Add one image</strong><small>Use a meal photo, receipt, order screenshot, or packaged Nutrition Facts label.</small></span></li>
+          <li><b>02</b><span><strong>Confirm before upload</strong><small>Correct the detected type if needed. Nothing is uploaded until you tap Upload &amp; Analyze.</small></span></li>
+          <li><b>03</b><span><strong>Review, adjust, and save</strong><small>Edit foods, portions, meal type, time, or consumed servings before the record enters your calendar.</small></span></li>
+        </ol>
       </div>
-      <div class="meal-calendar">
-        <div class="calendar-title"><div><small>AUGUST</small><strong>八月 · 食养记录</strong></div><span>6 餐已记录</span></div>
-        <div class="weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
-        <div class="meal-grid">
-          <article><b>1</b><img src="assets/bok-choy.jpg" alt="青菜餐食记录"><small>青菜</small></article>
-          <article><b>2</b><img src="assets/dumplings.jpg" alt="饺子餐食记录"><small>饺子</small></article>
-          <article><b>3</b><img src="assets/sushi.jpg" alt="寿司餐食记录"><small>寿司</small></article>
-          <article><b>4</b><img src="assets/sweet-potato.jpg" alt="红薯餐食记录"><small>红薯</small></article>
-          <article><b>5</b><img src="assets/white-rice.jpg" alt="米饭餐食记录"><small>米饭</small></article>
-          <article><b>6</b><img src="assets/green-tea.jpg" alt="清茶记录"><small>清茶</small></article>
-          <article class="add-day"><b>7</b><span>＋</span><small>记录今天</small></article>
-        </div>
-      </div>
+      <figure class="workflow-device">
+        <img src="assets/app-auto-scan.webp" alt="Current NourishDay Meal Scan screen with automatic image-type detection and camera, photo, and manual entry actions" width="900" height="1956" loading="lazy">
+      </figure>
     </section>
 
     <section class="features" id="features">
       <div class="section-copy centered">
         <p class="eyebrow"><span></span> MORE THAN A CALORIE TRACKER</p>
-        <h2>不只记录数字，<br>更理解每一天。</h2>
+        <h2>Nutrition in context,<br>for everyday life.</h2>
+        <p class="section-intro">NourishDay connects confirmed meals with time, place, weather, seasonal rhythm, and practical food knowledge—without presenting estimates as medical facts.</p>
       </div>
       <div class="feature-grid">
         <article class="feature feature-wide">
-          <span class="number">01</span><p class="feature-en">One photo, one mindful meal</p>
-          <h3>每天一拍，轻松记一餐</h3>
-          <p>支持餐食、菜单与小票图片识别。先看识别建议，再由你确认食物和份量，记录不再靠回忆。</p>
-          <div class="flow"><span>拍一张</span><i>→</i><span>确认食物</span><i>→</i><span>存入日历</span></div>
+          <span class="number">01</span><p class="feature-en">Automatic intake, optional correction</p>
+          <h3>One entry point for every meal record</h3>
+          <p>Use the camera or photo library without choosing a mode first. Local text evidence distinguishes meals, receipts, orders, and Nutrition Facts labels; uncertain images safely default to meal-photo handling.</p>
+          <div class="flow"><span>Meal</span><i>•</i><span>Receipt</span><i>•</i><span>Order</span><i>•</i><span>Nutrition label</span></div>
         </article>
         <article class="feature feature-dark">
-          <span class="number">02</span><p class="feature-en">Turn nutrition into a calendar</p>
-          <h3>营养成为看得见的日历</h3>
-          <p>按天回看餐食与营养记录，把每天的选择积累成清晰、可持续的饮食轨迹。</p>
-          <div class="progress"><span>蛋白质 <b>78%</b></span><span>膳食纤维 <b>64%</b></span><span>饮水 <b>82%</b></span></div>
+          <span class="number">02</span><p class="feature-en">Reviewed nutrition, not a model guess</p>
+          <h3>Know where the numbers come from</h3>
+          <p>Recognition suggests visible foods and portions. Confirmed items map to reviewed catalog records; printed Nutrition Facts remain tied to the values you verify.</p>
+          <div class="progress"><span>Energy <b>84%</b></span><span>Protein <b>78 g</b></span><span>Fiber <b>25 g</b></span></div>
         </article>
         <article class="feature feature-sage">
-          <span class="number">03</span><p class="feature-en">Live with the seasons</p>
-          <h3>跟着节气，顺时而养</h3>
-          <p>结合天气、空气质量、农历与二十四节气，获得当日食材、茶饮和生活方式参考。</p>
-          <div class="seal">秋<small>立秋</small></div>
+          <span class="number">03</span><p class="feature-en">A calendar that shows nutrition</p>
+          <h3>See patterns day by day</h3>
+          <p>Switch between weather and nutrition views, follow daily intake rings, and revisit confirmed meals and history over time.</p>
+          <div class="seal">日<small>DAY BY DAY</small></div>
         </article>
         <article class="feature feature-warm">
-          <span class="number">04</span><p class="feature-en">A bilingual wellness library</p>
-          <h3>中英双语食养知识库</h3>
-          <p>从食材与常见菜品，到草本、茶饮和日常调养，在 470 条百科内容中跨类别搜索。</p>
-          <div class="chips"><span>食材</span><span>菜品</span><span>草本</span><span>茶饮</span></div>
+          <span class="number">04</span><p class="feature-en">Weather and the 24 solar terms</p>
+          <h3>Follow the rhythm of the season</h3>
+          <p>See current weather, air quality, lunar dates, solar terms, food ideas, tea suggestions, and gentle lifestyle references for the day.</p>
+          <div class="chips"><span>Weather</span><span>Air quality</span><span>Solar terms</span><span>Tea</span></div>
         </article>
         <article class="feature feature-watch">
-          <span class="number">05</span><p class="feature-en">Your daily nutrition, at a glance</p>
-          <h3>抬腕查看今日营养</h3>
-          <p>Apple Watch 同步近七天摘要，让餐数、摄入量和你关注的营养指标随时可见。</p>
-          <div class="watch-summary" aria-label="Apple Watch 营养摘要示例">
-            <span><b>78%</b><small>蛋白质</small></span>
-            <span><b>64%</b><small>碳水</small></span>
-            <span><b>82%</b><small>热量</small></span>
-          </div>
+          <span class="number">05</span><p class="feature-en">A bilingual food and wellness library</p>
+          <h3>Search every category at once</h3>
+          <p>Explore hundreds of ingredients, prepared dishes, herbs, teas, and wellness guides with English and Simplified Chinese names, properties, cautions, and reviewed nutrition where available.</p>
+          <div class="chips"><span>Foods</span><span>Dishes</span><span>Herbs</span><span>Teas</span></div>
         </article>
         <article class="feature feature-achievement">
-          <span class="number">06</span><p class="feature-en">Small steps, lasting habits</p>
-          <h3>把坚持变成看得见的成就</h3>
-          <p>餐食记录、连续活跃和知识探索都会积累进度，用一枚枚勋章见证长期习惯。</p>
-          <div class="achievement-row" aria-label="习惯成就示例"><span>初次记录</span><span>连续七天</span><span>百科探索</span></div>
+          <span class="number">06</span><p class="feature-en">Your day across Apple devices</p>
+          <h3>Keep recent nutrition close</h3>
+          <p>Home Screen widgets and the Apple Watch companion show privacy-bounded daily and seven-day summaries, with the nutrients you choose to follow.</p>
+          <div class="watch-summary" aria-label="Sample Apple Watch nutrition summary">
+            <span><b>84%</b><small>Energy</small></span><span><b>156%</b><small>Protein</small></span><span><b>89%</b><small>Fiber</small></span>
+          </div>
         </article>
       </div>
     </section>
 
     <section class="screens" id="screens">
       <div class="screens-copy">
-        <p class="eyebrow"><span></span> BUILT FOR YOUR DAILY RHYTHM</p>
-        <h2>从今天这一餐，<br>看见完整的生活节奏。</h2>
-        <p>早晨看看天气和节气，中午拍下餐食，晚上回顾营养与进度。简单的小动作，慢慢成为可持续的生活习惯。</p>
+        <p class="eyebrow"><span></span> CURRENT APP EXPERIENCE</p>
+        <h2>Built around the choices you confirm.</h2>
+        <p>These screens come from the current NourishDay product and its latest validated capture flow.</p>
         <ul>
-          <li><b>今日</b><span>天气、农历、节气与当日建议</span></li>
-          <li><b>拍餐</b><span>识别、确认并保存餐食营养</span></li>
-          <li><b>日历</b><span>沿时间轴回看季节和每日记录</span></li>
-          <li><b>百科</b><span>跨类别查食材、菜品、草本与茶饮</span></li>
+          <li><b>Capture</b><span>One image, automatically classified</span></li>
+          <li><b>Review</b><span>Foods, portions, or printed values</span></li>
+          <li><b>Calendar</b><span>Daily nutrition and seasonal context</span></li>
+          <li><b>Library</b><span>Global bilingual search</span></li>
+          <li><b>Watch</b><span>Today and the latest seven days</span></li>
         </ul>
       </div>
-      <div class="screen-gallery" aria-label="NourishDay 真实界面截图">
-        <figure><div class="screen-frame"><img src="assets/screen-today.jpg" alt="NourishDay 今日页面，显示天气、节气和每日食养建议" width="620" height="1342" loading="lazy"></div><figcaption><b>今日节奏</b><span>天气、节气与日常建议</span></figcaption></figure>
-        <figure><div class="screen-frame"><img src="assets/screen-scan.jpg" alt="NourishDay 拍餐页面" width="620" height="1342" loading="lazy"></div><figcaption><b>拍下餐食</b><span>照片、菜单与小票识别</span></figcaption></figure>
-        <figure><div class="screen-frame"><img src="assets/screen-nutrition.jpg" alt="NourishDay 餐食营养确认页面" width="620" height="1342" loading="lazy"></div><figcaption><b>确认营养</b><span>食物和份量由你复核</span></figcaption></figure>
-        <figure><div class="screen-frame"><img src="assets/screen-calendar.jpg" alt="NourishDay 节气日历页面" width="620" height="1342" loading="lazy"></div><figcaption><b>日历回看</b><span>把每日选择连成轨迹</span></figcaption></figure>
-        <figure><div class="screen-frame"><img src="assets/screen-library.jpg" alt="NourishDay 中英双语食养百科页面" width="620" height="1342" loading="lazy"></div><figcaption><b>食养百科</b><span>食材、菜品、草本与茶饮</span></figcaption></figure>
-        <figure><div class="screen-frame"><img src="assets/screen-me.jpg" alt="NourishDay 个人中心页面" width="620" height="1342" loading="lazy"></div><figcaption><b>个人进度</b><span>历史、成就与账户管理</span></figcaption></figure>
+      <div class="screen-gallery" aria-label="Current NourishDay app screens">
+        <figure><div class="screen-frame"><img src="assets/app-auto-scan.webp" alt="Meal Scan screen with automatic image-type detection" width="900" height="1956" loading="lazy"></div><figcaption><b>Add one image</b><span>Camera, library, or manual entry</span></figcaption></figure>
+        <figure><div class="screen-frame"><img src="assets/app-review.webp" alt="Meal review screen with a meal photo and estimated nutrition" width="900" height="1948" loading="lazy"></div><figcaption><b>Review before saving</b><span>Foods, portions, and nutrition</span></figcaption></figure>
+        <figure><div class="screen-frame"><img src="assets/app-nutrition-calendar.webp" alt="Nutrition calendar with daily intake rings" width="900" height="1948" loading="lazy"></div><figcaption><b>See nutrition by day</b><span>A timeline from confirmed meals</span></figcaption></figure>
+        <figure><div class="screen-frame"><img src="assets/app-seasonal.webp" alt="Today screen with weather, solar term, and daily wellness guidance" width="900" height="1948" loading="lazy"></div><figcaption><b>Eat with the season</b><span>Weather, solar terms, and guidance</span></figcaption></figure>
+        <figure><div class="screen-frame"><img src="assets/app-library.webp" alt="Bilingual library global search results" width="900" height="1948" loading="lazy"></div><figcaption><b>Search the library</b><span>Foods, herbs, teas, and dishes</span></figcaption></figure>
+        <figure><div class="screen-frame"><img src="assets/app-watch.webp" alt="Apple Watch nutrition summary with three selected nutrients" width="900" height="1948" loading="lazy"></div><figcaption><b>Your day on your wrist</b><span>Recent nutrition at a glance</span></figcaption></figure>
       </div>
+    </section>
+
+    <section class="plans" id="plans">
+      <div class="section-copy centered">
+        <p class="eyebrow"><span></span> START FREE, UPGRADE ONLY IF USEFUL</p>
+        <h2>The core app stays available<br>without a subscription.</h2>
+        <p class="section-intro">Sign in and use NourishDay on its ongoing free plan. Premium is optional and adds higher limits and deeper history.</p>
+      </div>
+      <div class="plan-grid">
+        <article class="plan-card">
+          <p class="plan-label">FREE</p><h3>Build a daily rhythm</h3><p>For getting started and keeping a recent record.</p>
+          <ul><li>Up to 3 image analyses per day</li><li>Latest 7 natural days of nutrition records</li><li>Today, Calendar, Scan, Library, and Me</li><li>English and Simplified Chinese</li></ul>
+          <span class="plan-status">No payment method required</span>
+        </article>
+        <article class="plan-card premium">
+          <p class="plan-label">OPTIONAL PREMIUM</p><h3>Go further back and scan more</h3><p>For fuller history, planning, and connected use.</p>
+          <ul><li>Up to 20 image analyses per day</li><li>All nutrition records without a time limit</li><li>Complete nutrition calendar</li><li>Personalized guidance and cross-device sync</li></ul>
+          <span class="plan-status">Eligible monthly users may start a 7-day trial</span>
+        </article>
+      </div>
+      <p class="plan-note">Subscription availability, pricing, and trial eligibility are shown in the App Store purchase sheet and may vary by storefront.</p>
     </section>
 
     <section class="trust" id="trust">
       <div class="section-copy">
         <p class="eyebrow"><span></span> DESIGNED FOR TRUST</p>
-        <h2>AI 提建议，<br>决定权始终在你。</h2>
+        <h2>AI suggests.<br>You decide.</h2>
       </div>
       <div class="trust-grid">
-        <article><strong>01</strong><h3>上传前明确确认</h3><p>只有当你主动选择并确认后，餐食图片才会用于识别。</p></article>
-        <article><strong>02</strong><h3>识别结果由你复核</h3><p>候选食物和份量可修改，模型判断不会直接写入你的记录。</p></article>
-        <article><strong>03</strong><h3>营养来自整理目录</h3><p>确认后的食物映射到营养目录，再生成可回看的日常记录。</p></article>
+        <article><strong>01</strong><h3>Nothing uploads before confirmation</h3><p>Your selected image stays on the device until you explicitly tap Upload &amp; Analyze.</p></article>
+        <article><strong>02</strong><h3>Results remain editable</h3><p>Food identity, portions, meal type, time, and consumed servings stay under your control.</p></article>
+        <article><strong>03</strong><h3>Wellness content has clear limits</h3><p>Recognition, nutrition, body preferences, and traditional wellness content are estimates for education and general wellness—not diagnosis or treatment.</p></article>
       </div>
     </section>
 
     <section class="faq" id="faq">
       <div class="section-copy">
         <p class="eyebrow"><span></span> QUESTIONS &amp; ANSWERS</p>
-        <h2>关于食养日历</h2>
+        <h2>About NourishDay</h2>
       </div>
       <div class="faq-list">
-        <details open><summary>食养日历、NourishDay 和 TCMCalendar 是什么关系？<span>＋</span></summary><p>食养日历是 NourishDay 的简体中文名称；TCMCalendar 是项目早期使用的技术名称。它们指向同一款 App，核心体验都是用每天一餐连接营养记录、节气与食养知识。</p></details>
-        <details><summary>拍照识别出的营养数据靠谱吗？<span>＋</span></summary><p>图片识别只用于提供候选食物。你需要确认或修改食物与份量，营养数据再从经过整理的食物目录中计算，避免把模型猜测直接当成结论。</p></details>
-        <details><summary>它会给出医疗诊断或治疗建议吗？<span>＋</span></summary><p>不会。页面和 App 中的节气、食养与生活方式内容仅供健康教育和日常参考，不能替代医生的诊断、治疗或个体化营养建议。</p></details>
-        <details><summary>可以在 Apple Watch 上使用吗？<span>＋</span></summary><p>可以。配对后可在 Apple Watch 查看近七天餐食与营养摘要；即使暂时离线，也会保留最近一次同步的有效数据。</p></details>
-        <details><summary>NourishDay 支持英文界面吗？<span>＋</span></summary><p>支持。NourishDay 的日历、百科、营养、账户和 Apple Watch 体验均支持英文与简体中文；本介绍网站也可通过页面顶部的“EN”切换至英文版。</p></details>
+        <details open><summary>What can NourishDay recognize?<span>＋</span></summary><p>Choose one meal photo, receipt, order screenshot, or packaged Nutrition Facts label. Local text evidence selects the likely handling automatically, and a compact correction menu remains available before analysis.</p></details>
+        <details><summary>How reliable are nutrition estimates from photos?<span>＋</span></summary><p>Image recognition supplies candidates and estimated portions. You review or edit them first; confirmed foods are then mapped to reviewed catalog values. Printed Nutrition Facts are stored only from the values you confirm.</p></details>
+        <details><summary>Can I use the app without Premium?<span>＋</span></summary><p>Yes. The ongoing free plan keeps the five core tabs available, includes up to three image analyses per day, and provides the latest seven natural days of nutrition records without requiring a payment method.</p></details>
+        <details><summary>Does NourishDay provide medical advice?<span>＋</span></summary><p>No. Food recognition, nutrient totals, body preferences, and seasonal wellness content are estimates for education and general wellness only. Consult a qualified healthcare professional about medical conditions, allergies, pregnancy, medications, or dietary restrictions.</p></details>
+        <details><summary>What works on Apple Watch and widgets?<span>＋</span></summary><p>The iPhone publishes a bounded recent summary with your three selected nutrients. Widgets show today or the latest seven days, while Apple Watch adds today's totals, all supported nutrients, recent days, and an offline cache.</p></details>
+        <details><summary>Does NourishDay support Simplified Chinese?<span>＋</span></summary><p>Yes. The core iPhone, iPad, widget, and Apple Watch experiences support English and Simplified Chinese. Use “中文” at the top of this page for the Chinese product site.</p></details>
       </div>
     </section>
 
     <section class="final-cta" id="availability">
-      <img src="assets/app-icon.png" alt="食养日历 App 图标" width="88" height="88">
+      <img src="assets/app-icon.png" alt="NourishDay app icon" width="88" height="88">
       <p class="eyebrow"><span></span> START WITH TODAY</p>
-      <h2>今天这一餐，<br>就是日历的第一页。</h2>
-      <p>食养日历 · NourishDay<br><small>Snap a meal. Nourish your day.</small></p>
-      <span class="button light status-button" role="status">App Store 版本准备中</span>
-      <small class="availability-note">正式公开上架后，将在这里提供下载入口。</small>
+      <h2>Today's meal can be<br>the first page of your calendar.</h2>
+      <p>NourishDay · Food Calendar<br><small>Snap a meal. Nourish your day.</small></p>
+      <span class="button light status-button" role="status">App Store release in preparation</span>
+      <small class="availability-note">The public App Store listing is not live yet. A download link will appear here when it becomes available.</small>
     </section>
   </main>
 
   <footer>
-    <div class="footer-brand"><img src="assets/app-icon.png" alt="" width="38" height="38"><span><strong>食养日历</strong><small>NourishDay</small></span></div>
-    <p>每天一拍，食养成历。</p>
-    <nav aria-label="页脚导航"><a href="#features">核心功能</a><a href="#trust">隐私与信任</a><a href="#availability">发布进度</a><a href="https://itongue.cn/">支持与帮助</a><a href="en/" lang="en" hreflang="en">English</a></nav>
-    <small>© 2026 NourishDay · Jianna Consulting, LLC. 健康内容仅供教育和日常参考，不构成医疗建议。</small>
+    <div class="footer-brand"><img src="assets/app-icon.png" alt="" width="38" height="38"><span><strong>NourishDay</strong><small>Food Calendar</small></span></div>
+    <p>Snap a meal. Nourish your day.</p>
+    <nav aria-label="Footer navigation"><a href="#how-it-works">How it works</a><a href="#plans">Plans</a><a href="#trust">Privacy &amp; trust</a><a href="https://itongue.cn/">Support</a><a href="zh/" lang="zh-CN" hreflang="zh-Hans">简体中文</a></nav>
+    <small>© 2026 NourishDay · Jianna Consulting, LLC. Health content is for education and everyday reference only and is not medical advice.</small>
   </footer>
 </body>
 </html>
