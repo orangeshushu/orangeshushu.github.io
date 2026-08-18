@@ -267,20 +267,7 @@ h1 em { color: var(--red); font-weight: 500; }
   border-radius: 54px;
   background: #171514;
   box-shadow: 0 40px 80px rgba(57, 37, 29, .25), 0 0 0 8px rgba(255,255,255,.35);
-  transform: rotate(2.2deg);
-}
-
-.phone-shell::after {
-  position: absolute;
-  top: 17px;
-  left: 50%;
-  z-index: 3;
-  width: 92px;
-  height: 25px;
-  border-radius: 999px;
-  content: "";
-  background: #050505;
-  transform: translateX(-50%);
+  transform: rotate(1deg);
 }
 
 .phone-viewport {
@@ -294,32 +281,12 @@ h1 em { color: var(--red); font-weight: 500; }
 
 .phone-viewport img {
   position: absolute;
-  top: -48px;
-  left: -4%;
-  width: 108%;
+  top: 0;
+  left: 0;
+  width: 100%;
   max-width: none;
   height: auto;
 }
-
-.float-card {
-  position: absolute;
-  z-index: 4;
-  min-width: 150px;
-  padding: 14px 16px;
-  border: 1px solid rgba(255,255,255,.72);
-  border-radius: 18px;
-  background: rgba(255, 253, 248, .9);
-  box-shadow: 0 16px 40px rgba(50, 33, 24, .14);
-  backdrop-filter: blur(12px);
-}
-
-.float-card b, .float-card small { display: block; }
-.float-card b { font-size: 14px; }
-.float-card small { margin-top: 3px; color: var(--ink-soft); font-size: 11px; }
-.float-one { top: 118px; right: 3px; transform: rotate(3deg); }
-.float-two { bottom: 128px; left: -8px; transform: rotate(-3deg); }
-.float-one b { color: var(--red); }
-.float-two b { color: var(--blue); }
 
 .signal-strip {
   min-height: 74px;
@@ -643,8 +610,6 @@ html[lang="zh-CN"] .section-copy { line-height: 1.9; }
   .status-pill, .hero-points, .actions { margin-left: auto; margin-right: auto; justify-content: center; }
   .hero-body { margin-left: auto; margin-right: auto; }
   .hero-stage { min-height: 690px; }
-  .float-one { right: 10%; }
-  .float-two { left: 10%; }
   .feature-card.large { grid-column: 1 / -1; }
   .feature-card.large > h3, .feature-card.large > p { max-width: none; }
   .paper-map { position: static; width: 100%; margin-top: 28px; }
@@ -673,10 +638,6 @@ html[lang="zh-CN"] .section-copy { line-height: 1.9; }
   .hero-stage::after { width: 290px; height: 290px; }
   .phone-shell { width: 278px; border-radius: 48px; }
   .phone-viewport { border-radius: 39px; }
-  .phone-shell::after { width: 82px; height: 23px; }
-  .float-card { min-width: 128px; padding: 11px 13px; }
-  .float-one { top: 115px; right: -3px; }
-  .float-two { bottom: 100px; left: -2px; }
   .signal-strip { padding-top: 20px; padding-bottom: 20px; justify-content: center; flex-wrap: wrap; }
   .signal-strip span { width: calc(50% - 12px); text-align: center; }
   .section, .records { padding-top: 84px; padding-bottom: 84px; }
