@@ -266,7 +266,8 @@ html[lang="zh-CN"] h2 { font-size: clamp(48px, 5vw, 70px); }
 .plan-card:focus-visible { outline: 3px solid var(--orange); outline-offset: 5px; }
 
 @media (hover: hover) and (pointer: fine) {
-  .plan-card:hover { z-index: 1; transform: translateY(-8px); border-color: rgba(221,92,72,.42); background: rgba(255,255,255,.82); box-shadow: 0 28px 60px rgba(18,61,48,.14); }
+  .plan-card:hover,
+  .js .reveal.is-visible.plan-card:hover { z-index: 1; transform: translateY(-8px); border-color: rgba(221,92,72,.42); background: rgba(255,255,255,.82); box-shadow: 0 28px 60px rgba(18,61,48,.14); }
   .plan-card.premium:hover { border-color: rgba(255,209,181,.38); background: #154f3f; box-shadow: 0 32px 68px rgba(18,61,48,.26); }
   .plan-card:hover::before { transform: scaleX(1); }
   .plan-card:hover li { padding-left: 32px; }
