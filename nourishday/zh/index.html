@@ -16,7 +16,7 @@
   <link rel="icon" href="../assets/app-icon.png" type="image/png">
   <link rel="apple-touch-icon" href="../assets/app-icon.png">
   <link rel="preload" href="../assets/meal-balanced.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="../styles.css?v=20260817-4">
+  <link rel="stylesheet" href="../styles.css?v=20260818-1">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:locale:alternate" content="en_US">
@@ -30,7 +30,7 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://jiacheng.website/nourishday/#app","name":"NourishDay: Food Calendar","alternateName":["食养日历","TCMCalendar"],"applicationCategory":"HealthApplication","operatingSystem":"iOS, iPadOS, watchOS","url":"https://jiacheng.website/nourishday/","description":"从照片复核餐食与营养，建立饮食日历，并查看节气健康参考。","softwareVersion":"1.5","inLanguage":["en-US","zh-CN"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
-  <script src="../script.js?v=20260817-4" defer></script>
+  <script src="../script.js?v=20260818-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -68,14 +68,26 @@
 
     <section class="signal-strip reveal" aria-label="产品亮点"><span>✓ 一张图片</span><span>✓ 由你确认</span><span>✓ 中英双语</span><span>✓ iPhone · iPad · Watch</span></section>
 
-    <section class="experience" id="experience">
+    <section class="experience scroll-story" id="experience" data-scroll-story>
       <div class="experience-copy reveal">
-        <p class="eyebrow light">一餐，三个时刻</p><h2 class="zh-lines"><span>拍下。</span><span>复核。</span><span>看见趋势。</span></h2>
-        <ol class="step-list"><li><b>01</b><span><strong>添加照片</strong><small>餐食、小票、订单或营养成分表。</small></span></li><li><b>02</b><span><strong>按实际情况调整</strong><small>修改食物、份量与时间。</small></span></li><li><b>03</b><span><strong>生成饮食日历</strong><small>让每一天逐渐连成趋势。</small></span></li></ol>
+        <p class="eyebrow light">三个视角，一段日常</p><h2 class="zh-lines"><span>看今日。</span><span>看整月。</span><span>看食养。</span></h2>
+        <ol class="step-list"><li class="is-active" data-story-step="0" aria-current="step"><b>01</b><span><strong>顺时而食</strong><small>结合天气、节气与每日食养参考。</small></span></li><li data-story-step="1"><b>02</b><span><strong>看见整月</strong><small>在日历中查看每日天气与营养。</small></span></li><li data-story-step="2"><b>03</b><span><strong>搜索食养百科</strong><small>查找食材、菜肴、草本与茶饮。</small></span></li></ol>
+        <p class="scroll-cue" aria-hidden="true"><span></span> 向下滚动探索</p>
       </div>
-      <div class="meal-story reveal">
-        <img src="../assets/meal-balanced.webp" alt="等待复核的鸡肉蔬菜均衡餐食" width="1400" height="1050" loading="lazy">
-        <div class="meal-result"><div><small>已复核餐食</small><strong>均衡鸡肉餐</strong></div><ul><li><span>能量</span><b>619 千卡</b></li><li><span>蛋白质</span><b>52 克</b></li><li><span>膳食纤维</span><b>9.2 克</b></li></ul><span class="confirmed">✓ 可以保存</span></div>
+      <div class="meal-story story-stage reveal" aria-label="食养日历的三个应用视角">
+        <div class="story-progress" aria-hidden="true"><i></i></div>
+        <figure class="story-frame is-active" data-story-frame="0">
+          <div class="story-phone"><img src="../assets/screen-today-zh.webp" alt="中文今日页面，包含天气、节气和每日食养参考" width="1320" height="2868" loading="lazy"></div>
+          <figcaption><span>01</span><strong class="zh-lines"><span>今天，</span><span>吃得更顺时</span></strong><small>从天气和节气开始理解今天。</small></figcaption>
+        </figure>
+        <figure class="story-frame" data-story-frame="1">
+          <div class="story-phone"><img src="../assets/screen-calendar-zh.webp" alt="中文食养日历页面，显示月度天气与节气进度" width="1320" height="2868" loading="lazy"></div>
+          <figcaption><span>02</span><strong class="zh-lines"><span>每天，</span><span>连成清晰趋势</span></strong><small>天气与营养都能按日期回看。</small></figcaption>
+        </figure>
+        <figure class="story-frame" data-story-frame="2">
+          <div class="story-phone"><img src="../assets/screen-library-zh.webp" alt="中文食养百科页面，包含食材与菜肴分类" width="1320" height="2868" loading="lazy"></div>
+          <figcaption><span>03</span><strong class="zh-lines"><span>需要时，</span><span>查到更多</span></strong><small>从日常食材到草本茶饮。</small></figcaption>
+        </figure>
       </div>
     </section>
 

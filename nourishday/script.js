@@ -48,6 +48,58 @@ if ("IntersectionObserver" in window && !reduceMotion) {
   revealRings();
 }
 
+const scrollStory = document.querySelector("[data-scroll-story]");
+if (scrollStory) {
+  const storySteps = [...scrollStory.querySelectorAll("[data-story-step]")];
+  const storyFrames = [...scrollStory.querySelectorAll("[data-story-frame]")];
+  const desktopStory = window.matchMedia("(min-width: 1021px) and (min-height: 680px)");
+  let storyFramePending = false;
+
+  function selectStoryFrame(activeIndex, interactive) {
+    storySteps.forEach((step, index) => {
+      const active = index === activeIndex;
+      step.classList.toggle("is-active", active);
+      if (active) step.setAttribute("aria-current", "step");
+      else step.removeAttribute("aria-current");
+    });
+
+    storyFrames.forEach((frame, index) => {
+      frame.classList.toggle("is-active", index === activeIndex);
+      frame.classList.toggle("is-before", index < activeIndex);
+      if (interactive) frame.setAttribute("aria-hidden", index === activeIndex ? "false" : "true");
+      else frame.removeAttribute("aria-hidden");
+    });
+  }
+
+  function updateScrollStory() {
+    storyFramePending = false;
+    const interactive = desktopStory.matches && !reduceMotion;
+    if (!interactive) {
+      scrollStory.style.setProperty("--story-progress", "1");
+      selectStoryFrame(0, false);
+      return;
+    }
+
+    const rect = scrollStory.getBoundingClientRect();
+    const travel = Math.max(1, scrollStory.offsetHeight - window.innerHeight);
+    const progress = Math.min(1, Math.max(0, -rect.top / travel));
+    const activeIndex = Math.min(storyFrames.length - 1, Math.floor(progress * storyFrames.length));
+    scrollStory.style.setProperty("--story-progress", progress.toFixed(4));
+    selectStoryFrame(activeIndex, true);
+  }
+
+  function requestStoryUpdate() {
+    if (storyFramePending) return;
+    storyFramePending = true;
+    requestAnimationFrame(updateScrollStory);
+  }
+
+  window.addEventListener("scroll", requestStoryUpdate, { passive: true });
+  window.addEventListener("resize", requestStoryUpdate, { passive: true });
+  desktopStory.addEventListener?.("change", requestStoryUpdate);
+  requestStoryUpdate();
+}
+
 const calendarButtons = [...document.querySelectorAll(".ring-calendar button")];
 const isChinese = document.documentElement.lang.startsWith("zh");
 calendarButtons.forEach(button => {
