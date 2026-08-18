@@ -16,7 +16,7 @@
   <link rel="icon" href="assets/app-icon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
   <link rel="preload" href="assets/meal-balanced.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="styles.css?v=20260818-1">
+  <link rel="stylesheet" href="styles.css?v=20260817-4">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="zh_CN">
@@ -32,7 +32,7 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://jiacheng.website/nourishday/#app","name":"NourishDay: Food Calendar","alternateName":["食养日历","TCMCalendar"],"applicationCategory":"HealthApplication","operatingSystem":"iOS, iPadOS, watchOS","url":"https://jiacheng.website/nourishday/","description":"Review meals and nutrition from photos, build a food calendar, and explore seasonal wellness context.","softwareVersion":"1.5","inLanguage":["en-US","zh-CN"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
-  <script src="script.js?v=20260818-1" defer></script>
+  <script src="script.js?v=20260817-4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -101,31 +101,27 @@
       <span>✓ One image</span><span>✓ You confirm</span><span>✓ Bilingual</span><span>✓ iPhone · iPad · Watch</span>
     </section>
 
-    <section class="experience scroll-story" id="experience" data-scroll-story>
+    <section class="experience" id="experience">
       <div class="experience-copy reveal">
-        <p class="eyebrow light">THREE VIEWS. ONE DAILY RHYTHM.</p>
-        <h2>Today.<br>Month.<br>More.</h2>
+        <p class="eyebrow light">ONE MEAL. THREE MOMENTS.</p>
+        <h2>Snap.<br>Review.<br>See the pattern.</h2>
         <ol class="step-list">
-          <li class="is-active" data-story-step="0" aria-current="step"><b>01</b><span><strong>Eat with the season</strong><small>Weather, solar terms, and daily guidance.</small></span></li>
-          <li data-story-step="1"><b>02</b><span><strong>See the whole month</strong><small>Weather and nutrition, tied to each date.</small></span></li>
-          <li data-story-step="2"><b>03</b><span><strong>Search the library</strong><small>Foods, dishes, herbs, and teas in one place.</small></span></li>
+          <li><b>01</b><span><strong>Add a photo</strong><small>Meal, receipt, order, or label.</small></span></li>
+          <li><b>02</b><span><strong>Make it yours</strong><small>Adjust foods, portions, and time.</small></span></li>
+          <li><b>03</b><span><strong>Build your calendar</strong><small>Watch each day add to the story.</small></span></li>
         </ol>
-        <p class="scroll-cue" aria-hidden="true"><span></span> Scroll to explore</p>
       </div>
-      <div class="meal-story story-stage reveal" aria-label="Three NourishDay app views">
-        <div class="story-progress" aria-hidden="true"><i></i></div>
-        <figure class="story-frame is-active" data-story-frame="0">
-          <div class="story-phone"><img src="assets/screen-today.jpg" alt="NourishDay Today screen with weather, solar term, and daily guidance" width="621" height="1344" loading="lazy"></div>
-          <figcaption><span>01</span><strong>Today, in context</strong><small>Start with the weather and rhythm of the season.</small></figcaption>
-        </figure>
-        <figure class="story-frame" data-story-frame="1">
-          <div class="story-phone"><img src="assets/screen-calendar.jpg" alt="NourishDay calendar screen with monthly weather and solar-term timeline" width="621" height="1344" loading="lazy"></div>
-          <figcaption><span>02</span><strong>Days become a pattern</strong><small>Move between weather and nutrition across the month.</small></figcaption>
-        </figure>
-        <figure class="story-frame" data-story-frame="2">
-          <div class="story-phone"><img src="assets/screen-library.jpg" alt="NourishDay searchable food, dish, herb, and tea library" width="621" height="1344" loading="lazy"></div>
-          <figcaption><span>03</span><strong>Go deeper when useful</strong><small>Search everyday foods and seasonal wellness knowledge.</small></figcaption>
-        </figure>
+      <div class="meal-story reveal">
+        <img src="assets/meal-balanced.webp" alt="Balanced chicken and vegetable meal ready for review" width="1400" height="1050" loading="lazy">
+        <div class="meal-result">
+          <div><small>REVIEWED MEAL</small><strong>Balanced chicken bowl</strong></div>
+          <ul>
+            <li><span>Energy</span><b>619 kcal</b></li>
+            <li><span>Protein</span><b>52 g</b></li>
+            <li><span>Fiber</span><b>9.2 g</b></li>
+          </ul>
+          <span class="confirmed">✓ Ready to save</span>
+        </div>
       </div>
     </section>
 
