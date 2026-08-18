@@ -16,7 +16,7 @@
   <link rel="icon" href="assets/app-icon.webp" type="image/webp">
   <link rel="apple-touch-icon" href="assets/app-icon.webp">
   <link rel="preload" href="assets/app-dashboard-en.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="styles.css?v=20260818-2">
+  <link rel="stylesheet" href="styles.css?v=20260818-3">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="zh_CN">
@@ -119,29 +119,25 @@
 
     <section class="section feature-section" id="features">
       <div class="section-head reveal">
-        <p class="eyebrow">MORE THAN ONE SIGNAL</p>
-        <h2>A fuller wellness picture.</h2>
-        <p>Each feature has a focused job. Together, they create a more useful record of what you noticed and when.</p>
+        <p class="eyebrow">A QUICK INTRODUCTION</p>
+        <h2>New to tongue observation? Start here.</h2>
+        <p>In TCM, tongue observation is one part of a broader consultation—not a diagnosis by itself.</p>
       </div>
       <div class="feature-grid">
         <article class="feature-card large reveal">
-          <span class="card-label">Tongue image insight</span>
-          <h3>One upload, two kinds of insight.</h3>
-          <p>After you upload a clear tongue image, iTongue returns your cold/hot tendency and TCM constitution information for wellness reference.</p>
-          <div class="tongue-visual" aria-hidden="true">
-            <svg viewBox="0 0 200 200">
-              <path d="M66 34c-21 15-29 44-25 74 6 45 31 71 59 71s53-26 59-71c4-30-4-59-25-74-11-8-22 1-34 1s-23-9-34-1Z"/>
-              <path d="M59 78c28 10 54 10 82 0M54 112c31 12 61 12 92 0M100 39v139" opacity=".45"/>
-              <path class="scan" d="M31 101h138M100 24v159"/>
-              <circle cx="100" cy="101" r="10"/>
-            </svg>
-          </div>
+          <span class="card-label">01 · WHAT PRACTITIONERS OBSERVE</span>
+          <h3>One tongue, several visual clues.</h3>
+          <p>Color, coating, moisture, shape, cracks, tooth marks, and regions are considered together with other signs.</p>
+          <figure class="paper-map">
+            <img src="assets/tcm-tongue-regions-figure-1.jpg" alt="Traditional tongue-region correspondence diagram with coating, cracks, tooth marks, and labeled regions" width="660" height="441" loading="lazy">
+            <figcaption>Figure 1 from <a href="https://www.degruyterbrill.com/document/doi/10.1515/mr-2021-0018/html"><cite>Digital tongue image analyses for health assessment</cite></a>, Xie et al. Reproduced unchanged under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>.</figcaption>
+          </figure>
         </article>
 
         <article class="feature-card medium reveal">
-          <span class="card-label">Body questionnaires</span>
-          <h3>Cold and hot, with context.</h3>
-          <p>Adult body-signal questions and a separate child questionnaire support structured reflection.</p>
+          <span class="card-label">02 · ADD BODY CONTEXT</span>
+          <h3>Cold and hot are pattern words.</h3>
+          <p>They describe a TCM pattern of body signals—not the literal temperature of your tongue. The questionnaire adds context.</p>
           <div class="spectrum" aria-label="Illustrative cold to hot spectrum">
             <div class="spectrum-track"></div>
             <div class="spectrum-labels"><span>Cold</span><span>Balanced</span><span>Hot</span></div>
@@ -181,21 +177,55 @@
 
     <section class="research-wrap" id="research">
       <div class="research">
-        <div class="research-copy reveal">
-          <p class="eyebrow">RESEARCH CONTEXT</p>
-          <h2>Tongue images and TCM constitution.</h2>
-          <p>The review paper <cite>Digital tongue image analyses for health assessment</cite> describes an iTongue-based constitution-classification workflow and presents representative tongue images for nine TCM constitution categories.</p>
-          <ul class="research-points">
-            <li><strong>In the app</strong><span>Upload a clear tongue image to receive your cold/hot tendency and TCM constitution information.</span></li>
-            <li><strong>In the paper</strong><span>Figure 5 illustrates the tongue-image categories discussed in the research; it is included here as research context, not as a self-diagnosis guide.</span></li>
-          </ul>
-          <p class="research-note">iTongue results are intended for wellness reference and do not replace professional medical advice, diagnosis, or treatment.</p>
+        <div class="research-intro reveal">
+          <p class="eyebrow">FROM PHOTO TO INSIGHT</p>
+          <h2>Three visual steps. No specialist vocabulary.</h2>
+          <p>A clear photo becomes two simple wellness summaries: your cold/hot tendency and TCM constitution information.</p>
         </div>
 
-        <div class="research-media reveal">
-          <div class="upload-preview">
-            <img src="assets/app-tongue-en.webp" alt="English iTongue Tongue Diagnosis screen with photo guidance and an upload control" width="920" height="2001" loading="lazy">
-            <span><strong>English upload flow</strong><small>Clear guidance before analysis</small></span>
+        <div class="insight-flow">
+          <article class="insight-step reveal">
+            <div class="insight-step-copy">
+              <span class="insight-number">1</span>
+              <div><h3>Take one clear photo.</h3><p>Use even light, a relaxed tongue, and a sharp image.</p></div>
+            </div>
+            <div class="upload-preview">
+              <img src="assets/app-tongue-en.webp" alt="English iTongue Tongue Diagnosis screen with photo guidance and an upload control" width="920" height="2001" loading="lazy">
+              <span><strong>Guided upload</strong><small>Simple tips appear before analysis</small></span>
+            </div>
+          </article>
+
+          <article class="insight-step result-step reveal">
+            <div class="insight-step-copy">
+              <span class="insight-number">2</span>
+              <div><h3>Read two plain-language results.</h3><p>Each result is saved as a wellness reference.</p></div>
+            </div>
+            <div class="result-preview" aria-label="Illustrative iTongue result summary">
+              <div class="result-tile cold-hot-result">
+                <small>Cold / Hot</small>
+                <strong>Your current tendency</strong>
+                <div class="mini-spectrum" aria-hidden="true"><span></span></div>
+                <div class="mini-labels"><span>Cold</span><span>Balanced</span><span>Hot</span></div>
+              </div>
+              <div class="result-tile constitution-result">
+                <span class="result-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 3c4 3 6 7 5 11-1 4-4 7-8 7-2-4-2-8 0-11 1-2 2-4 3-7Z"/><path d="M8 18c2-3 4-6 7-8"/></svg>
+                </span>
+                <small>TCM constitution</small>
+                <strong>Your constitution information</strong>
+                <em>Wellness reference</em>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <article class="constitution-gallery reveal">
+          <div class="gallery-copy">
+            <span class="insight-number">3</span>
+            <div>
+              <h3>See why tongue appearances can vary.</h3>
+              <p>The paper groups representative tongue images into nine TCM constitution categories. This visual shows variation—not a self-diagnosis chart.</p>
+            </div>
           </div>
           <figure class="research-figure">
             <img src="assets/tcm-constitutions-figure-5.jpg" alt="Nine representative tongue images labeled by TCM constitution category" width="662" height="369" loading="lazy">
@@ -203,7 +233,9 @@
               Figure 5 from <a href="https://www.degruyterbrill.com/document/doi/10.1515/mr-2021-0018/html"><cite>Digital tongue image analyses for health assessment</cite></a>, Jiacheng Xie et al., <cite>Medical Review</cite> 1(2), 172–198, DOI 10.1515/mr-2021-0018. Reproduced unchanged under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>. An <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10388765/">open-access copy</a> is available from PubMed Central.
             </figcaption>
           </figure>
-        </div>
+        </article>
+
+        <p class="research-note reveal">iTongue results are intended for wellness reference and do not replace professional medical advice, diagnosis, or treatment.</p>
       </div>
     </section>
 
