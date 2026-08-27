@@ -1,0 +1,24 @@
+{
+  "id": "/nourishday/",
+  "name": "NourishDay: Food Calendar",
+  "short_name": "NourishDay",
+  "description": "Review meals, nutrition, and your food calendar.",
+  "lang": "en",
+  "start_url": "/nourishday/",
+  "scope": "/nourishday/",
+  "display": "standalone",
+  "background_color": "#f4f0e7",
+  "theme_color": "#f4f0e7",
+  "icons": [
+    {
+      "src": "/nourishday/assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/nourishday/assets/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
