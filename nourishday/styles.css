@@ -449,3 +449,32 @@ html[lang="en"] footer > small { font-size: 11px; }
   *, *::before, *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
   .js .reveal { opacity: 1; transform: none; }
 }
+
+/* Keep the product name and searchable purpose readable at every width. */
+.hero h1, html[lang="zh-CN"] .hero h1 {
+  font-size: clamp(48px, 6vw, 84px);
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+.hero-title-detail {
+  display: block;
+  margin-top: .3em;
+  color: var(--orange);
+  font-size: .57em;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+}
+.plan-terms {
+  max-width: 720px;
+  margin: 0 auto 32px;
+  color: var(--soft);
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+}
+.faq-list details p { font-size: 16px; }
+
+/* Contain the meal card when its section switches to a single column. */
+@media (max-width: 1020px) {
+  .meal-result { right: 3%; }
+}
