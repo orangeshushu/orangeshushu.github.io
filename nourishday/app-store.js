@@ -5,66 +5,70 @@
   const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  // Open the store directly from the original tap, including inside WeChat.
-  // Do not intercept the click or require a website confirmation first.
-  if (isIOS) {
-    document.querySelectorAll(`a[href="${webURL}"]`).forEach(link => {
-      link.href = nativeURL;
-    });
-  }
-  const dialog = document.createElement("dialog");
-  // Optional help must not be a prerequisite for the primary download action.
-  if (typeof dialog.showModal !== "function") return;
+  const copyLabel = zh ? "复制下载链接" : "Copy download link";
+  const storeLinks = [...document.querySelectorAll(`a[href="${webURL}"]`)];
 
-  dialog.className = "store-help";
-  dialog.setAttribute("aria-labelledby", "store-help-title");
-  dialog.setAttribute("aria-describedby", "store-help-description");
-  dialog.innerHTML = `
-    <form method="dialog"><button class="store-help-close" aria-label="${zh ? "关闭" : "Close"}">×</button></form>
-    <h2 id="store-help-title">${zh ? "下载食养日历" : "Download NourishDay"}</h2>
-    <p id="store-help-description"></p>
-    <a class="store-help-native" href="${nativeURL}">${zh ? "打开 App Store" : "Open App Store"}</a>
-    <a class="store-help-web" href="${webURL}" target="_blank" rel="noopener noreferrer">${zh ? "打开 App Store 网页" : "Open App Store website"}</a>
-    <label for="store-help-url">${zh ? "官方下载链接" : "Official download link"}</label>
-    <input id="store-help-url" type="url" readonly value="${webURL}" dir="ltr">
-    <button class="store-help-copy" type="button">${zh ? "复制下载链接" : "Copy download link"}</button>
-    <p class="store-help-status" role="status" aria-live="polite"></p>`;
-  document.body.append(dialog);
+  // Normal browsers retain a direct, user-initiated store action. In WeChat,
+  // use an honest inline route, not a modal or repeated scheme attempts.
+  // The original HTML remains an HTTPS fallback when JavaScript is unavailable.
+  if (isIOS && !isWeChat) storeLinks.forEach(link => { link.href = nativeURL; });
 
-  const description = dialog.querySelector("#store-help-description");
-  description.textContent = isWeChat
-    ? (zh ? "微信内无法打开时，请点右上角「…」，选择在浏览器中打开。也可以复制下方链接，用 Safari 打开下载。" : "If WeChat cannot open the store, tap ··· at the top right and open this page in your browser. Or copy the link below and open it in Safari.")
-    : (zh ? "如果没有打开商店，请试试下方入口，或复制链接到 iPhone / iPad 的 Safari 中打开。" : "If the store did not open, try the link below or copy it into Safari on your iPhone or iPad.");
-  dialog.querySelector(".store-help-native").hidden = !isIOS;
-  const status = dialog.querySelector(".store-help-status");
-  const input = dialog.querySelector("input");
-  let trigger;
-  function showHelp(source) {
-    trigger = source;
-    status.textContent = "";
-    if (!dialog.open) dialog.showModal();
-  }
-  dialog.addEventListener("close", () => {
-    if (trigger?.isConnected) trigger.focus({ preventScroll: true });
-  });
-  dialog.querySelector(".store-help-copy").addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(webURL);
-      status.textContent = zh ? "已复制，请在 Safari 中粘贴打开。" : "Copied. Paste the link into Safari.";
-    } catch {
-      input.focus();
-      input.select();
-      status.textContent = zh ? "请长按或选中上方链接，手动复制。" : "Select the link above and copy it manually.";
+  document.querySelectorAll(".hero-copy .actions, .final-cta").forEach((container, index) => {
+    const help = document.createElement(isWeChat ? "div" : "details");
+    help.className = `download-help${isWeChat ? " wechat-download" : ""}`;
+    const descriptionID = `download-description-${index}`;
+    const inputID = `download-url-${index}`;
+    const description = isWeChat && isIOS
+      ? (zh ? "微信内下载：点右上角 ···，选择「在浏览器中打开」。" : "In WeChat? Tap ··· at the top right, then open this page in your browser.")
+      : (zh ? "适用于 iPhone 和 iPad。复制链接，在这两类设备的 Safari 中打开。" : "Available for iPhone and iPad. Copy this link and open it in Safari on either device.");
+    help.innerHTML = `${isWeChat ? "" : `<summary>${zh ? "无法打开？其他下载方式" : "Having trouble opening the store?"}</summary>`}
+      <div class="download-help-content">
+        <p id="${descriptionID}">${description}</p>
+        <div class="download-link-field"${isWeChat ? " hidden" : ""}>
+          <label for="${inputID}">${zh ? "App Store 下载链接" : "App Store download link"}</label>
+          <input id="${inputID}" type="url" readonly value="${webURL}" dir="ltr" spellcheck="false">
+        </div>
+        ${isWeChat ? "" : `<button class="download-copy" type="button">${copyLabel}</button>`}
+        <p class="download-status" role="status" aria-live="polite"></p>
+      </div>`;
+    if (container.classList.contains("actions")) {
+      if (isWeChat) container.before(help);
+      else container.after(help);
+    } else container.append(help);
+
+    let copyButton = help.querySelector(".download-copy");
+    if (isWeChat) {
+      const primary = container.querySelector(`a[href="${webURL}"]`);
+      if (!primary) return;
+      copyButton = document.createElement("button");
+      copyButton.type = "button";
+      copyButton.className = primary.className;
+      copyButton.textContent = copyLabel;
+      copyButton.setAttribute("aria-describedby", descriptionID);
+      primary.replaceWith(copyButton);
     }
+
+    copyButton.addEventListener("click", async () => {
+      const status = help.querySelector(".download-status");
+      try {
+        await navigator.clipboard.writeText(webURL);
+        status.textContent = zh ? "已复制。在 iPhone 或 iPad 的 Safari 中粘贴打开。" : "Copied. Paste into Safari on your iPhone or iPad.";
+      } catch {
+        // Clipboard permission is not guaranteed in embedded browsers.
+        help.querySelector(".download-link-field").hidden = false;
+        const input = help.querySelector("input");
+        input.focus({ preventScroll: true });
+        input.select();
+        input.setSelectionRange(0, input.value.length);
+        status.textContent = zh ? "请选中或长按上方链接复制，再到 iPhone 或 iPad 打开。" : "Select or touch and hold the link to copy it, then open it on your iPhone or iPad.";
+      }
+    });
   });
 
-  document.querySelectorAll(".hero-copy .actions, .final-cta").forEach(container => {
-    const help = document.createElement("button");
-    help.type = "button";
-    help.className = "store-help-trigger";
-    help.textContent = zh ? "无法打开？查看下载方式" : "Having trouble? Download options";
-    help.addEventListener("click", () => showHelp(help));
-    if (container.classList.contains("actions")) container.after(help);
-    else container.append(help);
+  // Other download entry points lead to the visible instructions in WeChat.
+  // No click interception and no automatic external-app launch.
+  if (isWeChat) storeLinks.filter(link => link.isConnected).forEach(link => {
+    link.href = "#availability";
+    link.setAttribute("aria-label", zh ? "查看下载方式" : "See download options");
   });
 })();

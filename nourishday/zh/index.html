@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>食养日历 NourishDay｜拍照记录饮食与营养日历</title>
   <meta name="description" content="食养日历 NourishDay 是中英双语饮食记录与营养追踪 App。拍照识别餐食，核对食物和份量，记录热量、蛋白质等营养，查看饮食日历、二十四节气食养与茶饮百科。支持 iPhone、iPad 和 Apple Watch，提供免费方案。">
   <meta name="author" content="Jianna Consulting, LLC">
@@ -24,7 +24,7 @@
   <link rel="manifest" href="https://jiacheng.website/nourishday/site.webmanifest">
   <link rel="image_src" href="https://jiacheng.website/nourishday/assets/app-icon.png">
   <link rel="preload" href="../assets/meal-balanced.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="../styles.css?v=20260904-download">
+  <link rel="stylesheet" href="../styles.css?v=20260904-mobile">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:locale:alternate" content="en_US">
@@ -118,7 +118,7 @@
 }
   </script>
   <script src="../script.js?v=20260817-4" defer></script>
-  <script src="../app-store.js?v=20260904-direct" defer></script>
+  <script src="../app-store.js?v=20260904-mobile" defer></script>
   <script src="/visitor-tracker.js?v=20260828.1" defer></script>
 </head>
 <body>
@@ -126,8 +126,11 @@
   <header class="site-header">
     <a class="brand" href="#main-content" aria-label="食养日历首页"><img src="../assets/app-icon.png" alt="" width="42" height="42"><span><strong>食养日历</strong><small>NourishDay</small></span></a>
     <nav aria-label="主导航"><a href="#experience">使用体验</a><a href="#nutrition-rhythm">14 天趋势</a><a href="#inside">应用内体验</a><a href="#plans">版本方案</a></nav>
-    <div class="header-actions"><a class="language-switch" href="../" lang="en" hreflang="en" aria-label="View this page in English">EN</a><a class="header-cta" href="https://apps.apple.com/app/id6798932418" aria-label="前往 App Store 下载食养日历">App Store 下载</a></div>
+    <div class="header-actions"><a class="language-switch" href="../" lang="en" hreflang="en" aria-label="View this page in English">EN</a><a class="header-cta" href="https://apps.apple.com/app/id6798932418" aria-label="前往 App Store 下载食养日历">下载</a></div>
   </header>
+  <nav class="section-nav" aria-label="页面快捷导航">
+    <a href="#experience">使用体验</a><a href="#nutrition-rhythm">营养趋势</a><a href="#inside">应用预览</a><a href="#plans">版本方案</a>
+  </nav>
 
   <main id="main-content">
     <section class="hero">
@@ -172,6 +175,8 @@
       <div class="nutrition-story-copy reveal"><p class="eyebrow">会变化的 14 天视图</p><h2 class="zh-lines"><span>每一天，</span><span>都不一样。</span></h2><ul class="short-points"><li>快速发现稳定的日子</li><li>及时看见缺口</li><li>点击日期查看详情</li></ul><p class="sample-note">示意数据 · 8 月 4–17 日</p></div>
       <div class="nutrition-dashboard reveal" aria-label="可交互的十四天营养日历示意数据">
         <div class="nutrition-dashboard-head"><div><small>8 月 4–17 日</small><strong>14 天饮食节奏</strong></div><div class="ring-legend" aria-label="圆环顺序"><span class="energy">能量</span><span class="protein">蛋白质</span><span class="fiber">膳食纤维</span></div></div>
+        <p class="calendar-hint">左右滑动，查看所有日期 ↔</p>
+        <div class="calendar-scroll" role="region" aria-label="14 天日历，可左右滑动" tabindex="0">
         <div class="week-labels" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
         <div class="ring-calendar">
           <button type="button" data-day="8 月 4 日" data-energy="45" data-protein="62" data-fiber="38" data-kcal="900" data-protein-g="31" data-fiber-g="11" aria-label="8 月 4 日：能量 45%，蛋白质 62%，膳食纤维 38%"><span class="day-rings"><i></i><i></i><i></i><b>4</b></span></button>
@@ -189,13 +194,15 @@
           <button type="button" data-day="8 月 16 日" data-energy="51" data-protein="39" data-fiber="64" data-kcal="1,020" data-protein-g="20" data-fiber-g="18" aria-label="8 月 16 日：能量 51%，蛋白质 39%，膳食纤维 64%"><span class="day-rings"><i></i><i></i><i></i><b>16</b></span></button>
           <button class="selected" type="button" data-day="8 月 17 日" data-energy="86" data-protein="92" data-fiber="79" data-kcal="1,720" data-protein-g="46" data-fiber-g="22" aria-pressed="true" aria-label="8 月 17 日：能量 86%，蛋白质 92%，膳食纤维 79%"><span class="day-rings"><i></i><i></i><i></i><b>17</b></span></button>
         </div>
+        </div>
         <div class="day-detail" aria-live="polite"><div><small>所选日期</small><strong id="detail-day">8 月 17 日</strong></div><ul><li class="energy"><span>能量</span><b id="detail-energy">86% · 1,720 千卡</b></li><li class="protein"><span>蛋白质</span><b id="detail-protein">92% · 46 克</b></li><li class="fiber"><span>膳食纤维</span><b id="detail-fiber">79% · 22 克</b></li></ul></div>
       </div>
     </section>
 
     <section class="inside" id="inside">
       <div class="section-heading reveal"><p class="eyebrow">饮食记录 · 营养日历 · 节气食养</p><h2 class="zh-lines"><span>更多背景，</span><span>少一些猜测。</span></h2></div>
-      <div class="product-gallery" aria-label="食养日历产品界面">
+      <p class="gallery-hint">左右滑动，看看应用里的每一天 <span aria-hidden="true">↔</span></p>
+      <div class="product-gallery" tabindex="0" role="region" aria-label="食养日历产品界面">
         <article class="product-card card-season reveal"><div class="product-copy"><span>01</span><h3>顺时而食</h3><ul><li>天气与二十四节气</li><li>每日食养参考</li></ul></div><div class="screen-crop"><img src="../assets/screen-today-zh.webp" alt="中文今日页面，包含天气、节气和每日小笺" width="1320" height="2868" loading="lazy"></div></article>
         <article class="product-card card-calendar reveal"><div class="product-copy"><span>02</span><h3>一眼看懂整月</h3><ul><li>天气与营养视图</li><li>餐食与日期关联</li></ul></div><div class="screen-crop"><img src="../assets/screen-calendar-nutrition-zh-v2.webp" alt="中文营养日历页面，连续两周展示完成度不同的能量、蛋白质与膳食纤维圆环" width="853" height="1844" loading="lazy"></div></article>
         <article class="product-card card-library reveal"><div class="product-copy"><span>03</span><h3>搜索整个百科</h3><ul><li>食材、菜肴、草本与茶饮</li><li>中文与英文</li></ul></div><div class="screen-crop"><img src="../assets/screen-library-zh.webp" alt="中文食养百科页面，包含食材与菜肴分类" width="1320" height="2868" loading="lazy"></div></article>

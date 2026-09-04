@@ -32,22 +32,23 @@ body {
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 button { font: inherit; }
-.store-help-trigger { display: block; min-height: 44px; margin-top: 12px; padding: 8px 0; border: 0; background: transparent; color: var(--soft); font-size: 14px; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
-.final-cta .store-help-trigger { margin-inline: auto; color: white; }
-.store-help { width: min(460px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 32px 24px 20px; border: 1px solid var(--line); border-radius: 24px; background: var(--paper); color: var(--ink); box-shadow: 0 24px 80px rgba(0,0,0,.25); }
-.store-help::backdrop { background: rgba(9,32,25,.6); }
-.store-help form { margin: 0; }
-.store-help-close { position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; color: var(--ink); font-size: 28px; cursor: pointer; }
-.store-help h2 { margin: 16px 0; font: 700 26px/1.3 -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif; letter-spacing: 0; }
-.store-help p { font-size: 16px; line-height: 1.6; color: var(--soft); }
-.store-help a, .store-help-copy { display: block; width: 100%; min-height: 48px; margin: 12px 0; padding: 12px; border: 1px solid var(--line); border-radius: 12px; text-align: center; font-size: 16px; font-weight: 650; cursor: pointer; }
-.store-help .store-help-native { background: var(--ink); color: white; }
-.store-help [hidden] { display: none; }
-.store-help-web, .store-help-copy { background: var(--sage); color: var(--ink); }
-.store-help label { display: block; margin-top: 24px; font-size: 14px; font-weight: 650; }
-.store-help input { display: block; width: 100%; margin-top: 8px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: white; color: var(--ink); font: 16px/1.5 monospace; }
-.store-help .store-help-status { min-height: 24px; margin-bottom: 0; font-size: 14px; }
-@media (max-width: 980px) { .hero-copy > .store-help-trigger { margin-inline: auto; } }
+.download-help { width: 100%; max-width: 480px; margin-top: 12px; border: 0; color: var(--soft); text-align: left; }
+.download-help > summary { min-height: 44px; padding: 10px 0; display: list-item; list-style: disclosure-closed inside; font-size: 14px; line-height: 1.6; font-weight: 550; }
+.download-help[open] > summary { list-style-type: disclosure-open; }
+.download-help-content { padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.55); }
+.download-help p { max-width: none; margin: 0; padding: 0; font-size: 14px; line-height: 1.6; color: inherit; }
+.download-help label { display: block; margin-top: 16px; font-size: 13px; font-weight: 650; }
+.download-help input { display: block; width: 100%; margin-top: 8px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: white; color: var(--ink); font: 16px/1.5 monospace; }
+.download-copy { min-height: 48px; margin-top: 12px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--sage); color: var(--ink); font-size: 15px; font-weight: 700; cursor: pointer; }
+.download-help .download-status:not(:empty) { margin-top: 12px; font-weight: 650; }
+.download-link-field[hidden] { display: none; }
+.wechat-download .download-help-content { background: var(--sage); }
+.final-cta .download-help { color: white; }
+.final-cta .download-help-content { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2); }
+.button[type="button"] { border: 0; cursor: pointer; }
+.section-nav, .gallery-hint, .calendar-hint { display: none; }
+.calendar-scroll { min-width: 0; }
+@media (max-width: 1020px) { .hero-copy > .download-help { margin-inline: auto; } }
 ::selection { background: #f4d4c8; }
 
 .skip-link {
@@ -493,4 +494,130 @@ html[lang="en"] footer > small { font-size: 11px; }
 /* Contain the meal card when its section switches to a single column. */
 @media (max-width: 1020px) {
   .meal-result { right: 3%; }
+}
+
+/* Mobile: comfortable reading, full previews, and intentional local scrolling.
+   Desktop composition and reduced-motion behavior stay unchanged. */
+html { -webkit-text-size-adjust: 100%; }
+.calendar-scroll:focus-visible, .product-gallery:focus-visible,
+.download-help input:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+html[lang] .download-help > summary { font-size: 14px; }
+@media (max-width: 1020px) {
+  .section-nav { width: min(calc(100% - 40px), 620px); margin: 8px auto 0; display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); }
+  .section-nav a { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 6px 2px; color: var(--soft); font-size: 13px; font-weight: 650; }
+  .gallery-hint { display: flex; justify-content: space-between; margin: 26px 0 0; color: var(--soft); font-size: 14px; line-height: 1.5; }
+  .product-gallery { margin-top: 16px; scroll-padding-inline: 20px; overscroll-behavior-x: contain; }
+  .product-card { min-height: 0; padding-bottom: 24px; }
+  .screen-crop { flex: none; border-bottom: 4px solid var(--ink); border-radius: 30px; }
+}
+@media (max-width: 720px) {
+  .site-header { gap: 8px; padding-inline: 10px; top: max(8px, env(safe-area-inset-top)); }
+  .header-actions { gap: 6px; }
+  .header-cta { display: inline-flex; padding-inline: 12px; }
+  html[lang] .brand strong { font-size: 14px; }
+  html[lang] .brand small { font-size: 8px; }
+  html[lang] .language-switch, html[lang] .header-cta { font-size: 12px; }
+  .language-switch { padding-inline: 10px; }
+  .brand { gap: 7px; }
+  .brand img { width: 32px; height: 32px; }
+  .hero { padding: 32px 20px 56px; gap: 32px; }
+  .hero-copy { min-width: 0; width: 100%; }
+  .status-pill { margin-bottom: 22px; }
+  html[lang] .status-pill { font-size: 12px; }
+  html[lang] .eyebrow { font-size: 11px; line-height: 1.6; letter-spacing: .13em; }
+  .hero h1, html[lang="zh-CN"] .hero h1 { font-size: clamp(40px, 12vw, 52px); overflow-wrap: normal; }
+  .hero-title-detail { font-size: .6em; line-height: 1.25; margin-top: .4em; }
+  .hero-body { font-size: 16px; line-height: 1.65; margin-bottom: 20px; }
+  .hero-points { display: flex; flex-wrap: wrap; gap: 6px; }
+  html[lang] .hero-points li { font-size: 12px; padding: 7px 10px; }
+  .actions { margin-top: 24px; gap: 10px; }
+  html[lang] .button { font-size: 16px; line-height: 1.4; min-height: 52px; }
+  .button.text { min-height: 44px; }
+  .download-help { max-width: 335px; }
+  .wechat-download { margin-top: 10px; }
+  .download-help-content { padding: 14px; }
+  .hero-stage { min-height: 0; padding: 18px 0 36px; border-radius: 30px; }
+  .phone-shell { width: min(100%, 326px); height: auto; min-height: 590px; padding: 14px 12px 18px; transform: none; }
+  .phone-status { flex-shrink: 0; }
+  .phone-meal { height: auto; aspect-ratio: 4/3; flex-shrink: 0; }
+  .phone-heading small { font-size: 10px; }
+  .today-card { padding: 11px; }
+  .today-card-head { gap: 6px; }
+  .today-card-head span { font-size: 14px; }
+  .today-card-head small { font-size: 10px; white-space: nowrap; padding-inline: 6px; }
+  .today-data { grid-template-columns: 96px minmax(0, 1fr); gap: 9px; }
+  .large-rings { width: 96px; height: 96px; }
+  .large-rings b { font-size: 17px; }
+  .large-rings b small { font-size: 10px; }
+  .today-data li { padding-left: 11px; }
+  .today-data li b { font-size: 15px; }
+  .today-data li span { font-size: 10px; line-height: 1.4; }
+  .phone-nav { margin-top: 14px; font-size: 10px; }
+  html[lang] .signal-strip span { font-size: 12px; line-height: 1.5; }
+  .signal-strip { padding: 12px 0; margin-bottom: 24px; }
+  .experience, .nutrition-story, .inside, .plans, .trust, .faq { min-height: 0; padding: 64px 20px; gap: 32px; }
+  h2 { font-size: clamp(36px, 10vw, 44px); line-height: 1.08; }
+  html[lang="zh-CN"] h2, html[lang="zh-CN"] .plans h2 { font-size: clamp(30px, 9.3vw, 40px); line-height: 1.18; letter-spacing: -.03em; }
+  .experience h2 { margin-bottom: 28px; }
+  .step-list li { grid-template-columns: 28px 1fr; gap: 12px; }
+  html[lang] .step-list strong { font-size: 17px; }
+  html[lang] .step-list small { font-size: 15px; line-height: 1.6; color: #c2d2c9; }
+  .meal-story { padding: 12px; }
+  .meal-result { position: relative; inset: auto; margin-top: -12px; padding: 18px 14px; }
+  .meal-result > div strong { font-size: 20px; line-height: 1.3; }
+  html[lang] .meal-result > div small { font-size: 12px; }
+  html[lang] .meal-result li span { font-size: 13px; }
+  .meal-result li b { font-size: 16px; white-space: nowrap; }
+  html[lang] .confirmed { font-size: 14px; }
+  html[lang] .short-points li { font-size: 16px; }
+  html[lang] .sample-note { font-size: 12px; }
+  .nutrition-dashboard { padding: 20px 8px; }
+  .nutrition-dashboard-head, .day-detail { margin-inline: 8px; }
+  .nutrition-dashboard-head { gap: 12px; margin-bottom: 16px; }
+  .nutrition-dashboard-head strong { font-size: 25px; }
+  html[lang] .nutrition-dashboard-head small { font-size: 12px; }
+  html[lang] .ring-legend span { font-size: 13px; }
+  .calendar-scroll { overflow-x: auto; padding: 5px 0 10px; overscroll-behavior-x: contain; }
+  .week-labels, .ring-calendar { min-width: 332px; gap: 4px; }
+  html[lang] .week-labels { font-size: 12px; }
+  .ring-calendar button { min-width: 44px; min-height: 60px; }
+  html[lang] .day-rings b { font-size: 11px; }
+  .day-detail { gap: 16px; }
+  .day-detail > div { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  html[lang] .day-detail > div small { font-size: 12px; }
+  .day-detail > div strong { margin: 0; font-size: 20px; }
+  .day-detail ul { grid-template-columns: 1fr; gap: 12px; }
+  .day-detail li { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding-left: 10px; }
+  html[lang] .day-detail li span { font-size: 14px; }
+  html[lang] .day-detail li b { margin: 0; font-size: 16px; white-space: nowrap; }
+  .product-gallery { grid-template-columns: repeat(3, calc(100vw - 64px)); margin-top: 16px; gap: 12px; }
+  .product-card { padding: 24px 18px; min-height: 0; }
+  html[lang] .product-copy h3 { font-size: 24px; line-height: 1.2; }
+  html[lang] .product-copy li { font-size: 12px; }
+  .screen-crop { width: min(100%, 280px); margin-top: 24px; padding: 4px; }
+  .ecosystem-points { margin-top: 32px; }
+  .ecosystem-points li { padding: 20px 12px; }
+  html[lang] .ecosystem-points b { font-size: 15px; }
+  html[lang] .ecosystem-points span { font-size: 14px; line-height: 1.6; }
+  .plan-grid { margin-top: 30px; }
+  .plan-card { padding: 28px 22px; }
+  .plan-card h3 { font-size: 29px; line-height: 1.2; }
+  html[lang] .plan-card li { font-size: 17px; line-height: 1.5; }
+  .plan-audience { font-size: 16px; line-height: 1.5; }
+  .plan-terms { font-size: 15px; line-height: 1.65; }
+  .trust-points li { padding: 22px 4px; }
+  html[lang] .trust-points b { font-size: 17px; }
+  html[lang] .trust-points span { font-size: 16px; margin-top: 7px; }
+  html[lang] .faq-list summary { font-size: 17px; line-height: 1.5; padding: 20px 0; gap: 12px; }
+  .faq-list summary span { flex-shrink: 0; }
+  .faq-list details p { padding-right: 0; font-size: 16px; }
+  .final-cta { min-height: 0; padding: 64px 20px; }
+  .final-cta .button { width: 100%; }
+  footer { padding: 32px 20px max(32px, env(safe-area-inset-bottom)); gap: 20px; }
+  footer nav { gap: 8px 20px; }
+  html[lang] footer nav a { min-width: 44px; font-size: 14px; }
+  html[lang] footer > small { font-size: 12px; line-height: 1.6; color: #b2c2b9; }
+}
+@media (max-width: 389px) {
+  .calendar-hint { display: block; margin: 0 8px 10px; color: var(--soft); font-size: 12px; }
 }

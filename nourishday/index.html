@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>NourishDay: Photo Food Diary &amp; Nutrition Tracker</title>
   <meta name="description" content="Track meals, calories and protein with NourishDay, a photo food diary and nutrition calendar for iPhone. Review estimates and explore seasonal eating.">
   <meta name="author" content="Jianna Consulting, LLC">
@@ -24,7 +24,7 @@
   <link rel="manifest" href="https://jiacheng.website/nourishday/site.webmanifest">
   <link rel="image_src" href="https://jiacheng.website/nourishday/assets/app-icon.png">
   <link rel="preload" href="assets/meal-balanced.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="styles.css?v=20260904-download">
+  <link rel="stylesheet" href="styles.css?v=20260904-mobile">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="zh_CN">
@@ -118,7 +118,7 @@
 }
   </script>
   <script src="script.js?v=20260817-4" defer></script>
-  <script src="app-store.js?v=20260904-direct" defer></script>
+  <script src="app-store.js?v=20260904-mobile" defer></script>
   <script src="/visitor-tracker.js?v=20260828.1" defer></script>
 </head>
 <body>
@@ -140,6 +140,9 @@
       <a class="header-cta" href="https://apps.apple.com/app/id6798932418" aria-label="Download NourishDay on the App Store">Download</a>
     </div>
   </header>
+  <nav class="section-nav" aria-label="Page sections">
+    <a href="#experience">Experience</a><a href="#nutrition-rhythm">14 days</a><a href="#inside">App preview</a><a href="#plans">Plans</a>
+  </nav>
 
   <main id="main-content">
     <section class="hero">
@@ -229,6 +232,8 @@
           <div><small>AUGUST 4–17</small><strong>14-day rhythm</strong></div>
           <div class="ring-legend" aria-label="Ring order"><span class="energy">Energy</span><span class="protein">Protein</span><span class="fiber">Fiber</span></div>
         </div>
+        <p class="calendar-hint">Swipe to see every date ↔</p>
+        <div class="calendar-scroll" role="region" aria-label="14-day calendar; scroll horizontally if needed" tabindex="0">
         <div class="week-labels" aria-hidden="true"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
         <div class="ring-calendar">
           <button type="button" data-day="Aug 4" data-energy="45" data-protein="62" data-fiber="38" data-kcal="900" data-protein-g="31" data-fiber-g="11" aria-label="August 4: Energy 45%, Protein 62%, Fiber 38%"><span class="day-rings"><i></i><i></i><i></i><b>4</b></span></button>
@@ -246,6 +251,7 @@
           <button type="button" data-day="Aug 16" data-energy="51" data-protein="39" data-fiber="64" data-kcal="1,020" data-protein-g="20" data-fiber-g="18" aria-label="August 16: Energy 51%, Protein 39%, Fiber 64%"><span class="day-rings"><i></i><i></i><i></i><b>16</b></span></button>
           <button class="selected" type="button" data-day="Aug 17" data-energy="86" data-protein="92" data-fiber="79" data-kcal="1,720" data-protein-g="46" data-fiber-g="22" aria-pressed="true" aria-label="August 17: Energy 86%, Protein 92%, Fiber 79%"><span class="day-rings"><i></i><i></i><i></i><b>17</b></span></button>
         </div>
+        </div>
         <div class="day-detail" aria-live="polite">
           <div><small>SELECTED DAY</small><strong id="detail-day">Aug 17</strong></div>
           <ul>
@@ -262,7 +268,8 @@
         <p class="eyebrow">FOOD DIARY, NUTRITION CALENDAR &amp; SEASONAL LIBRARY</p>
         <h2>More context.<br>Less guesswork.</h2>
       </div>
-      <div class="product-gallery" aria-label="NourishDay product views">
+      <p class="gallery-hint">Swipe to explore the app <span aria-hidden="true">↔</span></p>
+      <div class="product-gallery" tabindex="0" role="region" aria-label="NourishDay product views">
         <article class="product-card card-season reveal">
           <div class="product-copy"><span>01</span><h3>Eat with the season</h3><ul><li>Weather &amp; solar terms</li><li>Daily food guidance</li></ul></div>
           <div class="screen-crop"><img src="assets/screen-today.jpg" alt="NourishDay Today screen with weather, solar term, and daily almanac" width="621" height="1344" loading="lazy"></div>
