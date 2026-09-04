@@ -23,6 +23,7 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
+  padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px);
   overflow-x: hidden;
   background: var(--cream);
   color: var(--ink);
