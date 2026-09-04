@@ -5,8 +5,15 @@
   const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  // Open the store directly from the original tap, including inside WeChat.
+  // Do not intercept the click or require a website confirmation first.
+  if (isIOS) {
+    document.querySelectorAll(`a[href="${webURL}"]`).forEach(link => {
+      link.href = nativeURL;
+    });
+  }
   const dialog = document.createElement("dialog");
-  // Preserve working HTTPS links in browsers without native dialog support.
+  // Optional help must not be a prerequisite for the primary download action.
   if (typeof dialog.showModal !== "function") return;
 
   dialog.className = "store-help";
@@ -31,21 +38,13 @@
   dialog.querySelector(".store-help-native").hidden = !isIOS;
   const status = dialog.querySelector(".store-help-status");
   const input = dialog.querySelector("input");
-  let timer;
   let trigger;
   function showHelp(source) {
-    clearTimeout(timer);
     trigger = source;
     status.textContent = "";
     if (!dialog.open) dialog.showModal();
   }
-  function cancelFallback() { clearTimeout(timer); }
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) cancelFallback();
-  });
-  window.addEventListener("pagehide", cancelFallback);
   dialog.addEventListener("close", () => {
-    cancelFallback();
     if (trigger?.isConnected) trigger.focus({ preventScroll: true });
   });
   dialog.querySelector(".store-help-copy").addEventListener("click", async () => {
@@ -59,24 +58,6 @@
     }
   });
 
-  // Native anchors retain the user's tap gesture, which iOS needs to open the store.
-  // HTTPS remains the default in page HTML and in desktop browsers.
-  document.querySelectorAll(`a[href="${webURL}"]`).forEach(link => {
-    if (dialog.contains(link)) return;
-    if (isIOS && !isWeChat) link.href = nativeURL;
-    link.addEventListener("click", event => {
-      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      if (isWeChat) {
-        event.preventDefault();
-        showHelp(link);
-      } else if (isIOS) {
-        cancelFallback();
-        timer = setTimeout(() => {
-          if (!document.hidden) showHelp(link);
-        }, 1800);
-      }
-    });
-  });
   document.querySelectorAll(".hero-copy .actions, .final-cta").forEach(container => {
     const help = document.createElement("button");
     help.type = "button";
