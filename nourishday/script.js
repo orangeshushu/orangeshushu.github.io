@@ -50,15 +50,74 @@
 
   // A self-contained illustrative day. No personal data or API requests.
   const dayParts = [
-    { energy: 22, protein: 32, fiber: 18, calories: "440", proteinG: "16", fiberG: "5", meals: 1 },
-    { energy: 53, protein: 76, fiber: 61, calories: "1,060", proteinG: "38", fiberG: "17", meals: 2 },
-    { energy: 86, protein: 92, fiber: 79, calories: "1,720", proteinG: "46", fiberG: "22", meals: 3 }
+    { energy: 22, protein: 32, fiber: 18, calories: "440", proteinG: "16", fiberG: "5", meals: 1,
+      image: "meal-breakfast-202609.webp", alt: zh ? "早餐：牛奶、全麦吐司、草莓和蓝莓" : "Breakfast: milk, wholegrain toast, strawberries and blueberries" },
+    { energy: 53, protein: 76, fiber: 61, calories: "1,060", proteinG: "38", fiberG: "17", meals: 2,
+      image: "meal-balanced.webp", alt: zh ? "午餐：鸡肉饭配西兰花、胡萝卜和蘑菇" : "Lunch: chicken and rice with broccoli, carrots and mushrooms" },
+    { energy: 86, protein: 92, fiber: 79, calories: "1,720", proteinG: "46", fiberG: "22", meals: 3,
+      image: "meal-dinner-202609.webp", alt: zh ? "晚餐：香煎三文鱼、藜麦、芦笋和烤蔬菜" : "Dinner: seared salmon, quinoa, asparagus and roasted vegetables" }
   ];
+  const mealPhoto = document.querySelector(".phone-meal");
+  const mealControls = document.querySelector(".day-part-switch");
+  const mealNote = document.querySelector(".hero-demo-controls > small");
+  const defaultMealNote = mealNote?.textContent;
+  const mealImages = new Map();
+  let mealRequest = 0;
+  let mealFade;
+  function prepareMeal(part) {
+    if (!mealPhoto) return Promise.reject(new Error("Missing meal image"));
+    const url = new URL(part.image, mealPhoto.src).href;
+    if (!mealImages.has(url)) {
+      const ready = new Promise((resolve, reject) => {
+        const image = new Image();
+        const timeout = setTimeout(() => reject(new Error("Meal image timed out")), 12000);
+        image.onload = async () => {
+          try {
+            if (image.decode) await image.decode();
+            clearTimeout(timeout);
+            resolve(url);
+          } catch (error) { clearTimeout(timeout); reject(error); }
+        };
+        image.onerror = () => { clearTimeout(timeout); reject(new Error("Meal image unavailable")); };
+        image.src = url;
+      });
+      mealImages.set(url, ready);
+      ready.catch(() => mealImages.delete(url));
+    }
+    return mealImages.get(url);
+  }
+  // Warm the two alternate images after first load; never block the hero.
+  const warmMeals = () => dayParts.forEach(part => prepareMeal(part).catch(() => {}));
+  if (document.readyState === "complete") warmMeals();
+  else window.addEventListener("load", warmMeals, { once: true });
   document.querySelectorAll("[data-day-part]").forEach(button => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", async () => {
       const part = dayParts[Number(button.dataset.dayPart)];
       const card = document.querySelector(".today-card");
-      if (!part || !card) return;
+      if (!part || !card || !mealPhoto) return;
+      const request = ++mealRequest;
+      mealControls?.setAttribute("aria-busy", "true");
+      document.querySelectorAll("[data-day-part]").forEach(item => item.classList.toggle("is-loading", item === button));
+      let imageURL;
+      try { imageURL = await prepareMeal(part); }
+      catch {
+        if (request !== mealRequest) return;
+        mealControls?.setAttribute("aria-busy", "false");
+        button.classList.remove("is-loading");
+        if (mealNote) mealNote.textContent = zh ? "图片未加载，请再点一次重试" : "Image unavailable. Tap again to retry.";
+        return;
+      }
+      // Fast repeated taps must not let an older image replace the latest choice.
+      if (request !== mealRequest) return;
+      mealPhoto.src = imageURL;
+      mealPhoto.alt = part.alt;
+      mealFade?.cancel();
+      if (!motion.matches && mealPhoto.animate) mealFade = mealPhoto.animate(
+        [{ opacity: .5 }, { opacity: 1 }], { duration: 220, easing: "ease-out" }
+      );
+      mealControls?.setAttribute("aria-busy", "false");
+      button.classList.remove("is-loading");
+      if (mealNote) mealNote.textContent = defaultMealNote;
       document.querySelectorAll("[data-day-part]").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
       ["energy", "protein", "fiber"].forEach(key => { card.dataset[key] = part[key]; });
       fillRing(card.querySelector(".large-rings"), card);

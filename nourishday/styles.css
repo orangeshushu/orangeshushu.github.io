@@ -641,8 +641,8 @@ button, a { touch-action: manipulation; }
 .hero-body { max-width: 460px; font-size: 19px; line-height: 1.65; }
 .hero-stage { padding: 18px 0 30px; grid-template-rows: 1fr auto; gap: 26px; overflow: visible; }
 .hero-stage .orbit { max-width: 100%; }
-.hero-stage .phone-shell { height: 630px; width: 344px; transform: rotate(1deg); }
-.hero-stage .phone-meal { height: 165px; }
+.hero-stage .phone-shell { height: auto; min-height: 630px; width: 344px; transform: rotate(1deg); }
+.hero-stage .phone-meal { height: auto; aspect-ratio: 4/3; flex-shrink: 0; }
 .hero-stage .today-data { grid-template-columns: 112px 1fr; gap: 12px; }
 .hero-stage .large-rings { width: 108px; height: 108px; }
 .hero-stage .large-rings i { -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 6px)); mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 6px)); }
@@ -654,6 +654,7 @@ button, a { touch-action: manipulation; }
 .day-part-switch { padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,253,248,.85); display: inline-flex; gap: 4px; }
 .day-part-switch button { border: 0; border-radius: 999px; min-height: 44px; padding: 10px 16px; background: transparent; color: var(--soft); font-size: 14px; cursor: pointer; transition: background .2s, color .2s; }
 .day-part-switch button[aria-pressed="true"] { color: white; background: var(--ink); box-shadow: 0 4px 10px rgba(18,61,48,.12); }
+.day-part-switch button.is-loading { box-shadow: inset 0 0 0 2px var(--sage-strong); cursor: progress; }
 .hero-stage .note-one { left: -2%; top: 20%; }
 .hero-stage .note-two { right: -1%; bottom: 29%; }
 .product-flow { min-height: 0; grid-template-columns: .9fr 1.1fr; gap: 72px; }
