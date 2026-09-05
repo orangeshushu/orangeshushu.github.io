@@ -6,6 +6,11 @@
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   const copyLabel = zh ? "复制下载链接" : "Copy download link";
+  const visualGuide = isWeChat && isIOS;
+  // An illustration of WeChat's native menu, not a fake on-page menu button.
+  const menuIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="4" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="20" cy="12" r="2"/></svg>';
+  const browserIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m16 8-2.5 5.5L8 16l2.5-5.5Z"/></svg>';
+  const arrowIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-6-6 6 6-6 6"/></svg>';
   const storeLinks = [...document.querySelectorAll(`a[href="${webURL}"]`)];
 
   // Normal browsers retain a direct, user-initiated store action. In WeChat,
@@ -15,15 +20,20 @@
 
   document.querySelectorAll(".hero-copy .actions, .final-cta").forEach((container, index) => {
     const help = document.createElement(isWeChat ? "div" : "details");
-    help.className = `download-help${isWeChat ? " wechat-download" : ""}`;
+    help.className = `download-help${isWeChat ? " wechat-download" : ""}${visualGuide ? " has-visual-guide" : ""}`;
     const descriptionID = `download-description-${index}`;
     const inputID = `download-url-${index}`;
-    const description = isWeChat && isIOS
-      ? (zh ? "微信内下载：点右上角 ···，选择「在浏览器中打开」。" : "In WeChat? Tap ··· at the top right, then open this page in your browser.")
-      : (zh ? "适用于 iPhone 和 iPad。复制链接，在这两类设备的 Safari 中打开。" : "Available for iPhone and iPad. Copy this link and open it in Safari on either device.");
+    const description = zh ? "适用于 iPhone 和 iPad。在 Safari 中打开下载链接。" : "For iPhone and iPad. Open the download link in Safari.";
+    const guide = visualGuide
+      ? `<div class="wechat-route" id="${descriptionID}" role="img" aria-label="${zh ? "在微信中下载：点微信右上角菜单，再选择在浏览器中打开。" : "To download in WeChat, open its top-right menu, then choose Open in browser."}">
+          <span class="wechat-route-step" aria-hidden="true"><span class="wechat-route-icon menu-icon">${menuIcon}</span><span>${zh ? "微信右上角" : "Top-right menu"}</span></span>
+          <span class="wechat-route-arrow" aria-hidden="true">${arrowIcon}</span>
+          <span class="wechat-route-step" aria-hidden="true"><span class="wechat-route-icon">${browserIcon}</span><span>${zh ? "浏览器打开" : "Open in browser"}</span></span>
+        </div>`
+      : `<p id="${descriptionID}">${description}</p>`;
     help.innerHTML = `${isWeChat ? "" : `<summary>${zh ? "无法打开？其他下载方式" : "Having trouble opening the store?"}</summary>`}
       <div class="download-help-content">
-        <p id="${descriptionID}">${description}</p>
+        ${guide}
         <div class="download-link-field"${isWeChat ? " hidden" : ""}>
           <label for="${inputID}">${zh ? "App Store 下载链接" : "App Store download link"}</label>
           <input id="${inputID}" type="url" readonly value="${webURL}" dir="ltr" spellcheck="false">

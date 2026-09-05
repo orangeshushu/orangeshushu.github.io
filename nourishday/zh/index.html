@@ -24,7 +24,7 @@
   <link rel="manifest" href="https://jiacheng.website/nourishday/site.webmanifest">
   <link rel="image_src" href="https://jiacheng.website/nourishday/assets/app-icon.png">
   <link rel="preload" href="../assets/meal-balanced.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="../styles.css?v=20260904-mobile">
+  <link rel="stylesheet" href="../styles.css?v=20260904-cleanhero">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:locale:alternate" content="en_US">
@@ -82,7 +82,7 @@
         "食养日历：NourishDay"
       ],
       "applicationCategory": "HealthApplication",
-      "operatingSystem": "iOS 17.0 or later, iPadOS 17.0 or later, watchOS",
+      "operatingSystem": "iOS 16.0 or later, iPadOS 16.0 or later, watchOS",
       "url": "https://jiacheng.website/nourishday/",
       "downloadUrl": "https://apps.apple.com/app/id6798932418",
       "sameAs": [
@@ -117,8 +117,8 @@
   ]
 }
   </script>
-  <script src="../script.js?v=20260817-4" defer></script>
-  <script src="../app-store.js?v=20260904-mobile" defer></script>
+  <script src="../script.js?v=20260904-cleanhero" defer></script>
+  <script src="../app-store.js?v=20260904-cleanhero" defer></script>
   <script src="/visitor-tracker.js?v=20260828.1" defer></script>
 </head>
 <body>
@@ -135,11 +135,8 @@
   <main id="main-content">
     <section class="hero">
       <div class="hero-copy reveal">
-        <p class="status-pill live"><span aria-hidden="true"></span> 现已上线 · App Store</p>
-        <p class="eyebrow">食养日历 · NOURISHDAY</p>
-        <h1>食养日历<span class="hero-title-detail">拍照记录饮食<br>每天看懂营养</span></h1>
-        <p class="hero-body">拍下一餐，核对食物和份量，再保存营养估算。食养日历 NourishDay 将热量、蛋白质等营养记录汇入每天的饮食日历，帮助你回看饮食变化。</p>
-        <ul class="hero-points" aria-label="食养日历亮点"><li>拍摄或选择一张图片</li><li>每项结果都由你复核</li><li>逐渐看见长期变化</li></ul>
+        <h1>食养日历<span class="hero-title-detail">把每一餐，<br>看得更清楚。</span></h1>
+        <p class="hero-body">记录每一餐，回看每天的营养。</p>
         <div class="actions"><a class="button primary" href="https://apps.apple.com/app/id6798932418" aria-label="前往 App Store 下载食养日历">前往 App Store <span aria-hidden="true">↗</span></a><a class="button text" href="#experience">体验应用 <span aria-hidden="true">↓</span></a></div>
       </div>
       <div class="hero-stage reveal" aria-label="食养日历每日营养示意界面">
@@ -150,24 +147,39 @@
           <img class="phone-meal" src="../assets/meal-balanced.webp" alt="包含鸡肉、米饭、西兰花、胡萝卜和蘑菇的均衡餐食" width="1400" height="1050" fetchpriority="high">
           <div class="today-card ring-animate" data-energy="86" data-protein="92" data-fiber="79">
             <div class="today-card-head"><span>今日营养</span><small>3 餐</small></div>
-            <div class="today-data"><div class="large-rings" aria-hidden="true"><i></i><i></i><i></i><b>1,720<small>千卡</small></b></div><ul><li class="energy"><b>86%</b><span>1,720 / 2,000 千卡</span></li><li class="protein"><b>92%</b><span>46 / 50 克</span></li><li class="fiber"><b>79%</b><span>22 / 28 克</span></li></ul></div>
+            <div class="today-total" aria-live="polite"><strong>1,720</strong><span>千卡</span></div>
+            <div class="today-data"><div class="large-rings" aria-hidden="true"><i></i><i></i><i></i><b>86%</b></div><ul><li class="energy"><b>86%</b><span>1,720 / 2,000 千卡</span></li><li class="protein"><b>92%</b><span>46 / 50 克</span></li><li class="fiber"><b>79%</b><span>22 / 28 克</span></li></ul></div>
           </div>
           <div class="phone-nav" aria-hidden="true"><span>今天</span><span>日历</span><b>拍餐</b><span>百科</span><span>我的</span></div>
         </div>
         <span class="float-note note-one"><b>14</b> 天趋势</span><span class="float-note note-two"><b>3</b> 项营养</span>
+        <div class="hero-demo-controls"><p>看看一天的营养如何累积</p><div class="day-part-switch" role="group" aria-label="看看一天的营养如何累积"><button type="button" data-day-part="0" aria-pressed="false">早餐</button><button type="button" data-day-part="1" aria-pressed="false">午餐</button><button type="button" data-day-part="2" aria-pressed="true">晚餐</button></div><small>交互演示 · 营养数据仅为示意</small></div>
       </div>
     </section>
 
     <section class="signal-strip reveal" aria-label="产品亮点"><span>✓ 一张图片</span><span>✓ 由你确认</span><span>✓ 中英双语</span><span>✓ iPhone · iPad · Watch</span></section>
 
-    <section class="experience" id="experience">
+    <section class="experience product-flow" id="experience" data-flow-step="1">
       <div class="experience-copy reveal">
-        <p class="eyebrow light">一餐，三个时刻</p><h2 class="zh-lines"><span>拍下。</span><span>复核。</span><span>看见趋势。</span></h2>
-        <ol class="step-list"><li><b>01</b><span><strong>添加照片</strong><small>餐食、小票、订单或营养成分表。</small></span></li><li><b>02</b><span><strong>按实际情况调整</strong><small>修改食物、份量与时间。</small></span></li><li><b>03</b><span><strong>生成饮食日历</strong><small>让每一天逐渐连成趋势。</small></span></li></ol>
+        <p class="eyebrow light">从一张照片，到饮食日历</p>
+        <h2>记录一餐，<br>始终由你掌控。</h2>
+        <div class="flow-steps" role="group" aria-label="体验记餐流程">
+          <button type="button" class="flow-step" data-flow="0" aria-pressed="false" aria-controls="meal-demo"><span class="step-number">01</span><span><strong>拍下</strong><small>餐食、小票、订单或营养成分表。</small></span><span class="step-arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="flow-step" data-flow="1" aria-pressed="true" aria-controls="meal-demo"><span class="step-number">02</span><span><strong>复核</strong><small>确认食物，按实际情况调整份量。</small></span><span class="step-arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="flow-step" data-flow="2" aria-pressed="false" aria-controls="meal-demo"><span class="step-number">03</span><span><strong>记录</strong><small>每一餐，都成为可以回看的日常。</small></span><span class="step-arrow" aria-hidden="true">↗</span></button>
+        </div>
+        <p class="flow-caption" aria-live="polite">确认食物，按实际情况调整份量。</p>
+        <p class="flow-disclaimer">仅作演示，不上传照片，也无需登录。</p>
       </div>
-      <div class="meal-story reveal">
-        <img src="../assets/meal-balanced.webp" alt="等待复核的鸡肉蔬菜均衡餐食" width="1400" height="1050" loading="lazy">
-        <div class="meal-result"><div><small>已复核餐食</small><strong>均衡鸡肉餐</strong></div><ul><li><span>能量</span><b>619 千卡</b></li><li><span>蛋白质</span><b>52 克</b></li><li><span>膳食纤维</span><b>9.2 克</b></li></ul><span class="confirmed">✓ 可以保存</span></div>
+      <div class="meal-story interactive-meal reveal" id="meal-demo">
+        <div class="meal-photo"><img src="../assets/meal-balanced.webp" alt="均衡鸡肉餐" width="1400" height="1050" loading="lazy"><span class="scan-line" aria-hidden="true"></span><span class="meal-demo-tag">试试这份示例餐食</span></div>
+        <div class="meal-result">
+          <div><small>由你复核</small><strong>均衡鸡肉餐</strong></div>
+          <div class="portion-control"><label for="demo-portion">调整示例份量</label><div><input id="demo-portion" type="range" min="0.5" max="1.5" step="0.25" value="1"><output for="demo-portion" id="portion-value">1 份</output></div></div>
+          <ul><li><span>能量</span><b id="meal-energy">619 千卡</b></li><li><span>蛋白质</span><b id="meal-protein">52 克</b></li><li><span>膳食纤维</span><b id="meal-fiber">9.2 克</b></li></ul>
+          <button type="button" class="button primary demo-save">保存示例餐食<span aria-hidden="true"> ↗</span></button>
+        </div>
+        <div class="demo-saved" hidden role="status"><span class="saved-mark" aria-hidden="true">✓</span><h3>已加入这一天。</h3><p>多记下一餐，多看清一点日常。</p><button type="button" class="button light demo-reset">再体验一次</button></div>
       </div>
     </section>
 
@@ -175,6 +187,7 @@
       <div class="nutrition-story-copy reveal"><p class="eyebrow">会变化的 14 天视图</p><h2 class="zh-lines"><span>每一天，</span><span>都不一样。</span></h2><ul class="short-points"><li>快速发现稳定的日子</li><li>及时看见缺口</li><li>点击日期查看详情</li></ul><p class="sample-note">示意数据 · 8 月 4–17 日</p></div>
       <div class="nutrition-dashboard reveal" aria-label="可交互的十四天营养日历示意数据">
         <div class="nutrition-dashboard-head"><div><small>8 月 4–17 日</small><strong>14 天饮食节奏</strong></div><div class="ring-legend" aria-label="圆环顺序"><span class="energy">能量</span><span class="protein">蛋白质</span><span class="fiber">膳食纤维</span></div></div>
+        <div class="calendar-actions"><span>每一天，不同的营养记录</span><button type="button" class="calendar-play" aria-pressed="false" data-play-label="播放 14 天" data-pause-label="暂停播放"><span aria-hidden="true">▶</span> <span class="play-label">播放 14 天</span></button></div>
         <p class="calendar-hint">左右滑动，查看所有日期 ↔</p>
         <div class="calendar-scroll" role="region" aria-label="14 天日历，可左右滑动" tabindex="0">
         <div class="week-labels" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
@@ -200,14 +213,48 @@
     </section>
 
     <section class="inside" id="inside">
-      <div class="section-heading reveal"><p class="eyebrow">饮食记录 · 营养日历 · 节气食养</p><h2 class="zh-lines"><span>更多背景，</span><span>少一些猜测。</span></h2></div>
-      <p class="gallery-hint">左右滑动，看看应用里的每一天 <span aria-hidden="true">↔</span></p>
-      <div class="product-gallery" tabindex="0" role="region" aria-label="食养日历产品界面">
-        <article class="product-card card-season reveal"><div class="product-copy"><span>01</span><h3>顺时而食</h3><ul><li>天气与二十四节气</li><li>每日食养参考</li></ul></div><div class="screen-crop"><img src="../assets/screen-today-zh.webp" alt="中文今日页面，包含天气、节气和每日小笺" width="1320" height="2868" loading="lazy"></div></article>
-        <article class="product-card card-calendar reveal"><div class="product-copy"><span>02</span><h3>一眼看懂整月</h3><ul><li>天气与营养视图</li><li>餐食与日期关联</li></ul></div><div class="screen-crop"><img src="../assets/screen-calendar-nutrition-zh-v2.webp" alt="中文营养日历页面，连续两周展示完成度不同的能量、蛋白质与膳食纤维圆环" width="853" height="1844" loading="lazy"></div></article>
-        <article class="product-card card-library reveal"><div class="product-copy"><span>03</span><h3>搜索整个百科</h3><ul><li>食材、菜肴、草本与茶饮</li><li>中文与英文</li></ul></div><div class="screen-crop"><img src="../assets/screen-library-zh.webp" alt="中文食养百科页面，包含食材与菜肴分类" width="1320" height="2868" loading="lazy"></div></article>
+      <div class="showcase-heading reveal"><div><p class="eyebrow">走进食养日历</p><h2>细节更贴心，<br>每天更好用。</h2></div><p>不只是拍照。记录、回顾和发现，融入同一个日常。</p></div>
+      <div class="app-showcase reveal">
+        <div class="showcase-tabs" role="tablist" aria-label="应用功能预览">
+          <button type="button" role="tab" id="feature-tab-0" aria-controls="feature-panel-0" aria-selected="true" tabindex="0">今日</button>
+          <button type="button" role="tab" id="feature-tab-1" aria-controls="feature-panel-1" aria-selected="false" tabindex="-1">日历</button>
+          <button type="button" role="tab" id="feature-tab-2" aria-controls="feature-panel-2" aria-selected="false" tabindex="-1">拍餐</button>
+          <button type="button" role="tab" id="feature-tab-3" aria-controls="feature-panel-3" aria-selected="false" tabindex="-1">百科</button>
+          <button type="button" role="tab" id="feature-tab-4" aria-controls="feature-panel-4" aria-selected="false" tabindex="-1">目标</button>
+          <button type="button" role="tab" id="feature-tab-5" aria-controls="feature-panel-5" aria-selected="false" tabindex="-1">趋势</button>
+        </div>
+        <div class="showcase-panel" id="feature-panel-0" role="tabpanel" aria-labelledby="feature-tab-0">
+          <div class="showcase-copy"><span class="feature-index">01 / 06</span><h3>从今天开始。</h3><p>把天气、节气和下一餐的灵感，放在一眼就能看到的地方。</p><ul><li>天气与二十四节气</li><li>日常饮食和生活参考</li></ul><p class="preview-footnote">应用截图含演示记录，部分功能需开通会员。</p></div>
+          <div class="showcase-visual"><button class="screen-expand" type="button" aria-label="查看完整截图 — 今日" data-zoom-title="今日"><picture><source media="(max-width: 720px)" srcset="../assets/product-202609/zh-01-today-phone.webp" width="660" height="1434"><img src="../assets/product-202609/zh-01-today.webp" alt="今日：天气、节气与日常饮食建议" width="960" height="1280" loading="lazy"></picture><span>查看完整截图 <span aria-hidden="true">↗</span></span></button></div>
+        </div>
+        <div class="showcase-panel" id="feature-panel-1" role="tabpanel" aria-labelledby="feature-tab-1" hidden>
+          <div class="showcase-copy"><span class="feature-index">02 / 06</span><h3>每一餐，都有迹可循。</h3><p>在天气与营养视图间切换，打开日期，回看当天保存的餐食。</p><ul><li>按日期查看餐食记录</li><li>天气与营养双视图</li></ul><p class="preview-footnote">应用截图含演示记录，部分功能需开通会员。</p></div>
+          <div class="showcase-visual"><button class="screen-expand" type="button" aria-label="查看完整截图 — 日历" data-zoom-title="日历"><picture><source media="(max-width: 720px)" srcset="../assets/product-202609/zh-02-calendar-phone.webp" width="660" height="1434"><img src="../assets/product-202609/zh-02-calendar.webp" alt="日历：月度餐食与营养记录" width="960" height="1280" loading="lazy"></picture><span>查看完整截图 <span aria-hidden="true">↗</span></span></button></div>
+        </div>
+        <div class="showcase-panel" id="feature-panel-2" role="tabpanel" aria-labelledby="feature-tab-2" hidden>
+          <div class="showcase-copy"><span class="feature-index">03 / 06</span><h3>由你确认，才算记录。</h3><p>核对识别出的食物和份量，再把营养估算保存进日历。</p><ul><li>支持餐食、小票、订单、营养标签</li><li>也可以手动输入食物</li></ul><p class="preview-footnote">应用截图含演示记录，部分功能需开通会员。</p></div>
+          <div class="showcase-visual"><button class="screen-expand" type="button" aria-label="查看完整截图 — 拍餐" data-zoom-title="拍餐"><picture><source media="(max-width: 720px)" srcset="../assets/product-202609/zh-03-scan-phone.webp" width="660" height="1434"><img src="../assets/product-202609/zh-03-scan.webp" alt="餐食复核：食物、份量与营养估算" width="960" height="1280" loading="lazy"></picture><span>查看完整截图 <span aria-hidden="true">↗</span></span></button></div>
+        </div>
+        <div class="showcase-panel" id="feature-panel-3" role="tabpanel" aria-labelledby="feature-tab-3" hidden>
+          <div class="showcase-copy"><span class="feature-index">04 / 06</span><h3>下一餐，多一点灵感。</h3><p>在食物、食养、茶饮和养生分类中，发现熟悉食材的新用法。</p><ul><li>食材、家常菜与茶饮</li><li>有依据的条目附参考来源</li></ul><p class="preview-footnote">应用截图含演示记录，部分功能需开通会员。</p></div>
+          <div class="showcase-visual"><button class="screen-expand" type="button" aria-label="查看完整截图 — 百科" data-zoom-title="百科"><picture><source media="(max-width: 720px)" srcset="../assets/product-202609/zh-04-library-phone.webp" width="660" height="1434"><img src="../assets/product-202609/zh-04-library.webp" alt="食养百科：食物、食养、茶饮与养生分类" width="960" height="1280" loading="lazy"></picture><span>查看完整截图 <span aria-hidden="true">↗</span></span></button></div>
+        </div>
+        <div class="showcase-panel" id="feature-panel-4" role="tabpanel" aria-labelledby="feature-tab-4" hidden>
+          <div class="showcase-copy"><span class="feature-index">05 / 06</span><h3>照顾自己的节奏。</h3><p>完善个人资料，按日常需要选择和调整营养目标。</p><ul><li>可修改每项营养目标</li><li>规划参考，不是医疗建议</li></ul><p class="preview-footnote">应用截图含演示记录，部分功能需开通会员。</p></div>
+          <div class="showcase-visual"><button class="screen-expand" type="button" aria-label="查看完整截图 — 目标" data-zoom-title="目标"><picture><source media="(max-width: 720px)" srcset="../assets/product-202609/zh-05-profile-phone.webp" width="660" height="1434"><img src="../assets/product-202609/zh-05-profile.webp" alt="个人资料与每日营养目标设置" width="960" height="1280" loading="lazy"></picture><span>查看完整截图 <span aria-hidden="true">↗</span></span></button></div>
+        </div>
+        <div class="showcase-panel" id="feature-panel-5" role="tabpanel" aria-labelledby="feature-tab-5" hidden>
+          <div class="showcase-copy"><span class="feature-index">06 / 06</span><h3>不止看见一餐。</h3><p>回看每日记录，从热量、蛋白质等营养变化中了解饮食习惯。</p><ul><li>热量、蛋白质、膳食纤维等</li><li>让每天的记录连成趋势</li></ul><p class="preview-footnote">应用截图含演示记录，部分功能需开通会员。</p></div>
+          <div class="showcase-visual"><button class="screen-expand" type="button" aria-label="查看完整截图 — 趋势" data-zoom-title="趋势"><picture><source media="(max-width: 720px)" srcset="../assets/product-202609/zh-06-trends-phone.webp" width="660" height="1434"><img src="../assets/product-202609/zh-06-trends.webp" alt="营养历史与每日营养变化趋势" width="960" height="1280" loading="lazy"></picture><span>查看完整截图 <span aria-hidden="true">↗</span></span></button></div>
+        </div>
+        <div class="showcase-controls"><span class="showcase-position" aria-live="polite">01 / 06</span><div><button type="button" class="showcase-prev" aria-label="上一个功能">←</button><button type="button" class="showcase-next" aria-label="下一个功能">→</button></div></div>
       </div>
-      <ul class="ecosystem-points reveal" aria-label="更多食养日历功能"><li><b>Apple Watch</b><span>今日与近七天营养</span></li><li><b>小组件</b><span>快速查看所选营养素</span></li><li><b>重视隐私</b><span>确认前不会上传图片</span></li><li><b>随时可编辑</b><span>食物、份量、餐次和时间</span></li></ul>
+      <ul class="ecosystem-points reveal" aria-label="更轻松的日常记录">
+        <li><b>Apple Watch</b><span>抬腕查看营养概览</span></li>
+        <li><b>桌面小组件</b><span>无需打开 App，先看今日节奏</span></li>
+        <li><b>自选用餐提醒</b><span>按你的时间，提醒记录下一餐</span></li>
+        <li><b>中英双语</b><span>用熟悉的语言记录和浏览</span></li>
+      </ul>
     </section>
 
     <section class="plans" id="plans">
@@ -223,7 +270,7 @@
         <details><summary>如何用拍照记录饮食？<span aria-hidden="true">＋</span></summary><p>拍摄餐食或选择已有图片，确认后才会上传分析。AI 提供食物与份量候选，营养估算来自经过审核的食物目录。你可以核对、修改食物和份量，再确认要保存的记录。照片不能精确测量营养含量。</p></details>
         <details><summary>可以记录热量、蛋白质和其他营养素吗？<span aria-hidden="true">＋</span></summary><p>可以。已保存的餐食会汇总成热量、蛋白质、碳水化合物、脂肪、膳食纤维等营养记录。点击营养日历中的日期，可以回看当天估算对应的餐食，也可以手动录入食物。</p></details>
         <details><summary>二十四节气食养有哪些内容？<span aria-hidden="true">＋</span></summary><p>食养日历结合当地天气与二十四节气，提供食物、茶饮和日常生活阅读参考。传统食养内容用于文化与健康教育，不代表已测量的营养功效，也不构成治疗建议。</p></details>
-        <details><summary>在哪里下载食养日历？支持哪些设备？<span aria-hidden="true">＋</span></summary><p>通过 <a href="https://apps.apple.com/app/id6798932418">App Store 下载食养日历：NourishDay</a>。支持运行 iOS 或 iPadOS 17 及以上版本的 iPhone 和 iPad，并提供 Apple Watch 营养摘要。应用内包含英文与简体中文。</p></details>
+        <details><summary>在哪里下载食养日历？支持哪些设备？<span aria-hidden="true">＋</span></summary><p>通过 <a href="https://apps.apple.com/app/id6798932418">App Store 下载食养日历：NourishDay</a>。支持运行 iOS 或 iPadOS 16 及以上版本的 iPhone 和 iPad，并提供 Apple Watch 营养摘要。应用内包含英文与简体中文。</p></details>
         <details><summary>食养日历可以免费使用吗？<span aria-hidden="true">＋</span></summary><p>可以。登录后可持续使用免费方案，包含五个核心标签、每天最多三次图片分析，以及最近七个自然日的营养历史。可选 Premium 会员提供每天最多二十次分析、完整营养历史和跨设备同步，订阅价格与试用资格以应用内显示为准。</p></details>
         <details><summary>这些内容是医疗建议吗？<span aria-hidden="true">＋</span></summary><p>不是。食物识别、份量估算、营养记录和节气食养内容仅用于教育与日常健康参考，不构成医疗建议、诊断或治疗。涉及疾病、过敏、孕期、用药或特殊饮食限制时，请咨询合格的专业医务人员。</p></details>
       </div></section>
@@ -232,5 +279,7 @@
   </main>
 
   <footer><div class="footer-brand"><img src="../assets/app-icon.png" alt="" width="38" height="38"><span><strong>食养日历</strong><small>NourishDay</small></span></div><nav aria-label="页脚导航"><a href="#experience">使用体验</a><a href="#nutrition-rhythm">14 天趋势</a><a href="#plans">版本方案</a><a href="https://apps.apple.com/app/id6798932418">App Store</a><a href="https://itongue.cn/">支持</a><a href="../" lang="en" hreflang="en">English</a></nav><small>© 2026 NourishDay · Jianna Consulting, LLC. 健康内容仅供教育和日常参考，不构成医疗建议。</small></footer>
+  <aside class="download-dock" aria-label="快速下载" hidden><span><strong>食养日历</strong><small>免费下载，即刻开始</small></span><a class="button primary" href="https://apps.apple.com/app/id6798932418">下载 App <span aria-hidden="true">↗</span></a></aside>
+  <dialog class="screenshot-dialog" aria-labelledby="screenshot-title"><div class="screenshot-toolbar"><h2 id="screenshot-title"></h2><form method="dialog"><button aria-label="关闭截图">×</button></form></div><img alt="" width="960" height="1280"></dialog>
 </body>
 </html>
