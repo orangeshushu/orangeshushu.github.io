@@ -23,7 +23,7 @@ for (const page of ['nourishday/index.html', 'nourishday/zh/index.html']) {
   for (const [, json] of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) JSON.parse(json);
   assert.equal((html.match(/class="showcase-panel"/g) || []).length, 6);
   assert.equal((html.match(/data-day="/g) || []).length, 14);
-  assert.equal((html.match(/<picture>/g) || []).length, 6);
+  assert.equal((html.match(/<picture>/g) || []).length, 0, 'No device-dependent iPad sources');
   assert.ok(html.includes('https://apps.apple.com/app/id6798932418'));
   const heroCopy = html.split('<div class="hero-copy reveal">')[1].split('<div class="hero-stage')[0];
   assert.ok(!/class="(?:status-pill|eyebrow|hero-points)/.test(heroCopy), `${page}: concise hero`);
@@ -31,9 +31,11 @@ for (const page of ['nourishday/index.html', 'nourishday/zh/index.html']) {
   assert.ok(!/class="large-rings"[^>]*>[^\n]*<b>1,720/.test(html), `${page}: calories outside the rings`);
   const lang = page.includes('/zh/') ? 'zh' : 'en';
   const screenshots = [...html.matchAll(/(?:src|srcset)="([^"]*product-202609\/[^"]+)"/g)];
-  assert.equal(screenshots.length, 12);
+  assert.equal(screenshots.length, 6);
   assert.ok(screenshots.every(([, src]) => src.includes(`/product-202609/${lang}-`)));
-  console.log(`PASS ${page}: resources, IDs, ARIA, metadata, 6 bilingual responsive features and 14 calendar dates`);
+  assert.ok(screenshots.every(([, src]) => src.endsWith('-phone.webp')), 'Every showcase image must be iPhone');
+  assert.equal((html.match(/width="660" height="1434"/g) || []).length, 7, 'Six iPhone previews and matching zoom dimensions');
+  console.log(`PASS ${page}: resources, IDs, ARIA, metadata, 6 localized iPhone features and 14 calendar dates`);
 }
 const assetDir = path.join(root, 'nourishday/assets/product-202609');
 const assets = fs.readdirSync(assetDir);

@@ -715,13 +715,13 @@ button, a { touch-action: manipulation; }
 .showcase-copy li::before { content: "✓"; position: absolute; left: 0; color: var(--ink); }
 .showcase-copy .preview-footnote { font-size: 12px; }
 .showcase-visual { min-width: 0; display: flex; justify-content: center; }
-.screen-expand { width: min(100%, 430px); display: block; padding: 0; border: 0; background: transparent; color: var(--soft); cursor: zoom-in; }
-.screen-expand img { width: 100%; height: auto; aspect-ratio: 3/4; border: 6px solid var(--ink); border-radius: 26px; box-shadow: 0 24px 48px rgba(18,61,48,.18); }
+.screen-expand { width: min(100%, 330px); display: block; padding: 0; border: 0; background: transparent; color: var(--soft); cursor: zoom-in; }
+.screen-expand img { width: 100%; height: auto; aspect-ratio: auto 110/239; border: 6px solid var(--ink); border-radius: 26px; box-shadow: 0 24px 48px rgba(18,61,48,.18); }
 .screen-expand > span { display: block; font-size: 13px; line-height: 1.5; padding: 16px 0 0; }
 .showcase-controls { padding: 0 24px 20px; display: flex; align-items: center; justify-content: space-between; color: var(--soft); font-size: 13px; }
 .showcase-controls > div { display: flex; gap: 8px; }
 .showcase-controls button { width: 48px; height: 48px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: var(--paper); color: var(--ink); font-size: 24px; cursor: pointer; }
-.screenshot-dialog { width: min(980px,calc(100% - 24px)); max-height: calc(100dvh - 24px); padding: 0 16px 16px; border: 1px solid var(--line); border-radius: 22px; color: var(--ink); background: var(--paper); overscroll-behavior: contain; }
+.screenshot-dialog { width: min(540px,calc(100% - 24px)); max-height: calc(100dvh - 24px); padding: 0 16px 16px; border: 1px solid var(--line); border-radius: 22px; color: var(--ink); background: var(--paper); overscroll-behavior: contain; }
 .screenshot-dialog::backdrop { background: rgba(8,31,24,.78); }
 .screenshot-toolbar { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; background: var(--paper); }
 .screenshot-toolbar h2 { margin: 0; font-size: 20px; line-height: 1.4; letter-spacing: 0; }
@@ -789,8 +789,8 @@ button, a { touch-action: manipulation; }
   .showcase-copy > p { font-size: 16px; margin-bottom: 16px; }
   .showcase-copy ul { margin: 16px 0; }
   .showcase-copy li { font-size: 15px; }
-  .screen-expand { width: 100%; }
-  .screen-expand img { border-width: 4px; border-radius: 20px; aspect-ratio: 110/239; }
+  .screen-expand { width: min(100%, 330px); }
+  .screen-expand img { border-width: 4px; border-radius: 20px; }
   .screenshot-toolbar h2, html[lang="zh-CN"] .screenshot-toolbar h2 { font-size: 20px; }
   .download-dock:not([hidden]) { position: fixed; z-index: 35; inset: auto max(10px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left)); padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid rgba(18,61,48,.13); border-radius: 20px; background: rgba(255,253,248,.97); box-shadow: 0 8px 36px rgba(18,61,48,.18); animation: product-in .25s var(--ease-product); }
   .download-dock strong, .download-dock small { display: block; }
