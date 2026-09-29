@@ -13,12 +13,12 @@ slides/
     README.md
 ```
 
-Each presentation lives entirely inside its own folder. Other presentations can use their own assets subdirectory. The directory page requires no JavaScript; a small optional script preserves old `#en/1` and `#zh/1` links to this first deck.
+Each presentation lives entirely inside its own folder. Other presentations can use their own assets subdirectory. The directory renders English by default, including without JavaScript. A top-right English / 中文 control switches all directory copy and presentation links together; only one language is visible at a time. `#en` and `#zh` preserve the selected directory language on refresh and browser back/forward. No browser-language auto-detection or saved preference overrides the English default. The existing `#en/1` and `#zh/1` legacy links still redirect to the first deck. Language switching requires JavaScript.
 
 ## Add a presentation
 
 1. Create `slides/<short-name>/index.html` and place its assets in that folder.
-2. Optionally add `presentation.json` with `title`, `description`, `description_zh`, `detail` and `languages` (for this deck's language/hash convention). Omit languages for an ordinary HTML presentation.
+2. Optionally add `presentation.json` with `title`, `title_zh`, `description`, `description_zh`, `detail`, `detail_zh` and `languages` (for this deck's language/hash convention). Keep each English field English-only and place translated text in its `_zh` counterpart. Missing translations fall back to the English field. Omit languages for an ordinary HTML presentation.
 3. Run `python3 slides/build-index.py` from the website repository root, commit the intended files and push. GitHub Pages publishes the result.
 
 ## Remove a presentation
