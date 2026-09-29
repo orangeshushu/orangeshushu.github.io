@@ -1,13 +1,32 @@
-# NourishDay & iTongue roadshow
+# Presentation folders
 
-Published at https://jiacheng.website/roadshow/ (English by default); Chinese: https://jiacheng.website/roadshow/#zh/1.
+Public directory: https://jiacheng.website/roadshow/
 
-Jiacheng Xie. First five slides of a planned 20-minute product demonstration and potential partnership discussion for investors. This batch is planned for 6:30; it is not the completed talk.
+```text
+roadshow/
+  index.html                 # Generated directory page
+  build-index.py             # Rebuild after adding/removing folders
+  README.md
+  nourishday-itongue/
+    index.html               # This presentation, including embedded images
+    presentation.json        # Directory title, description and languages
+    README.md
+```
 
-One self-contained HTML with embedded demonstration images. No analytics, CDN, login, API requests or private patient data. Keyboard: arrows / Space navigate, L changes language, N opens bilingual rehearsal notes, F starts presentation view, T starts or pauses the timer. Notes are visible on the presentation screen; close before projecting.
+Each presentation lives entirely inside its own folder. Other presentations can use their own assets subdirectory. The directory page requires no JavaScript; a small optional script preserves old `#en/1` and `#zh/1` links to this first deck.
 
-Pages: cover / agenda / background / NourishDay / iTongue. Page 4 supports portion arithmetic; page 5 toggles synthetic capture and local segmentation examples. The latter is explicitly labeled an undeployed prototype.
+## Add a presentation
 
-Responsive CSS, viewport-unit fallbacks, reduced-motion handling, standard and WebKit fullscreen feature detection, and a dialog fallback support modern Chrome, Edge, Firefox and Safari. Browser coverage is recorded in the source-project handoff; compatibility support is not a claim of testing every version. Older Internet Explorer is outside the target.
+1. Create `roadshow/<short-name>/index.html` and place its assets in that folder.
+2. Optionally add `presentation.json` with `title`, `description`, `description_zh`, `detail` and `languages` (for this deck's language/hash convention). Omit languages for an ordinary HTML presentation.
+3. Run `python3 roadshow/build-index.py` from the website repository root, commit the intended files and push. GitHub Pages publishes the result.
 
-Editable build sources and evidence: TCM_Calendar/output/presentations/dual-projects-batch-01/.build (local working package). Static HTML is the only published runtime file. Roll back by reverting the scoped website publication commit. No homepage links or other product pages modified.
+## Remove a presentation
+
+Delete only its folder, then run `python3 roadshow/build-index.py`. Commit the folder removal and rebuilt directory page, then push. This removes both the presentation and its directory entry; other presentation folders are untouched. Git retains the history for recovery. Deleting a folder through GitHub's web UI alone does not regenerate this static index: rebuild and commit the index too.
+
+## Rename or update
+
+Edit or rename only the relevant folder, update its metadata if necessary, rebuild the index, and publish. Old external links to a renamed/deleted presentation will no longer work unless a redirect is intentionally retained. The legacy hash redirect is emitted only while the designated presentation folder exists.
+
+No public delete/upload controls or account permissions are added. Management takes place in this Git repository.
