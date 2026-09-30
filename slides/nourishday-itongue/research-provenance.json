@@ -1,0 +1,40 @@
+{
+  "scope": "One bilingual research supplement; no new segmentation-paper material. Thermal exploration is optional and brief.",
+  "sources": [
+    {
+      "title": "Digital tongue image analyses for health assessment",
+      "authors": "Jiacheng Xie et al.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37724302/",
+      "doi": "10.1515/mr-2021-0018",
+      "publication": "Medical Review 1(2), 172–198; 2021 issue; online 2022-02-14"
+    },
+    {
+      "title": "Grad-CAM: Visual Explanations From Deep Networks via Gradient-Based Localization",
+      "url": "https://openaccess.thecvf.com/content_iccv_2017/html/Selvaraju_Grad-CAM_Visual_Explanations_ICCV_2017_paper.html",
+      "role": "Method definition; not team paper"
+    },
+    {
+      "title": "Tongue image fusion and analysis of thermal and visible images in diabetes mellitus using machine learning techniques",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11196274/",
+      "doi": "10.1038/s41598-024-64150-0",
+      "role": "External clinical research context, not team publication; not an iTongue diagnostic claim"
+    }
+  ],
+  "assets": [
+    {
+      "path": "assets/research/constitution-attention.png",
+      "origin": "User-supplied clipboard-7fb84d2e figure; shown unchanged; not asserted to be a figure of the review",
+      "sha256": "99940fefc0d3eb9303ff587442115354a44c3b7b3cfaf390db629d1516e02191"
+    },
+    {
+      "path": "assets/research/thermal-gradcam.png",
+      "origin": "User-supplied clipboard-7f32214d figure; matches Comprehensive Exam slide70; attention maps, not measured temperature",
+      "sha256": "056bb294b9a82147f68ce8c7e317600cc690b259142bf7d25478efa02395c4f3"
+    },
+    {
+      "path": "assets/research/image72.png",
+      "origin": "Lossless extraction of original media from Comprehensive Exam.pptx slide56; FLIR device image",
+      "sha256": "68a96cb0f0f77694f47dcecc36cd50af792d730824bfb10bb15f1c1d5d656750"
+    }
+  ]
+}
