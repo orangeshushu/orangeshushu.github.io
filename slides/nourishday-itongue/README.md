@@ -193,3 +193,6 @@ Validation: 793 source assertions pass; browser audit checks complete image dime
 
 ## Research supplement — 2026-09-30
 Page18 adds a bilingual, approximately60-second research foundation section citing Jiacheng Xie et al., Medical Review (doi10.1515/mr-2021-0018). Presenter-supplied figures support an enlarged view and a brief optional thermal-research view; Grad-CAM relevance is distinguished from measured temperature. No new segmentation-paper material or diagnostic performance claim. Original first17 routes preserved. Provenance: `research-provenance.json`.
+
+## Lab team closing slide — 2026-09-30
+Page19 introduces Digital Biology Lab using the official2026 group photo, four faculty portraits/titles, and a selectable list of14 Ph.D. students. Jiacheng Xie is identified as presenter. Affiliation follows the live official homepage: Health Informatics Institute, University of South Florida. Links open the lab homepage, full roster/alumni, and original group photo. Names, roles and assets verified2026-09-30; source/hash record: `team-provenance.json` (local `.build/`). This describes the lab community, not a claim of product participation or endorsement by every member. Existing1–18 routes retained. Planned closing30seconds, total1200seconds.

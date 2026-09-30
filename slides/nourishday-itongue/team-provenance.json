@@ -1,0 +1,38 @@
+{
+  "checked": "2026-09-30",
+  "teamSource": "https://digbio.github.io/our-team/index.html",
+  "affiliationSource": "https://digbio.github.io/index.html",
+  "note": "Current live HTML checked rather than stale search extract; hidden commented-out members excluded. Original official photos copied unchanged. Lab membership does not establish product-team participation.",
+  "assets": [
+    {
+      "file": "assets/team/group-2026.jpg",
+      "source": "https://digbio.github.io/assets/uploads/2026/09/DBL-2026-Group-Photo-scaled.jpg",
+      "sha256": "d090669ae5958e9891372b85e883b04e9698fe8b1e5842b3bfae97784cc59234"
+    },
+    {
+      "file": "assets/team/dong-xu.jpg",
+      "source": "https://digbio.github.io/assets/uploads/2022/08/Dong-Xu-1024x1024.jpg",
+      "sha256": "5f0d29c20ae841e9620f4977aa9c0c30cf4fbf1a4c5e6ef025b1bfc17a2e9b79"
+    },
+    {
+      "file": "assets/team/duolin-wang.jpg",
+      "source": "https://digbio.github.io/assets/uploads/2022/08/Duolin-Wang-edited.jpg",
+      "sha256": "2234169eb7c83ca7966b898e6094721127b198761c04fda55de5c7071a630455"
+    },
+    {
+      "file": "assets/team/fei-he.jpg",
+      "source": "https://digbio.github.io/assets/uploads/2023/01/hefei-1022x1024.jpg",
+      "sha256": "d01c4a6e08cba012cc3d387544f0f044c94ec3f5ea0248a95e74b79a089f9793"
+    },
+    {
+      "file": "assets/team/shuai-zeng.jpg",
+      "source": "https://digbio.github.io/assets/uploads/2022/08/Shuai-Zeng-edited.jpg",
+      "sha256": "d19c703dfd1e88ad705b601f888e498cde5e69b9ad2816d65730f2bd8a835e70"
+    },
+    {
+      "file": "assets/team/jiacheng-xie.jpg",
+      "source": "https://digbio.github.io/assets/uploads/2022/08/Jiacheng-Xie-edited.jpg",
+      "sha256": "5db427c9f9846bd555498024661399848a02bb39c7b619e15c903a7cc9e9d0ca"
+    }
+  ]
+}
