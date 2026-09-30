@@ -1,0 +1,33 @@
+{
+  "source": "User-provided annotated tongue photograph, attachment codex-clipboard-0e409775-65a1-4e03-9f56-bdd111a1ddc1.png",
+  "sha256": "273a7783a650daccd9600cf5f09ee237b89c2403c67671d7333e63af8b0e0441",
+  "dimensions": [
+    1704,
+    1154
+  ],
+  "literature_context": "https://doi.org/10.1515/mr-2021-0018",
+  "literature_figure": "Figure 1: Organ correspondence of tongue regions",
+  "asset": "tongue_region_map",
+  "processing": "Original PNG embedded byte-for-byte. SVG presentation overlays add interactive region paths and localized label badges; original raster unchanged. No generated replacement photo.",
+  "mapping": {
+    "root": [
+      "Kidneys",
+      "肾"
+    ],
+    "center": [
+      "Spleen and stomach",
+      "脾、胃"
+    ],
+    "both sides": [
+      "Liver and gallbladder",
+      "肝、胆"
+    ],
+    "tip": [
+      "Heart and lungs",
+      "心、肺"
+    ]
+  },
+  "organ_visual": "Original code-native schematic body/organ icons, not anatomical imaging or a model result. Both lateral regions select the same organ group.",
+  "interpretation": "Traditional TCM region correspondence for teaching; not a validated test of organ health or disease.",
+  "caption_policy": "No figure caption below the image; source link in header and provenance off-slide."
+}
