@@ -370,36 +370,43 @@ button:active,a:active{transform:scale(.97)}
 .native-magnifier{position:relative;min-height:0;flex:1;border:1px solid #c9d9ce;background:#f5f2e9;border-radius:15px;overflow:hidden;display:grid;place-items:center;padding:10px}.native-magnifier svg{display:block;width:100%;height:100%;min-height:0}.native-magnifier>span{position:absolute;right:9px;top:7px;border-radius:50%;background:white;color:var(--green);width:24px;height:24px;text-align:center;font-size:17px}.native-explanation>p{font-size:16px;line-height:1.3;color:var(--ink);margin-bottom:9px}.native-explanation>div{display:flex;gap:12px;align-items:center;background:#edf4ed;padding:10px 12px;border-radius:9px}.native-explanation b{font-size:9px;letter-spacing:.08em;color:var(--green);flex:none}.native-explanation span{font-size:12px;line-height:1.4;color:var(--ink-soft)}.native-detail-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}.native-detail-footer>small{font-size:10px;line-height:1.4;color:var(--ink-soft);max-width:70%}.native-detail-footer button{border:0;background:var(--green);color:white;border-radius:9px;padding:10px 13px;min-height:40px;white-space:nowrap;font-size:12px}
 @media(max-width:900px){.itongue-walkthrough{height:auto;grid-template-rows:auto auto}.native-steps{grid-template-columns:repeat(3,minmax(0,1fr))}.native-body{grid-template-columns:1fr;gap:14px}.native-overview{height:490px;padding:16px}.native-screen{height:430px}.native-detail{min-height:440px;padding:16px}.native-magnifier{height:190px;min-height:190px}.native-focus-tabs button{min-height:44px}.native-pin{width:36px;height:36px}.native-detail h2{font-size:25px}.native-explanation>div{display:block}.native-explanation b{display:block;margin-bottom:4px}}
 @media(prefers-reduced-motion:reduce){.native-highlight,.native-steps button{transition:none}}
+
+/* Left-edge directory and a quiet presentation dock. No top navigation. */
+body{display:flex;flex-direction:column;justify-content:center;padding:12px 16px 68px;min-height:100vh;min-height:100dvh;height:100vh;height:100dvh}
+.stage-frame{margin:auto}.topbar{display:none!important}
+.slide-controls,.presenting .slide-controls{position:fixed;bottom:10px;left:50%;right:auto;transform:translateX(-50%);z-index:40;width:auto;height:44px;max-width:calc(100vw - 24px);display:flex;gap:5px;align-items:center;padding:3px;border:1px solid #7f9a8745;border-radius:14px;background:#173126f2;backdrop-filter:blur(16px);box-shadow:0 5px 22px #0002}
+.slide-controls>button{min-height:36px;min-width:50px;border:0;border-radius:10px;background:transparent;color:#e5f0e8;padding:7px 14px;font-size:13px}.slide-controls>button:hover{background:#ffffff15}.slide-controls #page{min-width:94px;font-size:13px;font-variant-numeric:tabular-nums;letter-spacing:.07em}.slide-controls #page::after{display:none}.slide-controls #prevLabel,.slide-controls #nextLabel{display:none}.slide-controls #prev,.slide-controls #next{font-size:21px;padding:3px 15px}.slide-controls button:disabled{opacity:.25}
+.nav-edge{position:fixed;inset:0 auto 0 0;width:12px;z-index:80}
+.nav-toggle{position:fixed;z-index:65;left:0;top:50%;transform:translateY(-50%);width:44px;min-height:76px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;border:1px solid #7b9b8760;border-left:0;border-radius:0 13px 13px 0;background:#173126ed;color:#d9e9de;box-shadow:0 4px 18px #0002;transition:background .2s}.nav-toggle svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7}.nav-toggle>span{font-size:10px;letter-spacing:.03em}.nav-toggle:hover{background:#2c6047}.nav-toggle:active{transform:translateY(-50%)}.directory-open .nav-toggle{visibility:hidden}
+.nav-scrim{position:fixed;inset:0;z-index:60;background:#06180e35;border:0;width:100%;height:100%;cursor:default;backdrop-filter:blur(1px)}
+.deck-drawer{position:fixed;left:10px;top:10px;bottom:10px;z-index:70;width:min(330px,calc(100vw - 20px));display:flex;flex-direction:column;background:#142c22fa;color:#eaf4ee;border:1px solid #78978355;border-radius:19px;box-shadow:14px 0 60px #0005;backdrop-filter:blur(24px);padding:20px 14px 14px;animation:drawerReveal .22s cubic-bezier(.2,.8,.2,1) both}
+.deck-drawer[hidden],.nav-scrim[hidden]{display:none!important}.drawer-header{display:flex;align-items:start;justify-content:space-between;padding:0 7px 15px;gap:8px}.drawer-header h2{font-size:23px;font-weight:650;letter-spacing:-.03em}.drawer-header p{font-size:12px;color:#a8c4b3;margin-top:7px}.drawer-close{width:36px;height:36px;flex:none;border:1px solid #8aa89750;border-radius:10px;background:transparent;color:#def1e4;font-size:23px;line-height:1}.slide-directory{overflow:auto;overscroll-behavior:contain;flex:1;min-height:0;scrollbar-width:thin;scrollbar-color:#749b83 transparent;padding:0 4px}.drawer-section{font-size:10px;color:#a3c9b3;letter-spacing:.16em;font-weight:750;margin:18px 8px 8px}.drawer-section:first-child{margin-top:2px}.slide-directory button{display:grid;grid-template-columns:28px minmax(0,1fr) 10px;gap:10px;align-items:center;text-align:left;width:100%;min-height:44px;border:1px solid transparent;border-radius:10px;background:transparent;color:#dcebe1;padding:9px;font-size:14px;line-height:1.25;margin:2px 0;transition:background .15s}.slide-directory button:hover{background:#ffffff0e}.slide-directory button[aria-current=page]{background:#d5eadb;color:#183c28;border-color:#e1f7e8}.drawer-number{font-size:12px;font-variant-numeric:tabular-nums;color:#88b39a}.slide-directory [aria-current=page] .drawer-number{color:#365d43}.slide-directory i{font-size:7px;font-style:normal}.drawer-tools{border-top:1px solid #72928040;margin-top:12px;padding:14px 5px 0;display:grid;grid-template-columns:1fr 1fr;gap:8px}.drawer-tools button{min-height:42px;border:1px solid #87a69260;border-radius:9px;background:#ffffff07;color:#e3f2e9;font-size:13px}.drawer-tools button:hover{background:#ffffff15}.drawer-hint{font-size:10px;line-height:1.5;color:#8caf9b;text-align:center;margin:12px 0 0}
+.presenting{padding:8px 8px 52px}.presenting .slide-controls{bottom:6px;height:38px}.presenting .slide-controls>button{min-height:30px}
+@keyframes drawerReveal{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+@media(max-width:900px){body,.presenting{height:auto;min-height:100dvh;display:block;padding:10px 0 74px;overflow-y:auto;overflow-x:hidden}.stage-frame{margin:0}.stage,.presenting .stage{min-height:calc(100dvh - 84px)}.nav-toggle{top:auto;bottom:12px;left:10px;transform:none;border:1px solid #7b9b8760;border-radius:12px;min-height:44px;width:44px}.nav-toggle:active{transform:scale(.97)}.nav-toggle>span{display:none}.slide-controls,.presenting .slide-controls{bottom:12px;height:44px;left:auto;right:10px;transform:none}.slide-controls>button,.presenting .slide-controls>button{min-height:36px}.nav-edge{display:none}.deck-drawer{padding-top:18px}.drawer-close{width:44px;height:44px}.drawer-tools button{min-height:44px}}
+@media(prefers-reduced-motion:reduce){.deck-drawer{animation:none}.slide-directory button,.nav-toggle{transition:none}}
+@media print{body{display:block;height:auto;padding:0}.nav-toggle,.nav-edge,.deck-drawer,.nav-scrim,.slide-controls{display:none!important}}
+
+.deck-drawer,.nav-toggle,.slide-controls{user-select:none;-webkit-user-select:none}
 </style>
 </head>
 <body>
   <a class="skip-link" href="#stage">Skip to presentation</a>
-  <header class="topbar">
-    <nav class="section-nav" aria-label="Presentation sections">
-      <button data-page="0" id="homeNav">Home</button>
-      <button data-page="1" id="nourishBackgroundNav">NourishDay · Background</button>
-      <button data-page="2" id="foodFoundationsNav">Food · Yin &amp; Yang</button>
-      <button data-page="3" id="foodPropertiesNav">Food · Properties</button>
-      <button data-page="4" id="seasonalFoodNav">Food · Seasons</button>
-      <button data-page="5" id="kitchenNav">Food · Dishes</button>
-      <button data-page="6" id="nourishDemoNav">NourishDay · Demo</button>
-      <button data-page="12" id="tongueBackgroundNav">iTongue · Background</button>
-      <button data-page="13" id="tongueBenefitsNav">iTongue · Value</button>
-      <button data-page="14" id="tongueDemoNav">App · Walkthrough</button>
-      <button data-page="15" id="tongueClassNav">Tongue · Classification</button>
-      <button data-page="16" id="tongueTechNav">iTongue · Technology</button>
-    </nav>
-    <div class="display-tools">
-      <button id="lang">中文</button>
-      <button id="full">Fullscreen</button>
-    </div>
-  </header>
+  <div id="navEdge" class="nav-edge" aria-hidden="true"></div>
+  <button id="navToggle" class="nav-toggle" aria-controls="deckDrawer" aria-expanded="false" aria-label="Open slide directory"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span id="navToggleLabel">Slides</span></button>
+  <button id="navScrim" class="nav-scrim" hidden tabindex="-1" aria-label="Close directory"></button>
+  <aside id="deckDrawer" class="deck-drawer" hidden aria-labelledby="navTitle">
+    <header class="drawer-header"><div><h2 id="navTitle">Presentation</h2><p id="navCount"></p></div><button id="navClose" class="drawer-close" aria-label="Close slide directory">×</button></header>
+    <nav id="slideList" class="slide-directory" aria-label="All presentation slides"></nav>
+    <div class="drawer-tools"><button id="lang">中文</button><button id="full">Fullscreen</button></div>
+    <p id="navHint" class="drawer-hint"></p>
+  </aside>
   <div id="stageFrame" class="stage-frame">
     <main id="stage" class="stage" tabindex="-1" aria-label="Presentation slide"></main>
   </div>
   <footer class="slide-controls" aria-label="Slide controls">
     <button id="prev" aria-label="Previous slide"><span aria-hidden="true">←</span><span id="prevLabel">Back</span></button>
-    <span id="page" aria-live="polite">01 / 17</span>
+    <button id="page" aria-live="polite" aria-controls="deckDrawer" aria-expanded="false">01 / 17</button>
     <button id="next" aria-label="Next slide"><span id="nextLabel">Next</span><span aria-hidden="true">→</span></button>
   </footer>
   <div id="toast" class="toast" role="status" hidden></div>
@@ -669,6 +676,58 @@ document.addEventListener('click',e=>{
 });
 
 const pages=[cover,nourishBackground,foodFoundations,foodProperties,seasonalFood,kitchen,nourishDemo,nourishReview,nourishPatterns,nourishToday,nourishLibrary,nourishPersonal,tongueBackground,tongueBenefits,tongueDemo,tongueClassification,tongueTechnology];
+// Presentation chrome is independent of slide content and its interactions.
+let deckNavOpen=false,deckNavPinned=false,deckNavCloseTimer=null;
+function deckSections(){return [
+ [cover,'Opening','开场'],[nourishBackground,'Why NourishDay','NourishDay · 初衷'],
+ [foodFoundations,'Food · Yin & yang','食物 · 阴阳'],[foodProperties,'Food · Properties','食物 · 属性'],
+ [seasonalFood,'Food · Seasons','食物 · 四季'],[kitchen,'From ingredients to dishes','从食材到菜肴'],
+ [nourishDemo,'Capture & upload','拍摄与上传'],[nourishReview,'Review & save','核对与保存'],
+ [nourishPatterns,'Calendar & trends','日历与趋势'],[nourishToday,'Today & seasonal ideas','今日与节气推荐'],
+ [nourishLibrary,'Foods, recipes & teas','食材、菜谱与茶饮'],[nourishPersonal,'Targets & preferences','目标与个人偏好'],
+ [tongueBackground,'iTongue · Background','iTongue · 背景'],[tongueBenefits,'Tongue regions','舌象分区'],
+ [tongueDemo,'iTongue · App walkthrough','iTongue · App 导览'],[tongueClassification,'Constitution patterns','体质分类'],
+ [tongueTechnology,'Research & technology','研究与技术']
+ ];}
+function renderDeckNavigation(){
+ const entries=deckSections();
+ $('navTitle').textContent=text('Presentation','演示目录');
+ $('navCount').textContent=text(`${pages.length} slides · select to jump`,`${pages.length} 页 · 点击跳转`);
+ $('navToggle').setAttribute('aria-label',text('Open slide directory','打开幻灯片目录'));
+ $('navToggleLabel').textContent=text('Slides','目录');
+ $('navScrim').setAttribute('aria-label',text('Close directory','关闭目录'));
+ $('prev').setAttribute('aria-label',text('Previous slide','上一页'));$('next').setAttribute('aria-label',text('Next slide','下一页'));
+ $('navClose').setAttribute('aria-label',text('Close slide directory','关闭幻灯片目录'));
+ $('slideList').setAttribute('aria-label',text('All presentation slides','所有演示页面'));
+ $('navHint').textContent=text('← →  Change slide     M  Directory     F  Fullscreen','← → 翻页　M 目录　F 全屏');
+ $('page').setAttribute('aria-label',text(`Slide ${page+1} of ${pages.length}. Open directory`, `第 ${page+1} 页，共 ${pages.length} 页。打开目录`));
+ $('slideList').innerHTML=entries.map(([fn,en,zh])=>{
+  const n=pages.indexOf(fn);if(n<0)return '';
+  const section=fn===cover?text('OPENING','开场'):fn===nourishBackground?'NOURISHDAY':fn===tongueBackground?'ITONGUE':null;
+  return `${section?`<p class="drawer-section">${section}</p>`:''}<button data-page="${n}" aria-current="${n===page?'page':'false'}"><span class="drawer-number">${String(n+1).padStart(2,'0')}</span><span>${text(en,zh)}</span>${n===page?'<i aria-hidden="true">●</i>':''}</button>`;
+ }).join('');
+}
+function setDeckNavigation(open,pinned=false,focus=false){
+ clearTimeout(deckNavCloseTimer);deckNavOpen=open;deckNavPinned=open&&pinned;
+ $('deckDrawer').hidden=!open;$('navScrim').hidden=!open;
+ $('navToggle').setAttribute('aria-expanded',String(open));$('page').setAttribute('aria-expanded',String(open));
+ document.body.classList.toggle('directory-open',open);
+ if(open){const current=$('slideList').querySelector('[aria-current="page"]');current?.scrollIntoView({block:'nearest'});if(focus)current?.focus({preventScroll:true})}
+ else if(focus)$('navToggle').focus({preventScroll:true});
+}
+function queueDeckNavClose(){if(!deckNavPinned&&!$('deckDrawer').contains(document.activeElement))deckNavCloseTimer=setTimeout(()=>setDeckNavigation(false),220)}
+function setupDeckNavigation(){
+ $('navToggle').onclick=()=>setDeckNavigation(!deckNavOpen,true,true);
+ $('page').onclick=()=>setDeckNavigation(!deckNavOpen,true,true);
+ $('navClose').onclick=()=>setDeckNavigation(false,false,true);
+ $('navScrim').onclick=()=>setDeckNavigation(false,false,true);
+ $('navEdge').addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&!tourZoom&&!figureOpen)setDeckNavigation(true)});
+ $('navEdge').addEventListener('pointerleave',queueDeckNavClose);
+ $('deckDrawer').addEventListener('pointerenter',()=>clearTimeout(deckNavCloseTimer));
+ $('deckDrawer').addEventListener('pointerleave',queueDeckNavClose);
+ $('deckDrawer').addEventListener('focusout',()=>{setTimeout(()=>{if(deckNavOpen&&!$('deckDrawer').contains(document.activeElement)&&document.activeElement!==$('navToggle'))setDeckNavigation(false)},0)});
+}
+
 const DESKTOP_CANVAS={width:1152,height:648,breakpoint:900};
 const motionReduced=()=>typeof window.matchMedia==='function'&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function stopFlow(){if(kitchenTimer){clearInterval(kitchenTimer);kitchenTimer=null}if(flowTimer){clearInterval(flowTimer);flowTimer=null}if(tongueTimer){clearInterval(tongueTimer);tongueTimer=null}if(demoTransitionTimer){clearTimeout(demoTransitionTimer);demoTransitionTimer=null}}
@@ -682,8 +741,8 @@ function fitStage(){
   return;
  }
  const presenting=document.body.classList.contains('presenting');
- const availableWidth=Math.max(1,width-(presenting?0:40));
- const availableHeight=Math.max(1,height-(presenting?104:112));
+ const availableWidth=Math.max(1,width-(presenting?16:32));
+ const availableHeight=Math.max(1,height-(presenting?60:80));
  const scale=Math.max(.1,Math.min(availableWidth/DESKTOP_CANVAS.width,availableHeight/DESKTOP_CANVAS.height));
  frame.style.setProperty('--stage-scale',scale.toFixed(5));
  frame.style.width=`${(DESKTOP_CANVAS.width*scale).toFixed(2)}px`;
@@ -727,18 +786,7 @@ function render(){
  $('stage').innerHTML=pages[page]();
  $('lang').textContent=lang==='en'?'中文':'English';
  $('full').textContent=document.body.classList.contains('presenting')?text('Exit','退出全屏'):text('Fullscreen','全屏');
- $('homeNav').textContent=text('Home','首页');
- $('nourishBackgroundNav').textContent=text('NourishDay · Background','NourishDay · 背景');
- $('kitchenNav').textContent=text('Food · Dishes','食物 · 菜肴');
- $('seasonalFoodNav').textContent=text('Food · Seasons','食物 · 四季');
- $('foodFoundationsNav').textContent=text('Food · Yin & Yang','食物 · 阴阳');
- $('foodPropertiesNav').textContent=text('Food · Properties','食物 · 属性');
- $('nourishDemoNav').textContent=text('NourishDay · Demo','NourishDay · 演示');
- $('tongueBackgroundNav').textContent=text('iTongue · Four methods','iTongue · 四诊');
- $('tongueBenefitsNav').textContent=text('Tongue · Information','舌象 · 信息');
- $('tongueDemoNav').textContent=text('iTongue · Demo','iTongue · 演示');
- $('tongueClassNav').textContent=text('Tongue · Classification','舌象 · 分类');
- $('tongueTechNav').textContent=text('iTongue · Technology','iTongue · 技术');
+ renderDeckNavigation();
  $('prevLabel').textContent=text('Back','上一页');$('nextLabel').textContent=text('Next','下一页');
  $('page').textContent=`${String(page+1).padStart(2,'0')} / ${String(pages.length).padStart(2,'0')}`;
  document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',Number(b.dataset.page)===page));
@@ -749,7 +797,7 @@ function render(){
  if(typeof requestAnimationFrame==='function')requestAnimationFrame(applyMotion);else applyMotion();
 }
 function rerender(){motionMode='state';render()}
-function go(n){stopFlow();figureOpen=false;tourZoom=false;tourFeature=0;const next=Math.max(0,Math.min(pages.length-1,n));motionMode=next>page?'forward':next<page?'backward':'state';page=next;render();$('stage').focus({preventScroll:true});window.scrollTo({top:0,behavior:motionReduced()?'auto':'smooth'})}
+function go(n){setDeckNavigation(false);stopFlow();figureOpen=false;tourZoom=false;tourFeature=0;const next=Math.max(0,Math.min(pages.length-1,n));motionMode=next>page?'forward':next<page?'backward':'state';page=next;render();$('stage').focus({preventScroll:true});window.scrollTo({top:0,behavior:motionReduced()?'auto':'smooth'})}
 function notice(s){$('toast').textContent=s;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,3200)}
 function scheduleDemoResult(kind){
  if(motionReduced())return;
@@ -761,7 +809,7 @@ function selectTongueStep(next){stopFlow();tongueStep=Math.max(0,Math.min(tongue
 function advanceNourish(){const next=(nourishStep+1)%nourishSteps.length;selectNourishStep(next,true)}
 function advanceTongue(){const next=(tongueStep+1)%tongueSteps.length;selectTongueStep(next,true)}
 function toggleFlow(){if(flowTimer){stopFlow();rerender();return}flowTimer=setInterval(()=>{nourishStep=(nourishStep+1)%nourishSteps.length;rerender()},1900);rerender()}
-async function fullscreen(){const root=document.documentElement;if(document.body.classList.contains('presenting')){document.body.classList.remove('presenting');const leave=document.exitFullscreen||document.webkitExitFullscreen;if((document.fullscreenElement||document.webkitFullscreenElement)&&leave){try{await leave.call(document)}catch(e){}}}else{document.body.classList.add('presenting');const enter=root.requestFullscreen||root.webkitRequestFullscreen;try{if(!enter)throw new Error('unavailable');await enter.call(root)}catch(e){notice(text('Presentation view opened. Use the browser fullscreen command if needed.','已进入放映视图，也可以使用浏览器的全屏功能。'))}}rerender()}
+async function fullscreen(){setDeckNavigation(false);const root=document.documentElement;if(document.body.classList.contains('presenting')){document.body.classList.remove('presenting');const leave=document.exitFullscreen||document.webkitExitFullscreen;if((document.fullscreenElement||document.webkitFullscreenElement)&&leave){try{await leave.call(document)}catch(e){}}}else{document.body.classList.add('presenting');const enter=root.requestFullscreen||root.webkitRequestFullscreen;try{if(!enter)throw new Error('unavailable');await enter.call(root)}catch(e){notice(text('Presentation view opened. Use the browser fullscreen command if needed.','已进入放映视图，也可以使用浏览器的全屏功能。'))}}rerender()}
 document.addEventListener('click',e=>{
  const nav=e.target.closest('[data-page]'),step=e.target.closest('[data-step]'),need=e.target.closest('[data-need]'),methodButton=e.target.closest('[data-method]'),featureButton=e.target.closest('[data-feature]'),tongueStepButton=e.target.closest('[data-tongue-step]'),temperatureButton=e.target.closest('[data-temp]'),constitutionButton=e.target.closest('[data-constitution]'),g=e.target.closest('[data-grams]'),action=e.target.closest('[data-action]');
  if(e.target.closest('button,a'))clickBloom(e);
@@ -806,11 +854,11 @@ document.addEventListener('click',e=>{
  if(action?.dataset.action==='figure-close'){figureOpen=false;rerender();return}
 });
 $('prev').onclick=()=>go(page-1);$('next').onclick=()=>go(page+1);$('lang').onclick=()=>{lang=lang==='en'?'zh':'en';rerender()};$('full').onclick=fullscreen;
-addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey)return;if(tourZoom){if(e.key==='Escape'){tourZoom=false;rerender();document.querySelector('[data-tour-zoom="open"]')?.focus({preventScroll:true})}if(e.key==='Tab'){e.preventDefault();document.querySelector('[data-tour-zoom="close"]')?.focus()}return;}if(e.target.matches('[data-region-hit]')&&[' ','Enter'].includes(e.key)){e.preventDefault();e.target.dispatchEvent(new MouseEvent('click',{bubbles:true}));return}if(e.target.closest('button,a,input')&&[' ','Enter'].includes(e.key))return;const k=e.key.toLowerCase();if(k==='0'){go(9);return}if(/^[1-9]$/.test(k)){go(Number(k)-1);return}switch(k){case ' ':case 'arrowright':e.preventDefault();go(page+1);break;case 'arrowleft':e.preventDefault();go(page-1);break;case 'end':e.preventDefault();go(pages.length-1);break;case 'home':e.preventDefault();go(0);break;case 'l':lang=lang==='en'?'zh':'en';rerender();break;case 'f':fullscreen();break;case 'escape':if(figureOpen){figureOpen=false;rerender()}else if(document.body.classList.contains('presenting'))fullscreen();break;}});
+addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey)return;if(deckNavOpen&&e.key==='Escape'){e.preventDefault();setDeckNavigation(false,false,true);return;}if(e.target.closest('input,textarea,select,[contenteditable=true]'))return;if(e.key.toLowerCase()==='m'&&!tourZoom&&!figureOpen){e.preventDefault();setDeckNavigation(!deckNavOpen,true,true);return;}if(tourZoom){if(e.key==='Escape'){tourZoom=false;rerender();document.querySelector('[data-tour-zoom="open"]')?.focus({preventScroll:true})}if(e.key==='Tab'){e.preventDefault();document.querySelector('[data-tour-zoom="close"]')?.focus()}return;}if(e.target.matches('[data-region-hit]')&&[' ','Enter'].includes(e.key)){e.preventDefault();e.target.dispatchEvent(new MouseEvent('click',{bubbles:true}));return}if(e.target.closest('button,a,input')&&[' ','Enter'].includes(e.key))return;const k=e.key.toLowerCase();if(k==='0'){go(9);return}if(/^[1-9]$/.test(k)){go(Number(k)-1);return}switch(k){case ' ':case 'arrowright':e.preventDefault();go(page+1);break;case 'arrowleft':e.preventDefault();go(page-1);break;case 'end':e.preventDefault();go(pages.length-1);break;case 'home':e.preventDefault();go(0);break;case 'l':lang=lang==='en'?'zh':'en';rerender();break;case 'f':fullscreen();break;case 'escape':if(figureOpen){figureOpen=false;rerender()}else if(document.body.classList.contains('presenting'))fullscreen();break;}});
 function syncFullscreen(){if(!document.fullscreenElement&&!document.webkitFullscreenElement&&document.body.classList.contains('presenting')){document.body.classList.remove('presenting');rerender()}}addEventListener('fullscreenchange',syncFullscreen);addEventListener('webkitfullscreenchange',syncFullscreen);
 addEventListener('resize',fitStage,{passive:true});addEventListener('orientationchange',fitStage,{passive:true});
 if(window.visualViewport)window.visualViewport.addEventListener('resize',fitStage,{passive:true});
-function hash(){const m=location.hash.match(/^#(en|zh)\/(\d+)$/);if(m&&Number(m[2])>=1&&Number(m[2])<=pages.length){lang=m[1];page=Number(m[2])-1}}addEventListener('hashchange',()=>{stopFlow();motionMode='state';hash();render()});hash();render();
+function hash(){const m=location.hash.match(/^#(en|zh)\/(\d+)$/);if(m&&Number(m[2])>=1&&Number(m[2])<=pages.length){lang=m[1];page=Number(m[2])-1}}addEventListener('hashchange',()=>{stopFlow();motionMode='state';hash();render()});hash();render();setupDeckNavigation();
 </script>
 </body>
 </html>
