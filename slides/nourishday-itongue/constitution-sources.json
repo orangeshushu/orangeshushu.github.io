@@ -25,7 +25,7 @@
       1198,
       600
     ],
-    "display": "Full original PNG embedded unchanged. SVG viewports clip individual figures for localized labels; no redrawing, recoloring or generated imagery."
+    "display": "Historical source asset retained in data only; no longer displayed in the common-constitution view."
   },
   "research_examples": {
     "paper": "Xie et al., Digital tongue image analyses for health assessment",
@@ -139,5 +139,28 @@
       }
     ]
   },
-  "other_reference": "The supplied ActiveHerb chart shows ten appearance patterns; it was not relabeled or used as the nine-constitution taxonomy."
+  "other_reference": "The supplied ActiveHerb chart shows ten appearance patterns; it was not relabeled or used as the nine-constitution taxonomy.",
+  "update_2026_09_30": {
+    "scope": "Three tabs: manifestations, tongue features, preserved paper examples. Common selection synchronized between first two tabs.",
+    "visuals": "Original native SVG people/symbols and schematic tongues, resolution independent. Not photographs, clinical reference standards or generated patient images. Research photos preserved unchanged.",
+    "sources": [
+      {
+        "url": "https://www.cmro.gov.hk/html/b5/useful_information/public_health/exhibit_boards/Body_Constitution_and_Relevant_Health_Maintenance.html",
+        "supports": "Nine types and general manifestations"
+      },
+      {
+        "url": "https://www.yantai.gov.cn/art/2022/10/25/art_83647_3110100.html",
+        "supports": "Nine-type descriptions and typical tongue colour/coating/shape"
+      },
+      {
+        "url": "https://www.sport.gov.cn/qgzx/n5407/c806113/content.html",
+        "supports": "Qi deficiency enlarged tender tongue and tooth marks; publicly indexed excerpt, direct fetch timed out"
+      },
+      {
+        "url": "https://www.med.hku.hk/zh-hk/media/knowledge-exchange/newspaper-columns/2022/feb/tongue-examination-in-chinese-medicine",
+        "supports": "Traditional colour/coating descriptions and association of scant coating/fissures with yin deficiency"
+      }
+    ],
+    "boundary": "Traditional educational descriptions only. Patterns overlap. Special diathesis has no characteristic tongue defined here. User 10-pattern infographic is not relabelled as the nine constitutions. Symptoms/diagrams are not app inference, disease predictions or diagnostic criteria."
+  }
 }

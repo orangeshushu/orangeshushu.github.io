@@ -227,3 +227,7 @@ The final NourishDay page (12) now offers the official website for more features
 
 ### 2026-09-30 inspection photo refresh
 Page13 now uses an unretouched official Klinik am Steigerwald tongue-inspection photograph with a visible linked clinic credit. The former Kitasato image is replaced in both languages. No partnership or clinical-validation claim is made. Current asset source/hash and reuse terms are in `four-examinations-sources.json` (authoring `.build/four-examinations-provenance.json`).
+
+
+### 2026-09-30: nine constitutions and tongue features
+Page16 adds a synchronized tongue-features tab (colour, coating, shape/surface), original scalable SVG diagrams and bilingual typical manifestations. Published paper examples remain separate and unchanged. Traditional descriptions are educational; patterns overlap and special diathesis has no unique tongue assigned. Sources/provenance: constitution-sources.json. Checked108 bilingual desktop/mobile states without clipping or horizontal overflow.
