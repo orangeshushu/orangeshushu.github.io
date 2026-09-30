@@ -58,28 +58,6 @@
       "publishedPath": "assets/itongue/source-zh.webp"
     },
     {
-      "asset": "demo_native_guide_en",
-      "dimensions": [
-        1320,
-        2868
-      ],
-      "sha256": "1f0814e032038bbd9649f7c988c28306eefeea0a75ae207f4270e6c56a731f01",
-      "source": "large-guide-en.png",
-      "losslessPixelMatch": true,
-      "publishedPath": "assets/itongue/guide-en.webp"
-    },
-    {
-      "asset": "demo_native_guide_zh",
-      "dimensions": [
-        1320,
-        2868
-      ],
-      "sha256": "94f006aa7132a0c8d7f4aea98c5c230a52679a2291ffbfa2acff2bf220f9f276",
-      "source": "large-guide-zh.png",
-      "losslessPixelMatch": true,
-      "publishedPath": "assets/itongue/guide-zh.webp"
-    },
-    {
       "asset": "demo_native_review_en",
       "dimensions": [
         1320,
@@ -124,15 +102,37 @@
       "publishedPath": "assets/itongue/result-zh.webp"
     },
     {
+      "asset": "demo_native_guide_en",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "source": "refresh/guide-en.png",
+      "sha256": "0863e8ebe0788340058d77e14e622f47ee394866e24194405353c3b345c7069d",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/guide-v2-en.webp"
+    },
+    {
+      "asset": "demo_native_guide_zh",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "source": "refresh/guide-zh.png",
+      "sha256": "4208fcd5850cd9b3caa3343f1e13bf347260c32a63249f358df99ff7fcfb9802",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/guide-v2-zh.webp"
+    },
+    {
       "asset": "demo_native_history_en",
       "dimensions": [
         1320,
         2868
       ],
-      "sha256": "d1cadb7d2e02570c1a8e3979ec4707db68bbf2d428483f0018794bd8411d8d9c",
-      "source": "large-history-en.png",
+      "source": "refresh/history-en.png",
+      "sha256": "4c8fe9e25031e0133009e7754cdc316b1298714c73bdff9068d5615b7581e356",
       "losslessPixelMatch": true,
-      "publishedPath": "assets/itongue/history-en.webp"
+      "publishedPath": "assets/itongue/history-v2-en.webp"
     },
     {
       "asset": "demo_native_history_zh",
@@ -140,10 +140,54 @@
         1320,
         2868
       ],
-      "sha256": "72a0536c31d2f20312db4a22ada458473a306b0ea1a53c4abffbc55df2e6bad6",
-      "source": "large-history-zh.png",
+      "source": "refresh/history-zh.png",
+      "sha256": "2a2ef5ec3e72631b8e31cce91e6e12d361a5b858224ee15b97b4662221945591",
       "losslessPixelMatch": true,
-      "publishedPath": "assets/itongue/history-zh.webp"
+      "publishedPath": "assets/itongue/history-v2-zh.webp"
+    },
+    {
+      "asset": "demo_native_result_cold_en",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "source": "refresh/result-cold-en.png",
+      "sha256": "18241fcb0e51c0d66c659e654d1b6011da84dbfc80b6e688f65eab32e4eb2359",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/result-cold-v2-en.webp"
+    },
+    {
+      "asset": "demo_native_result_cold_zh",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "source": "refresh/result-cold-zh.png",
+      "sha256": "b9255bdfe2856dbee6c3c7510946c7c2e32b507470f2b6a53a854f5a4fc72e80",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/result-cold-v2-zh.webp"
+    },
+    {
+      "asset": "demo_native_result_hot_en",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "source": "refresh/result-hot-en.png",
+      "sha256": "0bfbbf314f7264c13d2885a03b8d2fe18012e4f8bc1ffab4b7cfb41e54873681",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/result-hot-v2-en.webp"
+    },
+    {
+      "asset": "demo_native_result_hot_zh",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "source": "refresh/result-hot-zh.png",
+      "sha256": "3b33da250c6012caa0223c5cfcd0932e57e7f7baf874b0ded65bf90f21a22ae0",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/result-hot-v2-zh.webp"
     }
   ],
   "nativeViewHashes": [
@@ -155,7 +199,20 @@
     {
       "file": "ImagePicker.swift",
       "sha256": "68d0bd67a7b9a11a6bc931836bfb59cd6dcbea7c8d9c00cf9c08d0c46bb9d15c",
-      "captureCloneIdentical": true
+      "captureCloneIdentical": false,
+      "captureCloneDifference": "Optional aspect-ratio parameter for static screenshot rehearsal; actual camera default remains 1.3. Original file untouched."
     }
-  ]
+  ],
+  "refresh": {
+    "date": "2026-09-29",
+    "history": "31 fictional dates across the native five-month calendar, explicitly labeled in record summaries and deck.",
+    "camera": "Static-photo camera rehearsal, with a presentation-only guide aspect ratio of 1.0 instead of the app default 1.3. The disposable copy adds an optional guideAspectRatio parameter; actual App source is untouched. Photo is scaled/positioned without pixel retouching, black background, no-camera caption. This is an illustrative framing guide, not segmentation.",
+    "results": "Native result views with three preset scenarios. Cold and heat use an assess-in-context constitution placeholder, not deterministic constitution mappings.",
+    "diet": "Web-only illustrative food-guidance concept; not implemented in native app. TCM themes are educational, not disease treatment.",
+    "sources": [
+      "https://www.cmro.gov.hk/files/en/useful_information/public_health/pamphlet/Health_Preservation_by_Food_in_CM_en_pp.pdf",
+      "https://www3.ha.org.hk/ehaslink/issue95/en/staffcorner-01.html"
+    ],
+    "foodImages": "Existing deck food photographs reused, with original source provenance preserved."
+  }
 }
