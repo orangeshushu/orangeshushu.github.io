@@ -1,0 +1,86 @@
+{
+  "sources": [
+    "https://www.ucn.org.hk/zh-hans/health-education/health-article/cm-health-tips-1/",
+    "https://www.cmro.gov.hk/html/eng/useful_information/public_health/publication/Health_Preservation_by_Food_in_CM.html"
+  ],
+  "interpretation": "Traditional seasonal food culture, not universal medical prescriptions. Rice and meal combinations are editorial serving examples; foods are not exclusive to a season. Snow fungus photo depicts the species before preparation. Existing rice, watermelon and ginger photo credits are in food-properties-provenance.json.",
+  "photos": [
+    {
+      "catalogID": "knowledge:food:coix-seed",
+      "file": "KnowledgeThumbnails/coix-seed.jpg",
+      "sha256": "27edd2cad2f020ce11df9fc23848b18c5268f4c8a43411ebe775bca73d455551",
+      "illustration": false,
+      "artist": "Walter Grassroot",
+      "license": "CC BY-SA 4.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePageURL": "https://commons.wikimedia.org/wiki/File:%E6%B1%9F%E8%8B%8F%E6%B3%B0%E5%B7%9E%E8%96%8F%E8%8B%A1%E4%BB%81.jpg",
+      "key": "season_coix"
+    },
+    {
+      "catalogID": "knowledge:food:adzuki-bean",
+      "file": "KnowledgeThumbnails/adzuki-bean.jpg",
+      "sha256": "ac836aefd089c59621a1a49e01a7c18ebb62661cc4034199f2a720464575c2c2",
+      "illustration": false,
+      "artist": "Samuel Wong",
+      "license": "CC BY-SA 2.5",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/2.5",
+      "sourcePageURL": "https://commons.wikimedia.org/wiki/File:%E8%B5%A4%E5%B0%8F%E8%B1%86.jpg",
+      "key": "season_adzuki"
+    },
+    {
+      "catalogID": "knowledge:food:mung-bean",
+      "file": "KnowledgeThumbnails/reviewed-20260907-mung-bean-raw.jpg",
+      "sha256": "37f7803582d0bca75cbd8da16d8808f5126a4ec9e3aaa67fb49b4e4bbf23976d",
+      "illustration": false,
+      "artist": "Sanjay Acharya",
+      "license": "CC BY-SA 4.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePageURL": "https://commons.wikimedia.org/wiki/File:Green_Mung_Beans.jpg",
+      "key": "season_mung"
+    },
+    {
+      "catalogID": "knowledge:food:winter-melon",
+      "file": "KnowledgeThumbnails/reviewed-20260906-winter-melon-raw.jpg",
+      "sha256": "960f0741ce952c94a0b63ee37a6115162d49b04d21fbaf273bfffaa7f250e477",
+      "illustration": false,
+      "artist": "GTSPACE",
+      "license": "CC0 1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourcePageURL": "https://commons.wikimedia.org/wiki/File:A_winter_melon.jpg",
+      "key": "season_melon"
+    },
+    {
+      "catalogID": "knowledge:food:lily-bulb",
+      "file": "KnowledgeThumbnails/lily-bulb.jpg",
+      "sha256": "0c1a9828174d87168f02f57b220364608f9991d1d206165a26381c88d5c3b3b0",
+      "illustration": false,
+      "artist": "Fumikas Sagisavas",
+      "license": "CC0",
+      "licenseURL": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourcePageURL": "https://commons.wikimedia.org/wiki/File:Dried_dragon_tooth_lily.jpg",
+      "key": "season_lily"
+    },
+    {
+      "catalogID": "nutrition:snow-fungus-fresh",
+      "file": "Thumbnails/snow-fungus-fresh.jpg",
+      "sha256": "88102999b1da0b1e57b41a2a00b3818f9b1757eaed780c7a2259c770f99d79f9",
+      "illustration": false,
+      "artist": "Ron Pastorino (Ronpast)",
+      "license": "CC BY-SA 3.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePageURL": "https://commons.wikimedia.org/wiki/File:Tremella_fuciformis_337510.jpg",
+      "key": "season_fungus"
+    },
+    {
+      "catalogID": "nutrition:tofu",
+      "file": "Thumbnails/tofu.jpg",
+      "sha256": "34aaeab37d6a99200c0792bdf997f57ade7b5a7a9a72aba9fa2254d2125c8973",
+      "illustration": false,
+      "artist": "Fumikas Sagisavas",
+      "license": "CC0",
+      "licenseURL": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourcePageURL": "https://commons.wikimedia.org/wiki/File:Northern_tofu.jpg",
+      "key": "season_tofu"
+    }
+  ]
+}
