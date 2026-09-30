@@ -1,0 +1,56 @@
+{
+  "checked": "2026-09-30",
+  "source_pptx_sha256": "513f24c71af09685e3aa6c4f546238890bf2800daf857a4d9a430d0aa3febea7",
+  "pages": 25,
+  "commercial_pages": [
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "team_page": 25,
+  "sources": {
+    "nhc": {
+      "url": "https://www.hunan.gov.cn/zqt/zcsd/202609/34058125/files/da2b514d479c4984a3acc22e93ed7f8b.pdf",
+      "verified": "Downloaded official PDF; extracted original pp13–14 using pypdf. 100885 clinics +4612 outpatient departments=105497; 2024=92812+4456. Broader visit count1.85b has different denominator."
+    },
+    "bayes": "https://www.bjbayes.com/api-tongue.html",
+    "yunzhen": "https://ai-tongue.com/",
+    "appstore": "https://apps.apple.com/us/app/itongue/id1580878451"
+  },
+  "image": {
+    "file": "assets/commercial/briefing-screen-7.png",
+    "source": "Supplied PPT physical slide9, ppt/media/image7.png",
+    "sha256": "bebbc51195409587790d5922ef255d48a82e4da3dbc2dddd6f7145e0fd5efcd1",
+    "status": "Original English implemented development UI, August2026; not evidence of paid adoption."
+  },
+  "financial_assumptions": {
+    "currency": "CNY",
+    "prices": [
+      299,
+      599,
+      999
+    ],
+    "retained_sites": [
+      50,
+      200,
+      500
+    ],
+    "fee_rate": 0.03,
+    "monthly_analyses": 300,
+    "cost_per_completed_analysis": [
+      0.2,
+      0.5,
+      1,
+      2
+    ],
+    "support": 80,
+    "hosting_storage": 40,
+    "annual_formula": "price * retained_sites * 12",
+    "contribution_formula": "599 * .97 - 300 * analysis_cost - 80 - 40",
+    "status": "All input assumptions; not observed financials, current revenue or forecast. Before acquisition and fixed costs. No NourishDay financial inputs."
+  },
+  "narration": "25 pages /1200 seconds; detailed bibliography and interactive scenario exploration can be held for Q&A."
+}

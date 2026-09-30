@@ -1,3 +1,13 @@
+# Current presentation: 25 bilingual pages
+
+Published at `/slides/nourishday-itongue/`. Pages 19–24 add iTongue market context, competitor comparison, proposed business model, interactive CNY revenue scenarios, contribution sensitivity and pilot milestones. The lab team closes page 25. Pages 1–18 retain their routes. Left-edge directory, language switch, keyboard navigation and fullscreen controls remain available. Latest authoring target: `NourishDay_iTongue_Interactive_25_Pages.html`; rebuild via `.build/build.py`. Private narration timing totals 1,200 seconds.
+
+Market and competitor claims were checked against official sources on 2026-09-30. Source PPT asset provenance and all hypothetical financial inputs are in [commercial-sources.json](commercial-sources.json). These pages do not assert paid customers, observed costs, current ARR, clinical superiority or signed partnerships. The actual English app screenshot is from the supplied briefing and is labeled as an August 2026 development screen.
+
+Validation: 1,240 VM assertions; all six added pages in EN/ZH at 1600×900 and 390×844, with no observed overflow or broken images. Price/site/cost and competitor/pilot controls verified in browser; presentation-mode fallback verified in IAB. The API did not report native fullscreen in that embedded browser. Historical notes below describe earlier deck iterations.
+
+---
+
 # NourishDay & iTongue interactive presentation — 2026-09-29
 
 The generated, self-contained twelve-page presentation is `NourishDay_iTongue_Interactive_12_Pages.html`. English is the default; the top-right switch changes the current page to Simplified Chinese. The presentation keeps one UI language per page.
