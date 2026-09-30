@@ -1,0 +1,80 @@
+{
+  "captured": "2026-09-30",
+  "native": "NourishDay simulator native UI; actual tap on year-day stamp; original screenshots uncropped.",
+  "data": "Existing DEBUG sample weather and demo content, not live weather or user records.",
+  "capture": "Dedicated simulator E610E384-2E7B-448D-B31D-7629C4E49406. Disposable source copy adds initial ScrollViewReader positioning only. Original App source unchanged.",
+  "assets": [
+    {
+      "asset": "tour_today_top_en",
+      "source": ".build/source-assets/today-20260930/top-en.png",
+      "size": [
+        1320,
+        2868
+      ],
+      "sha256": "3da45726dfbbc6c7ec2b186e82c62ee97468871964a5cb9d6ebc4c9a3448bde0"
+    },
+    {
+      "asset": "tour_today_top_zh",
+      "source": ".build/source-assets/today-20260930/top-zh.png",
+      "size": [
+        1320,
+        2868
+      ],
+      "sha256": "b591452d8454237528611c6c7611b97339a99e59f91f728edb561ff784170d80"
+    },
+    {
+      "asset": "tour_today_left_en",
+      "source": ".build/source-assets/today-20260930/left-en.png",
+      "size": [
+        1320,
+        2868
+      ],
+      "sha256": "b4fba7ce78bd9bfedf09ad01f0d0b92481777b3a3afc01eb2e32c71683b30a02"
+    },
+    {
+      "asset": "tour_today_left_zh",
+      "source": ".build/source-assets/today-20260930/left-zh.png",
+      "size": [
+        1320,
+        2868
+      ],
+      "sha256": "f2f3da38706bb4d841ed11535e08ac9e71611386d5bb797077882bfd6b7c3fae"
+    },
+    {
+      "asset": "tour_today_food_en",
+      "source": ".build/source-assets/today-20260930/food-en.png",
+      "size": [
+        1320,
+        2868
+      ],
+      "sha256": "5f36045a74a7b29f6bc5842479ae8e450400796f52aa5f54725fc030a743cb8a"
+    },
+    {
+      "asset": "tour_today_food_zh",
+      "source": ".build/source-assets/today-20260930/food-zh.png",
+      "size": [
+        1320,
+        2868
+      ],
+      "sha256": "2a41784d5528b9998612fd473b9e97cd54a09feb001b598d738dfaf72fc3cc55"
+    },
+    {
+      "asset": "tour_today_wellness_en",
+      "source": ".build/source-assets/today-20260930/wellness-en.png",
+      "size": [
+        1320,
+        2868
+      ],
+      "sha256": "4e4954fa9e553d2906dced2d306c168cea6263c22e05236633b7647903a45bb0"
+    },
+    {
+      "asset": "tour_today_wellness_zh",
+      "source": ".build/source-assets/today-20260930/wellness-zh.png",
+      "size": [
+        1320,
+        2868
+      ],
+      "sha256": "c2e1618b2d72f374c14ff6e2d7264e5029c1a55905bca2a95e56b59d2c1eb68f"
+    }
+  ]
+}
