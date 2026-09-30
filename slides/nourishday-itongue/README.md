@@ -218,3 +218,8 @@ Source files: `.build/nourish-background.js`, `nourish-background.css`, integrat
 
 ## TCM bibliography — 2026-09-30
 Page17 replaces the old technical-progress content with a bilingual source-linked bibliography.23 distinct outputs:18 journal/conference/chapter records,3 preprints,1 degree thesis and1 university project report. Scholar profiles were read through their final pages (Jiacheng15 total entries; Dong632). TCM/tongue/herbal-food records were screened, shared items merged, and a distinct2012 journal version added from the publisher and lab bibliography. Includes8 Jiacheng-authored and22 Dong-authored outputs (overlap7). Three records per view; author/type filters, bibliography pagination and accessible full-citation dialog retain readable16:9 text. Full citations link to the original source and Scholar record. TCM-Ladder uses official NeurIPS2025 conference year rather than Scholar's2026 metadata. Provenance: `publications-provenance.json`. Research history is not represented as clinical validation of the apps.19-slide order, team page19, research figures page18 and previous demo routes preserved.
+
+
+## NourishDay closing links — 2026-09-30
+
+The final NourishDay page (12) now offers the official website for more features/details and a direct Next project · iTongue button. The website opens in a new tab, preserving the presentation; both languages use the verified canonical `/nourishday/` URL because `/nourishday/zh/` returned404. The project button opens the four-examinations introduction on page13. Existing screenshot selectors and annotations remain available. English/Chinese desktop/mobile checks cover24feature states, website destination and keyboard project navigation. No native App or service changes.
