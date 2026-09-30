@@ -1,0 +1,502 @@
+{
+  "recipes": [
+    {
+      "name": "家常白粥",
+      "image": {
+        "author": "Takeaway",
+        "license": "CC BY-SA 3.0",
+        "licenseURL": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "sha256": "6081e36eb5832dc9e3d530d548f99d3b71f99d889a1b7cb2bfb2201ae22611c4",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Khao_tom_kui.jpg",
+        "url": "https://nutrition-api.itongue.cn/v1/meal-recipes/images/6081e36eb5832dc9e3d530d548f99d3b71f99d889a1b7cb2bfb2201ae22611c4.jpg"
+      },
+      "source": "https://github.com/orangeshushu/TCM_Calendar/blob/b8d3edba29c547704b353b09ef5fe2c7025d0252/Backend/data/content/meal-recipes-bundled.json",
+      "recipe": {
+        "chineseServing": "约2小碗；照片主体为原味白粥，背景配菜不属于本方。 大米明确为干白粳米；所有粥汤均分，未测成品每100克。",
+        "chineseSteps": [
+          "用600毫升饮用水分2次轻淘大米，弃去淘米水并沥干。",
+          "将80克大米和900毫升煮粥水放入至少2升容量的锅，煮开时搅动锅底。",
+          "小火留缝加盖，保持轻微冒泡煮35–45分钟，每隔5–10分钟搅动锅底。如变得过稠，可分次加入0–200毫升热饮用水。",
+          "米粒煮至完全柔软、无硬芯且粥体顺滑后关火，静置2分钟。原味食用，或撒上可选的3克葱花。"
+        ],
+        "englishServing": "About 2 small bowls; the photo centers on plain congee, and background side dishes are separate. Rice is explicitly dry white japonica; divide all porridge liquid, with no measured per 100 g finished-food value.",
+        "englishSteps": [
+          "Gently rinse the rice in 2 changes of water using 600 ml drinking water in total; discard the rinse water and drain.",
+          "Combine 80 g rice and 900 ml cooking water in a pot of at least 2 L capacity, stirring the bottom as it comes to a boil.",
+          "Partly cover and simmer gently over low heat for 35–45 minutes, stirring the bottom every 5–10 minutes. If too thick, add 0–200 ml hot drinking water in small additions.",
+          "Turn off the heat when the grains are fully soft with no hard centers and the porridge is smooth. Rest for 2 minutes, then serve plain or add the optional 3 g scallion."
+        ],
+        "ingredients": [
+          {
+            "catalogID": "",
+            "chineseAmount": "80克",
+            "chineseName": "白粳米（短粒、非糯米，干重）",
+            "englishAmount": "80 g",
+            "englishName": "white short-grain japonica rice, not glutinous, dry weight",
+            "lookupName": "white short-grain japonica rice, not glutinous, dry weight"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "900毫升",
+            "chineseName": "饮用水（煮粥用）",
+            "englishAmount": "900 mL",
+            "englishName": "drinking water for cooking",
+            "lookupName": "drinking water for cooking"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "3克",
+            "chineseName": "香葱，切细（可选）（可选）",
+            "englishAmount": "3 g",
+            "englishName": "finely chopped scallion, optional (optional)",
+            "lookupName": "finely chopped scallion, optional"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "600毫升",
+            "chineseName": "饮用水（淘米用，弃去）",
+            "englishAmount": "600 ml",
+            "englishName": "drinking water for rinsing, discarded",
+            "lookupName": "drinking water for rinsing, discarded"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "0–200毫升",
+            "chineseName": "热饮用水（调稠度，可选）（可选）",
+            "englishAmount": "0–200 ml",
+            "englishName": "hot drinking water for thinning, optional (optional)",
+            "lookupName": "hot drinking water for thinning, optional"
+          }
+        ],
+        "references": [
+          {
+            "chineseTitle": "原食谱及作者：NourishDay project; see record references",
+            "englishTitle": "Recipe source: NourishDay project; see record references",
+            "urlString": "https://github.com/orangeshushu/TCM_Calendar/blob/b8d3edba29c547704b353b09ef5fe2c7025d0252/Backend/data/content/meal-recipes-bundled.json"
+          },
+          {
+            "chineseTitle": "食材营养来源说明",
+            "englishTitle": "Ingredient nutrition reference documentation",
+            "urlString": "https://fdc.nal.usda.gov/data-documentation/"
+          }
+        ]
+      },
+      "note": "Presentation cooking overview adapted from archived recipe; not a claim of kitchen testing or current App availability."
+    },
+    {
+      "name": "红烧冬瓜",
+      "image": {
+        "author": "HowToCook repository contributors; see source-file history",
+        "license": "Unlicense / public-domain dedication",
+        "licenseURL": "https://github.com/Anduin2017/HowToCook/blob/2b19c9e9ee926fd925a68207a57582a338813f9c/LICENSE",
+        "sha256": "94a93b388d330a5db25aadefa6547c92199e47fa16f48f58c0e6a44bca02e494",
+        "sourceURL": "https://github.com/Anduin2017/HowToCook/blob/2b19c9e9ee926fd925a68207a57582a338813f9c/dishes/vegetable_dish/%E7%BA%A2%E7%83%A7%E5%86%AC%E7%93%9C/%E7%BA%A2%E7%83%A7%E5%86%AC%E7%93%9C.md",
+        "url": "https://nutrition-api.itongue.cn/v1/meal-recipes/images/94a93b388d330a5db25aadefa6547c92199e47fa16f48f58c0e6a44bca02e494.jpg"
+      },
+      "source": "https://github.com/Anduin2017/HowToCook/blob/2b19c9e9ee926fd925a68207a57582a338813f9c/dishes/vegetable_dish/%E7%BA%A2%E7%83%A7%E5%86%AC%E7%93%9C/%E7%BA%A2%E7%83%A7%E5%86%AC%E7%93%9C.md",
+      "recipe": {
+        "chineseServing": "编辑估计：按原文“每份”用量，约可做2小份。",
+        "chineseSteps": [
+          "冬瓜去皮，切成边长不超过2厘米的小块；姜切末，香葱切末。另将淀粉与30毫升清水调成水淀粉备用。",
+          "锅中加入食用油，中火加热后放入冬瓜，缓慢翻动煎炒约2分钟，直到表面略带金黄。",
+          "把冬瓜盛出备用。利用锅中余油，放入姜末、生抽和蚝油，翻炒约15秒。",
+          "倒回冬瓜，翻炒约30秒，加入250毫升开水。煮开后加盖，以中小火煮约10分钟；如水将烧干而冬瓜仍硬，每次加50毫升开水，最多再加100毫升。",
+          "加入老抽调色，继续煮到冬瓜变软糯、筷子能轻松插入。",
+          "加入料酒、香葱，鸡精按需加0–1克，轻轻翻匀煮约30秒；将冬瓜和少量汤汁盛入碗中。",
+          "将10克玉米淀粉和30毫升水调成的水淀粉重新搅匀，边搅边全部倒入锅中余汁；煮开约1分钟至略稠。将全部酱汁浇在冬瓜上，均分2份。"
+        ],
+        "englishServing": "Editorial estimate: based on the source’s per-serving amounts, this makes about 2 small servings.",
+        "englishSteps": [
+          "Peel the winter melon and cut it into pieces no larger than 2 cm on a side. Mince the ginger and chop the scallion. In a separate bowl, mix the starch with 30 ml water to make a slurry and set aside.",
+          "Add the cooking oil to a pan or wok and heat over medium heat. Add the winter melon and gently turn it for about 2 minutes until the surface is lightly golden.",
+          "Transfer the winter melon to a bowl. Using the remaining oil in the pan, add the minced ginger, light soy sauce, and oyster sauce, and stir-fry for about 15 seconds.",
+          "Return the winter melon and stir-fry for about 30 seconds. Add 250 ml boiling water, bring to a boil, cover and simmer over medium-low heat for about 10 minutes. If the pan is drying out before the melon is tender, add water in 50 ml increments, up to 100 ml more.",
+          "Add the dark soy sauce for color and keep cooking until the winter melon is tender and a chopstick can slide in easily.",
+          "Add the cooking wine and scallion, plus 0–1 g bouillon powder if desired. Stir gently and simmer for about 30 seconds, then transfer the winter melon and a little broth to a bowl.",
+          "Stir the slurry of 10 g cornstarch and 30 ml water again and pour all of it into the remaining sauce while stirring. Simmer for about 1 minute until lightly thickened. Pour all the sauce over the melon and divide into 2 portions."
+        ],
+        "ingredients": [
+          {
+            "catalogID": "",
+            "chineseAmount": "300克",
+            "chineseName": "冬瓜（去皮去瓤籽后生净重）",
+            "englishAmount": "300 g",
+            "englishName": "raw winter melon after removing skin, pith and seeds",
+            "lookupName": "raw winter melon after removing skin, pith and seeds"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "15毫升",
+            "chineseName": "菜籽油",
+            "englishAmount": "15 ml",
+            "englishName": "canola oil",
+            "lookupName": "canola oil"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "2克",
+            "chineseName": "加盐绍兴料酒（称重）",
+            "englishAmount": "2 g",
+            "englishName": "salted Shaohsing cooking wine, weighed",
+            "lookupName": "salted Shaohsing cooking wine, weighed"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "10克",
+            "chineseName": "玉米淀粉",
+            "englishAmount": "10 g",
+            "englishName": "cornstarch",
+            "lookupName": "cornstarch"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "30毫升",
+            "chineseName": "清水，用于水淀粉",
+            "englishAmount": "30 ml",
+            "englishName": "Water, for the starch slurry",
+            "lookupName": "Water, for the starch slurry"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "12克",
+            "chineseName": "普通生抽（称重）",
+            "englishAmount": "12 g",
+            "englishName": "regular light soy sauce, weighed",
+            "lookupName": "regular light soy sauce, weighed"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "5毫升",
+            "chineseName": "老抽",
+            "englishAmount": "5 ml",
+            "englishName": "Dark soy sauce",
+            "lookupName": "Dark soy sauce"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "0–1克，按需添加",
+            "chineseName": "鸡精（可选）",
+            "englishAmount": "0–1 g, as needed",
+            "englishName": "Chicken bouillon powder (optional)",
+            "lookupName": "Chicken bouillon powder"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "5克",
+            "chineseName": "香葱，切末",
+            "englishAmount": "5 g",
+            "englishName": "Scallion, chopped",
+            "lookupName": "Scallion, chopped"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "5克",
+            "chineseName": "姜末",
+            "englishAmount": "5 g",
+            "englishName": "minced ginger",
+            "lookupName": "minced ginger"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "13克",
+            "chineseName": "含牡蛎蚝油（称重）",
+            "englishAmount": "13 g",
+            "englishName": "oyster-containing sauce, weighed",
+            "lookupName": "oyster-containing sauce, weighed"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "250–350毫升",
+            "chineseName": "开水（焖煮用）",
+            "englishAmount": "250–350 ml",
+            "englishName": "boiling water for braising",
+            "lookupName": "boiling water for braising"
+          }
+        ],
+        "references": [
+          {
+            "chineseTitle": "原食谱及作者：HowToCook contributors (Anduin2017/HowToCook)",
+            "englishTitle": "Recipe source: HowToCook contributors (Anduin2017/HowToCook)",
+            "urlString": "https://github.com/Anduin2017/HowToCook/blob/2b19c9e9ee926fd925a68207a57582a338813f9c/dishes/vegetable_dish/%E7%BA%A2%E7%83%A7%E5%86%AC%E7%93%9C/%E7%BA%A2%E7%83%A7%E5%86%AC%E7%93%9C.md"
+          },
+          {
+            "chineseTitle": "改编文字许可：Unlicense",
+            "englishTitle": "Adapted text license: Unlicense",
+            "urlString": "https://unlicense.org/"
+          },
+          {
+            "chineseTitle": "食材营养来源说明",
+            "englishTitle": "Ingredient nutrition reference documentation",
+            "urlString": "https://fdc.nal.usda.gov/data-documentation/"
+          }
+        ]
+      },
+      "note": "Presentation cooking overview adapted from archived recipe; not a claim of kitchen testing or current App availability."
+    },
+    {
+      "name": "银耳莲子红枣甜汤",
+      "image": {
+        "author": "Project-commissioned OpenAI ImageGen output",
+        "license": "Project-generated synthetic image; no third-party source photograph",
+        "licenseURL": "https://openai.com/policies/terms-of-use/",
+        "sha256": "b569affe5d9161c2ec97d5bca009f060e2ae25b7b1e0319c2fa3b150f2ea06ec",
+        "sourceURL": "https://openai.com/policies/terms-of-use/",
+        "url": "https://nutrition-api.itongue.cn/v1/meal-recipes/images/b569affe5d9161c2ec97d5bca009f060e2ae25b7b1e0319c2fa3b150f2ea06ec.jpg"
+      },
+      "source": "https://github.com/Anduin2017/HowToCook/blob/2b19c9e9ee926fd925a68207a57582a338813f9c/dishes/soup/%E9%93%B6%E8%80%B3%E8%8E%B2%E5%AD%90%E7%B2%A5/%E9%93%B6%E8%80%B3%E8%8E%B2%E5%AD%90%E7%B2%A5.md",
+      "recipe": {
+        "chineseServing": "3碗甜汤；不含米，银耳8克及莲子40克均为干重，红枣20克为干果去核净重。",
+        "chineseSteps": [
+          "8克干银耳以500毫升冷水在冷藏处泡约1–2小时至完全舒展，按包装需要调整时间；沥去泡水、冲净并撕成约2厘米小片。40克干莲子和20克去核干红枣快速冲洗，检查去除残留莲心或枣核。",
+          "容量至少2升的锅加入1000毫升水、银耳和莲子，烧沸后转小火，半盖煮约50–60分钟，间歇轻搅防粘，保持缓慢冒泡，不大火煮干。",
+          "加入20克红枣再小火煮约20–30分钟，至莲子可用勺背轻压碎、银耳软滑。如果汤过稠可从可选150毫升水中每次加50毫升；未用的补水不倒入。",
+          "加入15克冰糖搅拌约3–5分钟至完全溶解，不再分两次重复加糖。若莲子仍硬，继续小火煮并复查。全部汤和固形物均分3碗。"
+        ],
+        "englishServing": "3 bowls of dessert soup without rice; 8 g snow fungus and 40 g lotus seeds are dry weights, and 20 g dried jujubes is pitted edible weight.",
+        "englishSteps": [
+          "Soak 8 g dried snow fungus in 500 ml cold water under refrigeration about 1–2 hours until expanded, adjusting time to package directions. Drain soaking water, rinse and tear into pieces about 2 cm. Quickly rinse 40 g dried lotus seeds and 20 g pitted dried jujubes, checking for remaining green embryos or pits.",
+          "In a pot holding at least 2 liters, combine 1000 ml water, snow fungus and lotus seeds. Bring to a boil, reduce to low and simmer partly covered about 50–60 minutes, stirring occasionally to prevent sticking. Maintain gentle bubbling without boiling dry.",
+          "Add 20 g jujubes and simmer another 20–30 minutes until lotus seeds crush easily with the back of a spoon and fungus is soft and slippery. If too thick, add optional water from the 150 ml allowance in 50 ml increments; do not add unused top-up water.",
+          "Stir in 15 g rock sugar about 3–5 minutes until completely dissolved, without adding a second sugar allocation. If lotus seeds are still firm, continue simmering and recheck. Divide all broth and solids evenly among 3 bowls."
+        ],
+        "ingredients": [
+          {
+            "catalogID": "",
+            "chineseAmount": "8克",
+            "chineseName": "干银耳（去掉可见硬根后的干净重）",
+            "englishAmount": "8 g",
+            "englishName": "dried snow fungus, dry weight after removing visible hard base",
+            "lookupName": "dried snow fungus, dry weight after removing visible hard base"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "40克",
+            "chineseName": "干莲子（已去绿色莲心）",
+            "englishAmount": "40 g",
+            "englishName": "dried lotus seeds with green embryos removed",
+            "lookupName": "dried lotus seeds with green embryos removed"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "20克",
+            "chineseName": "干红枣（去核净重）",
+            "englishAmount": "20 g",
+            "englishName": "dried jujubes, pitted edible weight",
+            "lookupName": "dried jujubes, pitted edible weight"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "15克",
+            "chineseName": "白冰糖",
+            "englishAmount": "15 g",
+            "englishName": "white rock sugar",
+            "lookupName": "white rock sugar"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "1000毫升",
+            "chineseName": "饮用水（煮汤）",
+            "englishAmount": "1000 ml",
+            "englishName": "drinking water for soup",
+            "lookupName": "drinking water for soup"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "500毫升",
+            "chineseName": "饮用水（泡银耳后弃去）",
+            "englishAmount": "500 ml",
+            "englishName": "drinking water for soaking snow fungus, discarded",
+            "lookupName": "drinking water for soaking snow fungus, discarded"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "150毫升",
+            "chineseName": "饮用水（煮汤时按需补加）（可选）",
+            "englishAmount": "150 ml",
+            "englishName": "drinking water to top up soup as needed (optional)",
+            "lookupName": "drinking water to top up soup as needed"
+          }
+        ],
+        "references": [
+          {
+            "chineseTitle": "原食谱及作者：HowToCook contributors (Anduin2017/HowToCook)",
+            "englishTitle": "Recipe source: HowToCook contributors (Anduin2017/HowToCook)",
+            "urlString": "https://github.com/Anduin2017/HowToCook/blob/2b19c9e9ee926fd925a68207a57582a338813f9c/dishes/soup/%E9%93%B6%E8%80%B3%E8%8E%B2%E5%AD%90%E7%B2%A5/%E9%93%B6%E8%80%B3%E8%8E%B2%E5%AD%90%E7%B2%A5.md"
+          },
+          {
+            "chineseTitle": "改编文字许可：Unlicense",
+            "englishTitle": "Adapted text license: Unlicense",
+            "urlString": "https://unlicense.org/"
+          },
+          {
+            "chineseTitle": "食材营养来源说明",
+            "englishTitle": "Ingredient nutrition reference documentation",
+            "urlString": "https://fdc.nal.usda.gov/data-documentation/"
+          }
+        ]
+      },
+      "note": "Presentation cooking overview adapted from archived recipe; not a claim of kitchen testing or current App availability."
+    },
+    {
+      "name": "西红柿豆腐汤羹",
+      "image": {
+        "author": "HowToCook repository contributors; see source-file history",
+        "license": "Unlicense / public-domain dedication",
+        "licenseURL": "https://github.com/Anduin2017/HowToCook/blob/2b19c9e9ee926fd925a68207a57582a338813f9c/LICENSE",
+        "sha256": "9657a000763f67d20ce7ddf8f80c5d5cdc947f2a9782c25cbd07a72427110e2f",
+        "sourceURL": "https://github.com/Anduin2017/HowToCook/blob/2b19c9e9ee926fd925a68207a57582a338813f9c/dishes/vegetable_dish/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E8%B1%86%E8%85%90%E6%B1%A4%E7%BE%B9/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E8%B1%86%E8%85%90%E6%B1%A4%E7%BE%B9.md",
+        "url": "https://nutrition-api.itongue.cn/v1/meal-recipes/images/9657a000763f67d20ce7ddf8f80c5d5cdc947f2a9782c25cbd07a72427110e2f.jpg"
+      },
+      "source": "https://github.com/Anduin2017/HowToCook/blob/2b19c9e9ee926fd925a68207a57582a338813f9c/dishes/vegetable_dish/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E8%B1%86%E8%85%90%E6%B1%A4%E7%BE%B9/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E8%B1%86%E8%85%90%E6%B1%A4%E7%BE%B9.md",
+      "recipe": {
+        "chineseServing": "2小碗，含鸡蛋的轻勾芡汤。",
+        "chineseSteps": [
+          "番茄切1厘米丁，豆腐切1.5厘米块，鸡蛋打散。将5克淀粉与20毫升冷水搅匀。",
+          "汤锅中火热5毫升油，姜末炒10秒，加入番茄炒2–3分钟至变软出汁。",
+          "加350毫升热水、豆腐和1.5克盐，煮沸后轻煮2分钟。重新搅匀淀粉水后缓缓倒入，轻推锅底，煮30秒至略稠。",
+          "保持汤轻沸，蛋液细流淋入，待10秒再轻推成蛋花，继续轻煮30–60秒至鸡蛋完全凝固，撒葱花盛出。"
+        ],
+        "englishServing": "2 small bowls of lightly thickened soup containing egg.",
+        "englishSteps": [
+          "Dice tomato into 1 cm pieces and tofu into 1.5 cm cubes; beat the egg. Mix 5 g cornstarch with 20 ml cold water.",
+          "Heat 5 ml oil over medium heat, cook ginger for 10 seconds, then cook tomato for 2–3 minutes until softened and juicy.",
+          "Add 350 ml hot water, tofu and 1.5 g salt. Bring to a boil and simmer gently for 2 minutes. Stir the slurry again, pour it in slowly while gently stirring along the base, and simmer for 30 seconds until slightly thickened.",
+          "Keep the soup gently bubbling and pour in egg in a thin stream. Wait 10 seconds, then gently stir into ribbons. Simmer for 30–60 seconds until the egg is completely set, add scallion and serve."
+        ],
+        "ingredients": [
+          {
+            "catalogID": "",
+            "chineseAmount": "180克",
+            "chineseName": "番茄（去蒂）",
+            "englishAmount": "180 g",
+            "englishName": "tomato, stem removed",
+            "lookupName": "tomato, stem removed"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "100克",
+            "chineseName": "嫩豆腐",
+            "englishAmount": "100 g",
+            "englishName": "soft tofu",
+            "lookupName": "soft tofu"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "1个（约50克）",
+            "chineseName": "鸡蛋",
+            "englishAmount": "1 (about 50 g)",
+            "englishName": "egg",
+            "lookupName": "egg"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "5毫升",
+            "chineseName": "食用油",
+            "englishAmount": "5 ml",
+            "englishName": "cooking oil",
+            "lookupName": "cooking oil"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "3克",
+            "chineseName": "姜末",
+            "englishAmount": "3 g",
+            "englishName": "minced ginger",
+            "lookupName": "minced ginger"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "350毫升",
+            "chineseName": "热水（汤用）",
+            "englishAmount": "350 ml",
+            "englishName": "hot water for soup",
+            "lookupName": "hot water for soup"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "5克",
+            "chineseName": "玉米淀粉",
+            "englishAmount": "5 g",
+            "englishName": "cornstarch",
+            "lookupName": "cornstarch"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "20毫升",
+            "chineseName": "冷水（调淀粉）",
+            "englishAmount": "20 ml",
+            "englishName": "cold water for slurry",
+            "lookupName": "cold water for slurry"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "1.5克",
+            "chineseName": "盐",
+            "englishAmount": "1.5 g",
+            "englishName": "salt",
+            "lookupName": "salt"
+          },
+          {
+            "catalogID": "",
+            "chineseAmount": "5克",
+            "chineseName": "葱花",
+            "englishAmount": "5 g",
+            "englishName": "chopped scallion",
+            "lookupName": "chopped scallion"
+          }
+        ],
+        "references": [
+          {
+            "chineseTitle": "原食谱及作者：HowToCook contributors (Anduin2017/HowToCook)",
+            "englishTitle": "Recipe source: HowToCook contributors (Anduin2017/HowToCook)",
+            "urlString": "https://github.com/Anduin2017/HowToCook/blob/2b19c9e9ee926fd925a68207a57582a338813f9c/dishes/vegetable_dish/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E8%B1%86%E8%85%90%E6%B1%A4%E7%BE%B9/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E8%B1%86%E8%85%90%E6%B1%A4%E7%BE%B9.md"
+          },
+          {
+            "chineseTitle": "改编文字许可：Unlicense",
+            "englishTitle": "Adapted text license: Unlicense",
+            "urlString": "https://unlicense.org/"
+          },
+          {
+            "chineseTitle": "食材营养来源说明",
+            "englishTitle": "Ingredient nutrition reference documentation",
+            "urlString": "https://fdc.nal.usda.gov/data-documentation/"
+          }
+        ]
+      },
+      "note": "Presentation cooking overview adapted from archived recipe; not a claim of kitchen testing or current App availability."
+    }
+  ],
+  "ingredientPhotos": [
+    {
+      "catalogID": "knowledge:food:lotus-seed",
+      "file": "KnowledgeThumbnails/lotus-seed.jpg",
+      "sha256": "55cfa2c894f015978f3726be3436317c4952eb5bf7435bfb0c51fc930133c425",
+      "illustration": false,
+      "artist": "Sjschen at English Wikipedia",
+      "license": "Public domain",
+      "sourcePageURL": "https://commons.wikimedia.org/wiki/File:DriedLotusSeeds.jpg"
+    },
+    {
+      "catalogID": "knowledge:food:red-dates",
+      "file": "KnowledgeThumbnails/red-dates.jpg",
+      "sha256": "f65a90a8012c92f4a5be1539b2875a99acd9f7839d2eccc692521cf4d7bb9db0",
+      "illustration": false,
+      "artist": "Suginami",
+      "license": "CC0",
+      "licenseURL": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourcePageURL": "https://commons.wikimedia.org/wiki/File:Huizao_%E7%81%B0%E6%9E%A3_Chinese_data_-_jujube.jpg"
+    },
+    {
+      "catalogID": "knowledge:food:egg",
+      "file": "Thumbnails/raw-whole-egg.jpg",
+      "sha256": "51459de5d5e17985f25fdb22808dea67fe65115a8db91cf9044424d784142759",
+      "illustration": false,
+      "artist": "Sauvagette",
+      "license": "CC BY-SA 4.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePageURL": "https://commons.wikimedia.org/wiki/File:Chicken_raw_egg_lit_from_below.jpg"
+    }
+  ],
+  "graphics": "Water, tomato and sauce are original schematic SVG icons; all preceding food-photo credits remain in their existing provenance files.",
+  "seasonalContext": "Editorial links to prior seasonal-food page, not exclusive seasonal prescriptions. First dish is year-round rice congee; autumn dish image is a labeled existing AI illustration."
+}
