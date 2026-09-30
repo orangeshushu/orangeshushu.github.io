@@ -121,6 +121,16 @@
         2688
       ],
       "sha256": "c74c98938c02cdd5d6830c83aafcca67db5d343944ad022589a7353b3f7bdb4f"
+    },
+    {
+      "key": "tour_wait_en",
+      "source": "Existing NourishDay Build 150 QA simulator; -TCMOpenMealScan -TCMForceEnglish -TCMSeedMealLoading; 2026-09-29",
+      "file": "assets/nourishday/tour_wait_en.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "5f52984918bf0815872fa0f4dfa3c02ce8039db3d8173bfebe0264a539f28381"
     }
   ],
   "screens": [
@@ -139,5 +149,6 @@
     "me"
   ],
   "recordings_found": false,
-  "boundary": "Real UI screenshots from distinct preview and QA sessions, not a continuous meal recording. English UI retained with bilingual explanations. Manual entry, photo picker, ingredient editor, reminders, membership, widgets and Watch lack dedicated captures in this walkthrough."
+  "boundary": "Real UI screenshots from separate preview/QA sessions, not a continuous recording. Wait has real English/Chinese native captures; other archival English screenshots retain bilingual annotations. Elapsed time is a loading fixture, not a speed benchmark.",
+  "region_review": "37 features reviewed against 13 original screenshots; exact image dimensions and clipped detail viewport. Wait uses real English/Chinese captures. Other archival English UI remains original with bilingual annotations."
 }
