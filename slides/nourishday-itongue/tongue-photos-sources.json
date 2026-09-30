@@ -1,0 +1,46 @@
+{
+  "paper": "Digital tongue image analyses for health assessment",
+  "authors": "Jiacheng Xie, Congcong Jing, Ziyang Zhang, Jiatuo Xu, Ye Duan, Dong Xu",
+  "doi": "https://doi.org/10.1515/mr-2021-0018",
+  "figure": 5,
+  "paper_figure_url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/bba0/10388765/92fa50ef596c/j_mr-2021-0018_fig_005.jpg",
+  "original_source": "User-provided Comprehensive Exam.pptx, slide 51; individual TIFF photos visually matched to paper Figure 5.",
+  "rights": "User-provided author presentation assets. Article published under CC BY-NC-ND 4.0.",
+  "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "use": "Photographic examples of visible tongue variation, not model results or a longitudinal sequence. Constitution labels are not displayed or inferred on this page.",
+  "transformation": "TIFF decoded to lossless PNG; original dimensions and RGB pixels preserved. No crop, recolor, retouch, enhancement or generated content.",
+  "assets": {
+    "paper_tongue_1": {
+      "pptx_media": "ppt/media/image61.tiff",
+      "size": [
+        223,
+        253
+      ],
+      "sha256": "b9f37690d88d31949a4d061b7594631f787da2e19a5e80b03cc28e3c81b712aa"
+    },
+    "paper_tongue_2": {
+      "pptx_media": "ppt/media/image65.tiff",
+      "size": [
+        200,
+        266
+      ],
+      "sha256": "606897af940f0b0b37784c3c991308130b3c1a9133b6962b8def310e10af4907"
+    },
+    "paper_tongue_3": {
+      "pptx_media": "ppt/media/image66.tiff",
+      "size": [
+        201,
+        266
+      ],
+      "sha256": "e29f0d5fb39676fc0418ba23ee8bbea3d226d55670e35083b1fe2aeb54bc30c2"
+    },
+    "paper_tongue_4": {
+      "pptx_media": "ppt/media/image69.tiff",
+      "size": [
+        258,
+        277
+      ],
+      "sha256": "acf3153627327cdd731caf6a3fb6fa77066a245c3d131012f20450101f2f9cb6"
+    }
+  }
+}
