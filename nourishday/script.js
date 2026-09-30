@@ -1,9 +1,8 @@
 (() => {
   document.documentElement.classList.add("js");
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const zh = document.documentElement.lang.startsWith("zh");
-  const kcal = zh ? "千卡" : "kcal";
-  const grams = zh ? "克" : "g";
+  const kcal = "kcal";
+  const grams = "g";
   const animate = element => {
     if (!motion.matches && element?.animate) element.animate(
       [{ opacity: .45, transform: "translateY(5px)" }, { opacity: 1, transform: "translateY(0)" }],
@@ -51,11 +50,11 @@
   // A self-contained illustrative day. No personal data or API requests.
   const dayParts = [
     { energy: 22, protein: 32, fiber: 18, calories: "440", proteinG: "16", fiberG: "5", meals: 1,
-      image: "meal-breakfast-202609.webp", alt: zh ? "早餐：牛奶、全麦吐司、草莓和蓝莓" : "Breakfast: milk, wholegrain toast, strawberries and blueberries" },
+      image: "meal-breakfast-202609.webp", alt: "Breakfast: milk, wholegrain toast, strawberries and blueberries" },
     { energy: 53, protein: 76, fiber: 61, calories: "1,060", proteinG: "38", fiberG: "17", meals: 2,
-      image: "meal-balanced.webp", alt: zh ? "午餐：鸡肉饭配西兰花、胡萝卜和蘑菇" : "Lunch: chicken and rice with broccoli, carrots and mushrooms" },
+      image: "meal-balanced.webp", alt: "Lunch: chicken and rice with broccoli, carrots and mushrooms" },
     { energy: 86, protein: 92, fiber: 79, calories: "1,720", proteinG: "46", fiberG: "22", meals: 3,
-      image: "meal-dinner-202609.webp", alt: zh ? "晚餐：香煎三文鱼、藜麦、芦笋和烤蔬菜" : "Dinner: seared salmon, quinoa, asparagus and roasted vegetables" }
+      image: "meal-dinner-202609.webp", alt: "Dinner: seared salmon, quinoa, asparagus and roasted vegetables" }
   ];
   const mealPhoto = document.querySelector(".phone-meal");
   const mealControls = document.querySelector(".day-part-switch");
@@ -104,7 +103,7 @@
         if (request !== mealRequest) return;
         mealControls?.setAttribute("aria-busy", "false");
         button.classList.remove("is-loading");
-        if (mealNote) mealNote.textContent = zh ? "图片未加载，请再点一次重试" : "Image unavailable. Tap again to retry.";
+        if (mealNote) mealNote.textContent = "Image unavailable. Tap again to retry.";
         return;
       }
       // Fast repeated taps must not let an older image replace the latest choice.
@@ -123,7 +122,7 @@
       fillRing(card.querySelector(".large-rings"), card);
       card.querySelector(".large-rings > b").textContent = part.energy + "%";
       card.querySelector(".today-total strong").textContent = part.calories;
-      card.querySelector(".today-card-head small").textContent = part.meals + (zh ? " 餐" : part.meals === 1 ? " meal" : " meals");
+      card.querySelector(".today-card-head small").textContent = part.meals + (part.meals === 1 ? " meal" : " meals");
       [["energy", part.energy, part.calories + " / 2,000 " + kcal],
        ["protein", part.protein, part.proteinG + " / 50 " + grams],
        ["fiber", part.fiber, part.fiberG + " / 28 " + grams]].forEach(([key, percent, value]) => {
@@ -158,7 +157,7 @@
   document.getElementById("demo-portion")?.addEventListener("input", event => {
     const amount = Number(event.target.value);
     if (!Number.isFinite(amount) || amount < .5 || amount > 1.5) return;
-    document.getElementById("portion-value").textContent = amount + (zh ? " 份" : amount === 1 ? " serving" : " servings");
+    document.getElementById("portion-value").textContent = amount + (amount === 1 ? " serving" : " servings");
     document.getElementById("meal-energy").textContent = Math.round(619 * amount) + " " + kcal;
     document.getElementById("meal-protein").textContent = Number((52 * amount).toFixed(1)) + " " + grams;
     document.getElementById("meal-fiber").textContent = Number((9.2 * amount).toFixed(1)) + " " + grams;

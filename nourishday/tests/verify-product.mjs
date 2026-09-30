@@ -4,7 +4,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-for (const page of ['nourishday/index.html', 'nourishday/zh/index.html']) {
+for (const page of ['nourishday/index.html']) {
   const file = path.join(root, page);
   const html = fs.readFileSync(file, 'utf8');
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
@@ -29,17 +29,16 @@ for (const page of ['nourishday/index.html', 'nourishday/zh/index.html']) {
   assert.ok(!/class="(?:status-pill|eyebrow|hero-points)/.test(heroCopy), `${page}: concise hero`);
   assert.ok(html.includes('class="today-total" aria-live="polite"><strong>1,720</strong>'), `${page}: readable standalone calories`);
   assert.ok(!/class="large-rings"[^>]*>[^\n]*<b>1,720/.test(html), `${page}: calories outside the rings`);
-  const lang = page.includes('/zh/') ? 'zh' : 'en';
   const screenshots = [...html.matchAll(/(?:src|srcset)="([^"]*product-202609\/[^"]+)"/g)];
   assert.equal(screenshots.length, 6);
-  assert.ok(screenshots.every(([, src]) => src.includes(`/product-202609/${lang}-`)));
+  assert.ok(screenshots.every(([, src]) => src.includes('/product-202609/en-')));
   assert.ok(screenshots.every(([, src]) => src.endsWith('-phone.webp')), 'Every showcase image must be iPhone');
   assert.equal((html.match(/width="660" height="1434"/g) || []).length, 7, 'Six iPhone previews and matching zoom dimensions');
-  console.log(`PASS ${page}: resources, IDs, ARIA, metadata, 6 localized iPhone features and 14 calendar dates`);
+  console.log(`PASS ${page}: resources, IDs, ARIA, metadata, 6 English iPhone features and 14 calendar dates`);
 }
 const assetDir = path.join(root, 'nourishday/assets/product-202609');
 const assets = fs.readdirSync(assetDir);
-assert.equal(assets.length, 24);
+assert.equal(assets.length, 12);
 const bytes = assets.reduce((n, name) => n + fs.statSync(path.join(assetDir, name)).size, 0);
-assert.ok(bytes < 1_200_000, 'Keep both languages and device sizes within the image budget');
+assert.ok(bytes < 700_000, 'Keep English desktop and phone assets within the image budget');
 console.log(`PASS ${assets.length} screenshot assets: ${bytes.toLocaleString()} bytes total`);

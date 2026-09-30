@@ -1,12 +1,9 @@
 {
   "title": "NourishDay & iTongue",
   "description": "Traditional Health Knowledge and Everyday Digital Tools",
-  "description_zh": "传统健康知识与日常数字工具",
   "detail": "Interactive 16:9 product presentation · 5 pages",
   "languages": [
-    "en",
-    "zh"
+    "en"
   ],
-  "legacy_hash": true,
-  "detail_zh": "16:9 互动产品演示 · 5 页"
+  "legacy_hash": true
 }
