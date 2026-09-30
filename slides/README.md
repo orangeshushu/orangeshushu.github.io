@@ -1,32 +1,11 @@
-# Presentation folders
+# NourishDay & iTongue interactive presentation
 
-Public directory: https://jiacheng.website/slides/
+Published at https://jiacheng.website/slides/nourishday-itongue/ (English by default); Chinese: https://jiacheng.website/slides/nourishday-itongue/#zh/1. The former `/roadshow/` URLs redirect here.
 
-```text
-slides/
-  index.html                 # Generated directory page
-  build-index.py             # Rebuild after adding/removing folders
-  README.md
-  nourishday-itongue/
-    index.html               # This presentation, including embedded images
-    presentation.json        # Directory title, description and languages
-    README.md
-```
+Jiacheng Xie. Six-page academic-style product presentation for investors and potential partners. The deck uses a fixed 16:9 desktop stage for browser fullscreen, with a scrolling responsive layout on narrow screens. The cover uses the official NourishDay and iTongue icons, the presenter's name and October 2026. Selecting either icon now enters that project's background directly; the separate Overview page has been removed.
 
-Each presentation lives entirely inside its own folder. Other presentations can use their own assets subdirectory. The directory and all presentation links are English-only. The existing `#en/1` legacy links still redirect to the first deck.
+Public controls: persistent Home / NourishDay Background / NourishDay Demo / iTongue Background / iTongue Value / iTongue Demo navigation, English/中文 switching, fullscreen, previous/next and direct hash links. Keyboard: Left/Right or Space navigate; 1–6 jump to pages; Home returns to the cover; L changes language; F requests fullscreen. The NourishDay demo also includes a visible Projects button back to the cover. Speaker Notes and Start Timer are intentionally absent from the public page.
 
-## Add a presentation
+The single self-contained HTML embeds all project-owned demonstration assets and includes the site-owned visitor tracker but uses no third-party CDN, login, product API requests or private patient data. Responsive CSS, viewport fallbacks, reduced-motion handling, focus-visible states, and standard/WebKit fullscreen support target modern Chrome, Edge, Firefox and Safari. Desktop typography, icons and phone mockups scale from the actual 16:9 presentation canvas with container-relative units, so an ultrawide browser does not enlarge content beyond the slide while compact laptops preserve readable minimum sizes. Tablet and phone layouts reflow vertically, keep images within their containers, preserve source-image aspect ratios and avoid horizontal scrolling. Page 2 presents NourishDay's motivation as an academic argument before showing the product: three source-linked bullet points explain mainstream nutrition concern, the remaining daily-intake measurement gap, and different user goals. Line icons, four compact evidence cards, a larger design-objective panel, smartphone reach, and a clearly labeled third-party U.S. diet-and-nutrition-app category estimate fill the 16:9 canvas without sacrificing hierarchy. It cites IFIC, CDC/NCHS, CDC, NCI, Pew and Grand View Research, and states that population indicators are not customer counts and the category forecast is not a NourishDay revenue projection. Page 3 has a playable three-step workflow using real app screens and a reviewed portion calculator. Pages 4–5 explain tongue inspection as one part of traditional observation, distinguish tongue-body and coating features, and show the benefits and limits of a reviewable image. They adapt `Comprehensive Exam.pptx` slides 4–5 and 10–12, and cite a digital tongue-image review and a smartphone-image clinician-agreement study. Published reliability figures describe clinicians in that study, not iTongue diagnostic performance. Page 6 retains the guided-capture demonstration, with the undeployed local analysis layer clearly labeled.
 
-1. Create `slides/<short-name>/index.html` and place its assets in that folder.
-2. Optionally add `presentation.json` with `title`, `description`, `detail` and `languages` (for this deck's hash convention). Keep all public metadata English-only. Omit languages for an ordinary HTML presentation.
-3. Run `python3 slides/build-index.py` from the website repository root, commit the intended files and push. GitHub Pages publishes the result.
-
-## Remove a presentation
-
-Delete only its folder, then run `python3 slides/build-index.py`. Commit the folder removal and rebuilt directory page, then push. This removes both the presentation and its directory entry; other presentation folders are untouched. Git retains the history for recovery. Deleting a folder through GitHub's web UI alone does not regenerate this static index: rebuild and commit the index too.
-
-## Rename or update
-
-Edit or rename only the relevant folder, update its metadata if necessary, rebuild the index, and publish. Old external links to a renamed/deleted presentation will no longer work unless a redirect is intentionally retained. The legacy hash redirect is emitted only while the designated presentation folder exists.
-
-No public delete/upload controls or account permissions are added. Management takes place in this Git repository.
+Editable build sources and evidence: `TCM_Calendar/output/presentations/dual-projects-batch-01/.build` in the owner's local working package. Roll back by reverting the scoped website publication commit. No homepage links or unrelated product pages are modified.
