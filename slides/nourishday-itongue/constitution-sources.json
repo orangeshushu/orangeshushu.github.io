@@ -25,7 +25,7 @@
       1198,
       600
     ],
-    "display": "Historical source asset retained in data only; no longer displayed in the common-constitution view."
+    "display": "Original user-supplied FOODROOT.TCM figures restored unchanged using SVG viewport clipping; no redraw or recolouring."
   },
   "research_examples": {
     "paper": "Xie et al., Digital tongue image analyses for health assessment",
@@ -162,5 +162,18 @@
       }
     ],
     "boundary": "Traditional educational descriptions only. Patterns overlap. Special diathesis has no characteristic tongue defined here. User 10-pattern infographic is not relabelled as the nine constitutions. Symptoms/diagrams are not app inference, disease predictions or diagnostic criteria."
+  },
+  "update_originals_2026_09_30": {
+    "request": "Restore original human figures and use supplied tongue chart while retaining detailed bilingual descriptions.",
+    "tongue_asset": "constitution-tongue-reference.png",
+    "sha256": "79e93e594ad1eecd1d0e19ab4812f9c73abe2ec210dd05dfa6d9de9183fb1a30",
+    "dimensions": [
+      1276,
+      760
+    ],
+    "display": "Unmodified full image with original English labels on the feature tab; accessible enlargement dialog. No cropped tongue fragments, upscaling, redraw or generated enhancement.",
+    "mapping": "Full original chart has ten tongue patterns, explicitly distinct from nine constitution types. Bilingual nine-type explanations remain independently selectable alongside it. Special diathesis has no unique tongue assigned.",
+    "rights": "User-provided reference; no open licence asserted.",
+    "preserved": "Detailed bilingual manifestations, feature descriptions and independent paper examples."
   }
 }

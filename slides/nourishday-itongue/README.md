@@ -231,3 +231,7 @@ Page13 now uses an unretouched official Klinik am Steigerwald tongue-inspection 
 
 ### 2026-09-30: nine constitutions and tongue features
 Page16 adds a synchronized tongue-features tab (colour, coating, shape/surface), original scalable SVG diagrams and bilingual typical manifestations. Published paper examples remain separate and unchanged. Traditional descriptions are educational; patterns overlap and special diathesis has no unique tongue assigned. Sources/provenance: constitution-sources.json. Checked108 bilingual desktop/mobile states without clipping or horizontal overflow.
+
+
+### 2026-09-30 original figures restored
+Owner preference supersedes the generated SVG figures: restored original supplied FOODROOT.TCM people, preserving enlarged detail and bilingual manifestations. Tongue-features view now shows the unmodified1276x760owner-supplied chart, nine-type explanation selectors and an accessible full-original dialog. The ten-pattern source taxonomy is explicitly kept distinct from nine constitutions.72bilingual desktop/mobile states pass; modal image decodes at original dimensions and Escape restores focus.
