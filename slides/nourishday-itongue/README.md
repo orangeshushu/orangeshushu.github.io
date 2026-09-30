@@ -116,3 +116,16 @@ A short comparison connects TCM dietary tradition with modern Food Is Medicine w
 Current total: 12 pages. Foundations 3, food properties 4, seasons 5, dishes 6, NourishDay demo 7, four examinations 8, tongue regions 9, iTongue demo 10, classification 11, technology 12. Numeric keys 1–9, 0 for 10 and End for final page; arrows traverse all pages. Foundation CTA enters food properties; kitchen return and existing links follow the insertion.
 
 Validation: build/syntax and 275 assertions across 12 pages/two languages pass. In-app Chromium verified all six language/group combinations and a five-category selection: all photos decoded, no panel clipping/horizontal overflow. English and Chinese mobile widths remain 390px. New browser-specific Safari/Firefox/Edge, physical devices and projector rehearsal were not run.
+
+
+## NourishDay real-screen walkthrough — 2026-09-29
+
+Current deliverable: `NourishDay_iTongue_Interactive_17_Pages.html` plus the adjacent `assets/` folder. Keep both together for offline use. Page 7–12 replaces the former simulated NourishDay theater with six chapters: Capture (Scan, upload, recognition), Review, Calendar/trends, Today, Library (food reference, recipe ingredients, tea), and Personal (daily targets and Me). All 13 images are actual App captures; five come byte-for-byte from the supplied Funding Briefing PPTX. New external images load only when selected; original embedded assets remain unchanged.
+
+The full screenshot, numbered feature marks, magnified original region and bilingual right-hand explanation stay synchronized. Screen selectors, chapter links, Next feature, original-image enlargement, Escape and focus restoration work without auto-advancing through fake analysis. English screenshots are explicitly retained as English UI in both language modes; the recognition fixture is Chinese. Screens come from separate sessions and versions, not one continuous transaction. Upload/recognition captures are test fixtures, and their elapsed times are not performance evidence. Me is explicitly an earlier archived layout.
+
+No continuous App screen recording was found in the reference PPT, presentation folder or project media inventory. No video was fabricated. Dedicated photo-picker, manual-entry, ingredient-editor, reminders, membership, widgets and Watch captures remain to be supplied; their full screen coverage is not claimed. Screenshot annotations describe visible controls, not browser execution of the App. Asset hashes and exact sources: `.build/nourishday-walkthrough-provenance.json`.
+
+Pacing for a 20-minute combined talk: cover 30 seconds; NourishDay context/concepts pages 2–6 about 5 minutes; real App chapters pages 7–12 about 7 minutes; iTongue pages 13–17 about 6 minutes; discussion transition 90 seconds. Detailed screen tabs are optional during the live talk.
+
+Validation: 519 state assertions across 17 slides/two languages; 74 desktop screenshot-region states passed in in-app Chromium. All 12 mobile chapter/language layouts fit 390 px without horizontal overflow. Original-image modal, Escape/focus restoration, 1920×1080 presentation ratio, and relocated iTongue cover navigation verified. Safari/Firefox/Edge and native-device tests not run for this website-only change.

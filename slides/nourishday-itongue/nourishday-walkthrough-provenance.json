@@ -1,0 +1,143 @@
+{
+  "reference_ppt": "/Volumes/SSD存储/0930 Presentation/NourishDay_Funding_Briefing_EN.pptx",
+  "reference_sha256": "173e8643b5fa9b57d341e21672d844714eeaa62191d3590f4a8654c890d0794f",
+  "assets": [
+    {
+      "key": "tour_result",
+      "source": "output/presentations/itongue-visual-deck-2026-09-29/.build/source-assets/funding-briefing/image2.png",
+      "file": "assets/nourishday/tour_result.png",
+      "size": [
+        660,
+        1434
+      ],
+      "sha256": "bb04188d415628bbe96ac8084230764b58a315b66f70d2bdc194204dc78299d6"
+    },
+    {
+      "key": "tour_calendar",
+      "source": "output/presentations/itongue-visual-deck-2026-09-29/.build/source-assets/funding-briefing/image3.png",
+      "file": "assets/nourishday/tour_calendar.png",
+      "size": [
+        660,
+        1434
+      ],
+      "sha256": "f041db7d212134df001d87a32c246ac59bb153984387dcee208672b2e9855640"
+    },
+    {
+      "key": "tour_trends",
+      "source": "output/presentations/itongue-visual-deck-2026-09-29/.build/source-assets/funding-briefing/image4.png",
+      "file": "assets/nourishday/tour_trends.png",
+      "size": [
+        660,
+        1434
+      ],
+      "sha256": "74a6748113270e289f7448bba7a287c6c7cb862158b33158a7b00ff502709d36"
+    },
+    {
+      "key": "tour_today",
+      "source": "output/presentations/itongue-visual-deck-2026-09-29/.build/source-assets/funding-briefing/image5.png",
+      "file": "assets/nourishday/tour_today.png",
+      "size": [
+        660,
+        1434
+      ],
+      "sha256": "4bbcc4d8cc2606e01cf66c952364fd941b2f67f342dc420f40d9406b68fb09cb"
+    },
+    {
+      "key": "tour_library",
+      "source": "output/presentations/itongue-visual-deck-2026-09-29/.build/source-assets/funding-briefing/image6.png",
+      "file": "assets/nourishday/tour_library.png",
+      "size": [
+        660,
+        1434
+      ],
+      "sha256": "decefc39a296d799f6fba8ff561b47702101b7cf2eca8f942f766d2f589335a0"
+    },
+    {
+      "key": "tour_upload",
+      "source": "AppStoreAssets/QA/RecognitionWait2026-09-26/screenshots/en-upload-dark.png",
+      "file": "assets/nourishday/tour_upload.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "28a866ff2318c6a603e073d2e950b8930d744c5324a0452087664a92e57b36e1"
+    },
+    {
+      "key": "tour_wait",
+      "source": "AppStoreAssets/QA/RecognitionWait2026-09-26/screenshots/zh-wait.png",
+      "file": "assets/nourishday/tour_wait.png",
+      "size": [
+        1206,
+        2622
+      ],
+      "sha256": "b9cf66be35b80c166f019900c6390ef8cc1dfafdb9885ba25bead8c311611783"
+    },
+    {
+      "key": "tour_food",
+      "source": "AppStoreAssets/Release1.8.2Build142/screenshots/split-peas-en.png",
+      "file": "assets/nourishday/tour_food.png",
+      "size": [
+        1320,
+        2868
+      ],
+      "sha256": "cf0d1dca201798cf4bbce09654c41b1cf38f680695f8e896b79015232c7e5803"
+    },
+    {
+      "key": "tour_recipe",
+      "source": "AppStoreAssets/Release1.8.2Build143/screenshots/smashed-cucumber-home-en.png",
+      "file": "assets/nourishday/tour_recipe.png",
+      "size": [
+        1320,
+        2868
+      ],
+      "sha256": "88b04e21dcbbf476b8f80ad3af329d3385bb0f46dfc2918ecf0777ebb35fcc16"
+    },
+    {
+      "key": "tour_tea",
+      "source": "AppStoreAssets/QA/EncyclopediaPublicLabels2026-09-12/detail-en.png",
+      "file": "assets/nourishday/tour_tea.png",
+      "size": [
+        750,
+        1334
+      ],
+      "sha256": "5ea697f30c1463c319fb56834490f96328ff971e02542c2123291f3b89f332d1"
+    },
+    {
+      "key": "tour_targets",
+      "source": "AppStoreAssets/StoreReview2026-08-31/en-US/04-nutrition-targets.jpg",
+      "file": "assets/nourishday/tour_targets.jpg",
+      "size": [
+        1320,
+        2868
+      ],
+      "sha256": "c38d3689b6fa8b69a4580b7cb066ff22110914248f33f60a2a9295ab52a5fdf6"
+    },
+    {
+      "key": "tour_me",
+      "source": "AppStoreAssets/ScreenshotsCurrent/06-me.jpg",
+      "file": "assets/nourishday/tour_me.jpg",
+      "size": [
+        1242,
+        2688
+      ],
+      "sha256": "c74c98938c02cdd5d6830c83aafcca67db5d343944ad022589a7353b3f7bdb4f"
+    }
+  ],
+  "screens": [
+    "scan",
+    "upload",
+    "wait",
+    "result",
+    "calendar",
+    "trends",
+    "today",
+    "library",
+    "food",
+    "recipe",
+    "tea",
+    "targets",
+    "me"
+  ],
+  "recordings_found": false,
+  "boundary": "Real UI screenshots from distinct preview and QA sessions, not a continuous meal recording. English UI retained with bilingual explanations. Manual entry, photo picker, ingredient editor, reminders, membership, widgets and Watch lack dedicated captures in this walkthrough."
+}
