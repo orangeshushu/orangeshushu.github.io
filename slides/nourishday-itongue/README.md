@@ -6,4 +6,6 @@ The self-contained presentation has eight pages: cover, two NourishDay pages, th
 
 Public controls: page navigation, English/中文 switch in the upper right, fullscreen, previous/next, and direct `#en/N` or `#zh/N` links. Keyboard: Left/Right or Space navigate; 1–8 jump to pages; Home returns to cover; L changes language; F requests fullscreen. The NourishDay workflow and iTongue walkthrough can play or pause. Clicking the original research figure enlarges it. Reduced-motion and narrow-screen layouts are included.
 
+Desktop and landscape tablet browsers use one 1152×648 logical canvas. The page automatically scales that complete 16:9 canvas to the available browser area on load, resize, orientation change and fullscreen, so text, images and spacing keep a stable proportion without browser zoom. At 900 CSS pixels and below, it changes to a vertical scrolling layout for phones. The fit has been checked in Chromium/Chrome and Safari; Firefox, Edge, physical devices and the venue projector remain untested.
+
 The HTML embeds images and code, and retains the site-owned visitor tracker. No product API, patient record, login or third-party CDN is used. Source package and private speaker notes are in `TCM_Calendar/output/presentations/itongue-visual-deck-2026-09-29/`. Roll back by reverting the scoped website commit.
