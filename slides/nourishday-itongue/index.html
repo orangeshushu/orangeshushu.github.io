@@ -395,6 +395,17 @@ body{display:flex;flex-direction:column;justify-content:center;padding:12px 16px
 @media(max-width:900px){.native-pin{width:44px;height:44px}.native-scenarios button{min-height:44px;padding:7px;font-size:12px}.native-detail{min-height:480px}.native-diet-panel{min-height:230px}.native-food-cards{min-height:100px}.native-food-cards button{grid-template-columns:1fr;grid-template-rows:72px auto}.native-food-cards button>img{width:100%;height:72px}.native-food-cards button>span{font-size:13px;padding:8px}.native-food-cards button i{display:none}.diet-preview-heading{align-items:flex-start}.diet-preview-heading>small{max-width:55%;text-align:right}.native-diet-panel h3{font-size:22px}.with-result .native-detail h2{font-size:25px}.native-focus-tabs button{min-height:44px}}
 @media(prefers-reduced-motion:reduce){.native-overview,.native-pin,.native-focus-tabs button,.native-scenarios button,.native-food-cards button{transition:none}}
 .native-scenario-label{align-self:center;font-size:10px;color:var(--ink-soft);flex:none}
+
+/* Compact seasonal food recommendations: photos first, one reason per season. */
+.food-season-recommendations{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0;animation:season-food-in .22s ease-out}
+.season-food-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;min-height:78px}
+.season-food-pair figure{margin:0;display:flex;align-items:center;gap:10px;padding:8px;background:#fff;border:1px solid #d1dfd4;border-radius:11px;min-width:0}
+.season-food-pair img{width:72px;height:72px;object-fit:cover;border-radius:7px;flex-shrink:0}
+.season-food-pair figcaption{font-size:15px;font-weight:700;line-height:1.25;color:var(--ink)}
+.season-food-reason{margin:0;padding-top:9px;border-top:1px solid #bfd2c3;font-size:13px;line-height:1.45;color:var(--green)}
+@keyframes season-food-in{from{opacity:.35;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.season-food-pair figure{flex-direction:column;gap:8px;padding:10px}.season-food-pair img{width:100%;height:95px}.season-food-pair figcaption{font-size:16px}.season-food-reason{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.food-season-recommendations{animation:none}}
 </style>
 </head>
 <body>
@@ -500,10 +511,10 @@ const foodNatures=[
  {key:'hot',label:['Hot','热'],food:['Dried chilli','干辣椒'],flavor:['Pungent','辛'],examples:['A strongly warming traditional category','传统分类中偏热的一类'],tone:'#a44e3d',note:['At the warming end of the traditional spectrum.','位于传统温热分类的一端。']}
 ];
 const foodSeasons=[
- {name:['Spring','春'],mark:'01',title:['Seasonal variety','应季多样'],copy:['Start with what is in season; keep variety across the plate.','从应季食材出发，保留餐盘的多样性。']},
- {name:['Summer','夏'],mark:'02',title:['Climate enters the picture','考虑暑热环境'],copy:['Traditional food culture associates watermelon and mung bean with summer.','传统食养常将西瓜、绿豆与夏季联系起来。']},
- {name:['Autumn','秋'],mark:'03',title:['Preparation matters','关注烹调方式'],copy:['Fresh, cooked and dried forms may have different traditional descriptions.','鲜食、熟食、干制的传统属性描述可能不同。']},
- {name:['Winter','冬'],mark:'04',title:['Context, not a fixed menu','因时而异'],copy:['Season is one factor alongside the person, local climate and the whole diet.','季节只是一个因素，还需结合个人、当地气候与整体饮食。']}
+ {name:['Spring','春'],foods:[['season_coix','Coix seed','薏米'],['season_adzuki','Adzuki beans','赤小豆']],reason:['Rainy days · A light grain-and-bean porridge.','春雨渐多 · 谷豆粥，清淡搭配。']},
+ {name:['Summer','夏'],foods:[['food_property_cold','Watermelon','西瓜'],['season_melon','Winter melon','冬瓜']],reason:['Hot days · Juicy fruit and a light soup.','暑热天气 · 多汁水果，清淡汤食。']},
+ {name:['Autumn','秋'],foods:[['season_lily','Lily bulb','百合'],['season_fungus','Snow fungus','银耳']],reason:['Dry weather · A gently simmered, soothing soup.','秋日转燥 · 慢煮汤羹，温和入口。']},
+ {name:['Winter','冬'],foods:[['food_property_warm','Fresh ginger','生姜'],['season_tofu','Tofu','豆腐']],reason:['Cold days · A warm soup with a protein source.','寒冷天气 · 一碗热汤，搭配蛋白质。']}
 ];
 
 let foodBalance=1;
@@ -521,8 +532,8 @@ function foodProperties(){
  <div class="food-nature-label"><b>${text('FOUR NATURES + NEUTRAL','四气与平性')}</b><span>${text('Select a food to explore its traditional profile','点击食物，查看传统属性')}</span></div>
  <div class="food-nature-strip">${foodNatures.map((x,j)=>`<button class="food-nature-card ${j===foodNatureIndex?'active':''}" style="--food-tone:${x.tone}" data-food-nature="${j}" aria-pressed="${j===foodNatureIndex}">${image('food_property_'+x.key,x.food[i])}<span class="food-nature-name">${x.label[i]}</span><b>${x.food[i]}</b><span class="food-card-cue">${j===foodNatureIndex?text('Selected','已选择'):text('Explore','查看')} →</span></button>`).join('')}</div>
  <div class="food-context-grid"><article class="food-profile" style="--food-tone:${n.tone}" aria-live="polite"><div class="food-profile-top"><span class="food-property-glyph" aria-hidden="true">${['寒','凉','平','温','热'][foodNatureIndex]}</span><div><p class="section-label">${text('NATURE + FLAVOUR','性味结合')}</p><h2>${n.food[i]} <span>· ${n.label[i]} / ${n.flavor[i]}</span></h2><p>${n.note[i]}</p></div></div><p class="food-other">${n.examples[i]}</p><div class="food-flavours" aria-label="${text('The five flavours','五味')}">${[['Sour','酸'],['Bitter','苦'],['Sweet','甘'],['Pungent','辛'],['Salty','咸']].map(x=>`<span class="${x[0]===n.flavor[0]?'active':''}">${x[i]}</span>`).join('')}</div><p class="food-definition">${text('“Nature” is a traditional classification—not serving temperature or calories.','“寒热”是传统属性分类，不等于食物温度或热量。')}</p></article>
- <article class="food-season-panel"><p class="section-label">${text('SEASONAL EATING','时令饮食 · 因时制宜')}</p><nav class="food-season-tabs" aria-label="${text('Seasonal context','季节语境')}">${foodSeasons.map((x,j)=>`<button data-food-season="${j}" aria-pressed="${j===foodSeasonIndex}" class="${j===foodSeasonIndex?'active':''}">${x.name[i]}</button>`).join('')}</nav><div class="food-season-story" aria-live="polite"><span>${s.mark}</span><div><h2>${s.title[i]}</h2><p>${s.copy[i]}</p></div></div><div class="food-product-link">${icon('record')}<span>${text('NourishDay connects food knowledge with everyday records.','NourishDay 将食物知识与日常记录连接起来。')}</span></div></article></div>
- <footer class="food-source-footer"><span>${text('Traditional knowledge · classifications may vary by source and preparation.','传统知识介绍 · 分类可能因文献与加工方式而异。')}</span>${sourceLink(source,text('HK Department of Health','香港卫生署'))}<details class="food-photo-credits"><summary>${text('Photo credits','图片来源')}</summary><div>${D.foodPhotoCredits.map(c=>`<p><a href="${c.sourcePageURL}" target="_blank" rel="noopener">${esc(c.artist)} ↗</a> · <a href="${c.licenseURL}" target="_blank" rel="noopener">${esc(c.license)}</a></p>`).join('')}</div></details></footer>`;
+ <article class="food-season-panel"><p class="section-label">${text('SEASONAL EATING','时令饮食 · 因时制宜')}</p><nav class="food-season-tabs" aria-label="${text('Seasonal context','季节语境')}">${foodSeasons.map((x,j)=>`<button data-food-season="${j}" aria-pressed="${j===foodSeasonIndex}" class="${j===foodSeasonIndex?'active':''}">${x.name[i]}</button>`).join('')}</nav><div class="food-season-recommendations" aria-live="polite" aria-atomic="true"><div class="season-food-pair">${s.foods.map(f=>`<figure>${image(f[0],f[i+1])}<figcaption>${f[i+1]}</figcaption></figure>`).join('')}</div><p class="season-food-reason">${s.reason[i]}</p></div></article></div>
+ <footer class="food-source-footer"><span>${text('Traditional knowledge · classifications may vary by source and preparation.','传统知识介绍 · 分类可能因文献与加工方式而异。')}</span>${sourceLink(source,text('HK Department of Health','香港卫生署'))}<details class="food-photo-credits"><summary>${text('Photo credits','图片来源')}</summary><div>${[...D.foodPhotoCredits,...D.seasonPhotoCredits.filter(c=>foodSeasons.some(s=>s.foods.some(f=>f[0]===c.key)))].map(c=>`<p><a href="${c.sourcePageURL}" target="_blank" rel="noopener">${esc(c.artist)} ↗</a> · <a href="${c.licenseURL}" target="_blank" rel="noopener">${esc(c.license)}</a></p>`).join('')}</div></details></footer>`;
 }
 
 const nourishSteps=[
