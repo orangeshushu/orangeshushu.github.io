@@ -1,0 +1,19 @@
+{
+  "purpose": "TCM yin/yang introduction and a carefully bounded comparison with modern Food Is Medicine.",
+  "sources": [
+    {
+      "url": "https://www.cmro.gov.hk/html/eng/useful_information/public_health/publication/Health_Preservation_by_Food_in_CM.html",
+      "supports": "Traditional food nature, examples, yin/yang context; no direct measured thermal or caloric interpretation."
+    },
+    {
+      "url": "https://odphp.health.gov/foodismedicine/understanding-food-medicine",
+      "supports": "Nutritious food, health and community/healthcare connections."
+    },
+    {
+      "url": "https://professional.heart.org/en/science-news/food-is-medicine/top-things-to-know",
+      "supports": "Medically tailored meals/groceries and produce prescription examples."
+    }
+  ],
+  "comparison": "Shared concern about food and health is a presentation synthesis, not equivalence of theoretical systems or clinical evidence.",
+  "assets": "All food photos reused unchanged with existing food-properties-provenance.json attribution; taiji is original SVG."
+}

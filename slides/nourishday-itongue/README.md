@@ -1,6 +1,6 @@
 # NourishDay & iTongue interactive presentation — 2026-09-29
 
-The generated, self-contained eleven-page presentation is `NourishDay_iTongue_Interactive_11_Pages.html`. English is the default; the top-right switch changes the current page to Simplified Chinese. The presentation keeps one UI language per page.
+The generated, self-contained twelve-page presentation is `NourishDay_iTongue_Interactive_12_Pages.html`. English is the default; the top-right switch changes the current page to Simplified Chinese. The presentation keeps one UI language per page.
 
 To rebuild, run `python3 .build/build.py` from any directory. To verify state, controls, language, asset embedding, product-theater flow and boundary labels, run `node .build/check.cjs`. `.build/speaker-notes.json` is private local speaker preparation and is not embedded in the HTML.
 
@@ -57,7 +57,7 @@ The contemporary four-photo revision passed the 159-assertion source checks and 
 
 A standalone, approximately 90-second bilingual page sits between the NourishDay background and product demo. Five clickable real-food photographs introduce Cold / Cool / Neutral / Warm / Hot; selection updates the nature-and-flavour explanation and the five-flavour highlight. Four seasonal controls explain season, climate and preparation as context. The terminology follows the Hong Kong Department of Health educational reference. Nature is explicitly distinguished from serving temperature and calories; no therapeutic or universal seasonal diet advice is given. The owner's reference supplies the hot-chilli example; the official guidance groups chilli within warm/hot foods.
 
-Photographs are reused from the reviewed App asset catalog, with source, author and licence linked in the slide's Photo credits disclosure. Full provenance is `.build/food-properties-provenance.json`; existing licensed derivatives are embedded unchanged. Source remains `app.js`, `style.css`, `shell.html`, `content.json` and `speaker-notes.json`. The previous eight-page HTML is retained as an earlier artifact; `NourishDay_iTongue_Interactive_11_Pages.html` is now the build and publication target. Navigation, keyboard shortcuts 1–9, page totals, cover project links and analysis-to-result timers are updated for the inserted page.
+Photographs are reused from the reviewed App asset catalog, with source, author and licence linked in the slide's Photo credits disclosure. Full provenance is `.build/food-properties-provenance.json`; existing licensed derivatives are embedded unchanged. Source remains `app.js`, `style.css`, `shell.html`, `content.json` and `speaker-notes.json`. The previous eight-page HTML is retained as an earlier artifact; `NourishDay_iTongue_Interactive_12_Pages.html` is now the build and publication target. Navigation, keyboard shortcuts 1–9, page totals, cover project links and analysis-to-result timers are updated for the inserted page.
 
 Validation: Node syntax/state checks pass 181 assertions across nine pages/two languages. In-app Chromium checked the five food selections and four season controls at 1366×768, and English/Chinese content at 390×844; all food images loaded and document width remained 390px. The existing NourishDay demo follows at page 5; iTongue starts at page 6.
 
@@ -105,3 +105,14 @@ Three dish images are source photographs; the autumn dessert is an existing, exp
 Current order: cover; NourishDay background; food properties; seasonal food; dishes; NourishDay demo; four examinations; tongue regions/information; iTongue demo; classification; technology. Digits 1–9, key 0 for page 10, and End for the final page. All preceding image assets and concurrent tongue-region work were preserved.
 
 Validation for this addition: Python build, Node syntax and 250 state assertions pass. In-app Chromium verified 24 dish/stage/language combinations at 1366×768, decoded images, no card clipping or horizontal overflow; all four seasonal meal states fit after action buttons were placed side by side. Ingredient detail, seasonal-to-dish routing and automatic completion to Serve were exercised. English and Chinese 390×844 layouts show no horizontal overflow. Audit snapshot: `.build/kitchen-browser-audit.json`. Safari/Firefox/Edge, physical devices and projector rehearsal were not run for this addition.
+
+
+## Food foundations — current page 3
+
+Added a separate bilingual introduction before the detailed food-properties slide. Interactive Yin-leaning / Neutral / Yang-leaning controls and a five-category strip link cold/cool, neutral and warm/hot to the traditional yin/yang framework. An original SVG taiji changes orientation subtly, the panel changes color, and real-food examples update. Neutral uses rice only; no neutral tofu classification is introduced. This is a qualitative traditional taxonomy, not a temperature, calorie or measured efficacy scale. Keyboard focus is restored to the selected group/category.
+
+A short comparison connects TCM dietary tradition with modern Food Is Medicine without treating their frameworks or evidence bases as equivalent. Hong Kong Department of Health supports the traditional concepts and examples; HHS/ODPHP supports the modern healthcare/community and nutritious-food-access description, with AHA supporting tailored-meal/produce-prescription examples. Clickable references are on the slide; full source scope is `.build/food-foundations-sources.json`. No new raster assets were added. Reused photo credits remain on the adjacent food-properties slide. Speaker notes allow 60–90 seconds.
+
+Current total: 12 pages. Foundations 3, food properties 4, seasons 5, dishes 6, NourishDay demo 7, four examinations 8, tongue regions 9, iTongue demo 10, classification 11, technology 12. Numeric keys 1–9, 0 for 10 and End for final page; arrows traverse all pages. Foundation CTA enters food properties; kitchen return and existing links follow the insertion.
+
+Validation: build/syntax and 275 assertions across 12 pages/two languages pass. In-app Chromium verified all six language/group combinations and a five-category selection: all photos decoded, no panel clipping/horizontal overflow. English and Chinese mobile widths remain 390px. New browser-specific Safari/Firefox/Edge, physical devices and projector rehearsal were not run.
