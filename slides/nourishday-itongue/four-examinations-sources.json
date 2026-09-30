@@ -1,0 +1,46 @@
+{
+  "updated": "2026-09-29",
+  "display_policy": "Publicly published photographs selected for academic presentation. Sources remain off-canvas; no visible image captions. Rights remain with the original owners; no open license has been verified.",
+  "assets": {
+    "four_observation": {
+      "title": "Kitasato University Hospital Kampo and Acupuncture Center",
+      "description": "A physician inspecting an adult patient’s tongue in a contemporary Kampo clinic.",
+      "source": "https://www.kitasato-u.ac.jp/toui-ken/center/kampo.html",
+      "image_url": "https://www.kitasato-u.ac.jp/toui-ken/images/center/ph_kampo_02.jpg",
+      "rights": "Publicly accessible source; copyright retained by source owner. No open reuse license verified.",
+      "source_sha256": "8776cfe453830b9ca81810fdf72428a37182b853fb7f71ba0a22339be73d2584",
+      "embedded_sha256": "62b87803a724a6c96aae0a7a2f77266fe2cb6a9c43bef33f3d9a75769b3e3471",
+      "transformation": "EXIF orientation normalized, maximum dimension 1200 pixels, JPEG compression; CSS responsive crop. No generated or retouched content."
+    },
+    "four_listening": {
+      "title": "Thomson Medical — physician consultation",
+      "description": "A Chinese medicine physician in face-to-face consultation. Illustrates attentive dialogue; a still photograph does not establish a formal voice, breathing or odor assessment.",
+      "source": "https://www.thomsonmedical.com/blog/how-tongue-and-pulse-reveal-your-health",
+      "image_url": "https://images.contentstack.io/v3/assets/blt5f400315f9e4f0b3/blt12b8712c06ffed35/67b29e96d91e1ba322009885/Thomson_Chinese_Medicine_physician_in_consultation..jpg?branch=production",
+      "rights": "Publicly accessible source; copyright retained by source owner. No open reuse license verified.",
+      "source_sha256": "7c2e945c4deebc027015ae8a3ef4fecb499ac2d568d60925fac60391cb3a499b",
+      "embedded_sha256": "67f8862923a548df9d7c1c067230a469d988251f686a971e6f490b4c987d0332",
+      "transformation": "EXIF orientation normalized, maximum dimension 1200 pixels, JPEG compression; CSS responsive crop. No generated or retouched content."
+    },
+    "four_inquiry": {
+      "title": "Seishindo — experienced Chinese medicine advisers",
+      "description": "A Chinese medicine adviser speaking with a patient in a contemporary consultation setting. The image does not establish the adviser’s medical licensure.",
+      "source": "https://www.seishin-do.co.jp/adviser/",
+      "image_url": "https://www.seishin-do.co.jp/adviser/images/img_01.jpg",
+      "rights": "Publicly accessible source; copyright retained by source owner. No open reuse license verified.",
+      "source_sha256": "11c543ee3b81978fd426e132e7929b68b1eda9abede6a452268baf263b49c827",
+      "embedded_sha256": "6abc5beaa3b30eb3834c660ce37524ab35c11f4c4b9160deb025024b60423c21",
+      "transformation": "EXIF orientation normalized, maximum dimension 1200 pixels, JPEG compression; CSS responsive crop. No generated or retouched content."
+    },
+    "four_palpation": {
+      "title": "Tongji Aerospace City Hospital — clinical consultation",
+      "description": "A physician palpating an adult patient’s wrist on a pulse cushion during a contemporary clinical consultation.",
+      "source": "https://www.tjhtcyy.cn/clients_1059.html",
+      "image_url": "https://rc00.zihu.com/g5/M00/48/39/CgAGbGkla2OAC8prAAIZdXaA-Tk646.jpg",
+      "rights": "Publicly accessible source; copyright retained by source owner. No open reuse license verified.",
+      "source_sha256": "e85ae3e6dc5e94b3217e869482d10e044d1b0fa25275875ab427145f74e8a327",
+      "embedded_sha256": "84abe57597b848c4a216765f9df1f622e34859128ba0236561b5813b57aa3756",
+      "transformation": "EXIF orientation normalized, maximum dimension 1200 pixels, JPEG compression; CSS responsive crop. No generated or retouched content."
+    }
+  }
+}
