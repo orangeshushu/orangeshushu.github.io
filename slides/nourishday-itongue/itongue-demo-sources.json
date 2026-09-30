@@ -1,0 +1,161 @@
+{
+  "captured": "2026-09-29",
+  "source": "iTongue native SwiftUI views, iOS Simulator 26.5, iPhone 17 Pro Max",
+  "captureBundle": "cn.itongue.slidecapture",
+  "originalAppSourceModified": false,
+  "photoSource": "Comprehensive Exam slide 51; Xie et al., DOI 10.1515/mr-2021-0018, Figure 5",
+  "notes": [
+    "Home, source, review, result and history are captures of existing native app views.",
+    "A disposable capture clone injects the published real tongue photo into an existing DEBUG fixture.",
+    "Camera guide is the native overlay rehearsed over a static photo; it is not a camera session.",
+    "Result is a preset Normal / Balanced constitution example, not model inference from the photo. Segmentation is nil; the genuine unavailable-state UI is shown.",
+    "History uses existing sample records; no private patient images or records are included.",
+    "No upload or production model call was made. Original small-screen photo review was also captured after real selection through the system picker."
+  ],
+  "assets": [
+    {
+      "asset": "demo_native_home_en",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "sha256": "0514f1c6fb7b54048f33ad4e32a3b4b549995334dc77179d4ac8d3266e4b07e0",
+      "source": "large-home-en.png",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/home-en.webp"
+    },
+    {
+      "asset": "demo_native_home_zh",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "sha256": "d5a335949d1ceece1f9d1a4ec784bbe81b2ae130d2e2ee292fa2a88a16b7a3cb",
+      "source": "large-home-zh.png",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/home-zh.webp"
+    },
+    {
+      "asset": "demo_native_source_en",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "sha256": "d9668e4609926a658f05e5aa0ad276694cfa2b7e6dbd2372879a5a1bc75a971f",
+      "source": "large-source-en.png",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/source-en.webp"
+    },
+    {
+      "asset": "demo_native_source_zh",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "sha256": "020839d3815fad25bd7794875091fa004a1de495832c14b1702e0ced6b47dffa",
+      "source": "large-source-zh.png",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/source-zh.webp"
+    },
+    {
+      "asset": "demo_native_guide_en",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "sha256": "1f0814e032038bbd9649f7c988c28306eefeea0a75ae207f4270e6c56a731f01",
+      "source": "large-guide-en.png",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/guide-en.webp"
+    },
+    {
+      "asset": "demo_native_guide_zh",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "sha256": "94f006aa7132a0c8d7f4aea98c5c230a52679a2291ffbfa2acff2bf220f9f276",
+      "source": "large-guide-zh.png",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/guide-zh.webp"
+    },
+    {
+      "asset": "demo_native_review_en",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "sha256": "47f658e7111a62832394e9851740e9e639c3959880d1ae18e0e60afeb380fe74",
+      "source": "large-review-en.png",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/review-en.webp"
+    },
+    {
+      "asset": "demo_native_review_zh",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "sha256": "fcd50cbc9882951999148b41a95820f4c9bfd934cfc0c9b3ec739435077926f8",
+      "source": "large-review-zh.png",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/review-zh.webp"
+    },
+    {
+      "asset": "demo_native_result_en",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "sha256": "a5fae266c2ee9fc7ced4a769f90d25783a0184660bd56458cdb64159dbde15d9",
+      "source": "large-result-en.png",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/result-en.webp"
+    },
+    {
+      "asset": "demo_native_result_zh",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "sha256": "a2d1bb5db25278c78dc38d31eaa9b4a4b2f69629235c636167f987fc1e721f13",
+      "source": "large-result-zh.png",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/result-zh.webp"
+    },
+    {
+      "asset": "demo_native_history_en",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "sha256": "d1cadb7d2e02570c1a8e3979ec4707db68bbf2d428483f0018794bd8411d8d9c",
+      "source": "large-history-en.png",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/history-en.webp"
+    },
+    {
+      "asset": "demo_native_history_zh",
+      "dimensions": [
+        1320,
+        2868
+      ],
+      "sha256": "72a0536c31d2f20312db4a22ada458473a306b0ea1a53c4abffbc55df2e6bad6",
+      "source": "large-history-zh.png",
+      "losslessPixelMatch": true,
+      "publishedPath": "assets/itongue/history-zh.webp"
+    }
+  ],
+  "nativeViewHashes": [
+    {
+      "file": "TongueUploadView.swift",
+      "sha256": "eaf12ee364b57568b061a42dec309331541af8f1877c4b0e1e9692c35c73c999",
+      "captureCloneIdentical": true
+    },
+    {
+      "file": "ImagePicker.swift",
+      "sha256": "68d0bd67a7b9a11a6bc931836bfb59cd6dcbea7c8d9c00cf9c08d0c46bb9d15c",
+      "captureCloneIdentical": true
+    }
+  ]
+}

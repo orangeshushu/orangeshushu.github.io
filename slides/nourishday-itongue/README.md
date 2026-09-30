@@ -129,3 +129,10 @@ No continuous App screen recording was found in the reference PPT, presentation 
 Pacing for a 20-minute combined talk: cover 30 seconds; NourishDay context/concepts pages 2–6 about 5 minutes; real App chapters pages 7–12 about 7 minutes; iTongue pages 13–17 about 6 minutes; discussion transition 90 seconds. Detailed screen tabs are optional during the live talk.
 
 Validation: 519 state assertions across 17 slides/two languages; 74 desktop screenshot-region states passed in in-app Chromium. All 12 mobile chapter/language layouts fit 390 px without horizontal overflow. Original-image modal, Escape/focus restoration, 1920×1080 presentation ratio, and relocated iTongue cover navigation verified. Safari/Firefox/Edge and native-device tests not run for this website-only change.
+
+
+## iTongue native App walkthrough — 2026-09-29
+
+Page 15 now uses twelve bilingual native-view screenshots across Home, Choose, Frame, Review, Result and History. Click a numbered screenshot region or right-side feature tab to synchronize the full-screen highlight, same-image magnification and short explanation. Camera guide is a static real-photo rehearsal. Result is a preset example, not live inference; History contains sample records. The actual segmentation-unavailable state is shown. No production app source, upload, model or device state was changed.
+
+Full-resolution WebP assets in `assets/itongue/` are lossless and loaded on selection. Keep the assets folder beside the HTML for offline use. Provenance and hashes: `itongue-demo-sources.json`. All previous images and NourishDay renderers are preserved. The matching source snapshot passed 599 assertions and Chrome checks across 26 desktop feature states and 12 mobile states, plus keyboard, autoplay and reduced-motion behavior.
