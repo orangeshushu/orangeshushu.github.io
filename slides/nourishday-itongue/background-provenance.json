@@ -1,0 +1,37 @@
+{
+  "reference": "/Volumes/SSD存储/0930 Presentation/NourishDay_Investor_Commercial_EN_v4_Final_Reviewed.pptx",
+  "sha256": "0bc160ecb0380b5b0e0c97108648d6692ff693b779a485ea924b88effab348e2",
+  "selected_slides": {
+    "need": [
+      4,
+      5,
+      28
+    ],
+    "audiences": [
+      3,
+      4
+    ],
+    "strengths": [
+      5,
+      6,
+      7,
+      10,
+      11
+    ],
+    "plans": [
+      4,
+      12,
+      21,
+      22
+    ]
+  },
+  "scope": "Page 2 interactive supplement. No speculative market, revenue, margin or acquisition forecasts imported. No speed/ease superiority claims. Audience priority, paid conversion and retention remain hypotheses.",
+  "images": "Existing website meal image and real native App captures reused; no AI editorial portraits or generated investor-deck imagery used. Native English archive images remain labeled as originals in Chinese mode.",
+  "sources": {
+    "research": "https://homes.cs.washington.edu/~jfogarty/publications/chi2015-barriersandnegativenudges.pdf",
+    "pricing": "https://apps.apple.com/us/app/nourishday-food-calendar/id6798932418",
+    "plan_limits": "https://jiacheng.website/nourishday/"
+  },
+  "checked": "2026-09-30",
+  "pricing": "US advertised annual29.99/monthly2.99; checkout not tested. Plan limits verified against supplied reviewed deck and official product site. Product site older beta-status text is not used."
+}
