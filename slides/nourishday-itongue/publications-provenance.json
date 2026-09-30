@@ -1,0 +1,555 @@
+{
+  "checked": "2026-09-30",
+  "profiles": {
+    "Jiacheng Xie": "https://scholar.google.com/citations?user=1vQxsesAAAAJ&hl=en",
+    "Dong Xu": "https://scholar.google.com/citations?user=xJeTtCoAAAAJ&hl=en"
+  },
+  "coverage": {
+    "xieProfileRows": 15,
+    "xuProfileRows": 632,
+    "xuPages": [
+      0,
+      100,
+      200,
+      300,
+      400,
+      500,
+      600
+    ],
+    "termination": "Show more disabled on both final profile pages",
+    "includedUniqueScholarRecords": 22,
+    "additionalPublisherVerifiedJournalVersion": 1
+  },
+  "scope": "TCM, tongue analysis, acupuncture/tuina, food classification and herbal RNA. Excludes unrelated biomedical/general AI papers. Shared-author records merged; conference/journal versions distinguished. Publication record supports research experience, not product clinical efficacy.",
+  "rows": [
+    {
+      "id": "p5",
+      "title": [
+        "TOM: An open-source tongue segmentation method with multi-teacher distillation and task-specific data augmentation",
+        "TOM：多教师蒸馏与任务特定数据增强的开源舌体分割方法"
+      ],
+      "originalTitle": "TOM: An open-source tongue segmentation method with multi-teacher distillation and task-specific data augmentation",
+      "year": 2026,
+      "kind": "journal",
+      "venue": "Expert Systems with Applications",
+      "authors": "Jiacheng Xie, Ziyang Zhang, Biplab Poudel, Congyu Guo, Yang Yu, Guanghui An, Xiaoting Tang, Lening Zhao, Chunhui Xu, Dong Xu",
+      "xie": true,
+      "xu": true,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0957417426004124",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=1vQxsesAAAAJ&pagesize=100&citation_for_view=1vQxsesAAAAJ:ZHo1McVdvXMC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "131499",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p4",
+      "title": [
+        "Large Language Models Versus Physicians in Traditional Chinese Medicine: A Real-World Clinical Case Evaluation",
+        "大语言模型与中医医生：真实临床病例评估"
+      ],
+      "originalTitle": "Large Language Models Versus Physicians in Traditional Chinese Medicine: A Real-World Clinical Case Evaluation",
+      "year": 2026,
+      "kind": "preprint",
+      "venue": "arXiv preprint arXiv:2609.17544",
+      "authors": "Jiacheng Xie, Xiaoting Tang, Yang Yu, Jinpu Li, Shouli Li, Congcong Jing, Yantao Yang, Zhiyong Zhao, Ziyang Zhang, Qilin Song, Guanghui An, Dong Xu",
+      "xie": true,
+      "xu": true,
+      "url": "https://arxiv.org/abs/2609.17544",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=1vQxsesAAAAJ&pagesize=100&citation_for_view=1vQxsesAAAAJ:xtRiw3GOFMkC",
+      "note": [
+        "arXiv preprint; listed separately from journal and conference publications.",
+        "arXiv 预印本，与期刊及会议成果分列。"
+      ],
+      "pages": "",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p1",
+      "title": [
+        "TCM-Ladder: A Benchmark for Multimodal Question Answering on Traditional Chinese Medicine",
+        "TCM-Ladder：中医多模态问答基准"
+      ],
+      "originalTitle": "TCM-Ladder: A Benchmark for Multimodal Question Answering on Traditional Chinese Medicine",
+      "year": 2025,
+      "kind": "conference",
+      "venue": "NeurIPS 2025 · Datasets and Benchmarks",
+      "authors": "Jiacheng Xie, Yang Yu, Ziyang Zhang, Shuai Zeng, Jiaxuan He, Ayush Vasireddy, Xiaoting Tang, Congyu Guo, Lening Zhao, Congcong Jing, Guanghui An, Dong Xu",
+      "xie": true,
+      "xu": true,
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/cbdd26a4490f5a8dad0d732508714029-Abstract-Datasets_and_Benchmarks_Track.html",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=1vQxsesAAAAJ&pagesize=100&citation_for_view=1vQxsesAAAAJ:abG-DnoFyZgC",
+      "note": [
+        "Conference year follows the official NeurIPS 2025 proceedings; Scholar currently lists 2026.",
+        "会议年份采用 NeurIPS 2025 正式论文集；Scholar 当前列为 2026。"
+      ],
+      "pages": "",
+      "volume": "38",
+      "issue": ""
+    },
+    {
+      "id": "p2",
+      "title": [
+        "BenCao: An Instruction-Tuned Large Language Model for Traditional Chinese Medicine",
+        "BenCao：面向中医的指令调优大语言模型"
+      ],
+      "originalTitle": "BenCao: An Instruction-Tuned Large Language Model for Traditional Chinese Medicine",
+      "year": 2025,
+      "kind": "preprint",
+      "venue": "arXiv preprint arXiv:2510.17415",
+      "authors": "Jiacheng Xie, Yang Yu, Yibo Chen, Hanyao Zhang, Lening Zhao, Jiaxuan He, Lei Jiang, Xiaoting Tang, Guanghui An, Dong Xu",
+      "xie": true,
+      "xu": true,
+      "url": "https://arxiv.org/abs/2510.17415",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=1vQxsesAAAAJ&pagesize=100&citation_for_view=1vQxsesAAAAJ:bFI3QPDXJZMC",
+      "note": [
+        "arXiv preprint; listed separately from journal and conference publications.",
+        "arXiv 预印本，与期刊及会议成果分列。"
+      ],
+      "pages": "",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p6",
+      "title": [
+        "Leveraging Group Relative Policy Optimization to Advance Large Language Models in Traditional Chinese Medicine",
+        "利用组相对策略优化推进中医大语言模型"
+      ],
+      "originalTitle": "Leveraging Group Relative Policy Optimization to Advance Large Language Models in Traditional Chinese Medicine",
+      "year": 2025,
+      "kind": "preprint",
+      "venue": "arXiv preprint arXiv:2510.17402",
+      "authors": "Jiacheng Xie, Shuai Zeng, Yang Yu, Xiaoting Tang, Guanghui An, Dong Xu",
+      "xie": true,
+      "xu": true,
+      "url": "https://arxiv.org/abs/2510.17402",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=1vQxsesAAAAJ&pagesize=100&citation_for_view=1vQxsesAAAAJ:_xSYboBqXhAC",
+      "note": [
+        "arXiv preprint; listed separately from journal and conference publications.",
+        "arXiv 预印本，与期刊及会议成果分列。"
+      ],
+      "pages": "",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p7",
+      "title": [
+        "TOM: A Universal Tongue Optimization Model for Medical Tongue Image Segmentation",
+        "TOM：医学舌图分割的通用优化模型"
+      ],
+      "originalTitle": "TOM: A Universal Tongue Optimization Model for Medical Tongue Image Segmentation",
+      "year": 2024,
+      "kind": "conference",
+      "venue": "IEEE NSS / MIC / RTSD · conference abstract",
+      "authors": "J Xie, Z Zhang, G An, C Guo, X Tang, Y Yu, D Xu",
+      "xie": true,
+      "xu": true,
+      "url": "https://ieeexplore.ieee.org/abstract/document/10656946/",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=1vQxsesAAAAJ&pagesize=100&citation_for_view=1vQxsesAAAAJ:M05iB0D1s5AC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "1-1",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p12",
+      "title": [
+        "A comprehensive analysis of the Bencao (herbal) small RNA Atlas reveals novel RNA therapeutics for treating human diseases",
+        "本草小 RNA 图谱与 RNA 治疗研究"
+      ],
+      "originalTitle": "A comprehensive analysis of the Bencao (herbal) small RNA Atlas reveals novel RNA therapeutics for treating human diseases",
+      "year": 2023,
+      "kind": "journal",
+      "venue": "Science China Life Sciences",
+      "authors": "Yinghao Cao, Yexuan Lin, Na Sun, Xinyi Du, Yixin Dong, Song Mei, Xingyu Deng, Xiaobei Li, Shaoting Guo, Kegong Tang, Jiaqi Liu, Xiangyu Qiao, Dandan Zhao, Yuhao Qin, Cong Zhang, Tianyi Xin, Xiaohu Shi, Congzhao Zhou, Tao Dong, De-an Guo, Benedikt M Kessler, Dong Xu, Jingyuan Song, Fengming Huang, Xiaoyue Wang, Chengyu Jiang",
+      "xie": false,
+      "xu": true,
+      "url": "https://link.springer.com/article/10.1007/s11427-022-2181-6",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&cstart=200&pagesize=100&citation_for_view=xJeTtCoAAAAJ:EGm_wfVom6QC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "2380-2398",
+      "volume": "66",
+      "issue": "10"
+    },
+    {
+      "id": "p17",
+      "title": [
+        "Acupuncture and Tuina Knowledge Graph for Ancient Literature of Traditional Chinese Medicine",
+        "中医古籍针灸推拿知识图谱"
+      ],
+      "originalTitle": "Acupuncture and Tuina Knowledge Graph for Ancient Literature of Traditional Chinese Medicine",
+      "year": 2021,
+      "kind": "conference",
+      "venue": "IEEE BIBM",
+      "authors": "Xiaosong Han, Xiaoran Li, Yanchun Liang, Xinghao Wang, Dong Xu, Renchu Guan",
+      "xie": false,
+      "xu": true,
+      "url": "https://ieeexplore.ieee.org/abstract/document/9669508/",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&cstart=300&pagesize=100&citation_for_view=xJeTtCoAAAAJ:IW6UN8mAVy8C",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "674-677",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p0",
+      "title": [
+        "Digital tongue image analyses for health assessment",
+        "数字舌图分析与健康评估"
+      ],
+      "originalTitle": "Digital tongue image analyses for health assessment",
+      "year": 2021,
+      "kind": "journal",
+      "venue": "Medical Review",
+      "authors": "Jiacheng Xie, Congcong Jing, Ziyang Zhang, Jiatuo Xu, Ye Duan, Dong Xu",
+      "xie": true,
+      "xu": true,
+      "url": "https://www.degruyterbrill.com/document/doi/10.1515/mr-2021-0018/html",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=1vQxsesAAAAJ&pagesize=100&citation_for_view=1vQxsesAAAAJ:RGFaLdJalmkC",
+      "note": [
+        "2021 volume/issue; published online in February 2022. Counted once.",
+        "2021 年卷期；2022 年 2 月在线发表，合并为一项成果。"
+      ],
+      "pages": "172-198",
+      "volume": "1",
+      "issue": "2"
+    },
+    {
+      "id": "p20",
+      "title": [
+        "Molecular basis of food classification in traditional Chinese medicine",
+        "中医食物分类的分子基础"
+      ],
+      "originalTitle": "Molecular basis of food classification in traditional Chinese medicine",
+      "year": 2020,
+      "kind": "chapter",
+      "venue": "Statistical Modeling in Biomedical Research",
+      "authors": "Xiaosong Han, Haiyan Zhao, Hao Xu, Yun Yang, Yanchun Liang, Dong Xu",
+      "xie": false,
+      "xu": true,
+      "url": "https://link.springer.com/chapter/10.1007/978-3-030-33416-1_10",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&cstart=500&pagesize=100&citation_for_view=xJeTtCoAAAAJ:4oiV7xVJuUIC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "197-212",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p21",
+      "title": [
+        "Plant-derived phosphocholine facilitates cellular uptake of anti-pulmonary fibrotic HJT-sRNA-m7",
+        "植物源磷脂酰胆碱促进抗肺纤维化 HJT-sRNA-m7 的细胞摄取"
+      ],
+      "originalTitle": "Plant-derived phosphocholine facilitates cellular uptake of anti-pulmonary fibrotic HJT-sRNA-m7",
+      "year": 2019,
+      "kind": "journal",
+      "venue": "Science China Life Sciences",
+      "authors": "Jianchao Du, Zhu Liang, Jiantao Xu, Yan Zhao, Xiaoyun Li, Yanli Zhang, Dandan Zhao, Ruxuan Chen, Yang Liu, Trupti Joshi, Jiahui Chang, Zhiqing Wang, Yanxu Zhang, Jindong Zhu, Qiang Liu, Dong Xu, Chengyu Jiang",
+      "xie": false,
+      "xu": true,
+      "url": "https://link.springer.com/article/10.1007/s11427-017-9026-7",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&pagesize=100&citation_for_view=xJeTtCoAAAAJ:Gp7G-LMh-YMC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "309-320",
+      "volume": "62",
+      "issue": "3"
+    },
+    {
+      "id": "p3",
+      "title": [
+        "Applications and Practice of Deep Learning in TCM Tongue Image Classification",
+        "深度学习在中医舌象分类中的应用与实践"
+      ],
+      "originalTitle": "深度学习在中医舌象分类中的应用与实践",
+      "year": 2019,
+      "kind": "thesis",
+      "venue": "Jilin University",
+      "authors": "谢佳澄",
+      "xie": true,
+      "xu": false,
+      "url": "https://scholar.google.com/scholar?cluster=16976353161641182620&hl=en&oi=scholarr",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=1vQxsesAAAAJ&pagesize=100&citation_for_view=1vQxsesAAAAJ:CHSYGLWDkRkC",
+      "note": [
+        "Degree thesis listed on the author’s Scholar profile; English title is a translation.",
+        "作者 Scholar 收录的学位论文；英文标题为译名。"
+      ],
+      "pages": "",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p11",
+      "title": [
+        "Tongue Image Analysis and Its Mobile App Development for Health Diagnosis",
+        "舌象分析及其健康评估移动应用开发"
+      ],
+      "originalTitle": "Tongue Image Analysis and Its Mobile App Development for Health Diagnosis",
+      "year": 2017,
+      "kind": "chapter",
+      "venue": "Translational Informatics in Smart Healthcare",
+      "authors": "Ratchadaporn Kanawong, Tayo Obafemi-Ajayi, Dahai Liu, Meng Zhang, Dong Xu, Ye Duan",
+      "xie": false,
+      "xu": true,
+      "url": "https://link.springer.com/chapter/10.1007/978-981-10-5717-5_5",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&cstart=200&pagesize=100&citation_for_view=xJeTtCoAAAAJ:T3x1S4x-kFYC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "99-121",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p9",
+      "title": [
+        "Tongue Images Classification Based on Constrained High Dispersal Network",
+        "基于约束高分散网络的舌图分类"
+      ],
+      "originalTitle": "Tongue Images Classification Based on Constrained High Dispersal Network",
+      "year": 2017,
+      "kind": "journal",
+      "venue": "Evidence-Based Complementary and Alternative Medicine",
+      "authors": "Dan Meng, Guitao Cao, Ye Duan, Minghua Zhu, Liping Tu, Dong Xu, Jiatuo Xu",
+      "xie": false,
+      "xu": true,
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1155/2017/7452427",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&cstart=100&pagesize=100&citation_for_view=xJeTtCoAAAAJ:52Op3ZsrznwC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "7452427",
+      "volume": "",
+      "issue": "doi:10.1155/2017"
+    },
+    {
+      "id": "p18",
+      "title": [
+        "A deep tongue image features analysis model for medical application",
+        "面向医学应用的深度舌象特征分析模型"
+      ],
+      "originalTitle": "A deep tongue image features analysis model for medical application",
+      "year": 2016,
+      "kind": "conference",
+      "venue": "IEEE BIBM",
+      "authors": "Dan Meng, Guitao Cao, Ye Duan, Minghua Zhu, Liping Tu, Jiatuo Xu, Dong Xu",
+      "xie": false,
+      "xu": true,
+      "url": "https://ieeexplore.ieee.org/abstract/document/7822815/",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&cstart=400&pagesize=100&citation_for_view=xJeTtCoAAAAJ:yjYM2qeFg4IC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "1918-1922",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p15",
+      "title": [
+        "Classification of tongue images based on doublet and color space dictionary",
+        "基于双联体与色彩空间字典的舌图分类"
+      ],
+      "originalTitle": "Classification of tongue images based on doublet and color space dictionary",
+      "year": 2016,
+      "kind": "conference",
+      "venue": "IEEE BIBM",
+      "authors": "Guitao Cao, Jie Ding, Ye Duan, Liping Tu, Jiatuo Xu, Dong Xu",
+      "xie": false,
+      "xu": true,
+      "url": "https://ieeexplore.ieee.org/abstract/document/7822686/",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&cstart=300&pagesize=100&citation_for_view=xJeTtCoAAAAJ:9nzIJd-pbyIC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "1170-1175",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p19",
+      "title": [
+        "ITongue: An IPhone App for Personal Health Monitoring Based on Tongue Image",
+        "iTongue：基于舌图的个人健康监测 iPhone 应用"
+      ],
+      "originalTitle": "ITongue: An IPhone App for Personal Health Monitoring Based on Tongue Image",
+      "year": 2014,
+      "kind": "report",
+      "venue": "University of Missouri--Columbia",
+      "authors": "Ye Duan, Dong Xu",
+      "xie": false,
+      "xu": true,
+      "url": "https://mospace.umsystem.edu/items/f634ed8a-4b6a-411d-b30b-558e8b5d36a2",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&cstart=400&pagesize=100&citation_for_view=xJeTtCoAAAAJ:iRVS5cWFCuIC",
+      "note": [
+        "University project report, not a peer-reviewed journal article.",
+        "大学项目报告，不计为同行评议期刊论文。"
+      ],
+      "pages": "",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p22",
+      "title": [
+        "An automatic tongue detection and segmentation framework for computer-aided tongue image analysis",
+        "计算机辅助舌象分析的自动检测与分割框架（期刊版）"
+      ],
+      "originalTitle": "An automatic tongue detection and segmentation framework for computer-aided tongue image analysis",
+      "year": 2012,
+      "kind": "journal",
+      "venue": "Int. J. Functional Informatics & Personalised Medicine",
+      "authors": "Ratchadaporn Kanawong, Wentao Xu, Dong Xu, Shao Li, Tao Ma, Ye Duan",
+      "xie": false,
+      "xu": true,
+      "url": "https://doi.org/10.1504/IJFIPM.2012.050420",
+      "scholar": null,
+      "note": [
+        "Journal version verified on the lab bibliography and publisher site; distinct from the 2011 conference paper.",
+        "实验室书目与出版社核实的期刊版本，与 2011 年会议论文分别列出。"
+      ],
+      "pages": "56–68",
+      "volume": "4",
+      "issue": "1"
+    },
+    {
+      "id": "p8",
+      "title": [
+        "Automated tongue feature extraction for ZHENG classification in traditional Chinese medicine",
+        "中医辨证分类的自动舌象特征提取"
+      ],
+      "originalTitle": "Automated tongue feature extraction for ZHENG classification in traditional Chinese medicine",
+      "year": 2012,
+      "kind": "journal",
+      "venue": "Evidence‐Based Complementary and Alternative Medicine",
+      "authors": "Ratchadaporn Kanawong, Tayo Obafemi-Ajayi, Tao Ma, Dong Xu, Shao Li, Ye Duan",
+      "xie": false,
+      "xu": true,
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1155/2012/912852",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&pagesize=100&citation_for_view=xJeTtCoAAAAJ:JH5k92_tO-AC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "912852",
+      "volume": "2012",
+      "issue": "1"
+    },
+    {
+      "id": "p13",
+      "title": [
+        "Features for automated tongue image shape classification",
+        "自动舌形分类的特征研究"
+      ],
+      "originalTitle": "Features for automated tongue image shape classification",
+      "year": 2012,
+      "kind": "conference",
+      "venue": "IEEE BIBM Workshops",
+      "authors": "Tayo Obafemi-Ajayi, Ratchadaporn Kanawong, Dong Xu, Shao Li, Ye Duan",
+      "xie": false,
+      "xu": true,
+      "url": "https://ieeexplore.ieee.org/abstract/document/6470316/",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&cstart=200&pagesize=100&citation_for_view=xJeTtCoAAAAJ:QaSi33NTfwYC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "273-279",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p14",
+      "title": [
+        "ZHENG classification in Traditional Chinese Medicine based on modified specular-free tongue images",
+        "基于改进去高光舌图的中医辨证分类"
+      ],
+      "originalTitle": "ZHENG classification in Traditional Chinese Medicine based on modified specular-free tongue images",
+      "year": 2012,
+      "kind": "conference",
+      "venue": "IEEE BIBM Workshops",
+      "authors": "Ratchadaporn Kanawong, Tayo Obafemi-Ajayi, Jun Yu, Dong Xu, Shao Li, Ye Duan",
+      "xie": false,
+      "xu": true,
+      "url": "https://ieeexplore.ieee.org/abstract/document/6470318/",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&cstart=200&pagesize=100&citation_for_view=xJeTtCoAAAAJ:RXiHnyRawswC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "288-294",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p10",
+      "title": [
+        "An automatic tongue detection and segmentation framework for computer-aided tongue image analysis",
+        "计算机辅助舌象分析的自动检测与分割框架"
+      ],
+      "originalTitle": "An automatic tongue detection and segmentation framework for computer-aided tongue image analysis",
+      "year": 2011,
+      "kind": "conference",
+      "venue": "IEEE Healthcom",
+      "authors": "Wentao Xu, Ratchadaporn Kanawong, Dong Xu, Shao Li, Tao Ma, Guixu Zhang, Ye Duan",
+      "xie": false,
+      "xu": true,
+      "url": "https://ieeexplore.ieee.org/abstract/document/6026741/",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&cstart=100&pagesize=100&citation_for_view=xJeTtCoAAAAJ:Ej9njvOgR2oC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "189-192",
+      "volume": "",
+      "issue": ""
+    },
+    {
+      "id": "p16",
+      "title": [
+        "Mutual understanding between Traditional Chinese Medicine and systems biology: gaps, challenges and opportunities",
+        "中医与系统生物学：差距、挑战与机遇"
+      ],
+      "originalTitle": "Mutual understanding between Traditional Chinese Medicine and systems biology: gaps, challenges and opportunities",
+      "year": 2009,
+      "kind": "journal",
+      "venue": "Int. J. Functional Informatics & Personalised Medicine",
+      "authors": "Dong Xu",
+      "xie": false,
+      "xu": true,
+      "url": "https://www.inderscienceonline.com/doi/abs/10.1504/IJFIPM.2009.030826",
+      "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=xJeTtCoAAAAJ&cstart=300&pagesize=100&citation_for_view=xJeTtCoAAAAJ:J-pR_7NvFogC",
+      "note": [
+        "",
+        ""
+      ],
+      "pages": "248-260",
+      "volume": "2",
+      "issue": "3"
+    }
+  ]
+}
