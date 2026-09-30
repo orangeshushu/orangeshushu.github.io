@@ -1,0 +1,143 @@
+{
+  "purpose": "Interactive educational introduction; no image inference or clinical classification is performed.",
+  "common_framework": {
+    "source": "https://www.cmro.gov.hk/html/b5/useful_information/public_health/exhibit_boards/Body_Constitution_and_Relevant_Health_Maintenance.html",
+    "corroboration": "https://www.hkbu.edu.hk/zh_hk/whats-new/press-release/2019/1212-Jockey-Club-quotEmbrace-Healthquot-Chinese-Medicine-Programme-launches-FREE-large-scale-body-constitution-study.html",
+    "cue_use": "Brief paraphrases of traditional constitution descriptions, not treatment or diagnostic criteria.",
+    "types": [
+      "Balanced",
+      "Qi deficiency",
+      "Yang deficiency",
+      "Yin deficiency",
+      "Phlegm-dampness",
+      "Damp-heat",
+      "Blood stasis",
+      "Qi stagnation",
+      "Special diathesis"
+    ]
+  },
+  "pictograms": {
+    "source": "User-provided reference attachment, credited FOODROOT.TCM in the original.",
+    "credit": "FOODROOT.TCM",
+    "rights": "User-provided reference; no open-license status asserted.",
+    "sha256": "ce443af453d2138c986f95030a108f116bcc5bef8feaf2a5a3c1adc90908ba90",
+    "original_dimensions": [
+      1198,
+      600
+    ],
+    "display": "Full original PNG embedded unchanged. SVG viewports clip individual figures for localized labels; no redrawing, recoloring or generated imagery."
+  },
+  "research_examples": {
+    "paper": "Xie et al., Digital tongue image analyses for health assessment",
+    "doi": "https://doi.org/10.1515/mr-2021-0018",
+    "figure": 5,
+    "originals": "User-provided Comprehensive Exam.pptx, slide 51. Individual TIFFs matched to Figure 5.",
+    "rights": "User-provided author presentation assets. Article published under CC BY-NC-ND 4.0.",
+    "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "transformation": "Lossless TIFF-to-PNG conversion; decoded RGB pixels and original dimensions preserved. No crops or enhancements.",
+    "taxonomy_boundary": "Paper examples include body fluid deficiency, whereas the common nine-constitution framework includes special diathesis. Neither category is substituted for the other.",
+    "cues": "Descriptions of the displayed sample appearances only; not unique identifying signs or model results.",
+    "assets": [
+      {
+        "asset": "constitution_tongue_61",
+        "label_en": "Normal",
+        "label_zh": "正常",
+        "pptx_media": "ppt/media/image61.tiff",
+        "size": [
+          223,
+          253
+        ],
+        "sha256": "b9f37690d88d31949a4d061b7594631f787da2e19a5e80b03cc28e3c81b712aa"
+      },
+      {
+        "asset": "constitution_tongue_62",
+        "label_en": "Qi stagnation",
+        "label_zh": "气郁",
+        "pptx_media": "ppt/media/image62.tiff",
+        "size": [
+          219,
+          253
+        ],
+        "sha256": "59029f2b8cc511efa9ce48df241fd49b21372be6fddfb24b69e0aa0b0158a6ff"
+      },
+      {
+        "asset": "constitution_tongue_63",
+        "label_en": "Qi deficiency",
+        "label_zh": "气虚",
+        "pptx_media": "ppt/media/image63.tiff",
+        "size": [
+          205,
+          254
+        ],
+        "sha256": "9c26b2b433537564fdf5614f79161aa87858f495396ec7e0a059d9fdb5554e55"
+      },
+      {
+        "asset": "constitution_tongue_68",
+        "label_en": "Body fluid deficiency",
+        "label_zh": "津液亏虚",
+        "pptx_media": "ppt/media/image68.tiff",
+        "size": [
+          188,
+          263
+        ],
+        "sha256": "b92a64f48adf754d7eae9634b68a0fb88f7baa7280b705dfc290ce0e9878fc15"
+      },
+      {
+        "asset": "constitution_tongue_66",
+        "label_en": "Damp-heat",
+        "label_zh": "湿热",
+        "pptx_media": "ppt/media/image66.tiff",
+        "size": [
+          201,
+          266
+        ],
+        "sha256": "e29f0d5fb39676fc0418ba23ee8bbea3d226d55670e35083b1fe2aeb54bc30c2"
+      },
+      {
+        "asset": "constitution_tongue_65",
+        "label_en": "Phlegm-dampness",
+        "label_zh": "痰湿",
+        "pptx_media": "ppt/media/image65.tiff",
+        "size": [
+          200,
+          266
+        ],
+        "sha256": "606897af940f0b0b37784c3c991308130b3c1a9133b6962b8def310e10af4907"
+      },
+      {
+        "asset": "constitution_tongue_69",
+        "label_en": "Blood stasis",
+        "label_zh": "血瘀",
+        "pptx_media": "ppt/media/image69.tiff",
+        "size": [
+          258,
+          277
+        ],
+        "sha256": "acf3153627327cdd731caf6a3fb6fa77066a245c3d131012f20450101f2f9cb6"
+      },
+      {
+        "asset": "constitution_tongue_64",
+        "label_en": "Yang deficiency",
+        "label_zh": "阳虚",
+        "pptx_media": "ppt/media/image64.tiff",
+        "size": [
+          178,
+          260
+        ],
+        "sha256": "cd1f78f524b2ddcd53b3393bbebe27994374db4f2c644d3d1b0cbb0a8b396572"
+      },
+      {
+        "asset": "constitution_tongue_67",
+        "label_en": "Yin deficiency",
+        "label_zh": "阴虚",
+        "pptx_media": "ppt/media/image67.tiff",
+        "size": [
+          226,
+          262
+        ],
+        "sha256": "c44e2ddcb6a9e5fead66fa8a85a6e705f24d92d4832c2d9a4c128a52b987bfd6"
+      }
+    ]
+  },
+  "other_reference": "The supplied ActiveHerb chart shows ten appearance patterns; it was not relabeled or used as the nine-constitution taxonomy."
+}
