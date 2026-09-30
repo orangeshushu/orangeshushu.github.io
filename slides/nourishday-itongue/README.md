@@ -223,3 +223,7 @@ Page17 replaces the old technical-progress content with a bilingual source-linke
 ## NourishDay closing links — 2026-09-30
 
 The final NourishDay page (12) now offers the official website for more features/details and a direct Next project · iTongue button. The website opens in a new tab, preserving the presentation; both languages use the verified canonical `/nourishday/` URL because `/nourishday/zh/` returned404. The project button opens the four-examinations introduction on page13. Existing screenshot selectors and annotations remain available. English/Chinese desktop/mobile checks cover24feature states, website destination and keyboard project navigation. No native App or service changes.
+
+
+### 2026-09-30 inspection photo refresh
+Page13 now uses an unretouched official Klinik am Steigerwald tongue-inspection photograph with a visible linked clinic credit. The former Kitasato image is replaced in both languages. No partnership or clinical-validation claim is made. Current asset source/hash and reuse terms are in `four-examinations-sources.json` (authoring `.build/four-examinations-provenance.json`).

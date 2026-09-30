@@ -1,16 +1,20 @@
 {
-  "updated": "2026-09-29",
-  "display_policy": "Publicly published photographs selected for academic presentation. Sources remain off-canvas; no visible image captions. Rights remain with the original owners; no open license has been verified.",
+  "updated": "2026-09-30",
+  "display_policy": "Source photographs, unretouched; inspection image includes visible linked clinic credit. Other existing source records retained.",
   "assets": {
     "four_observation": {
-      "title": "Kitasato University Hospital Kampo and Acupuncture Center",
-      "description": "A physician inspecting an adult patient’s tongue in a contemporary Kampo clinic.",
-      "source": "https://www.kitasato-u.ac.jp/toui-ken/center/kampo.html",
-      "image_url": "https://www.kitasato-u.ac.jp/toui-ken/images/center/ph_kampo_02.jpg",
-      "rights": "Publicly accessible source; copyright retained by source owner. No open reuse license verified.",
-      "source_sha256": "8776cfe453830b9ca81810fdf72428a37182b853fb7f71ba0a22339be73d2584",
-      "embedded_sha256": "62b87803a724a6c96aae0a7a2f77266fe2cb6a9c43bef33f3d9a75769b3e3471",
-      "transformation": "EXIF orientation normalized, maximum dimension 1200 pixels, JPEG compression; CSS responsive crop. No generated or retouched content."
+      "title": "Klinik am Steigerwald — Dr. Schmincke, tongue inspection",
+      "description": "Clinical example from Klinik am Steigerwald: physician observing an adult patient’s tongue. Not an iTongue partner or app-validation image.",
+      "source": "https://www.tcmklinik.de/service/presse/pressebilder",
+      "image_url": "https://www.tcmklinik.de/fileadmin/_processed_/7/1/csm_Bildquelle_Klinik_am_Steigerwald_Dr._Schmincke-_Zungendiagnose_6b98cc2b67.jpg",
+      "rights": "Official press page permits free use in a contribution about the clinic with full © Klinik am Steigerwald credit. Presented as an attributed clinical example from the named clinic, with linked source.",
+      "source_sha256": "6ba88d0d46854493aeff9e8f231b62e128e46cbb8ea061b6377754eeb9846943",
+      "embedded_sha256": "6ba88d0d46854493aeff9e8f231b62e128e46cbb8ea061b6377754eeb9846943",
+      "dimensions": [
+        800,
+        533
+      ],
+      "transformation": "Exact original JPEG bytes embedded; no retouching or generated content. CSS responsive crop centers both faces; linked source overlay."
     },
     "four_listening": {
       "title": "Thomson Medical — physician consultation",
