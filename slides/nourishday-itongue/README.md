@@ -235,3 +235,7 @@ Page16 adds a synchronized tongue-features tab (colour, coating, shape/surface),
 
 ### 2026-09-30 original figures restored
 Owner preference supersedes the generated SVG figures: restored original supplied FOODROOT.TCM people, preserving enlarged detail and bilingual manifestations. Tongue-features view now shows the unmodified1276x760owner-supplied chart, nine-type explanation selectors and an accessible full-original dialog. The ten-pattern source taxonomy is explicitly kept distinct from nine constitutions.72bilingual desktop/mobile states pass; modal image decodes at original dimensions and Escape restores focus.
+
+
+### 2026-09-30: financial slides removed
+Removed Revenue scenarios and Unit economics at owner request, including renderers, controls and private narration. Current deck has23pages: partnership/validation22, team23. EN/ZH directory and navigation updated. Retained narration1055seconds plus145seconds for discussion within20minutes. Current authoring artifact: NourishDay_iTongue_Interactive_23_Pages.html. Older generated files are historical snapshots.
