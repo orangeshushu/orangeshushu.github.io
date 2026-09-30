@@ -1,0 +1,21 @@
+{
+  "checked": "2026-09-30",
+  "scope": "Remove partnership/validation, replace business-model close with official product introduction and links.",
+  "official_website": "https://jiacheng.website/itongue/",
+  "app_store": "https://apps.apple.com/us/app/itongue/id1580878451",
+  "copy_basis": "Guided tongue upload; cold/hot tendency and constitution information; saved tongue, face and questionnaire records. Website and Apple listing read live.",
+  "screens": [
+    {
+      "file": "app-dashboard-en.webp",
+      "source": "https://jiacheng.website/itongue/assets/app-dashboard-en.webp",
+      "sha256": "334bd22043cf69d6a07202ccea8c840c3422ba341bc5504d8b55a8074e61273e"
+    },
+    {
+      "file": "app-dashboard.webp",
+      "source": "https://jiacheng.website/itongue/assets/app-dashboard.webp",
+      "sha256": "4d7cf2927f70e263e1b55fbf2d74acf1230cf4ab04749c70bc31a058e1e9d19a"
+    }
+  ],
+  "language_boundary": "Both website buttons target working canonical homepage; linked /itongue/zh/ returned404. Surrounding slide copy and screenshot localized.",
+  "evidence_boundary": "No new performance, commercial traction or clinical validation claim. Source screen unmodified; App Store carries current release/compatibility details."
+}

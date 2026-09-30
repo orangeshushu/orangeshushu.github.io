@@ -239,3 +239,7 @@ Owner preference supersedes the generated SVG figures: restored original supplie
 
 ### 2026-09-30: financial slides removed
 Removed Revenue scenarios and Unit economics at owner request, including renderers, controls and private narration. Current deck has23pages: partnership/validation22, team23. EN/ZH directory and navigation updated. Retained narration1055seconds plus145seconds for discussion within20minutes. Current authoring artifact: NourishDay_iTongue_Interactive_23_Pages.html. Older generated files are historical snapshots.
+
+
+### 2026-09-30: official iTongue product closing
+Removed Partnership & validation; former Business model page is now Explore iTongue.22pages total: official product introduction/website/App Store links21, team22. Revenue and economics pages remain removed. Official bilingual dashboard assets and concise feature copy replace speculative commercial close. Both external links open separately; team button continues within deck. Current authoring artifact: NourishDay_iTongue_Interactive_22_Pages.html.
