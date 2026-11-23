@@ -51,6 +51,7 @@ function curveView(){
   const stats=[0,times.indexOf(60),times.indexOf(120)].map((i,j)=>'<div class="stat"><span>'+labels[j]+'</span><strong>'+(i===0?row.mean[0].toFixed(2):deltas[i])+'</strong></div>').join("");
   const table=times.map((m,i)=>'<tr><td>'+m+'</td><td>'+row.mean[i].toFixed(2)+'</td><td>'+(dispersion?dispersion[i].toFixed(2):"—")+'</td><td>'+deltas[i]+'</td></tr>').join("");
   $("work").innerHTML='<h2>'+t("餐后实测曲线","Measured post-meal curves")+'</h2><p class="sub">'+t("先选择研究人群，再比较有餐后 60、120 分钟读数的食物或餐食。","Choose a study population and explore foods or meals with 60- and 120-minute measurements.")+'</p><div class="controls"><label for="study">'+t("研究与人群","Study and population")+'</label><select id="study">'+studies.map((s,i)=>'<option value="'+i+'">'+esc(titleOf(s))+'</option>').join("")+'</select></div><div class="analysis"><article class="panel"><div class="chartTop"><h3>'+esc(name)+'</h3><span class="meta">'+t("组平均葡萄糖","Group mean glucose")+' · '+unit+'</span></div><div class="foodTabs">'+study.foods.map((f,i)=>'<button data-food="'+i+'" aria-pressed="'+(i===foodIndex)+'">'+esc(titleOf(f))+'</button>').join("")+'</div>'+chart(row,study)+'<p class="note">'+t("相对于进餐的时间（分钟）","Minutes relative to the meal")+'</p><details><summary>'+t("各时间点的数值","Time-point values")+'</summary><div class="tableWrap"><table><thead><tr>'+[t("分钟","Minutes"),t("均值","Mean"),row.sem?t("均值标准误","SEM"):t("标准差","SD"),t("较起始值变化","Change")].map(x=>'<th>'+x+'</th>').join("")+'</tr></thead><tbody>'+table+'</tbody></table></div></details></article><aside class="side"><h3>'+t("这份食物的餐后变化","Response to this portion")+'</h3><small>'+esc(english?row.portionEn:row.portionZh)+' · n = '+row.n+' · '+unit+'</small>'+stats+'<p class="note">'+esc(english?study.methodEn:study.methodZh)+'</p>'+link(study.url,t("核对原研究","Open original study"))+'</aside></div>';
+  $("work").querySelector(".side").insertAdjacentHTML("beforeend",evidenceBlock(evidenceForCurve(row,study)));
   $("study").value=studyIndex;$("study").onchange=e=>{studyIndex=Number(e.target.value);foodIndex=0;curveView();$("study").focus({preventScroll:true})};
 }
 function mealsView(){
@@ -62,16 +63,29 @@ function mealsView(){
 function renderWork(){
   const modes=[["gi",t("食物图鉴","Food atlas")],["curves",t("实测曲线","Measured curves")],["meals",t("整餐研究","Mixed meals")],["verify",t("产品认证与名录","Product verification")]];
   $("modes").innerHTML=modes.map(([key,label])=>'<button data-mode="'+key+'" aria-pressed="'+(key===mode)+'">'+label+'</button>').join("");
-  if(mode==="curves") curveView(); else if(mode==="gi") giView(); else if(mode==="meals") mealsView(); else verificationView();
+  if(mode==="curves") curveView(); else if(mode==="gi") giView(); else if(mode==="meals") mealsView(); else {verificationView();issuerRecordsView()}
 }
 function render(){
   document.documentElement.lang=t("zh-CN","en");document.title=t("食物血糖图谱","Food Glucose Atlas")+" · NourishDay";
   $("siteTitle").textContent=t("食物血糖图谱","Food Glucose Atlas");
-  $("intro").textContent=t("从一份食物出发，看餐后 1 小时、2 小时的血糖变化，查证每个数值的研究出处。","Explore glucose responses one and two hours after eating, and trace each value to its source.");
+  $("intro").textContent=t("查血糖生成指数（GI）和餐后 1、2 小时的血糖，点开食物查看原始数据。","Explore glycemic index (GI) and blood glucose one and two hours after eating. Open a food to check the evidence.");
+  $("searchLabel").textContent=t("查找食物或做法","Find a food or preparation");
+  $("giQuery").placeholder=t("输入食物、品种或做法","Enter a food, variety or preparation");
+  $("giQuery").value=query;$("searchSubmit").textContent=t("搜索","Search");
+  const searchNow=(scroll=false)=>{
+    query=$("giQuery").value;listing.page=0;
+    if(mode!=="gi"){mode="gi";const u=new URL(location.href);u.searchParams.delete("view");history.replaceState(null,"",u);renderWork()}else giResults();
+    if(scroll)$("explore").scrollIntoView({behavior:"instant"});
+  };
+  $("foodSearch").onsubmit=e=>{e.preventDefault();searchNow(true)};
+  $("giQuery").oninput=()=>searchNow();
+  $("suggestions").innerHTML=[t("大米","Rice"),t("苹果","Apple"),t("燕麦","Oats")].map(s=>'<button type="button">'+s+'</button>').join("");
+  $("suggestions").onclick=e=>{const b=e.target.closest("button");if(!b)return; $("giQuery").value=b.textContent;selectedCategory="all";listing.source="all";listing.region="";curveOnly=false;searchNow(true);giView()};
+
   $("navData").textContent=t("查数据","Explore");$("navSources").textContent=t("来源","Sources");$("language").textContent=t("EN","中文");$("language").setAttribute("aria-label",t("Switch to English","切换为中文"));
   renderWork();
   const extra=(window.atlasNewFoodStudies||[]).map(study=>[t("人体研究","Human study"),titleOf(study),english?study.methodEn:study.methodZh,"",[[study.url,t("原研究","Original study")],[study.dataUrl||study.url,t("数据来源","Data source")]]]);
-  const items=[...sources(),...moreSources(),...extra];
+  const items=[...sources(),...moreSources(),...extra,...newEvidenceSources()];
   $("sourcesTitle").textContent=t("研究与数据来源","Studies & data sources");
   $("sourceCount").textContent=t(items.length+" 个来源",items.length+" sources");
   $("sourcesList").innerHTML=items.map(([type,name,desc,rights,links])=>'<details class="sourceEntry"><summary>'+esc(name)+' · '+esc(type)+'</summary><p>'+esc(desc)+'</p>'+(rights?'<p class="rights">'+esc(rights)+'</p>':'')+'<div class="sourceLinks">'+links.map(([url,label])=>link(url,label)).join("")+'</div></details>').join("");
@@ -83,6 +97,15 @@ function render(){
 $("language").onclick=()=>{english=!english;const url=new URL(location.href);if(english)url.searchParams.set("lang","en");else url.searchParams.delete("lang");history.replaceState(null,"",url);render()};
 $("modes").onclick=e=>{const b=e.target.closest("[data-mode]");if(b){mode=b.dataset.mode;const url=new URL(location.href);url.searchParams.set("view",mode);history.replaceState(null,"",url);renderWork();$("modes").querySelector('[data-mode="'+mode+'"]').focus({preventScroll:true})}};
 $("work").onclick=e=>{const b=e.target.closest("[data-food]");if(b){foodIndex=Number(b.dataset.food);curveView();$("work").querySelector('[data-food="'+foodIndex+'"]').focus({preventScroll:true})}};
+const requestedFilters=new URLSearchParams(location.search);
+const initialCategory=requestedFilters.get("category");
+if(Object.hasOwn(foodCategories,initialCategory))selectedCategory=initialCategory;
+const initialSource=requestedFilters.get("source");
+if(giSources().some(s=>s.id===initialSource))listing.source=initialSource;
+query=requestedFilters.get("q")||"";
+curveOnly=requestedFilters.get("curves")==="1";
+if(requestedFilters.get("layout")==="list")displayStyle="list";
+
 render();
 
 const requestedFood=new URL(location.href).searchParams.get("food");

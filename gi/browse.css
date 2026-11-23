@@ -1,0 +1,106 @@
+:root {--ink:#173c32;--mute:#455e56;--line:#cfdad1;--paper:#f7f9f6;--green:#125d46}
+.wrap {width:min(1500px,94%)} .bar {min-height:51px}
+.hero {background:#123f34}
+.heroIn {display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.86fr);gap:clamp(30px,8vw,132px);padding-block:21px}
+.heroText {padding:0}.hero h1 {font-size:clamp(2rem,3.4vw,3.3rem);letter-spacing:-.045em;line-height:1.08}
+.heroText p {margin-top:9px;max-width:38em;color:#dbece3}
+.searchBox {width:100%;max-width:550px;justify-self:end}
+.searchBox label {display:block;font-size:.9rem;font-weight:650;color:#e4efe7;margin-bottom:5px}
+.searchField {display:flex;align-items:stretch;background:white;border-radius:10px;padding:3px}
+.searchField input {width:1px;min-width:0;flex:1;background:transparent;border:0;padding:6px 12px;color:var(--ink);font-size:1rem}
+.searchField button {background:#d7ecae;border:0;color:#173c32;font-weight:700;padding:7px 17px}
+.suggestions {display:flex;gap:12px}.suggestions button {color:#e8f1e6;font-size:.8rem;border:0;border-radius:0;background:transparent;padding:3px 0;text-decoration:underline;text-underline-offset:3px}
+.modes {margin:0;gap:clamp(10px,2.5vw,38px);overflow-x:auto;scrollbar-width:thin}
+.modes button {white-space:nowrap;min-height:46px} #work {padding-top:20px}
+.atlasLayout {display:grid;grid-template-columns:clamp(156px,14.5vw,220px) minmax(0,1fr);gap:clamp(18px,2.5vw,42px);align-items:start}
+.catalogPanel {min-width:0}
+.categoryRail {position:sticky;top:10px;padding:4px 0 14px}
+.categoryRail h2 {font:650 .9rem/1.4 var(--body);margin:3px 9px 12px;letter-spacing:.035em}
+.catMenu {display:grid;gap:2px}
+.catMenu button {min-height:39px;display:flex;align-items:center;justify-content:space-between;gap:6px;border:1px solid transparent;background:transparent;text-align:start;padding:5px 10px;font-size:.94rem;font-weight:520}
+.catMenu small {color:var(--mute);font-size:.8rem;font-variant-numeric:tabular-nums}
+.catMenu button:hover,.catMenu button[aria-pressed=true] {background:#e4eee3;color:#164d3a}
+.catMenu button[aria-pressed=true] {font-weight:700;border-color:#c8d9c7}
+.catMobile {display:none}
+.resultHeading {display:flex;align-items:center;justify-content:space-between;gap:8px}
+.resultHeading h2 {font-size:clamp(1.3rem,2.2vw,1.85rem);line-height:1.25}
+.viewSwitch {display:flex;padding:2px;border:1px solid #cbd8cc;border-radius:8px;background:#edf2ec}
+.viewSwitch button {border:0;background:transparent;padding:3px 12px;min-height:33px;font-size:.87rem}
+.viewSwitch button[aria-pressed=true] {background:white;box-shadow:0 1px 3px #153b291c;font-weight:680}
+.foodTools {margin:10px 0 5px}.foodTools > button {font-size:.87rem}
+.foodTools #clearFilters {border:0;text-decoration:underline;background:transparent}
+[hidden]{display:none!important}.foodFilterPanel[open] {width:100%;background:white;padding:8px 12px;border-radius:6px}
+.foodBar {margin:4px 0;color:#4e6259}.foodPager button {min-width:32px}
+.foodGrid {grid-template-columns:repeat(auto-fill,minmax(min(205px,100%),1fr));gap:9px;margin-top:8px}
+.foodGrid button.foodTile {display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;min-width:0;padding:11px 13px;text-align:start;background:#fff;border:1px solid #cfd9cf;border-radius:11px;box-shadow:0 1px 1px #17362608}
+.foodGrid button.foodTile:hover {border-color:#6e947d;box-shadow:0 2px 8px #294e3712}
+.tileHead {display:flex;align-items:center;gap:10px;min-height:45px}
+.tilePhoto:is(img) {width:45px;height:45px;border-radius:7px;flex:none}
+.tileText {display:flex;flex-direction:column;gap:2px}
+.tileKind {font-size:.77rem;color:#506b57;font-weight:510}
+.tileName {font-size:1rem;font-weight:690;line-height:1.3;overflow-wrap:anywhere}
+.tileGi {display:flex;align-items:baseline;gap:8px;margin:8px 0 4px;font-variant-numeric:tabular-nums}
+.tileGi small {color:var(--mute);font-size:.84rem}.tileGi b {font-size:1.12rem;color:#164b38}
+.tileEvidence {font-size:.78rem;color:#52665d;border-top:1px solid #e4e9e2;padding-top:4px}
+.tileReadings {display:flex;flex-wrap:wrap;gap:3px 11px;color:#47594d;font-size:.82rem;margin-top:3px}
+.tileReadings b {font-weight:670;color:var(--ink);font-variant-numeric:tabular-nums}
+.foodGrid.listStyle {display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+.foodGrid.listStyle .foodTile {display:grid;grid-template-columns:minmax(0,1.8fr) minmax(98px,.65fr) minmax(115px,.7fr) minmax(130px,1fr);align-items:center;border-width:0 0 1px;border-radius:0;min-height:55px;gap:12px;padding:6px 12px}
+.listStyle .tileGi,.listStyle .tileReadings {margin:0}.listStyle .tileEvidence {border:0;padding:0}.listStyle .tilePhoto {width:36px;height:36px}
+.sourceProof {font-size:.86rem;line-height:1.5;margin:6px 0 8px;overflow-wrap:anywhere}
+.sourceProof span {display:block;font-size:.77rem;color:#516557}
+.foodDataRow {display:grid;grid-template-columns:minmax(85px,.28fr) minmax(0,1fr);align-items:start;border-bottom:1px solid #dee6db;padding-block:12px}
+.foodDataRow:last-child {border:0}.foodDataRow .giScale {max-width:90px}
+.recordProof {font-size:.92rem}.recordProof details {font-size:.85rem}
+.seriesStats {display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:12px 0}
+.seriesStats > div {background:#edf4e9;border-radius:7px;padding:7px 10px;font-size:.78rem}
+.seriesStats small {font-size:.84rem;color:#435c50}.seriesStats b {font-size:1.18rem}
+.axisLabel {font-size:.85rem;color:#435c50}
+.drawerHeading small {color:var(--mute)}
+.issuerBox {margin:15px 0;padding:16px 18px;background:white;border:1px solid var(--line);border-radius:10px}
+.issuerBox input {margin:8px 0;padding:7px 10px;width:min(430px,100%);border:1px solid #a5b7a9;border-radius:6px}
+.issuerBox #issuerCount,.issuerBox>p {color:var(--mute);font-size:.9rem}
+.issuerRow {padding:7px 0;margin:0;border-bottom:1px solid #dce4da}
+.issuerRow small {font-weight:500;color:var(--mute)}
+.issuerRow summary {overflow-wrap:anywhere}
+.issuerBox>button {margin-top:10px}
+@media(max-width:850px) {
+  .heroIn {gap:20px;grid-template-columns:1fr 1fr}
+  .atlasLayout {display:block}
+  .categoryRail {position:static;padding:0;margin-bottom:10px}
+  .categoryRail h2,.catMenu {display:none}
+  .catMobile {display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:650}
+  .catMobile select {max-width:100%;min-height:38px;padding:3px 8px;background:#fff;border:1px solid #b7c8b9;border-radius:6px}
+}
+@media(max-width:600px) {
+  .wrap {width:calc(100% - 24px)}
+  .heroIn {display:block;padding:13px 0 9px}
+  .hero h1 {font-size:1.8rem}.heroText p {margin:5px 0 10px;font-size:.85rem}
+  .searchBox label {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .searchBox {max-width:none}.searchField input {font-size:1rem}
+  .suggestions button {padding-block:4px}
+  .modes {gap:15px}.modes button {font-size:.85rem;min-height:44px}
+  #work {padding-top:12px}.foodFilterPanel>summary {font-size:.83rem}
+  .foodGrid {grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .foodGrid button.foodTile {padding:8px}.tileName {font-size:.9rem}
+  .tileHead {gap:7px;min-height:35px}.tilePhoto:is(img) {width:33px;height:33px}.tileKind {font-size:.74rem}
+  .tileReadings {gap:3px 7px;font-size:.78rem}.tileGi {margin:5px 0 2px}
+  .foodGrid.listStyle .foodTile {grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:4px 10px}
+  .listStyle .tileHead {grid-row:span 3}.listStyle .tileEvidence,.listStyle .tileReadings {grid-column:2}
+  .seriesStats>div {padding:6px}.foodDataRow {grid-template-columns:68px 1fr}
+}
+@media(max-width:340px){.foodGrid:not(.listStyle){grid-template-columns:1fr}}
+@media(max-width:600px){
+  .atlasLayout {position:relative}
+  .catMobile {max-width:calc(100% - 102px);gap:5px;font-size:.85rem}
+  .catMobile select {min-width:0;max-width:68%}
+  .resultHeading h2 {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .viewSwitch {position:absolute;top:0;right:0}.viewSwitch button {padding-inline:8px}
+  .foodBar:has(#giCount){display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:5px;font-size:.78rem}
+  .foodBar .foodPager{gap:4px}.foodBar .foodPager button {min-width:25px;padding-inline:5px}
+  .foodPager label select{font-size:.83rem;padding-inline:2px}
+  .suggestions {display:none}
+}
+.issuerStatus {display:inline-flex;gap:6px;align-items:center;margin-inline-start:8px;font-size:.9rem}
+.issuerBox .issuerStatus input {width:1.05rem;height:1.05rem;accent-color:#14543d}
+.certStatus {font-weight:600;font-size:.8rem;border-radius:5px;background:#edf2ea;padding:2px 6px;white-space:nowrap}

@@ -13,11 +13,14 @@ const searchTerms=[
 ["稻米 大米 米饭 白饭 米","rice|nasi|biryani|biriyani|risotto"],["糙米","brown rice"],["白米","white rice|polished rice"],["糯米","sticky rice|glutinous rice"],["炒饭","fried rice"],["粥 稀饭","porridge|congee"],["饭团 寿司","sushi"],["籼米 巴斯马蒂","basmati"],["茉莉香米","jasmine"],["面条 粉面","noodle|vermicelli|spaghetti|pasta|macaroni"],["米粉 米线","rice noodle|rice vermicelli"],["意面 意大利面","pasta|spaghetti|macaroni"],["面包","bread|toast|baguette|loaf|chapati|roti"],["馒头","steamed bun|steamed bread|mantou"],["饺子","dumpling"],["小麦","wheat"],["全麦","whole wheat|wholemeal|whole-wheat"],["大麦","barley"],["燕麦","oat"],["小米 黍","millet"],["玉米","corn|maize"],["黑麦","rye"],["荞麦","buckwheat"],["高粱","sorghum"],["马铃薯 土豆","potato"],["芋头","taro"],["红薯 地瓜 甘薯","sweet potato"],["山药","yam"],["木薯","cassava|tapioca"],["豆类 豆","bean|lentil|pea|legume|chickpea|dhal|dal"],["扁豆","lentil"],["绿豆","mung|green gram"],["鹰嘴豆","chickpea|chick pea|bengal gram"],["大豆 黄豆","soy|soya"],["牛奶 乳","milk"],["酸奶","yogurt|yoghurt"],["冰淇淋","ice cream"],["水果","apple|banana|mango|grape|pear|orange|pineapple|papaya|guava|berry|fruit|melon|date"],["香蕉","banana|plantain"],["苹果","apple"],["葡萄","grape"],["橙子 橘子 柑橘","orange|mandarin|citrus"],["菠萝 凤梨","pineapple"],["芒果","mango"],["西瓜","watermelon"],["木瓜","papaya"],["番石榴 芭乐","guava"],["猕猴桃 奇异果","kiwi"],["椰子","coconut"],["椰枣 海枣","date|medjool"],["饼干","biscuit|cookie|cracker"],["蛋糕","cake"],["巧克力","chocolate"],["蜂蜜","honey"],["糖","sugar|glucose|maltose|sucrose"],["胡萝卜","carrot"],["南瓜","pumpkin|squash"],["花生","peanut"],["豆腐","tofu|bean curd"],["椰浆饭","nasi lemak"],["炒面","mee goreng"],["糯米鸡","loi mai kai|lo mai kai"],["印度煎饼","roti|chapati|paratha"],["发酵","fermented"],["即食","instant"],["蒸","steamed"],["煮","boiled"],["炒 炸","fried"]
 ];
 const compiledTerms=searchTerms.map(([label,keys])=>[label,new RegExp("\\b(?:"+keys+")","i")]);
-const regions={"Singapore":"新加坡","Malaysia":"马来西亚","Indonesia":"印度尼西亚","India":"印度","Sri Lanka":"斯里兰卡","Japan":"日本","Korea":"韩国","Philippines":"菲律宾","Thailand":"泰国","Taiwan":"台湾","Taiwan, China":"中国台湾","Hong Kong":"香港","Hong Kong, China":"中国香港","China":"中国","United Arab Emirates (UAE)":"阿联酋","Saudi Arabia":"沙特阿拉伯","Oman":"阿曼","Lebanon":"黎巴嫩","West India":"West India（原文）","Saudi Arabia/United Kingdom":"沙特阿拉伯／英国"};
+const regions={"Ghana":"加纳","Ethiopia":"埃塞俄比亚","Mexico":"墨西哥","Côte d’Ivoire":"科特迪瓦","Singapore":"新加坡","Malaysia":"马来西亚","Indonesia":"印度尼西亚","India":"印度","Sri Lanka":"斯里兰卡","Japan":"日本","Korea":"韩国","Philippines":"菲律宾","Thailand":"泰国","Taiwan":"台湾","Taiwan, China":"中国台湾","Hong Kong":"香港","Hong Kong, China":"中国香港","China":"中国","United Arab Emirates (UAE)":"阿联酋","Saudi Arabia":"沙特阿拉伯","Oman":"阿曼","Lebanon":"黎巴嫩","West India":"West India（原文）","Saudi Arabia/United Kingdom":"沙特阿拉伯／英国"};
 const regionName=region=>english?region:(regions[region]||region);
 function tagsFor(name){
   const textName=normalized(name);
   return compiledTerms.filter(([,pattern])=>pattern.test(textName)).map(([label])=>label).join(" ");
+}
+function additionalGI() {
+  return [...window.atlasNewGIStudies,window.atlasIssuerGIStudy];
 }
 function giSources(){
   return [
@@ -26,6 +29,8 @@ function giSources(){
     {id:"yunnan",zh:"昆明医科大学学报 · 云南米制品",en:"Kunming Medical University journal · Yunnan rice foods",url:original},
     {id:"henry",zh:"Henry 等 · 非西方食物 GI 汇编",en:"Henry et al. · Non-Western food GI compendium",url:HENRY_TABLE},
     ...(window.atlasNewFoodStudies||[]).filter(s=>s.foods.some(f=>Number.isFinite(f.gi)&&!f.henryRow)).map(s=>({id:s.id,zh:s.zh,en:s.en,url:s.url})),
+    ...additionalGI(),
+    ...(window.atlasExtraStudies||[]).filter(s=>window.atlasMatchedCurveGI?.[s.id]),
     ...(localState.loaded.length?[{id:intlId,zh:"国际 GI 表 · 研究工作簿",en:"International GI tables · research workbook",url:window.atlasImportInfo?.articleUrl||"https://pubmed.ncbi.nlm.nih.gov/34258626/"}]:[])
   ];
 }
@@ -38,8 +43,10 @@ function catalogRows(){
     ...window.atlasCurves.map((r,i)=>({...r,gi:yunnanGI[i],region:"China",source:"yunnan",row:i+1})),
     ...window.atlasHenry.map(r=>({...r,source:"henry"})),
     ...(window.atlasNewFoodStudies||[]).flatMap(s=>s.foods.filter(f=>Number.isFinite(f.gi)&&!f.henryRow).map(f=>({...f,source:s.id}))),
+    ...additionalGI().flatMap(s=>s.rows.map(r=>({...r,source:s.id,sourceUrl:r.sourceUrl||r.url||s.url,typeZh:s.typeZh,typeEn:s.typeEn}))),
+    ...(window.atlasExtraStudies||[]).flatMap(s=>s.foods.filter(f=>Number.isFinite(window.atlasMatchedCurveGI?.[s.id]?.[f.en])).map(f=>({...f,source:s.id,gi:window.atlasMatchedCurveGI[s.id][f.en]}))),
     ...localState.loaded.map(r=>({...r,source:intlId}))];
-  builtGI=rows.map((r,i)=>({...r,key:i,search:normalized([r.en,r.zh,r.region,regions[r.region],r.categoryZh,r.categoryEn,r.country,r.code,tagsFor(r.en)].filter(Boolean).join(" "))}));
+  builtGI=rows.map((r,i)=>({...r,key:i,search:normalized([r.en,r.zh,r.region,regions[r.region],r.categoryZh,r.categoryEn,r.country,r.code,r.originalLabel,r.certificate,r.holder,tagsFor(r.en)].filter(Boolean).join(" "))}));
   return builtGI;
 }
 function curvesByStudy(){
@@ -47,6 +54,7 @@ function curvesByStudy(){
   return [{id:"yunnan",zh:"云南 · 五种米制品",en:"Yunnan · Five rice foods",url:original,methodZh:doc.methodZh,methodEn:doc.methodEn,minutes:doc.minutes,measure:"absolute",unit:"mmol/L",foods:window.atlasCurves.map(r=>({...r,portionZh:r.grams+" 克",portionEn:r.grams+" g",n:12}))},...(window.atlasExtraStudies||[]),...(window.atlasNewFoodStudies||[])];
 }
 function sourceLink(row,source){
+  if(row.sourceUrl)return row.sourceUrl;
   if(row.source==="henry" && /^\d+$/.test(row.ref))return HENRY_PAPER+"#ref-CR"+row.ref;
   if(row.source===intlId)return window.atlasImportInfo.articleUrl;
   return source?.url||HENRY_TABLE;
@@ -59,7 +67,13 @@ function rowDetails(r,src){
   const fields=[];
   function add(label,value){if(value!=null&&value!=="")fields.push('<div><b>'+label+'</b> '+esc(value)+'</div>')}
   add(t("英文名称","English label"),r.en);if(r.zh)add(t("中文名称","Chinese label"),r.zh);
-  if(r.source==="henry"){
+  if(r.sourceUrl) {
+    add(t("原文食品名","Original food label"),r.originalLabel);
+    add(t("试验地区","Study location"),r.region);
+    add(t("试验份量","Test portion"),english?r.portion:r.portionZh||r.portion);
+    add(t("研究人群","Study population"),english?r.cohort:r.cohortZh||r.cohort);
+    add(t("评价编号","Evaluation ID"),r.certificate);add(t("评价日期","Evaluation date"),r.date);add(t("持有人","Holder"),r.holder);
+  } else if(r.source==="henry"){
     add(t("原表行号","Table row"),r.row);add(t("试验地区","Study location"),regionName(r.region));
     add(t("试验份量（克）","Experimental portion (g)"),r.portion);add(t("可利用碳水（克）","Available carbohydrate (g)"),r.carbs);
     add(t("受试者（原文）","Participants"),r.cohort);add(t("参考食物与时长","Reference food and duration"),r.protocol);
@@ -94,9 +108,9 @@ async function loadWorkbook(file){
 }
 let endorsementQuery="";
 function verificationView(){
-  $("work").innerHTML='<h2>'+t("产品认证与机构名录","Certification and endorsement directories")+'</h2><p class="sub">'+t("按发证机构、产品全名和持证企业核验状态。实验室 GI 数值、行业机构推荐、有效产品证书分别记录。","Verify status against the issuer, exact product and certificate holder. GI measurements, industry endorsements and current product certificates are distinct evidence.")+'</p><div class="sourceGrid"><article class="source"><h3>'+t("中国 · 方圆标志认证集团","China · China Quality Mark")+'</h3><p>'+t("按证书号或企业核验自愿性低／中 GI 产品认证，确认名称、规格、有效期及状态。另有食品评价服务，需选对证书类别。","Look up voluntary low/medium-GI certification by certificate or company and check scope and status. Select the right document type: the issuer also offers a separate product evaluation.")+'</p><div class="sourceLinks">'+link(CQM,t("查询证书","Certificate lookup"))+link("https://www.cqm.com.cn/cqm/chanpinrenzheng/nongshiziyuanxingchanpinrenzhe/7097.html",t("认证方案","Scheme"))+'</div></article><article class="source"><h3>'+t("澳大利亚 · GI 标志说明","Australia · GI Symbol update")+'</h3><p>'+t("悉尼大学说明澳大利亚原 GI 基金会已停止运营。旧标志和历史记录需核对所属计划及年代。","The University of Sydney reports closure of the former Australian GI Foundation. Check the scheme and date of any historical mark.")+'</p>'+link("https://glycemicindex.com/update-on-gi-symbol/",t("悉尼大学公告","University notice"))+'</article><article class="source"><h3>'+t("南非 · GI Foundation SA","South Africa · GI Foundation SA")+'</h3><p>'+t("下表按该机构公开名录逐行整理。名录中的一行可包含多种口味或产品规格。","The table follows the issuer’s directory. A line may cover several products or variants.")+'</p>'+link(GIFSA,t("核对最新名录","Check current listings"))+'</article></div><article class="dataPanel registry"><h3>'+t("中国产品发证记录","Chinese product certification records")+'</h3><p><b>'+t("精力沛 · 小麦胚芽","Jinglipei · wheat germ")+'</b> · '+t("证书已过期","Certificate expired")+'</p><p>'+t("证书号 CQM22GI01012053，申请人为广州萃取生物科技有限公司。2022-12-22 签发，有效期至 2025-12-21。2026-11-22 查询时，发证机构标记为「过期失效」。","Certificate CQM22GI01012053 was issued to Guangzhou Cuiqu Biotechnology on 2022-12-22, valid through 2025-12-21. The issuer returned expired status when checked on 2026-11-22.")+'</p><p class="note">'+t("复核时请选择「自愿性产品认证证书」，输入证书编号。","Select the voluntary product certificate search and enter the certificate number to verify.")+' '+link(CQM,t("查询当前状态","Verify current status"))+' · '+link("https://www.cqm.com.cn/cqm/xinwenzhongxin/gongsixinwen/5130.html",t("发证公告","Issuance notice"))+'</p><hr><p><b>'+t("陕西粮农物流集团 · 低 GI 黑麦荞麦面","Shaanxi Grain and Agriculture Logistics Group · rye and buckwheat noodles")+'</b> · '+t("有发证公告，当前状态待核验","Issuance documented; current status unverified")+'</p><p>'+t("陕西省市场监督管理局于 2025-09-15 发布省质检院颁证公告。公告未列证书号和有效期限。","On 2025-09-15 the Shaanxi market regulator published the provincial quality institute’s issuance notice. The notice omits the certificate number and expiry date.")+'</p>'+link("https://snamr.shaanxi.gov.cn/sy/gzdt/zsdwdt/202509/t20250915_3567316.html",t("省市场监管局公告","Provincial regulator notice"))+'</article><article class="dataPanel registry"><h3>'+t("南非机构推荐名录","South African endorsement listings")+'</h3><input type="search" id="brandSearch" placeholder="'+t("搜索原文品牌、产品或企业","Search brand, product or company")+'" aria-label="'+t("搜索推荐名录","Search endorsements")+'"><span class="meta" id="brandCount" role="status"></span><div class="tableWrap"><table><thead><tr><th>'+t("品牌／系列","Brand or range")+'</th><th>'+t("原名录规格","Listed variants")+'</th><th>'+t("企业","Company")+'</th></tr></thead><tbody id="brands"></tbody></table></div></article>';
+  $("work").innerHTML='<h2>'+t("产品认证与机构名录","Certification and endorsement directories")+'</h2><p class="sub">'+t("按发证机构、产品全名和持证企业核验状态。实验室 GI 数值、行业机构推荐、有效产品证书分别记录。","Verify status against the issuer, exact product and certificate holder. GI measurements, industry endorsements and current product certificates are distinct evidence.")+'</p><div class="sourceGrid"><article class="source"><h3>'+t("中国 · 方圆标志认证集团","China · China Quality Mark")+'</h3><p>'+t("按证书号或企业核验自愿性低／中 GI 产品认证，确认名称、规格、有效期及状态。另有食品评价服务，需选对证书类别。","Look up voluntary low/medium-GI certification by certificate or company and check scope and status. Select the right document type: the issuer also offers a separate product evaluation.")+'</p><div class="sourceLinks">'+link(CQM,t("查询证书","Certificate lookup"))+link("https://www.cqm.com.cn/cqm/chanpinrenzheng/nongshiziyuanxingchanpinrenzhe/7097.html",t("认证方案","Scheme"))+'</div></article><article class="source"><h3>'+t("澳大利亚 · GI 标志说明","Australia · GI Symbol update")+'</h3><p>'+t("悉尼大学说明澳大利亚原 GI 基金会已停止运营。旧标志和历史记录需核对所属计划及年代。","The University of Sydney reports closure of the former Australian GI Foundation. Check the scheme and date of any historical mark.")+'</p>'+link("https://glycemicindex.com/update-on-gi-symbol/",t("悉尼大学公告","University notice"))+'</article><article class="source"><h3>'+t("南非 · GI Foundation SA","South Africa · GI Foundation SA")+'</h3><p>'+t("下表按该机构公开名录逐行整理。名录中的一行可包含多种口味或产品规格。","The table follows the issuer’s directory. A line may cover several products or variants.")+'</p>'+link(GIFSA,t("核对最新名录","Check current listings"))+'</article></div><article class="dataPanel registry"><h3>'+t("南非机构推荐名录","South African endorsement listings")+'</h3><input type="search" id="brandSearch" placeholder="'+t("搜索原文品牌、产品或企业","Search brand, product or company")+'" aria-label="'+t("搜索推荐名录","Search endorsements")+'"><span class="meta" id="brandCount" role="status"></span><div class="tableWrap"><table><thead><tr><th>'+t("品牌／系列","Brand or range")+'</th><th>'+t("原名录规格","Listed variants")+'</th><th>'+t("企业","Company")+'</th></tr></thead><tbody id="brands"></tbody></table></div></article>';
   $("brandSearch").value=endorsementQuery;
-  const update=()=>{const q=normalized(endorsementQuery);const list=window.atlasEndorsed.filter(r=>normalized([r.en,r.variants,r.company,tagsFor(r.en)].join(" ")).includes(q));$("brandCount").textContent=t(" "+list.length+" 条名录记录"," "+list.length+" directory rows");$("brands").innerHTML=list.map(r=>'<tr><td>'+esc(r.en)+'</td><td>'+esc(r.variants.startsWith("http")?"—":r.variants||"—")+'</td><td>'+esc(r.company)+'</td></tr>').join("")||'<tr><td colspan="3">'+t("没有匹配项","No matches")+'</td></tr>'};
+  const update=()=>{const q=normalized(endorsementQuery);const list=window.atlasEndorsed.filter(r=>normalized([r.en,r.variants,r.company,tagsFor(r.en)].join(" ")).includes(q));$("brandCount").textContent=t(" "+list.length+" 条名录记录"," "+list.length+" directory rows");$("brands").innerHTML=list.map(r=>'<tr><td>'+esc(r.en)+'</td><td>'+esc(r.variants.startsWith("http")?"—":r.variants||"—")+'</td><td>'+esc(r.company)+'<br>'+link(GIFSA,t("发证机构名录 · ","Issuer directory · ")+esc(r.en))+'</td></tr>').join("")||'<tr><td colspan="3">'+t("没有匹配项","No matches")+'</td></tr>'};
   $("brandSearch").oninput=e=>{endorsementQuery=e.target.value;update()};update();
 }
 function moreSources(){
@@ -112,4 +126,58 @@ function moreSources(){
     [paper,t("美国 · NHANES GI/GL 研究","USA · NHANES GI/GL research"),t("通过匹配食品描述赋予 GI/GL，用于人群研究。作者项目提供参考工作簿，最终美国人群数据库另有申请条件。","Matches external GI data to survey descriptions for population research. The authors share a reference workbook; the resulting US database has separate access requirements."),"", [["https://doi.org/10.1016/j.ajcnut.2024.06.001",paper],["https://github.com/dellacortelab/nhanes_gigl",t("研究项目","Study repository")]]]
   ];
   return links;
+}
+
+function newEvidenceSources() {
+  const studies=additionalGI().map(s=>[s.typeZh?t(s.typeZh,s.typeEn):t("人体研究","Human study"),titleOf(s),
+    t("本站收录 "+s.rows.length+" 条，每条记录均列出原文食物名和定位。",s.rows.length+" records with original food names and source locators."),s.licenseUrl?s.license:"",[[s.url,t("查阅原始来源","Open source")],...(s.licenseUrl?[[s.licenseUrl,t("原文许可","Article license")]]:[])]]);
+  const directories=new Map(window.atlasIssuerRecords.map(r=>[r.issuerZh,r]));
+  return studies.concat([...directories.values()].map(r=>[t("发证机构","Certification body"),english?r.issuerEn:r.issuerZh,
+    t("产品范围、证号和发证记录可在产品认证页逐条检索。","Find product scope, certificate IDs and dated entries in Product verification."),
+    "",[[r.url.split("#")[0],t("机构原文","Issuer source")]]]));
+}
+
+function issuerRecordsView(){
+  const rows=[...window.atlasIssuerRecords,{
+    zh:"精力沛 · 小麦胚芽 · 广州萃取生物科技有限公司",en:"Jinglipei wheat germ · Guangzhou Cuiqu Biotechnology",
+    issuerZh:"方圆标志认证集团",issuerEn:"China Quality Mark",certificate:"CQM22GI01012053",date:"2022-12-22",
+    statusZh:"有效期至 2025-12-21。2026-11-22 查询时，发证机构标记为「过期失效」。",statusEn:"Valid through 2025-12-21. The issuer register showed expired status on 2026-11-22.",
+    url:"https://www.cqm.com.cn/cqm/xinwenzhongxin/gongsixinwen/5130.html",locatorZh:"发证公告 · 精力沛小麦胚芽",locatorEn:"Issuance notice · Jinglipei wheat germ",
+    checkUrl:CQM,statusCode:"expired",verifiedOn:"2026-11-22",validThrough:"2025-12-21"
+  },{
+    zh:"低 GI 黑麦荞麦面 · 陕西粮农物流集团",en:"Rye and buckwheat noodles · Shaanxi Grain and Agriculture Logistics Group",
+    issuerZh:"陕西省质检院",issuerEn:"Shaanxi provincial quality inspection institute",certificate:null,date:"2025-09-15",statusCode:"unverified",
+    statusZh:"发证公告未披露证书号及有效期，当前状态待核验。",statusEn:"Issuance announced. Certificate number, expiry and current status unavailable.",
+    url:"https://snamr.shaanxi.gov.cn/sy/gzdt/zsdwdt/202509/t20250915_3567316.html",locatorZh:"省市场监管局颁证公告 · 黑麦荞麦面",locatorEn:"Provincial regulator notice · rye and buckwheat noodles"
+  }];
+  const section=document.createElement("section");
+  section.className="issuerBox";
+  section.innerHTML='<h3>'+t("按产品或证书号查发证记录","Look up a product or certificate")+'</h3><p>'+t("证书范围、公告日期和当前状态分别列出。部分名录只公布发证历史。","Each record distinguishes product scope, publication or issue date, and known status. Some directories report historical issuance only.")+'</p><input id="issuerSearch" type="search" placeholder="'+t("输入产品、企业或证书号","Enter product, company or certificate ID")+'" aria-label="'+t("搜索发证记录","Search certification records")+'"><label class="issuerStatus"><input id="activeIssuer" type="checkbox">'+t("仅看已核验有效","Verified active only")+'</label><p id="issuerCount" role="status"></p><div id="issuerList"></div><button id="moreIssuers"></button><p class="note">'+link("https://acclab.cn/download/3283/?tmstv=1768962533&v=3284",t("美安康关于后续监督的公告","ACC notice on follow-up supervision"))+'</p>';
+  $("work").querySelector(".sub").after(section);
+  const activeCount=rows.filter(r=>r.statusCode==="active").length;
+  $("activeIssuer").parentElement.append(" ("+activeCount+")");
+  $("activeIssuer").checked=new URL(location.href).searchParams.get("status")==="active";
+  const labels={no_match:["未查到匹配证书","No matching certificate"],conflict:["来源记录有出入","Conflicting records"],invalid:["已失效","Invalid"],active:["已核验有效","Verified active"],expired:["已过期","Expired"],cancelled:["已注销","Cancelled"],withdrawn:["已撤销","Withdrawn"],suspended:["已暂停","Suspended"],unverified:["待核验","Unverified"]};
+  let limit=8;
+  const update=()=>{
+    const words=normalized($("issuerSearch").value).split(" ").filter(Boolean);
+    const selected=rows.filter(r=>(!$("activeIssuer").checked||r.statusCode==="active")&&words.every(w=>normalized([r.zh,r.en,r.issuerZh,r.issuerEn,r.certificate,r.statusZh,r.statusEn].join(" ")).includes(w)));
+    $("issuerCount").textContent=t("共 "+selected.length+" 条记录",selected.length+" matching records");
+    $("issuerList").innerHTML=selected.slice(0,limit).map(r=>{
+      const status=t(...(labels[r.statusCode]||labels.unverified));
+      const liveLink=r.checkUrl?link(esc(r.checkUrl),r.checkUrl===CQM?t("状态查询（选自愿性产品认证证书）","Verify under voluntary product certificates"):t("按证号查看发证机构实时状态","Check current status with issuer")):"";
+      return '<details class="issuerRow"><summary>'+esc(foodName(r))+' <small>'+esc(r.certificate||t("颁证公告","Issuance notice"))+'</small> <span class="certStatus">'+esc(status)+'</span></summary><p>'+esc(english?r.statusEn:r.statusZh)+'</p><p>'+esc(english?r.issuerEn:r.issuerZh)+' · '+esc(r.date)+'</p>'+(r.validThrough?'<p>'+t('机构列示有效期至 ','Issuer lists validity through ')+esc(r.validThrough)+'</p>':'')+(r.registryHolder?'<p>'+t('查询返回的持证方及类别 · ','Holder and category returned by registry · ')+esc(r.registryHolder)+' · '+esc(r.registryCategory||'—')+'</p>':'')+'<p>'+link(esc(r.url),esc(english?r.locatorEn:r.locatorZh))+'</p>'+
+        (liveLink?'<p>'+liveLink+(r.verifiedOn?' · '+t("查询日期 ","Lookup date ")+esc(r.verifiedOn):"")+'</p>':"")+'</details>';
+    }).join("")||'<p>'+t("没有符合条件的记录。","No matching records.")+'</p>';
+    $("moreIssuers").hidden=limit>=selected.length;
+    $("moreIssuers").textContent=t("再显示 20 条","Show 20 more");
+  };
+  $("activeIssuer").onchange=()=>{
+    const url=new URL(location.href);
+    if($("activeIssuer").checked)url.searchParams.set("status","active");else url.searchParams.delete("status");
+    history.replaceState(null,"",url);limit=8;update();
+  };
+  $("issuerSearch").oninput=()=>{limit=8;update()};
+  $("moreIssuers").onclick=()=>{limit+=20;update()};
+  update();
 }
