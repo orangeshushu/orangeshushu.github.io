@@ -554,5 +554,387 @@ window.atlasStapleStudies = [
       }
     ],
     "journalUrl": "https://doi.org/10.1016/S0271-5317(05)80776-6"
+  },
+  {
+    "id": "omaha-breakfast-2005-normal",
+    "pairId": "omaha-breakfast-2005",
+    "en": "Omaha cereal breakfasts · Adults without diabetes",
+    "zh": "奥马哈谷物早餐 · 无糖尿病成人",
+    "url": "https://link.springer.com/article/10.1007/s11130-005-5101-8",
+    "dataUrl": "https://www.academia.edu/113241521/Effect_of_a_barley_breakfast_cereal_on_blood_glucose_and_insulin_response_in_normal_and_diabetic_patients",
+    "unit": "mmol/L",
+    "measure": "increment",
+    "evidenceKind": "table",
+    "cohort": "normal",
+    "minutes": [
+      0,
+      30,
+      60,
+      120
+    ],
+    "methodEn": "Adults without diabetes. Fasting participants finished each meal within 10 minutes. Plasma glucose was sampled 30, 60, 120 and 180 minutes after finishing. Table 2 gives mean changes from fasting in mg/dL. Values through 120 minutes are converted to mmol/L by dividing by 18. Zero represents change at baseline.",
+    "methodZh": "无糖尿病成人。空腹后在 10 分钟内吃完，计时从吃完开始，在 30、60、120、180 分钟采血。表 2 列出血浆葡萄糖较餐前的平均变化（mg/dL），此处显示至 120 分钟，除以 18 换算为 mmol/L。起点 0 代表相对餐前的变化。",
+    "foods": [
+      {
+        "en": "Rolled oat porridge (Quaker, water-cooked)",
+        "zh": "燕麦片粥（桂格燕麦片，清水煮）",
+        "n": 16,
+        "mean": [
+          0,
+          2.2944,
+          1.6278,
+          0.2389
+        ],
+        "portionEn": "65 g dry flakes, microwaved in 360 mL water and stirred into porridge",
+        "portionZh": "65 克干谷物片加 360 毫升水，用微波炉煮沸并搅拌成粥",
+        "locatorEn": "Rendell et al. (2005), p. 65, Table 2, Oatmeal / Nondiabetic row, 0.5, 1 and 2 h. Reported group mean changes in mg/dL.",
+        "locatorZh": "Rendell 等（2005）第 65 页表 2，Oatmeal 项下的 Nondiabetic 行，0.5、1、2 小时栏。原表给出较餐前的平均变化（mg/dL）。",
+        "shortcut": {
+          "en": "Oat porridge",
+          "zh": "燕麦片粥"
+        }
+      },
+      {
+        "en": "High-fibre hulless barley flake porridge (Prowash)",
+        "zh": "裸大麦片粥（Prowash 高纤品种）",
+        "n": 16,
+        "mean": [
+          0,
+          0.3556,
+          0.3056,
+          0.1444
+        ],
+        "portionEn": "66 g dry flakes, microwaved in 360 mL water and stirred into porridge",
+        "portionZh": "66 克干谷物片加 360 毫升水，用微波炉煮沸并搅拌成粥",
+        "locatorEn": "Rendell et al. (2005), p. 65, Table 2, Prowash / Nondiabetic row, 0.5, 1 and 2 h. Reported group mean changes in mg/dL.",
+        "locatorZh": "Rendell 等（2005）第 65 页表 2，Prowash 项下的 Nondiabetic 行，0.5、1、2 小时栏。原表给出较餐前的平均变化（mg/dL）。"
+      }
+    ],
+    "foodSection": "grainTubers"
+  },
+  {
+    "id": "omaha-breakfast-2005-t2d",
+    "pairId": "omaha-breakfast-2005",
+    "en": "Omaha cereal breakfasts · Adults with diet-treated type 2 diabetes",
+    "zh": "奥马哈谷物早餐 · 饮食治疗的 2 型糖尿病成人",
+    "url": "https://link.springer.com/article/10.1007/s11130-005-5101-8",
+    "dataUrl": "https://www.academia.edu/113241521/Effect_of_a_barley_breakfast_cereal_on_blood_glucose_and_insulin_response_in_normal_and_diabetic_patients",
+    "unit": "mmol/L",
+    "measure": "increment",
+    "evidenceKind": "table",
+    "cohort": "t2d",
+    "minutes": [
+      0,
+      30,
+      60,
+      120
+    ],
+    "methodEn": "Adults with diet-treated type 2 diabetes. Fasting participants finished each meal within 10 minutes. Plasma glucose was sampled 30, 60, 120 and 180 minutes after finishing. Table 2 gives mean changes from fasting in mg/dL. Values through 120 minutes are converted to mmol/L by dividing by 18. Zero represents change at baseline.",
+    "methodZh": "饮食治疗的 2 型糖尿病成人。空腹后在 10 分钟内吃完，计时从吃完开始，在 30、60、120、180 分钟采血。表 2 列出血浆葡萄糖较餐前的平均变化（mg/dL），此处显示至 120 分钟，除以 18 换算为 mmol/L。起点 0 代表相对餐前的变化。",
+    "foods": [
+      {
+        "en": "Rolled oat porridge (Quaker, water-cooked)",
+        "zh": "燕麦片粥（桂格燕麦片，清水煮）",
+        "n": 18,
+        "mean": [
+          0,
+          3.3833,
+          4.4889,
+          2.3722
+        ],
+        "portionEn": "65 g dry flakes, microwaved in 360 mL water and stirred into porridge",
+        "portionZh": "65 克干谷物片加 360 毫升水，用微波炉煮沸并搅拌成粥",
+        "locatorEn": "Rendell et al. (2005), p. 65, Table 2, Oatmeal / Diabetic row, 0.5, 1 and 2 h. Reported group mean changes in mg/dL.",
+        "locatorZh": "Rendell 等（2005）第 65 页表 2，Oatmeal 项下的 Diabetic 行，0.5、1、2 小时栏。原表给出较餐前的平均变化（mg/dL）。"
+      },
+      {
+        "en": "High-fibre hulless barley flake porridge (Prowash)",
+        "zh": "裸大麦片粥（Prowash 高纤品种）",
+        "n": 18,
+        "mean": [
+          0,
+          1.0222,
+          1.5778,
+          1.4222
+        ],
+        "portionEn": "66 g dry flakes, microwaved in 360 mL water and stirred into porridge",
+        "portionZh": "66 克干谷物片加 360 毫升水，用微波炉煮沸并搅拌成粥",
+        "locatorEn": "Rendell et al. (2005), p. 65, Table 2, Prowash / Diabetic row, 0.5, 1 and 2 h. Reported group mean changes in mg/dL.",
+        "locatorZh": "Rendell 等（2005）第 65 页表 2，Prowash 项下的 Diabetic 行，0.5、1、2 小时栏。原表给出较餐前的平均变化（mg/dL）。"
+      }
+    ],
+    "foodSection": "grainTubers"
+  },
+  {
+    "id": "lagos-dada-corn-2015-normal",
+    "pairId": "lagos-dada-corn-2015",
+    "en": "Lagos corn trial · Non-diabetic controls",
+    "zh": "拉各斯玉米试餐 · 无糖尿病对照组",
+    "cohort": "normal",
+    "unit": "mmol/L",
+    "minutes": [
+      0,
+      30,
+      60,
+      90,
+      120
+    ],
+    "measure": "absolute",
+    "evidenceKind": "digitized",
+    "url": "https://endocrinolrespract.org/index.php/pub/article/view/751",
+    "dataUrl": "https://endocrinolrespract.org/index.php/pub/article/download/751/566#page=3",
+    "methodEn": "Dada et al. (2015). The age- and sex-matched cohorts ate portions calculated to contain 50 g carbohydrate after an overnight fast. Venous plasma glucose was sampled every 30 minutes. Each cohort enrolled 16 people and reported two withdrawals. The displayed n=14 is the number of completers; per-time-point counts were not given. Values use the timed profiles in Figure 1. Table 2 summarizes peak responses separately and does not consistently agree with the graph.",
+    "methodZh": "Dada 等（2015）。两组按年龄和性别匹配，空腹过夜后食用按 50 克碳水配制的试餐，每 30 分钟采血测静脉血浆葡萄糖。每组入组 16 人，退出 2 人，页面 n=14 为完成人数，原文未按时间点列出样本数。数值取自图 1 各时点；表 2 另列的峰值与图线并非处处一致。",
+    "foods": [
+      {
+        "en": "Boiled fresh corn (Lagos trial)",
+        "zh": "煮鲜玉米（拉各斯试餐）",
+        "n": 14,
+        "mean": [
+          4.3,
+          5.2,
+          5.9,
+          5.1,
+          4.8
+        ],
+        "portionEn": "Test portion calculated to provide 50 g carbohydrate, followed by 250 mL water; food weight not reported.",
+        "portionZh": "每份试餐按 50 克碳水化合物配制，餐后饮水 250 毫升；原文未列食物克重。",
+        "locatorEn": "Dada et al. (2015), p. 81, Figure 1, Boiled corn in ND. Group glucose curve digitized in mg/dL and converted to mmol/L, rounded to 0.1.",
+        "locatorZh": "Dada 等（2015），第 81 页图 1，煮玉米（图例 Boiled corn in ND）。读取 mg/dL 曲线，换算为 mmol/L，近似至 0.1。",
+        "shortcut": {
+          "en": "Boiled corn",
+          "zh": "煮鲜玉米"
+        }
+      },
+      {
+        "en": "Corn-flour porridge (Nigerian pap)",
+        "zh": "玉米粉糊（尼日利亚 pap）",
+        "n": 14,
+        "mean": [
+          4.4,
+          5.6,
+          6.1,
+          5.4,
+          4.9
+        ],
+        "portionEn": "Test portion calculated to provide 50 g carbohydrate, followed by 250 mL water; food weight not reported.",
+        "portionZh": "每份试餐按 50 克碳水化合物配制，餐后饮水 250 毫升；原文未列食物克重。",
+        "locatorEn": "Dada et al. (2015), p. 81, Figure 1, Pap in ND. Group glucose curve digitized in mg/dL and converted to mmol/L, rounded to 0.1.",
+        "locatorZh": "Dada 等（2015），第 81 页图 1，玉米粉糊（图例 Pap in ND）。读取 mg/dL 曲线，换算为 mmol/L，近似至 0.1。"
+      },
+      {
+        "en": "Cornflakes (Lagos trial, unspecified brand)",
+        "zh": "早餐玉米片（拉各斯试餐，品牌未注明）",
+        "n": 14,
+        "mean": [
+          4.7,
+          6.0,
+          6.8,
+          6.3,
+          5.1
+        ],
+        "portionEn": "Test portion calculated to provide 50 g carbohydrate, followed by 250 mL water; food weight not reported.",
+        "portionZh": "每份试餐按 50 克碳水化合物配制，餐后饮水 250 毫升；原文未列食物克重。",
+        "locatorEn": "Dada et al. (2015), p. 81, Figure 1, Cornflakes in ND. Group glucose curve digitized in mg/dL and converted to mmol/L, rounded to 0.1.",
+        "locatorZh": "Dada 等（2015），第 81 页图 1，玉米片（图例 Cornflakes in ND）。读取 mg/dL 曲线，换算为 mmol/L，近似至 0.1。"
+      }
+    ],
+    "foodSection": "grainTubers",
+    "noteZh": "图 1 的部分最高点与表 2 的峰值汇总有出入，本站各时点统一取图 1。",
+    "noteEn": "Some peaks in Figure 1 differ from the summary in Table 2. All time points here use Figure 1."
+  },
+  {
+    "id": "lagos-dada-corn-2015-t2d",
+    "pairId": "lagos-dada-corn-2015",
+    "en": "Lagos corn trial · Type 2 diabetes",
+    "zh": "拉各斯玉米试餐 · 2 型糖尿病组",
+    "cohort": "t2d",
+    "unit": "mmol/L",
+    "minutes": [
+      0,
+      30,
+      60,
+      90,
+      120
+    ],
+    "measure": "absolute",
+    "evidenceKind": "digitized",
+    "url": "https://endocrinolrespract.org/index.php/pub/article/view/751",
+    "dataUrl": "https://endocrinolrespract.org/index.php/pub/article/download/751/566#page=3",
+    "methodEn": "Dada et al. (2015). The age- and sex-matched cohorts ate portions calculated to contain 50 g carbohydrate after an overnight fast. Venous plasma glucose was sampled every 30 minutes. Each cohort enrolled 16 people and reported two withdrawals. The displayed n=14 is the number of completers; per-time-point counts were not given. Values use the timed profiles in Figure 1. Table 2 summarizes peak responses separately and does not consistently agree with the graph. Participants with type 2 diabetes continued their usual diet-only or oral-drug regimen.",
+    "methodZh": "Dada 等（2015）。两组按年龄和性别匹配，空腹过夜后食用按 50 克碳水配制的试餐，每 30 分钟采血测静脉血浆葡萄糖。每组入组 16 人，退出 2 人，页面 n=14 为完成人数，原文未按时间点列出样本数。数值取自图 1 各时点；表 2 另列的峰值与图线并非处处一致。糖尿病组沿用原有饮食控制或口服降糖药方案。",
+    "foods": [
+      {
+        "en": "Boiled fresh corn (Lagos trial)",
+        "zh": "煮鲜玉米（拉各斯试餐）",
+        "n": 14,
+        "mean": [
+          6.7,
+          8.7,
+          9.2,
+          7.9,
+          7.2
+        ],
+        "portionEn": "Test portion calculated to provide 50 g carbohydrate, followed by 250 mL water; food weight not reported.",
+        "portionZh": "每份试餐按 50 克碳水化合物配制，餐后饮水 250 毫升；原文未列食物克重。",
+        "locatorEn": "Dada et al. (2015), p. 81, Figure 1, Boiled corn in DM. Group glucose curve digitized in mg/dL and converted to mmol/L, rounded to 0.1.",
+        "locatorZh": "Dada 等（2015），第 81 页图 1，煮玉米（图例 Boiled corn in DM）。读取 mg/dL 曲线，换算为 mmol/L，近似至 0.1。"
+      },
+      {
+        "en": "Corn-flour porridge (Nigerian pap)",
+        "zh": "玉米粉糊（尼日利亚 pap）",
+        "n": 14,
+        "mean": [
+          6.5,
+          8.1,
+          8.9,
+          10.0,
+          7.5
+        ],
+        "portionEn": "Test portion calculated to provide 50 g carbohydrate, followed by 250 mL water; food weight not reported.",
+        "portionZh": "每份试餐按 50 克碳水化合物配制，餐后饮水 250 毫升；原文未列食物克重。",
+        "locatorEn": "Dada et al. (2015), p. 81, Figure 1, Pap in DM. Group glucose curve digitized in mg/dL and converted to mmol/L, rounded to 0.1.",
+        "locatorZh": "Dada 等（2015），第 81 页图 1，玉米粉糊（图例 Pap in DM）。读取 mg/dL 曲线，换算为 mmol/L，近似至 0.1。"
+      },
+      {
+        "en": "Cornflakes (Lagos trial, unspecified brand)",
+        "zh": "早餐玉米片（拉各斯试餐，品牌未注明）",
+        "n": 14,
+        "mean": [
+          7.0,
+          8.8,
+          10.2,
+          10.5,
+          9.2
+        ],
+        "portionEn": "Test portion calculated to provide 50 g carbohydrate, followed by 250 mL water; food weight not reported.",
+        "portionZh": "每份试餐按 50 克碳水化合物配制，餐后饮水 250 毫升；原文未列食物克重。",
+        "locatorEn": "Dada et al. (2015), p. 81, Figure 1, Cornflakes in DM. Group glucose curve digitized in mg/dL and converted to mmol/L, rounded to 0.1.",
+        "locatorZh": "Dada 等（2015），第 81 页图 1，玉米片（图例 Cornflakes in DM）。读取 mg/dL 曲线，换算为 mmol/L，近似至 0.1。"
+      }
+    ],
+    "foodSection": "grainTubers"
+  },
+  {
+    "id": "beijing-foxtail-2016-normal",
+    "pairId": "beijing-foxtail-2016",
+    "en": "Beijing · Foxtail millet in healthy young adults",
+    "zh": "北京 · 健康青年小米试餐",
+    "url": "https://doi.org/10.1039/C5FO01074H",
+    "dataUrl": "https://figures.semanticscholar.org/dc06bc888e28fd509900b13eb55c5752bd6b000c/6-Figure2-1.png",
+    "unit": "mmol/L",
+    "measure": "absolute",
+    "evidenceKind": "digitized",
+    "cohort": "normal",
+    "minutes": [
+      0,
+      15,
+      30,
+      45,
+      60,
+      90,
+      120
+    ],
+    "foods": [
+      {
+        "en": "Foxtail millet porridge (1:9 millet to water)",
+        "zh": "小米粥（米水比 1∶9）",
+        "n": 10,
+        "mean": [
+          4.9,
+          6.0,
+          7.3,
+          8.0,
+          6.9,
+          6.0,
+          5.4
+        ],
+        "portionEn": "550 g cooked food, 50 g available carbohydrate, with 200 mL water",
+        "portionZh": "成品 550 克，含 50 克可利用碳水，另配水 200 毫升",
+        "locatorEn": "Ren et al. (2016), Table 2 (portion) and Figure 2A, millet porridge, gray circles. Means digitized to 0.1 mmol/L.",
+        "locatorZh": "Ren 等（2016），成品份量见表 2，血浆葡萄糖见图 2A 的小米粥（灰色圆点）。组均值为原图近似读数。",
+        "shortcut": {
+          "en": "Millet porridge",
+          "zh": "小米粥"
+        }
+      },
+      {
+        "en": "Cooked foxtail millet (1:1.5 millet to water)",
+        "zh": "小米饭（米水比 1∶1.5）",
+        "n": 10,
+        "mean": [
+          4.6,
+          5.3,
+          6.4,
+          6.1,
+          5.6,
+          5.1,
+          5.2
+        ],
+        "portionEn": "169 g cooked food, 50 g available carbohydrate, with 200 mL water",
+        "portionZh": "成品 169 克，含 50 克可利用碳水，另配水 200 毫升",
+        "locatorEn": "Ren et al. (2016), Table 2 (portion) and Figure 2A, cooked millet, gray squares. Means digitized to 0.1 mmol/L.",
+        "locatorZh": "Ren 等（2016），成品份量见表 2，血浆葡萄糖见图 2A 的小米饭（灰色方块）。组均值为原图近似读数。"
+      }
+    ],
+    "methodEn": "Ren et al. (2016). Ten healthy adults (mean age 26) ate freshly prepared foxtail millet in randomized order on separate mornings after a 10–12 h fast. Each meal provided 50 g available carbohydrate with 200 mL water. Means of measured venous plasma glucose from Figure 2A, rounded to 0.1 mmol/L. This study enrolled only healthy volunteers.",
+    "methodZh": "Ren 等（2016）。10 名健康青年（平均 26 岁）隔夜空腹 10–12 小时后，在不同早晨按随机顺序食用新鲜制作的小米食品。每份含 50 克可利用碳水，配水 200 毫升。静脉血浆葡萄糖均值从图 2A 标记读取，近似至 0.1 mmol/L。该试验仅招募健康人。",
+    "foodSection": "grainTubers"
+  },
+  {
+    "id": "shizuoka-baked-sweet-potato",
+    "zh": "静冈县立大学 · 烤红薯 · 健康成人",
+    "en": "University of Shizuoka · Baked sweet potato · Healthy adults",
+    "url": "https://u-shizuoka-ken.repo.nii.ac.jp/record/4703/files/SD00200250201703170000.pdf",
+    "dataUrl": "https://u-shizuoka-ken.repo.nii.ac.jp/record/4703/files/SD00200250201703170000.pdf#page=31",
+    "cohort": "normal",
+    "measure": "absolute",
+    "unit": "mmol/L",
+    "evidenceKind": "table",
+    "minutes": [
+      0,
+      15,
+      30,
+      45,
+      60,
+      90,
+      120
+    ],
+    "methodZh": "若杉悠佑（2017）博士论文，9 名健康成人。隔夜空腹至少 10 小时，受试者在 10–15 分钟内吃完试餐，从进食开始计时测指尖血糖。表中组均值与标准差从 mg/dL 除以 18 换算。",
+    "methodEn": "Wakasugi (2017), doctoral thesis. Nine healthy adults ate the meal over 10–15 minutes after fasting for at least 10 hours. Fingerstick glucose measurements were timed from the start of eating. The tabulated means and SDs in mg/dL were divided by 18.",
+    "foods": [
+      {
+        "zh": "烤红薯（去皮切块）",
+        "en": "Oven-baked sweet potato, peeled cubes",
+        "portionZh": "去皮生红薯 171 克，约含 50 克可利用碳水，切成 3 厘米块，用蒸汽烤箱在 200℃ 加热 25 分钟",
+        "portionEn": "171 g peeled raw sweet potato (50 g available carbohydrate), cut into 3 cm cubes and heated in a steam oven at 200°C for 25 minutes",
+        "n": 9,
+        "mean": [
+          4.5167,
+          5.1222,
+          7.85,
+          8.5056,
+          7.8667,
+          5.4056,
+          4.2611
+        ],
+        "sd": [
+          0.5167,
+          0.6389,
+          0.9667,
+          0.9111,
+          1.4444,
+          1.5333,
+          1.1278
+        ],
+        "locatorZh": "若杉（2017）表 2-1，Sweet potato 行，PDF 第 31 页。份量见表 1-1，烤制方法见 PDF 第 13 页。",
+        "locatorEn": "Wakasugi (2017), Table 2-1, Sweet potato row, PDF p. 31. Portion in Table 1-1 and preparation on PDF p. 13.",
+        "shortcut": {
+          "en": "Baked sweet potato",
+          "zh": "烤红薯"
+        }
+      }
+    ],
+    "foodSection": "grainTubers"
   }
 ];

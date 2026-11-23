@@ -33,3 +33,8 @@
   .simLayout {margin-top:10px}
   .simPlot text {font-size:19px}
 }
+
+.simShortcuts {display:flex;flex-wrap:wrap;gap:6px;margin-block:10px}
+.simShortcuts button {display:inline-flex;align-items:center;gap:5px;min-height:38px;padding:5px 11px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);font:inherit;cursor:pointer}
+.simShortcuts button small {color:#425a4e;font-size:.76rem}
+.simShortcuts button[aria-pressed=true] {background:#e6f1e9;border-color:#46765f}

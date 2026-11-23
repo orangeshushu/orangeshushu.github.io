@@ -31,6 +31,7 @@ function simOptions(eligible) {
   const option=f=>'<option value="'+esc(f.key)+'">'+esc(foodName(f))+'</option>';
   if(simState.cohort!=="both") return eligible.map(option).join("");
   const sections=[
+    [t("杂粮与薯类","Grains and tubers"), f=>f.normal.study.foodSection==="grainTubers"],
     [t("米饭","Rice"), f=>/rice/i.test(f.en)&&!/noodle/i.test(f.en)&&window.atlasStapleStudies.includes(f.normal.study)],
     [t("馒头、面条、米粉与面包","Mantou, noodles and breads"), f=>window.atlasStapleStudies.includes(f.normal.study)],
     [t("水果","Fruit"), f=>/banana/i.test(f.en)],
@@ -141,16 +142,34 @@ function simulatorView() {
     ...active.filter(e=>!e.study.minutes.includes(120)).map(e=>simCohortLabel(e.cohort)+t("末次采样为餐后 "+e.study.minutes.at(-1)+" 分钟。"," was sampled through "+e.study.minutes.at(-1)+" minutes.")),
     ...active.filter(e=>e.study.noteZh).map(e=>english?e.study.noteEn:e.study.noteZh)
   ].filter(Boolean).join(" ");
+  const figureLink=ref.study.foodSection==="grainTubers"&&ref.study.dataUrl
+    ? ' · '+link(ref.study.dataUrl,t("核对原文图表","View source figure or table"))
+    : "";
+  const shortcuts=foods.filter(f=>f.normal?.row.shortcut);
+  const quickLinks=shortcuts.map(f=>{
+    const group=f.t2d?"both":"normal",label=titleOf(f.normal.row.shortcut);
+    return '<button type="button" data-sim-shortcut="'+esc(f.key)+'" aria-pressed="'+(food.key===f.key&&simState.cohort===group)+'">'+esc(label)+' <small>'+ (f.t2d?t("双组","Both groups"):t("仅无糖尿病组","Without diabetes only"))+'</small></button>';
+  }).join("");
   $("work").innerHTML='<h2>'+t("餐后血糖模拟器","Post-meal glucose simulator")+'</h2><p class="sub">'+t("用同一个餐前值，看看不同研究人群吃同一份食物后的血糖变化。","Start from one pre-meal glucose value and explore how study groups responded to the same test portion.")+'</p>'+
+    '<div class="simShortcuts" role="group" aria-label="'+t("常见谷物和薯类","Frequently eaten grains and tubers")+'">'+quickLinks+'</div>'+
     '<div class="simLayout"><section class="simInputs"><label for="simGroup">'+t("研究人群","Study population")+'</label><select id="simGroup"><option value="both">'+t("两组对比","Compare both groups")+'</option><option value="normal">'+simCohortLabel("normal")+'</option><option value="t2d">'+simCohortLabel("t2d")+'</option></select>'+
     '<label for="simFood">'+t("食物与做法（"+eligible.length+" 种）","Food and preparation ("+eligible.length+")")+'</label><select id="simFood">'+simOptions(eligible)+'</select>'+
     '<p class="simPortion">'+t("研究份量 · ","Test portion · ")+esc(english?ref.row.portionEn:ref.row.portionZh)+'</p>'+
     '<p class="simPortion">'+active.map(e=>simCohortLabel(e.cohort)+" n="+e.row.n).join(" · ")+'</p>'+
-    '<p class="simSource">'+link(ref.study.url,t("查看原始研究","Open original study"))+'</p>'+
+    '<p class="simSource">'+link(ref.study.url,t("查看原始研究","Open original study"))+figureLink+'</p>'+
     (sourceNote?'<p class="simPortion">'+esc(sourceNote)+'</p>':"")+
     '<label for="simBaseline">'+t("餐前血糖","Pre-meal glucose")+'</label><div class="simInputRow"><input type="number" id="simBaseline" inputmode="decimal" step="any" autocomplete="off" aria-describedby="simError" value="'+esc(simState.input)+'"><select id="simUnit" aria-label="'+t("血糖单位","Glucose unit")+'"><option>mmol/L</option><option>mg/dL</option></select></div><p id="simError" role="status"></p>'+
     '<p class="simCaution">'+t("教学估算，实际反应因人而异。请勿据此调整用药。","Educational estimates. Individual responses vary. Do not adjust medication using these values.")+'</p><details class="simMethod"><summary>'+t("这些数值怎么算？","How is this calculated?")+'</summary><p>'+t("把研究中每个时点相对餐前的平均变化，加到你输入的餐前值上。份量固定为试验份量。","Each time point adds the study group’s mean change from baseline to your starting value. The portion is fixed to the study serving.")+'</p><p>'+t("这种平移计算尚未验证为个人预测。用药、活动和进食份量会影响实际结果，请以实测血糖为准。","This shift has not been validated as an individual prediction. Medication, activity and serving size affect the result. Use measured readings for care.")+'</p></details></section>'+
     '<section class="simOutput" id="simOutput" aria-live="polite"></section></div>';
+  $("work").querySelector(".simShortcuts").onclick=e=>{
+    const button=e.target.closest("[data-sim-shortcut]");
+    if(!button)return;
+    const selected=shortcuts.find(f=>f.key===button.dataset.simShortcut);
+    simState.key=selected.key;
+    simState.cohort=selected.t2d?"both":"normal";
+    simulatorView();
+    $("work").querySelector('.simShortcuts [aria-pressed="true"]').focus({preventScroll:true});
+  };
   $("simGroup").value=simState.cohort;$("simFood").value=food.key;$("simUnit").value=simState.unit;
   $("simBaseline").oninput=e=>{
     simState.input=e.target.value;
