@@ -40,6 +40,85 @@
   };
   const duplicatedPrintIds = {2211: "T2 p.11 #2111", 3536: "T2 p.102 #2536"};
   const issue = (code, message) => Object.assign(new Error(message), {code});
+  const sessionTranslations = new Map();
+
+  // Only a whole-label match or a verified study-item match can borrow an
+  // editorial translation. In particular, a shared ingredient is insufficient.
+  function matchWorkbookNames(records) {
+    const key = text => text.trim().normalize("NFKC").toLowerCase().replace(/\s+/g, " ");
+    const labels = new Map();
+    const byItem = new Map();
+    function add(row) {
+      if (!row.en || !row.zh) return;
+      const zh = typeof displayFoodName === "function" ? displayFoodName(row, false) : row.zh;
+      if (!zh) return;
+      labels.set(key(row.en), zh);
+      if (row.internationalItem) byItem.set(row.internationalItem, zh);
+    }
+    if (typeof catalogRows === "function") {
+      for (const row of catalogRows()) if (row.sourceId !== "international-local") add(row);
+    }
+    if (typeof curvesByStudy === "function") {
+      for (const study of curvesByStudy()) for (const food of study.foods) add(food);
+    }
+
+    for (const row of records) {
+      const matched = byItem.get(row.item) || labels.get(key(row.en));
+      if (matched) {
+        row.zh = matched;
+        row.zhKind = "catalogue";
+      } else if (sessionTranslations.has(row.en)) {
+        row.zh = sessionTranslations.get(row.en);
+        row.zhKind = "device";
+      }
+    }
+  }
+
+  // The caller invokes this only from a translation-button click. Neither
+  // opening a card nor importing the workbook creates a translator or model.
+  async function translateWorkbookRows(rows, onUpdate) {
+    const pending = new Map();
+    for (const row of rows) {
+      if (row.zh) continue;
+      if (!pending.has(row.en)) pending.set(row.en, []);
+      pending.get(row.en).push(row);
+    }
+    const progress = {completed:0, total:pending.size, translated:0};
+    if (!pending.size) return {...progress, status:"done"};
+    if (!window.Translator?.create) return {...progress, status:"unavailable"};
+    if (!navigator.userActivation?.isActive) return {...progress, status:"activation-required"};
+
+    let translator;
+    try {
+      translator = await window.Translator.create({sourceLanguage:"en", targetLanguage:"zh"});
+    } catch {
+      return {...progress, status:"unavailable"};
+    }
+    try {
+      for (const [original, matchingRows] of pending) {
+        const zh = sessionTranslations.get(original) || (await translator.translate(original)).trim();
+        // Some brand names and untranslated words are echoed by the model.
+        // Keep the source record addressable under its category/item label.
+        if (/\p{Script=Han}/u.test(zh) && !/\p{Script=Latin}/u.test(zh)) {
+          sessionTranslations.set(original, zh);
+          for (const row of matchingRows) {
+            row.zh = zh;
+            row.zhKind = "device";
+          }
+          progress.translated++;
+        }
+        progress.completed++;
+        if (progress.completed === 1 || progress.completed % 20 === 0 || progress.completed === progress.total) {
+          onUpdate?.({...progress});
+        }
+      }
+      return {...progress, status:"done"};
+    } catch {
+      return {...progress, status:"interrupted"};
+    } finally {
+      translator.destroy();
+    }
+  }
 
   function makeRow(item, en, gi) {
     const table = item <= 2091 ? 1 : 2;
@@ -121,10 +200,12 @@
     records.sort((a,b) => a.item - b.item);
     if (records.length !== 4017 || new Set(records.map(row => row.item)).size !== 4017)
       throw issue("format", "Unexpected record count");
+    matchWorkbookNames(records);
     return records;
   }
 
   window.atlasImportGI = readWorkbook;
+  window.atlasTranslateWorkbookRows = translateWorkbookRows;
   window.atlasReadGIFromSource = async () => {
     let file;
     try {

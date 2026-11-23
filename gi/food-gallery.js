@@ -14,7 +14,7 @@ function matchesCurveFilter(group, filter) {
 }
 
 const foodKey = row => normalized(row.en || row.zh);
-const foodName = row => (english ? row.en : row.zh) || row.en || row.zh;
+const foodName = row => displayFoodName(row,english);
 const numberText = n => n.toLocaleString(english ? "en-US" : "zh-CN");
 
 function foodCatalogue() {
@@ -55,7 +55,7 @@ function foodCatalogue() {
     const labels = [...group.series.flatMap(({row})=>[row.en,row.zh]),group.en,group.zh];
     group.photo = labels.map(label=>photos[label]).find(Boolean) || window.atlasPhotoForFood?.(group);
     group.category = browseCategory(group);
-    group.search = normalized(group.terms.filter(Boolean).join(" "));
+    group.search = normalized([...group.terms,displayFoodName(group,false),displayFoodName(group,true)].filter(Boolean).join(" "));
     delete group.terms;
   }
   foodCache = {records, groups};
@@ -137,13 +137,27 @@ function hourlyGapSummary(gaps, sortMinute) {
     columns+'</span><span class="gapTrend'+(gapTrendFilter==="both"?(change>0?" gapWidened":" gapNarrowed"):"")+'">'+trend+'</span></span>';
 }
 
+function giBand(value) {
+  if(value<=55) return t("低","Low");
+  if(value<70) return t("中","Medium");
+  return t("高","High");
+}
+
+function giGuide() {
+  return '<details class="giGuide"><summary>'+t("怎么看升糖指数（GI）？","How to read the glycemic index (GI)")+'</summary><p>'+
+    t("把葡萄糖定为 100。吃下相同量的可利用碳水化合物后，研究者比较约两小时内的血糖反应，同时考虑血糖升高多少、持续多久。例如，GI 50 表示受试者的平均相对反应约为葡萄糖的一半。个人餐后血糖还取决于食用份量等因素。","Glucose is the reference at 100. GI compares the area under the rise in blood glucose over about two hours after equal amounts of available carbohydrate. A GI of 50 means the average relative response was about half that of glucose. Your glucose level also depends on portion size and other factors.")+
+    '</p><p>'+t("低：55 及以下　·　中：大于 55 且小于 70　·　高：70 及以上","Low: 55 or below · Medium: above 55 and below 70 · High: 70 or above")+' · '+
+    link("https://glycemicindex.com/faqs/",t("悉尼大学测定方法","University of Sydney testing method"))+'</p></details>';
+}
+
 function foodCard(group, rows, minute, gaps) {
   const values=rows.map(r=>r.gi).filter(Number.isFinite);
   const min=Math.min(...values), max=Math.max(...values);
   const range=values.length?(min===max?String(min):min+'–'+max):'';
+  const band=values.length?(giBand(min)===giBand(max)?giBand(min):giBand(min)+"–"+giBand(max)):"";
   const photo=group.photo?'<img class="tilePhoto" loading="lazy" decoding="async" alt="" src="'+esc(group.photo.src)+'">':'';
   const first=group.series[0];
-  const badge=first&&range?'<span class="tileGiBadge">GI '+esc(range)+'</span>':'';
+  const badge=first&&range?'<span class="tileGiBadge">GI '+esc(range)+" · "+band+'</span>':'';
   let visual;
   if(first) {
     visual=previewCurve(group.pair || [first]);
@@ -151,7 +165,7 @@ function foodCard(group, rows, minute, gaps) {
   } else if(range) {
     const floor=Math.min(0,min), ceiling=Math.max(100,max);
     const left=100*(min-floor)/(ceiling-floor), width=100*(max-min)/(ceiling-floor);
-    visual='<span class="giSummary"><span class="giHeadline"><span>GI</span><b>'+esc(range)+'</b></span>'+
+    visual='<span class="giSummary"><span class="giHeadline"><span>'+t("升糖指数","GI")+' · '+band+'</span><b>'+esc(range)+'</b></span>'+
       '<span class="giTrack" aria-hidden="true"><i style="left:'+left+'%;width:'+width+'%"></i></span>'+
       '<span class="giEnds" aria-hidden="true"><span>'+floor+'</span><span>'+ceiling+'</span></span></span>';
   } else {
@@ -197,7 +211,7 @@ function giView() {
     '<span id="minChangeError" role="status"></span></div>'+
     '<div id="completeSort" class="foodTools" hidden></div>'+
     '<div class="foodBar"><span id="giCount" role="status"></span><div class="foodPager"><label>'+t("每页 ","Per page ")+'<select id="pageSize">'+[60,120,240].map(n=>'<option>'+n+'</option>').join("")+'</select></label><span id="topPager"></span></div></div>'+
-    '<p id="chartKey" class="chartKey"></p>'+
+    giGuide()+'<p id="chartKey" class="chartKey"></p>'+
     '<div id="foodGrid" class="foodGrid"></div><div class="foodBar"><span class="foodLegend">'+t("GI 以葡萄糖为 100。","GI uses glucose = 100.")+'</span><div id="bottomPager" class="foodPager"></div></div></section></div>'+
     '<details id="workbookRail" class="sourceRail"><summary>'+t("扩展检索 · 国际 GI 工作簿","Extended search · International GI workbook")+'</summary><div id="importer" class="importBar"></div></details>';
   $("gapTrendFilters").onclick=e=>{
@@ -365,7 +379,7 @@ function giResults() {
 
 function evidenceBlock(evidence) {
   if (!evidence) return "";
-  return '<div class="sourceProof"><span>'+esc(english?evidence.typeEn:evidence.typeZh)+'</span><a target="_blank" rel="noopener noreferrer" href="'+esc(evidence.url)+'">'+esc(english?evidence.locatorEn:evidence.locatorZh)+'</a></div>';
+  return '<div class="sourceProof"><span>'+esc(english?evidence.typeEn:zhStudyText(evidence.typeZh))+'</span><a target="_blank" rel="noopener noreferrer" href="'+esc(evidence.url)+'">'+esc(english?evidence.locatorEn:zhStudyText(evidence.locatorZh))+'</a></div>';
 }
 
 function renderSeries({row,study}) {
@@ -377,9 +391,9 @@ function renderSeries({row,study}) {
   }).join("");
   const dispersion=row.sd||row.sem;
   const table=times.map((m,i)=>'<tr><td>'+m+'</td><td>'+curveNumber(row.mean[i],study,times[i])+'</td><td>'+(dispersion?.[i]!=null?dispersion[i].toFixed(2):"—")+'</td></tr>').join("");
-  return '<p><b>'+esc(foodName(row))+'</b> · '+esc(titleOf(study))+'</p><p class="foodSource">'+esc(english?row.portionEn:row.portionZh)+' · n = '+esc(row.n)+(Number.isFinite(row.gi)?' · GI '+esc(row.gi):'')+'</p>'+
+  return '<p><b>'+esc(foodName(row))+'</b> · '+esc(titleOf(study))+'</p><p class="foodSource">'+esc(english?row.portionEn:zhStudyText(row.portionZh))+t(" · 人数 "," · n = ")+esc(row.n)+(Number.isFinite(row.gi)?' · GI '+esc(row.gi):'')+'</p>'+
     '<div class="seriesStats">'+stats+'</div><p class="axisLabel">'+label+' ('+unit+')</p>'+chart(row,study)+'<p class="foodSource">'+t("横轴 · 进餐后分钟数","Horizontal axis · minutes after eating")+'</p>'+simFoodLink(study,row)+evidenceBlock(evidenceForCurve(row,study))+
-    '<details><summary>'+t("数值与研究方法","Values and study methods")+'</summary><table><thead><tr><th>min</th><th>'+label+' ('+unit+')</th><th>'+(row.sem?"SEM":"SD")+' ('+unit+')</th></tr></thead><tbody>'+table+'</tbody></table><p>'+esc(english?study.methodEn:study.methodZh)+'</p></details>';
+    '<details><summary>'+t("数值与研究方法","Values and study methods")+'</summary><table><thead><tr><th>'+t("分钟","Minutes")+'</th><th>'+label+' ('+unit+')</th><th>'+(row.sem?t("均值标准误","SEM"):t("标准差","SD"))+' ('+unit+')</th></tr></thead><tbody>'+table+'</tbody></table><p>'+esc(english?study.methodEn:zhStudyText(study.methodZh))+'</p></details>';
 }
 
 // Related experiments are offered separately from this preparation's evidence.
@@ -405,17 +419,17 @@ function openFood(key) {
   const sourcesMap=new Map(giSources().map(s=>[s.id,s]));
   const gis=group.rows.map(r=>{
     const src=sourcesMap.get(r.source);
-    return '<div class="foodDataRow"><div><b>GI '+esc(r.gi??r.raw??"—")+'</b>'+
+    return '<div class="foodDataRow"><div><b>GI '+esc(r.gi??(english?r.raw:zhStudyText(r.raw))??"—")+'</b>'+
       (Number.isFinite(r.gi)?'<meter class="giScale" aria-label="GI" min="'+Math.min(0,r.gi)+'" max="'+Math.max(100,r.gi)+'" value="'+r.gi+'"></meter>':'')+
-      '</div><div class="recordProof"><b>'+esc(src?titleOf(src):r.source)+'</b>'+evidenceBlock(evidenceForGI(r))+'<details><summary>'+t("试验及条目详情","Record details")+'</summary><div class="facts">'+rowDetails(r,src)+'</div></details></div></div>';
+      (Number.isFinite(r.gi)?'<small>'+giBand(r.gi)+'</small>':"")+'</div><div class="recordProof"><b>'+esc(src?titleOf(src):r.source)+'</b>'+evidenceBlock(evidenceForGI(r))+'<details><summary>'+t("试验及条目详情","Record details")+'</summary><div class="facts">'+rowDetails(r,src)+'</div></details></div></div>';
   }).join("");
   const select=group.series.length>1?'<label>'+t("选择研究人群 ","Study population ")+'<select id="seriesSelect">'+group.series.map(({study},i)=>'<option value="'+i+'">'+esc(titleOf(study))+'</option>').join("")+'</select></label>':"";
   const img=group.photo;
   const changesText=img?.changes?.includes("Cropped")?t("经裁切、缩小并转为 WebP","Cropped, resized and converted to WebP"):t("经缩小并转为 WebP","Resized and converted to WebP");
-  const photo=img?'<figure class="drawerPhoto"><img src="'+esc(img.src)+'" alt="'+esc(english?img.foodEn:img.foodZh)+'"><figcaption>'+
-    (img.kind==="ingredient"?t("食材示意","Ingredient illustration"):t("食物示意","Food illustration"))+' · '+esc(english?img.foodEn:img.foodZh)+' · '+link(esc(img.url),esc(img.title))+' · '+esc(img.author)+' · '+link(esc(img.licenseUrl),esc(img.license))+(img.changes?' · '+esc(changesText):"")+'</figcaption></figure>':"";
+  const photo=img?'<figure class="drawerPhoto"><img src="'+esc(img.src)+'" alt="'+esc(english?img.foodEn:zhStudyText(img.foodZh))+'"><figcaption>'+
+    (img.kind==="ingredient"?t("食材示意","Ingredient illustration"):t("食物示意","Food illustration"))+' · '+esc(english?img.foodEn:zhStudyText(img.foodZh))+' · '+link(esc(img.url),t("图片原页","Original photo"))+'</figcaption><details><summary>'+t("图片署名与许可","Photo credit and license")+'</summary><small>'+link(esc(img.url),esc(img.title))+' · '+esc(img.author)+' · '+link(esc(img.licenseUrl),esc(img.license))+(img.changes?' · '+esc(changesText):"")+'</small></details></figure>':"";
   const curveSection='<section class="drawerSection"><h3>'+t("餐后血糖曲线","Post-meal glucose curve")+'</h3>'+select+'<div id="seriesBody">'+(group.series.length?renderSeries(group.series[0]):'<p>'+t("本站尚未收录此做法的分时血糖读数。GI 衡量一段时间内的相对血糖反应，单个 GI 值无法推算餐后 1 小时或 2 小时的血糖。","Time-point readings for this preparation are unavailable here. GI summarizes a relative glucose response over time. A GI value alone cannot yield a 1- or 2-hour glucose level.")+'</p>'+relatedCurves(group))+'</div></section>';
-  const giSection=(gis?'<section class="drawerSection"><h3>'+t("血糖生成指数（GI）","Glycemic index (GI)")+'</h3><p class="foodSource">'+t("葡萄糖参考值为 100。范围取各条记录的最低值和最高值；不同做法、人群和研究可能得到不同结果。","Glucose reference = 100. A range shows the lowest and highest reported values. Preparations, study groups and results may differ.")+'</p>'+gis+'</section>':"");
+  const giSection=(gis?'<section class="drawerSection"><h3>'+t("血糖生成指数（GI）","Glycemic index (GI)")+'</h3><p class="foodSource">'+t("葡萄糖参考值为 100。范围取各条记录的最低值和最高值；不同做法、人群和研究可能得到不同结果。","Glucose reference = 100. A range shows the lowest and highest reported values. Preparations, study groups and results may differ.")+'</p>'+giGuide()+gis+'</section>':"");
   dialog.innerHTML='<div class="drawerTop"><div class="drawerHeading"><small>'+esc(categoryName(group.category))+'</small><h2 id="drawerTitle">'+esc(foodName(group))+'</h2></div><button id="closeFood" autofocus>'+t("关闭","Close")+'</button></div>'+
     (group.series.length?curveSection+giSection:giSection+curveSection)+photo;
   if(select) $("seriesSelect").onchange=e=>$("seriesBody").innerHTML=renderSeries(group.series[Number(e.target.value)]);

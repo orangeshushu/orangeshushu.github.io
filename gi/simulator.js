@@ -130,9 +130,9 @@ function simResults(food) {
     '<table class="simScores"><thead><tr><th>'+t("研究人群","Study group")+'</th><th>'+t("餐后 1 小时","1 hour")+'</th><th>'+t("餐后 2 小时","2 hours")+'</th><th>'+t("采样点最高值","Highest sampled value")+'</th></tr></thead><tbody>'+score+'</tbody></table>'+
     simChart(series)+'<p class="simAxis">'+t("进餐后时间（分钟）","Time after eating (minutes)")+'</p>'+
     '<details><summary>'+t("查看各时间点及原研究","Time points and original evidence")+'</summary><table><thead><tr><th>min</th>'+cohorts.map(c=>'<th>'+simCohortLabel(c)+' ('+unit+')</th>').join("")+'</tr></thead><tbody>'+table+'</tbody></table>'+
-    series.map(({entry})=>'<section class="simEvidence"><b>'+simCohortLabel(entry.cohort)+'</b> · n = '+entry.row.n+
-      '<p>'+(entry.study.measure==="absolute"?t("研究实测餐前均值 ","Observed mean baseline ")+simFormat(entry.row.mean[0])+' '+unit:t("原文报告较餐前的平均变化","Study reports mean change from baseline"))+' · '+esc(english?entry.row.portionEn:entry.row.portionZh)+'</p>'+
-      simObserved(entry)+simRef(entry)+'<p>'+esc(english?entry.study.methodEn:entry.study.methodZh)+'</p></section>').join("")+'</details>';
+    series.map(({entry})=>'<section class="simEvidence"><b>'+simCohortLabel(entry.cohort)+'</b>'+t(" · 人数 "," · n = ")+entry.row.n+
+      '<p>'+(entry.study.measure==="absolute"?t("研究实测餐前均值 ","Observed mean baseline ")+simFormat(entry.row.mean[0])+' '+unit:t("原文报告较餐前的平均变化","Study reports mean change from baseline"))+' · '+esc(english?entry.row.portionEn:zhStudyText(entry.row.portionZh))+'</p>'+
+      simObserved(entry)+simRef(entry)+'<p>'+esc(english?entry.study.methodEn:zhStudyText(entry.study.methodZh))+'</p></section>').join("")+'</details>';
 }
 
 function simulatorView() {
@@ -150,7 +150,7 @@ function simulatorView() {
     active.some(e=>e.study.evidenceKind==="digitized")?t("原图读数为近似值。","Values read from the original graph are approximate."):"",
     ...active.filter(e=>!e.study.minutes.includes(60)).map(e=>simCohortLabel(e.cohort)+t("仅报告餐后 2 小时变化。"," reported only the 2-hour change.")),
     ...active.filter(e=>!e.study.minutes.includes(120)).map(e=>simCohortLabel(e.cohort)+t("末次采样为餐后 "+e.study.minutes.at(-1)+" 分钟。"," was sampled through "+e.study.minutes.at(-1)+" minutes.")),
-    ...active.filter(e=>e.study.noteZh).map(e=>english?e.study.noteEn:e.study.noteZh)
+    ...active.filter(e=>e.study.noteZh).map(e=>english?e.study.noteEn:zhStudyText(e.study.noteZh))
   ].filter(Boolean).join(" ");
   const sourceFigures=new Set(active.map(({row,study})=>evidenceForCurve(row,study).url));
   const figureUrl=sourceFigures.size===1?[...sourceFigures][0]:null;
@@ -166,7 +166,7 @@ function simulatorView() {
     '<div class="simShortcuts" role="group" aria-label="'+t("常见谷物和薯类","Frequently eaten grains and tubers")+'">'+quickLinks+'</div>'+
     '<div class="simLayout"><section class="simInputs"><label for="simGroup">'+t("研究人群","Study population")+'</label><select id="simGroup"><option value="both">'+t("两组对比","Compare both groups")+'</option><option value="normal">'+simCohortLabel("normal")+'</option><option value="t2d">'+simCohortLabel("t2d")+'</option></select>'+
     '<label for="simFood">'+t("食物与做法（"+eligible.length+" 种）","Food and preparation ("+eligible.length+")")+'</label><select id="simFood">'+simOptions(eligible)+'</select>'+
-    '<p class="simPortion">'+t("研究份量 · ","Test portion · ")+esc(english?ref.row.portionEn:ref.row.portionZh)+'</p>'+
+    '<p class="simPortion">'+t("研究份量 · ","Test portion · ")+esc(english?ref.row.portionEn:zhStudyText(ref.row.portionZh))+'</p>'+
     '<p class="simPortion">'+active.map(e=>simCohortLabel(e.cohort)+" n="+e.row.n).join(" · ")+'</p>'+
     '<p class="simSource">'+link(ref.study.url,t("查看原始研究","Open original study"))+figureLink+'</p>'+
     (sourceNote?'<p class="simPortion">'+esc(sourceNote)+'</p>':"")+

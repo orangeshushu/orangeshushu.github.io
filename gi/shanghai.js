@@ -18,7 +18,7 @@ window.atlasShanghai = {
     en: "These results describe whole meals under real-life treatment conditions. Rice portions, accompanying foods, medication and activity varied, and snacks may have gone unlogged. The changes cannot be attributed to rice alone or used to predict an individual's glucose."
   },
   attribution: {
-    zh: "原始数据由 Jinhao Zhu 发布于 Figshare（第 3 版，CC BY 4.0）。研究说明为 Qinpei Zhao 等，Scientific Data（2023）。本站筛选、换算及汇总了原始记录。",
+    zh: "原始数据见朱等发布的上海糖尿病数据集（第 3 版，知识共享署名 4.0）。研究方法见赵等发表于《科学数据》的论文（2023）。本站筛选、换算并汇总了原始记录。",
     en: "Original data deposited by Jinhao Zhu on Figshare (version 3, CC BY 4.0). Study by Qinpei Zhao et al., Scientific Data (2023). This site filtered, converted and summarized the original records."
   },
   datasetUrl: "https://doi.org/10.6084/m9.figshare.20444397.v3",

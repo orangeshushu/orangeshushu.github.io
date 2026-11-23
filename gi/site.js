@@ -6,8 +6,8 @@ let studyIndex = 0;
 let foodIndex = 0;
 let query = "";
 let sortBy = "source";
-const t = (zh, en) => english ? en : zh;
-const titleOf = row => english ? row.en : row.zh;
+const t = (zh, en) => english ? en : zhStudyText(zh);
+const titleOf = row => displayFoodName(row,english);
 const esc = value => String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const original = "https://kyxuebao.kmmu.edu.cn/article/doi/10.12259/j.issn.2095-610X.S20231207";
 const cnGI = "https://www.nhc.gov.cn/fzs/c100048/201805/e821444378d64bafa7283779631096ce/files/1733125377688_81470.pdf#page=7";
@@ -45,7 +45,7 @@ function chart(row,study){
   const path=points.map(([a,b],i)=>(i?"L":"M")+a+","+b).join(" ");
   let ticks="";
   for(let v=min;v<=max;v+=Math.ceil((max-min)/4))ticks+='<line x1="'+left+'" x2="'+(w-right)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#dce5dc" stroke-dasharray="3 5"/><text x="30" text-anchor="end" y="'+(y(v)+4)+'">'+v+'</text>';
-  const labels=times.map((m,i)=>'<text x="'+x(m)+'" y="'+(h-7)+'" text-anchor="middle">'+m+'</text><circle cx="'+x(m)+'" cy="'+points[i][1]+'" r="4.6" fill="#f3f8e8" stroke="#16715b" stroke-width="2.5"><title>'+m+' min · '+curveNumber(row.mean[i],study,times[i])+' '+esc(study.unit)+'</title></circle>').join("");
+  const labels=times.map((m,i)=>'<text x="'+x(m)+'" y="'+(h-7)+'" text-anchor="middle">'+m+'</text><circle cx="'+x(m)+'" cy="'+points[i][1]+'" r="4.6" fill="#f3f8e8" stroke="#16715b" stroke-width="2.5"><title>'+m+t(" 分钟 · "," min · ")+curveNumber(row.mean[i],study,times[i])+' '+esc(study.unit)+'</title></circle>').join("");
   return '<svg class="plot" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(titleOf(row)+" · "+curveMetric(study)+t("，各时间点见下表。",". Time-point values follow in the table."))+'">'+(times.length>2?'<path d="'+path+' L'+x(times.at(-1))+','+y(min)+' L'+x(times[0])+','+y(min)+' Z" fill="#e4efdf"/>':"")+ticks+(times.length>2?'<path d="'+path+'" fill="none" stroke="#16674e" stroke-width="3.3" stroke-linejoin="round"/>':"")+labels+'</svg>';
 }
 function curveView(){
@@ -56,7 +56,7 @@ function curveView(){
   const deltas=row.mean.map(value=>(value>row.mean[0]?"+":"")+curveNumber(value-row.mean[0],study));
   const stats=[0,times.indexOf(60),times.indexOf(120)].map((i,j)=>'<div class="stat"><span>'+labels[j]+'</span><strong>'+(i<0?t("未报告","Unreported"):i===0?curveNumber(row.mean[0],study,0):deltas[i])+'</strong></div>').join("");
   const table=times.map((m,i)=>'<tr><td>'+m+'</td><td>'+curveNumber(row.mean[i],study,times[i])+'</td><td>'+(dispersion?dispersion[i].toFixed(2):"—")+'</td><td>'+deltas[i]+'</td></tr>').join("");
-  $("work").innerHTML='<h2>'+t("餐后实测曲线","Measured post-meal curves")+'</h2><p class="sub">'+t("选择研究人群和食物，查看原文报告的餐后时间点。","Choose a study population and food to explore the reported time points.")+'</p><div class="controls"><label for="study">'+t("研究与人群","Study and population")+'</label><select id="study">'+studies.map((s,i)=>'<option value="'+i+'">'+esc(titleOf(s))+'</option>').join("")+'</select></div><div class="analysis"><article class="panel"><div class="chartTop"><h3>'+esc(name)+'</h3><span class="meta">'+curveMetric(study)+' · '+unit+'</span></div><div class="foodTabs">'+study.foods.map((f,i)=>'<button data-food="'+i+'" aria-pressed="'+(i===foodIndex)+'">'+esc(titleOf(f))+'</button>').join("")+'</div>'+chart(row,study)+'<p class="note">'+t("相对于进餐的时间（分钟）","Minutes relative to the meal")+'</p><details><summary>'+t("各时间点的数值","Time-point values")+'</summary><div class="tableWrap"><table><thead><tr>'+[t("分钟","Minutes"),t("均值","Mean"),row.sem?t("均值标准误","SEM"):t("标准差","SD"),t("较起始值变化","Change")].map(x=>'<th>'+x+'</th>').join("")+'</tr></thead><tbody>'+table+'</tbody></table></div></details></article><aside class="side"><h3>'+t("这份食物的餐后变化","Response to this portion")+'</h3><small>'+esc(english?row.portionEn:row.portionZh)+' · n = '+row.n+' · '+unit+'</small>'+stats+'<p class="note">'+esc(english?study.methodEn:study.methodZh)+'</p>'+link(study.url,t("核对原研究","Open original study"))+'</aside></div>';
+  $("work").innerHTML='<h2>'+t("餐后实测曲线","Measured post-meal curves")+'</h2><p class="sub">'+t("选择研究人群和食物，查看原文报告的餐后时间点。","Choose a study population and food to explore the reported time points.")+'</p><div class="controls"><label for="study">'+t("研究与人群","Study and population")+'</label><select id="study">'+studies.map((s,i)=>'<option value="'+i+'">'+esc(titleOf(s))+'</option>').join("")+'</select></div><div class="analysis"><article class="panel"><div class="chartTop"><h3>'+esc(name)+'</h3><span class="meta">'+curveMetric(study)+' · '+unit+'</span></div><div class="foodTabs">'+study.foods.map((f,i)=>'<button data-food="'+i+'" aria-pressed="'+(i===foodIndex)+'">'+esc(titleOf(f))+'</button>').join("")+'</div>'+chart(row,study)+'<p class="note">'+t("相对于进餐的时间（分钟）","Minutes relative to the meal")+'</p><details><summary>'+t("各时间点的数值","Time-point values")+'</summary><div class="tableWrap"><table><thead><tr>'+[t("分钟","Minutes"),t("均值","Mean"),row.sem?t("均值标准误","SEM"):t("标准差","SD"),t("较起始值变化","Change")].map(x=>'<th>'+x+'</th>').join("")+'</tr></thead><tbody>'+table+'</tbody></table></div></details></article><aside class="side"><h3>'+t("这份食物的餐后变化","Response to this portion")+'</h3><small>'+esc(english?row.portionEn:zhStudyText(row.portionZh))+t(" · 人数 "," · n = ")+row.n+' · '+unit+'</small>'+stats+'<p class="note">'+esc(english?study.methodEn:zhStudyText(study.methodZh))+'</p>'+link(study.url,t("核对原研究","Open original study"))+'</aside></div>';
   $("work").querySelector(".side").insertAdjacentHTML("beforeend",simFoodLink(study,row)+evidenceBlock(evidenceForCurve(row,study)));
   $("study").value=studyIndex;$("study").onchange=e=>{studyIndex=Number(e.target.value);foodIndex=0;curveView();$("study").focus({preventScroll:true})};
 }
@@ -73,7 +73,11 @@ function renderWork(){
   if(mode==="simulate") simulatorView(); else if(mode==="curves") curveView(); else if(mode==="gi") giView(); else if(mode==="meals") mealsView(); else {verificationView();issuerRecordsView()}
 }
 function render(){
-  document.documentElement.lang=t("zh-CN","en");document.title=t("食物血糖图谱","Food Glucose Atlas")+" · NourishDay";
+  document.documentElement.lang=t("zh-CN","en");document.title=t("食物血糖图谱","Food Glucose Atlas");
+  const brand=t("每日食养","NourishDay");
+  document.querySelector(".brand").lastChild.textContent=" "+brand;
+  document.querySelector(".brand").setAttribute("aria-label",brand);
+  document.querySelector("footer b").textContent=brand;
   $("siteTitle").textContent=t("食物血糖图谱","Food Glucose Atlas");
   $("intro").textContent=t("查食物 GI 和餐后血糖，点开卡片看原文。","Explore food GI and post-meal glucose. Open a card for the original study.");
   $("searchLabel").textContent=t("查找食物或做法","Find a food or preparation");
@@ -89,9 +93,9 @@ function render(){
   $("suggestions").innerHTML=[t("大米","Rice"),t("苹果","Apple"),t("燕麦","Oats")].map(s=>'<button type="button">'+s+'</button>').join("");
   $("suggestions").onclick=e=>{const b=e.target.closest("button");if(!b)return; $("giQuery").value=b.textContent;selectedCategory="all";listing.source="all";listing.region="";if(curveFilter==="measured")curveFilter="";searchNow(true);giView()};
 
-  $("navData").textContent=t("查数据","Explore");$("navSources").textContent=t("来源","Sources");$("language").textContent=t("EN","中文");$("language").setAttribute("aria-label",t("Switch to English","切换为中文"));
+  $("navData").textContent=t("查数据","Explore");$("navSources").textContent=t("来源","Sources");$("language").textContent=t("英文版","Chinese");$("language").setAttribute("aria-label",t("切换到英文","Switch to Chinese"));
   renderWork();
-  const extra=(window.atlasNewFoodStudies||[]).map(study=>[t("人体研究","Human study"),titleOf(study),english?study.methodEn:study.methodZh,"",[[study.url,t("原研究","Original study")],[study.dataUrl||study.url,t("数据来源","Data source")]]]);
+  const extra=(window.atlasNewFoodStudies||[]).map(study=>[t("人体研究","Human study"),titleOf(study),english?study.methodEn:zhStudyText(study.methodZh),"",[[study.url,t("原研究","Original study")],[study.dataUrl||study.url,t("数据来源","Data source")]]]);
   const bananaStudy=window.atlasSimExtra[0];
   extra.push([t("人体研究","Human study"),t("埃基蒂 · 四种成熟香蕉","Ekiti · Four ripe banana preparations"),
     t("Adediran 等（2019）。32 名非糖尿病对照、27 名 2 型糖尿病参与者，试餐均含 50 克碳水化合物。","Adediran et al. (2019). The study compared 32 controls and 27 participants with type 2 diabetes using portions containing 50 g of carbohydrate."),
@@ -103,13 +107,13 @@ function render(){
   const items=[...sources(),...moreSources(),...extra,...newEvidenceSources()];
   $("sourcesTitle").textContent=t("研究与数据来源","Studies & data sources");
   $("sourceCount").textContent=t(items.length+" 个来源",items.length+" sources");
-  $("sourcesList").innerHTML=items.map(([type,name,desc,rights,links])=>'<details class="sourceEntry"><summary>'+esc(name)+' · '+esc(type)+'</summary><p>'+esc(desc)+'</p>'+(rights?'<p class="rights">'+esc(rights)+'</p>':'')+'<div class="sourceLinks">'+links.map(([url,label])=>link(url,label)).join("")+'</div></details>').join("");
+  $("sourcesList").innerHTML=items.map(([type,name,desc,rights,links])=>'<details class="sourceEntry"><summary>'+esc(english?name:zhStudyText(name))+' · '+esc(type)+'</summary><p>'+esc(english?desc:zhStudyText(desc))+'</p>'+(rights?'<p class="rights">'+esc(english?rights:zhStudyText(rights))+'</p>':'')+'<div class="sourceLinks">'+links.map(([url,label])=>link(url,label)).join("")+'</div></details>').join("");
   $("navSources").onclick=()=>{$("sourceRail").open=true};
   if(location.hash==="#sources") $("sourceRail").open=true;
   $("footNote").textContent=t("公开研究数据 · 2026-11-22","Public research data · 2026-11-22");
 
 }
-$("language").onclick=()=>{english=!english;const url=new URL(location.href);if(english)url.searchParams.set("lang","en");else url.searchParams.delete("lang");history.replaceState(null,"",url);render()};
+$("language").onclick=()=>{english=!english;const url=new URL(location.href);if(english)url.searchParams.set("lang","en");else url.searchParams.delete("lang");history.replaceState(null,"",url);render();if($("foodDialog").open)openFood(url.searchParams.get("food"))};
 $("modes").onclick=e=>{const b=e.target.closest("[data-mode]");if(b){mode=b.dataset.mode;const url=new URL(location.href);url.searchParams.set("view",mode);history.replaceState(null,"",url);renderWork();$("modes").querySelector('[data-mode="'+mode+'"]').focus({preventScroll:true})}};
 $("work").onclick=e=>{const b=e.target.closest("[data-food]");if(b){foodIndex=Number(b.dataset.food);curveView();$("work").querySelector('[data-food="'+foodIndex+'"]').focus({preventScroll:true})}};
 const requestedFilters=new URLSearchParams(location.search);
