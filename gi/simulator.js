@@ -7,9 +7,9 @@ const studyCohorts = {
   "malaysia-fruits-2005":"normal", "bangladesh-produce-2011":"normal"
 };
 
-function simFoods() {
+function simFoods(studies=curvesByStudy()) {
   const foods=new Map();
-  for(const study of curvesByStudy()) {
+  for(const study of studies) {
     const cohort=studyCohorts[study.id] || study.cohort;
     if(!["normal","t2d"].includes(cohort) || !["absolute","increment"].includes(study.measure) || study.unit!=="mmol/L") continue;
     const family=study.id.startsWith("mysore-2000-")?"mysore-2000":study.pairId||study.id;

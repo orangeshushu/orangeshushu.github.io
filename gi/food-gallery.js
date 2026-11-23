@@ -35,6 +35,11 @@ function foodCatalogue() {
       group.terms.push(row.en, row.zh, study.en, study.zh, tagsFor(row.en));
     }
   }
+  for (const {normal,t2d} of simFoods(studies)) {
+    if (!normal || !t2d || normal.study.url!==t2d.study.url || normal.row.portionEn!==t2d.row.portionEn) continue;
+    const group=groups.get(henryKeys.get(normal.row.henryRow) || foodKey(normal.row));
+    if (group.series.some(e=>e.row===t2d.row && e.study===t2d.study)) group.pair=[normal,t2d];
+  }
   const photos = window.atlasFoodPhotos || {};
   for (const group of groups.values()) {
     const labels = [...group.series.flatMap(({row})=>[row.en,row.zh]),group.en,group.zh];
@@ -47,23 +52,42 @@ function foodCatalogue() {
   return foodCache;
 }
 
-function previewCurve({row,study}) {
-  const times=study.minutes;
-  const changes=row.mean.map(v=>v-row.mean[0]);
-  const low=Math.min(-1,Math.floor(Math.min(...changes))), high=Math.max(5,Math.ceil(Math.max(...changes)));
+function previewCurve(entries) {
+  const paired=entries.length===2;
+  const series=entries.map(({row,study,cohort})=>({
+    study, cohort, times:study.minutes, changes:row.mean.map(v=>v-row.mean[0])
+  }));
+  const all=series.flatMap(s=>s.changes);
+  const low=Math.min(-1,Math.floor(Math.min(...all))), high=Math.max(5,Math.ceil(Math.max(...all)));
   const x=m=>2+196*m/120;
   const y=v=>3+56*(high-v)/(high-low);
-  const points=changes.map((v,i)=>x(times[i]).toFixed(2)+','+y(v).toFixed(2)).join(' ');
-  const label=titleOf(study)+' · '+t("较餐前变化","Change from baseline")+' (mmol/L) · '+
-    times.map((m,i)=>m+' min: '+changes[i].toFixed(1)).join(', ');
+  const label=series.map(({study,cohort,times,changes})=>
+    (paired?simCohortLabel(cohort)+' · ':'')+titleOf(study)+' · '+t("较餐前变化","Change from baseline")+' (mmol/L) · '+
+      times.map((m,i)=>m+' min: '+changes[i].toFixed(1)).join(', ')).join(' / ');
   const guide=v=>'<span class="miniTick" style="top:'+((y(v)/62)*100)+'%">'+(v>0?'+':'')+v+'</span>';
-  const dots=changes.map((v,i)=>'<circle cx="'+x(times[i])+'" cy="'+y(v)+'" r="1.8"/>').join('');
-  return '<span class="miniChart" role="img" aria-label="'+esc(label)+'" title="'+esc(label)+'">'+
-    '<span class="miniScale" aria-hidden="true">'+guide(4)+guide(0)+'</span>'+
-    '<svg viewBox="0 0 200 62" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+
-    [4,2,0].map(v=>'<line class="miniGuide" x1="2" x2="198" y1="'+y(v)+'" y2="'+y(v)+'"/>').join('')+
-    (times.length>2?'<polyline points="'+points+'"/>':'')+dots+'</svg>'+
-    '<span class="miniTime" aria-hidden="true"><span>'+t("餐前","Start")+'</span><span>'+t("1 小时","1 h")+'</span><span>'+t("2 小时","2 h")+'</span></span></span>';
+  const lines=series.map(({changes,times,cohort})=>{
+    const points=changes.map((v,i)=>x(times[i]).toFixed(2)+','+y(v).toFixed(2)).join(' ');
+    const dots=changes.map((v,i)=>'<circle cx="'+x(times[i])+'" cy="'+y(v)+'" r="'+(cohort==='t2d'&&paired?2.9:1.8)+'"/>').join('');
+    return '<g class="miniSeries '+(paired?cohort:'single')+'">'+
+      (times.length>2?'<polyline points="'+points+'"/>':'')+dots+'</g>';
+  }).join('');
+  const upperTick=high-1;
+  const readings=paired?series.map(({cohort,times,changes})=>{
+    const name=cohort==='normal'?t("无糖尿病","No diabetes"):t("2型糖尿病","Type 2");
+    const values=[60,120].map(m=>{
+      const i=times.indexOf(m);
+      if(i<0) return '<span title="'+t("原文未报告","Unreported")+'" aria-label="'+t("原文未报告","Unreported")+'">—</span>';
+      const rounded=Number(changes[i].toFixed(1));
+      return '<span>'+(rounded>0?'+':'')+rounded.toFixed(1)+'</span>';
+    }).join('');
+    return '<span class="cohortReadings '+cohort+'"><span class="cohortName">'+name+'</span>'+values+'</span>';
+  }).join(''):'';
+  return '<span class="miniChart'+(paired?' pairedPreview':'')+'">'+
+    '<span class="miniScale" aria-hidden="true">'+guide(upperTick)+guide(0)+'</span>'+
+    '<svg viewBox="0 0 200 62" preserveAspectRatio="none" role="img" aria-label="'+esc(label)+'" focusable="false"><title>'+esc(label)+'</title>'+
+    [upperTick,upperTick/2,0].map(v=>'<line class="miniGuide" x1="2" x2="198" y1="'+y(v)+'" y2="'+y(v)+'"/>').join('')+
+    lines+'</svg>'+(paired?'<span class="miniReadout">':'')+'<span class="miniTime"><span>'+t("餐前","Start")+'</span><span>'+t("1 小时","1 h")+'</span><span>'+t("2 小时","2 h")+'</span></span>'+
+    readings+(paired?'</span>':'')+'</span>';
 }
 
 function foodCard(group, rows) {
@@ -75,7 +99,7 @@ function foodCard(group, rows) {
   const badge=first&&range?'<span class="tileGiBadge">GI '+esc(range)+'</span>':'';
   let visual;
   if(first) {
-    visual=previewCurve(first);
+    visual=previewCurve(group.pair || [first]);
   } else if(range) {
     const floor=Math.min(0,min), ceiling=Math.max(100,max);
     const left=100*(min-floor)/(ceiling-floor), width=100*(max-min)/(ceiling-floor);
@@ -152,7 +176,7 @@ function giResults() {
     if (restrictRows&&!rows.length) continue;
     const numbers=rows.map(r=>r.gi).filter(Number.isFinite);
     const rank=sortBy==="asc"?Math.min(...numbers):sortBy==="desc"?-Math.max(...numbers):
-      (group.series.length?0:2)+(group.photo?0:1);
+      (group.pair?.[0].row.shortcut?-2:group.pair?0:group.series.length?2:4)+(group.photo?0:1);
     matches.push({group,rows,rank});
   }
   matches.sort((a,b)=>a.rank-b.rank);
