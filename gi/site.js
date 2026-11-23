@@ -1,7 +1,7 @@
 "use strict";
 const $ = id => document.getElementById(id);
 let english = new URLSearchParams(location.search).get("lang") === "en";
-let mode = ["curves","meals","verify"].includes(new URLSearchParams(location.search).get("view")) ? new URLSearchParams(location.search).get("view") : "gi";
+let mode = ["simulate","curves","meals","verify"].includes(new URLSearchParams(location.search).get("view")) ? new URLSearchParams(location.search).get("view") : "gi";
 let studyIndex = 0;
 let foodIndex = 0;
 let query = "";
@@ -51,7 +51,7 @@ function curveView(){
   const stats=[0,times.indexOf(60),times.indexOf(120)].map((i,j)=>'<div class="stat"><span>'+labels[j]+'</span><strong>'+(i===0?row.mean[0].toFixed(2):deltas[i])+'</strong></div>').join("");
   const table=times.map((m,i)=>'<tr><td>'+m+'</td><td>'+row.mean[i].toFixed(2)+'</td><td>'+(dispersion?dispersion[i].toFixed(2):"—")+'</td><td>'+deltas[i]+'</td></tr>').join("");
   $("work").innerHTML='<h2>'+t("餐后实测曲线","Measured post-meal curves")+'</h2><p class="sub">'+t("先选择研究人群，再比较有餐后 60、120 分钟读数的食物或餐食。","Choose a study population and explore foods or meals with 60- and 120-minute measurements.")+'</p><div class="controls"><label for="study">'+t("研究与人群","Study and population")+'</label><select id="study">'+studies.map((s,i)=>'<option value="'+i+'">'+esc(titleOf(s))+'</option>').join("")+'</select></div><div class="analysis"><article class="panel"><div class="chartTop"><h3>'+esc(name)+'</h3><span class="meta">'+t("组平均葡萄糖","Group mean glucose")+' · '+unit+'</span></div><div class="foodTabs">'+study.foods.map((f,i)=>'<button data-food="'+i+'" aria-pressed="'+(i===foodIndex)+'">'+esc(titleOf(f))+'</button>').join("")+'</div>'+chart(row,study)+'<p class="note">'+t("相对于进餐的时间（分钟）","Minutes relative to the meal")+'</p><details><summary>'+t("各时间点的数值","Time-point values")+'</summary><div class="tableWrap"><table><thead><tr>'+[t("分钟","Minutes"),t("均值","Mean"),row.sem?t("均值标准误","SEM"):t("标准差","SD"),t("较起始值变化","Change")].map(x=>'<th>'+x+'</th>').join("")+'</tr></thead><tbody>'+table+'</tbody></table></div></details></article><aside class="side"><h3>'+t("这份食物的餐后变化","Response to this portion")+'</h3><small>'+esc(english?row.portionEn:row.portionZh)+' · n = '+row.n+' · '+unit+'</small>'+stats+'<p class="note">'+esc(english?study.methodEn:study.methodZh)+'</p>'+link(study.url,t("核对原研究","Open original study"))+'</aside></div>';
-  $("work").querySelector(".side").insertAdjacentHTML("beforeend",evidenceBlock(evidenceForCurve(row,study)));
+  $("work").querySelector(".side").insertAdjacentHTML("beforeend",simFoodLink(study,row)+evidenceBlock(evidenceForCurve(row,study)));
   $("study").value=studyIndex;$("study").onchange=e=>{studyIndex=Number(e.target.value);foodIndex=0;curveView();$("study").focus({preventScroll:true})};
 }
 function mealsView(){
@@ -61,9 +61,10 @@ function mealsView(){
   $("work").innerHTML='<h2>'+titleOf(s.title)+'</h2><p class="sub">'+t("从公开饮食日志提取 526 次米饭配餐，比较进餐前后的传感器葡萄糖。","Sensor glucose around 526 rice-containing mixed meals selected from public dietary logs.")+'</p><article class="dataPanel"><h3>'+t("餐后变化中位数","Median post-meal change")+'</h3><p class="note">'+t("单位 mmol/L。先对每人多餐取中位数，再对组内参与者取中位数。","Values in mmol/L. Medians across meals for each person, then across participants.")+'</p><div class="tableWrap"><table><thead><tr>'+[t("研究人群","Cohort"),t("入选人数","People"),t("餐次","Meals"),t("60 分钟升幅","60-min change"),t("120 分钟升幅","120-min change")].map(v=>'<th>'+v+'</th>').join("")+'</tr></thead><tbody>'+rows+'</tbody></table></div><p>'+esc(titleOf(s.caution))+'</p><details><summary>'+t("筛选与统计方法","Selection and analysis")+'</summary><p>'+esc(titleOf(s.method))+'</p></details><p class="note">'+esc(titleOf(s.attribution))+' '+link(s.datasetUrl,t("源数据","Source data"))+' · '+link(s.licenseUrl,"CC BY 4.0")+'</p></article>';
 }
 function renderWork(){
-  const modes=[["gi",t("食物图鉴","Food atlas")],["curves",t("实测曲线","Measured curves")],["meals",t("整餐研究","Mixed meals")],["verify",t("产品认证与名录","Product verification")]];
+  document.body.dataset.view=mode;
+  const modes=[["gi",t("食物图鉴","Food atlas")],["simulate",t("血糖模拟","Simulator")],["curves",t("实测曲线","Measured curves")],["meals",t("整餐研究","Mixed meals")],["verify",t("产品认证与名录","Product verification")]];
   $("modes").innerHTML=modes.map(([key,label])=>'<button data-mode="'+key+'" aria-pressed="'+(key===mode)+'">'+label+'</button>').join("");
-  if(mode==="curves") curveView(); else if(mode==="gi") giView(); else if(mode==="meals") mealsView(); else {verificationView();issuerRecordsView()}
+  if(mode==="simulate") simulatorView(); else if(mode==="curves") curveView(); else if(mode==="gi") giView(); else if(mode==="meals") mealsView(); else {verificationView();issuerRecordsView()}
 }
 function render(){
   document.documentElement.lang=t("zh-CN","en");document.title=t("食物血糖图谱","Food Glucose Atlas")+" · NourishDay";
@@ -85,6 +86,11 @@ function render(){
   $("navData").textContent=t("查数据","Explore");$("navSources").textContent=t("来源","Sources");$("language").textContent=t("EN","中文");$("language").setAttribute("aria-label",t("Switch to English","切换为中文"));
   renderWork();
   const extra=(window.atlasNewFoodStudies||[]).map(study=>[t("人体研究","Human study"),titleOf(study),english?study.methodEn:study.methodZh,"",[[study.url,t("原研究","Original study")],[study.dataUrl||study.url,t("数据来源","Data source")]]]);
+  const bananaStudy=window.atlasSimExtra[0];
+  extra.push([t("人体研究","Human study"),t("埃基蒂 · 四种成熟香蕉","Ekiti · Four ripe banana preparations"),
+    t("Adediran 等（2019）。32 名非糖尿病对照、27 名 2 型糖尿病参与者，试餐均含 50 克碳水化合物。","Adediran et al. (2019). The study compared 32 controls and 27 participants with type 2 diabetes using portions containing 50 g of carbohydrate."),
+    t("餐前及餐后 30、60、90、120 分钟静脉血浆葡萄糖均值，见原刊表 3。","Mean venous plasma glucose at baseline, 30, 60, 90 and 120 minutes, Table 3."),
+    [[bananaStudy.dataUrl,t("原刊表 3","Original Table 3")],[bananaStudy.url,"DOI"]]]);
   const items=[...sources(),...moreSources(),...extra,...newEvidenceSources()];
   $("sourcesTitle").textContent=t("研究与数据来源","Studies & data sources");
   $("sourceCount").textContent=t(items.length+" 个来源",items.length+" sources");
@@ -106,6 +112,10 @@ query=requestedFilters.get("q")||"";
 curveOnly=requestedFilters.get("curves")==="1";
 if(requestedFilters.get("layout")==="list")displayStyle="list";
 
+if(mode==="simulate"){
+  const dish=simFoods().find(f=>f.key===requestedFilters.get("dish"));
+  if(dish){simState.key=dish.key;simState.cohort=dish.normal&&dish.t2d?"both":dish.normal?"normal":"t2d"}
+}
 render();
 
 const requestedFood=new URL(location.href).searchParams.get("food");

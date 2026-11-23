@@ -1,0 +1,35 @@
+.simLayout {display:grid;grid-template-columns:minmax(250px,.72fr) minmax(0,1.65fr);gap:20px;align-items:start;margin:18px 0}
+.simInputs,.simOutput {background:white;border:1px solid var(--line);border-radius:12px;padding:clamp(12px,2vw,25px);min-width:0}
+.simOutput:empty {display:none}
+.simInputs label {display:block;font-weight:650;margin:13px 0 5px}
+.simInputs label:first-child {margin-top:0}
+.simInputs :is(input,select){max-width:100%;width:100%;min-height:42px;padding:6px 9px;border:1px solid #a6b9ac;background:#fff;border-radius:7px}
+.simInputRow {display:grid;grid-template-columns:1fr minmax(92px,.8fr);gap:7px}
+.simMethod {font-size:.89rem;color:#435b50;border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
+.simMethod p,.simPortion,.simStarting,.simEvidence p {margin-top:5px}
+.simPortion,.simStarting,.simAxis,.simEvidence {font-size:.9rem;color:#435b50}
+.simOutput h3 small {font-size:.85rem;font-weight:500;color:var(--mute)}
+.simOutput table {width:100%;font-variant-numeric:tabular-nums}
+.simScores {margin:11px 0}.simScores th,.simScores td {text-align:start;padding:7px}
+.simScores td strong,.simScores td small {display:block}.simScores td strong {font-size:1.45rem;line-height:1.2}.simScores td small {color:var(--mute)}
+.simKey::before {content:'';display:inline-block;width:14px;border-top:3px solid #176449;vertical-align:middle;margin-inline-end:5px}
+.simKey.t2d::before {border-color:#923e27;border-top-style:dashed}
+.simPlot {display:block;width:100%;height:auto}.simPlot text {font:14px Arial,sans-serif;fill:#435b50}
+.simGridLine {stroke:#d8e1da;stroke-dasharray:3 4}
+.simLine {stroke:#176449;fill:white}.simLine.t2d {stroke:#923e27}.simLine polyline {fill:none;stroke-width:3}
+.simLine.t2d polyline {stroke-dasharray:7 4}.simLine circle {stroke-width:2.2}
+.simAxis {text-align:center;margin-bottom:12px}.simEvidence {margin-block:10px}
+.simAction {display:inline-block;font-weight:650;margin:9px 0}
+#simError {font-size:.9rem;color:#9e3928}
+@media(max-width:720px){
+  .simLayout{grid-template-columns:1fr;gap:9px}.simInputs label{margin:7px 0 3px}
+  .simScores td strong {font-size:1.2rem}.simScores th,.simScores td {font-size:.85rem;padding:5px}
+  .simMethod {margin-top:8px;padding-top:7px}
+}
+.simCaution{margin-top:10px;color:#425a4e;font-size:.86rem}
+.simMethod summary {font-weight:650}
+@media(max-width:720px){
+  body[data-view=simulate] .hero {display:none}
+  .simLayout {margin-top:10px}
+  .simPlot text {font-size:19px}
+}

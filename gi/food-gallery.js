@@ -179,7 +179,7 @@ function renderSeries({row,study}) {
   const dispersion=row.sd||row.sem;
   const table=times.map((m,i)=>'<tr><td>'+m+'</td><td>'+row.mean[i].toFixed(2)+'</td><td>'+(dispersion?.[i]!=null?dispersion[i].toFixed(2):"—")+'</td></tr>').join("");
   return '<p><b>'+esc(foodName(row))+'</b> · '+esc(titleOf(study))+'</p><p class="foodSource">'+esc(english?row.portionEn:row.portionZh)+' · n = '+esc(row.n)+(Number.isFinite(row.gi)?' · GI '+esc(row.gi):'')+'</p>'+
-    '<div class="seriesStats">'+stats+'</div><p class="axisLabel">'+label+' ('+unit+')</p>'+chart(row,study)+'<p class="foodSource">'+t("横轴 · 进餐后分钟数","Horizontal axis · minutes after eating")+'</p>'+evidenceBlock(evidenceForCurve(row,study))+
+    '<div class="seriesStats">'+stats+'</div><p class="axisLabel">'+label+' ('+unit+')</p>'+chart(row,study)+'<p class="foodSource">'+t("横轴 · 进餐后分钟数","Horizontal axis · minutes after eating")+'</p>'+simFoodLink(study,row)+evidenceBlock(evidenceForCurve(row,study))+
     '<details><summary>'+t("数值与研究方法","Values and study methods")+'</summary><table><thead><tr><th>min</th><th>'+label+' ('+unit+')</th><th>'+(row.sem?"SEM":"SD")+' ('+unit+')</th></tr></thead><tbody>'+table+'</tbody></table><p>'+esc(english?study.methodEn:study.methodZh)+'</p></details>';
 }
 

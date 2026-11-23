@@ -51,7 +51,7 @@ function catalogRows(){
 }
 function curvesByStudy(){
   const doc=window.atlasCurveStudy;
-  return [{id:"yunnan",zh:"云南 · 五种米制品",en:"Yunnan · Five rice foods",url:original,methodZh:doc.methodZh,methodEn:doc.methodEn,minutes:doc.minutes,measure:"absolute",unit:"mmol/L",foods:window.atlasCurves.map(r=>({...r,portionZh:r.grams+" 克",portionEn:r.grams+" g",n:12}))},...(window.atlasExtraStudies||[]),...(window.atlasNewFoodStudies||[])];
+  return [{id:"yunnan",zh:"云南 · 五种米制品",en:"Yunnan · Five rice foods",url:original,methodZh:doc.methodZh,methodEn:doc.methodEn,minutes:doc.minutes,measure:"absolute",unit:"mmol/L",foods:window.atlasCurves.map(r=>({...r,portionZh:r.grams+" 克",portionEn:r.grams+" g",n:12}))},...(window.atlasExtraStudies||[]),...(window.atlasNewFoodStudies||[]),...window.atlasSimExtra];
 }
 function sourceLink(row,source){
   if(row.sourceUrl)return row.sourceUrl;
