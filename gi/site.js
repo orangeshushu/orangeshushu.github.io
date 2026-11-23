@@ -122,8 +122,12 @@ const initialCurves=requestedFilters.get("curves");
 if(initialCurves==="1") curveFilter="measured";
 if(initialCurves==="paired" || initialCurves==="complete") curveFilter=initialCurves;
 const requestedSort=requestedFilters.get("sort");
-if(curveFilter==="complete") sortBy="gap1h";
-if(["source","asc","desc"].includes(requestedSort) || (curveFilter==="complete" && Object.hasOwn(gapMinutes,requestedSort))) sortBy=requestedSort;
+if(curveFilter==="complete") {
+  const initialTrend=requestedFilters.get("trend");
+  if(Object.hasOwn(gapTrendLabels,initialTrend)) gapTrendFilter=initialTrend;
+  sortBy=gapTrendFilter?"change":"gap1h";
+}
+if(["source","asc","desc"].includes(requestedSort) || (curveFilter==="complete" && (Object.hasOwn(gapMinutes,requestedSort) || requestedSort==="change"))) sortBy=requestedSort;
 if(requestedFilters.get("layout")==="list")displayStyle="list";
 
 if(mode==="simulate"){

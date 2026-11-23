@@ -100,6 +100,8 @@ function previewCurve(entries) {
     readings+(paired?'</span>':'')+'</span>';
 }
 
+let gapTrendFilter="";
+const gapTrendLabels={"":["全部","All"],widened:["扩大","Widened"],narrowed:["缩小","Narrowed"],unchanged:["持平","Unchanged"]};
 const gapMinutes={gap1h:60, gap2h:120};
 
 // Catalogue pairs are ordered [without diabetes, type 2 diabetes].
@@ -114,7 +116,7 @@ function formatGap(magnitude) {
 }
 
 function hourlyGapSummary(gaps, sortMinute) {
-  const change=Number((Math.abs(gaps[120])-Math.abs(gaps[60])).toFixed(10));
+  const change=gaps.change;
   let trend=t("差距持平","Gap unchanged");
   if(change!==0) {
     const verb=change>0?t("差距扩大 ","Gap widened by "):t("差距缩小 ","Gap narrowed by ");
@@ -180,13 +182,24 @@ function giView() {
     '<select id="giSource" aria-label="'+t("GI 来源","GI source")+'"><option value="all">'+t("所有 GI 来源","All GI sources")+'</option>'+sourceOptions()+'</select>'+
     '<select id="giRegion" aria-label="'+t("地区","Region")+'"><option value="">'+t("全部 GI 地区","All GI regions")+'</option>'+regionOptions+'</select>'+
     '<span id="usualSort"><label id="sortLabel"><span>'+t("排序","Sort by")+'</span> <select id="sort" aria-label="'+t("排序","Sort by")+'">'+
+    '<option value="change">'+t("差距变化幅度：从大到小","Gap change · largest first")+'</option>'+
     '<option value="gap1h">'+t("1 小时升幅差距：从大到小","1 h rise gap · largest first")+'</option><option value="gap2h">'+t("2 小时升幅差距：从大到小","2 h rise gap · largest first")+'</option>'+
     '<option value="source">'+t("实测曲线优先","Measured curves first")+'</option><option value="asc">'+t("最低 GI 升序","Lowest GI first")+'</option><option value="desc">'+t("最高 GI 降序","Highest GI first")+'</option></select></label></span></div></details><button id="clearFilters">'+t("清除筛选","Clear filters")+'</button></div>'+
+    '<div id="gapTrendFilters" class="foodTools" role="group" aria-label="'+t("1 到 2 小时的差距变化","Gap change from 1 to 2 hours")+'" hidden><span>'+t("差距变化","Gap change")+'</span>'+
+    Object.keys(gapTrendLabels).map(key=>'<button type="button" data-gap-trend="'+key+'"></button>').join("")+'</div>'+
     '<div id="completeSort" class="foodTools" hidden></div>'+
     '<div class="foodBar"><span id="giCount" role="status"></span><div class="foodPager"><label>'+t("每页 ","Per page ")+'<select id="pageSize">'+[60,120,240].map(n=>'<option>'+n+'</option>').join("")+'</select></label><span id="topPager"></span></div></div>'+
     '<p id="chartKey" class="chartKey"></p>'+
     '<div id="foodGrid" class="foodGrid"></div><div class="foodBar"><span class="foodLegend">'+t("GI 以葡萄糖为 100。","GI uses glucose = 100.")+'</span><div id="bottomPager" class="foodPager"></div></div></section></div>'+
     '<details id="workbookRail" class="sourceRail"><summary>'+t("扩展检索 · 国际 GI 工作簿","Extended search · International GI workbook")+'</summary><div id="importer" class="importBar"></div></details>';
+  $("gapTrendFilters").onclick=e=>{
+    const button=e.target.closest("[data-gap-trend]");
+    if(!button) return;
+    gapTrendFilter=button.dataset.gapTrend;
+    if(gapTrendFilter) sortBy="change";
+    listing.page=0;
+    giResults();
+  };
   const categoryChange=id=>{selectedCategory=id; listing.page=0;giResults()};
   $("categorySelect").onchange=e=>categoryChange(e.target.value);
   document.querySelector(".catMenu").onclick=e=>{const b=e.target.closest("[data-category]");if(b)categoryChange(b.dataset.category)};
@@ -225,18 +238,23 @@ function giView() {
 function giResults() {
   const {groups} = foodCatalogue();
   const complete=curveFilter==="complete";
-  if(!complete && gapMinutes[sortBy]) sortBy="source";
+  if(!complete) {
+    gapTrendFilter="";
+    if(gapMinutes[sortBy] || sortBy==="change") sortBy="source";
+  }
+  $("gapTrendFilters").hidden=!complete;
   const minute=complete?gapMinutes[sortBy]:null;
   const sortHost=$(complete?"completeSort":"usualSort");
   if($("sortLabel").parentNode!==sortHost) sortHost.append($("sortLabel"));
   $("completeSort").hidden=!complete;
   for(const option of $("sort").options) {
-    option.hidden=!complete && Boolean(gapMinutes[option.value]);
+    option.hidden=!complete && (Boolean(gapMinutes[option.value]) || option.value==="change");
     option.disabled=option.hidden;
   }
   $("sort").value=sortBy;
   const tokens = normalized(query).split(" ").filter(Boolean);
   const restrictRows = listing.source!=="all" || Boolean(listing.region);
+  const trendCounts={"":0,widened:0,narrowed:0,unchanged:0};
   const matches=[];
   for (const group of groups.values()) {
     if (selectedCategory!=="all" && group.category!==selectedCategory) continue;
@@ -247,16 +265,30 @@ function giResults() {
     if (restrictRows&&!rows.length) continue;
     const numbers=rows.map(r=>r.gi).filter(Number.isFinite);
     const gaps=complete?{60:signedRiseGap(group.pair,60),120:signedRiseGap(group.pair,120)}:null;
-    const rank=minute?-Math.abs(gaps[minute]):sortBy==="asc"?Math.min(...numbers):sortBy==="desc"?-Math.max(...numbers):
+    if(gaps) {
+      gaps.change=Number((Math.abs(gaps[120])-Math.abs(gaps[60])).toFixed(10));
+      const trend=gaps.change>0?"widened":gaps.change<0?"narrowed":"unchanged";
+      trendCounts[""]++;
+      trendCounts[trend]++;
+      if(gapTrendFilter && gapTrendFilter!==trend) continue;
+    }
+    const rank=sortBy==="change"?-Math.abs(gaps.change):minute?-Math.abs(gaps[minute]):sortBy==="asc"?Math.min(...numbers):sortBy==="desc"?-Math.max(...numbers):
       (group.pair?.[0].row.shortcut?-2:group.pair?0:group.series.length?2:4)+(group.photo?0:1);
     matches.push({group,rows,rank,gaps});
+  }
+  if(complete) {
+    for(const button of $("gapTrendFilters").querySelectorAll("[data-gap-trend]")) {
+      const key=button.dataset.gapTrend;
+      button.textContent=t(...gapTrendLabels[key])+" "+trendCounts[key];
+      button.setAttribute("aria-pressed",String(gapTrendFilter===key));
+    }
   }
   matches.sort((a,b)=>a.rank-b.rank);
   const total=matches.length, pages=Math.max(1,Math.ceil(total/listing.size));
   listing.page=Math.max(0,Math.min(listing.page,pages-1));
   const start=listing.page*listing.size;
   const url=new URL(location.href);
-  const active={sort:complete || sortBy!=="source"?sortBy:"",category:selectedCategory==="all"?"":selectedCategory,source:listing.source==="all"?"":listing.source,q:query,curves:curveFilter==="measured"?"1":curveFilter,layout:displayStyle==="list"?"list":""};
+  const active={trend:gapTrendFilter,sort:complete || sortBy!=="source"?sortBy:"",category:selectedCategory==="all"?"":selectedCategory,source:listing.source==="all"?"":listing.source,q:query,curves:curveFilter==="measured"?"1":curveFilter,layout:displayStyle==="list"?"list":""};
   for(const [name,value] of Object.entries(active)) {if(value)url.searchParams.set(name,value);else url.searchParams.delete(name)}
   if(url.href!==location.href)history.replaceState(null,"",url);
   $("groupHeading").textContent=selectedCategory==="all"?t("全部食物","All foods"):categoryName(selectedCategory);
