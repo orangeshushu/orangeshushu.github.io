@@ -1,0 +1,15 @@
+Food Glucose Atlas / 食物血糖图谱
+
+Photo credits, source pages, changes and license links are shown in each
+illustrated food record and recorded in food-photos.js. Each photograph
+retains its credited license, including the license of any adapted thumbnail.
+
+Study sources, data terms, authors and links appear under Studies & data
+sources and within each food record. Third-party photographs and datasets
+retain their respective terms. The international GI research workbook
+is loaded only on request in the reader's browser for personal
+noncommercial research.
+
+每张照片的详情均列出作者、原图、修改方式及许可。研究出处和数据条款
+见食物详情及页底的研究与数据来源。第三方照片和数据各自沿用原许可。
+国际 GI 研究工作簿供读者手动载入浏览器，作个人非商业研究使用。
