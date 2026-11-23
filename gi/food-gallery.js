@@ -62,10 +62,10 @@ function foodCard(group, rows) {
   const first=group.series[0];
   let reading;
   if(first) {
-    const value=m=>first.row.mean[first.study.minutes.indexOf(m)]?.toFixed(2)??"—";
+    const value=m=>curveNumber(first.row.mean[first.study.minutes.indexOf(m)],first.study);
     reading='<span class="tileReadings"><span>'+t("1 小时","1 h")+' <b>'+value(60)+'</b></span><span>'+t("2 小时","2 h")+' <b>'+value(120)+'</b></span></span>';
   }
-  const dataLabel=first?(group.series.length>1?t("首组实测 · ","First cohort · "):t("血糖均值 · ","Mean glucose · "))+first.study.unit:t("仅收录 GI","GI records only");
+  const dataLabel=first?(group.series.length>1?t("首组 · ","First cohort · "):"")+curveMetric(first.study)+" · "+first.study.unit:t("仅收录 GI","GI records only");
   return '<button type="button" class="foodTile" data-open-food="'+esc(group.key)+'"><span class="tileHead">'+photo+
     '<span class="tileText"><span class="tileKind">'+esc(categoryName(group.category))+'</span><span class="tileName">'+esc(foodName(group))+'</span></span></span>'+
     '<span class="tileGi"><small>'+giLabel+'</small><b>'+esc(giValue)+'</b></span>'+
@@ -174,10 +174,10 @@ function renderSeries({row,study}) {
   const label=study.measure==="absolute"?t("平均葡萄糖","Mean glucose"):t("平均葡萄糖变化","Mean glucose change");
   const stats=[0,60,120].map(m=>{
     const i=times.indexOf(m);
-    return '<div><small>'+[t("起始","Baseline"),t("餐后 1 小时","1 hour"),t("餐后 2 小时","2 hours")][m/60]+'</small><br><b>'+(i<0?"—":row.mean[i].toFixed(2))+'</b> '+unit+'</div>';
+    return '<div><small>'+[study.measure==="absolute"?t("起始","Baseline"):t("起点变化量","Starting change"),t("餐后 1 小时","1 hour"),t("餐后 2 小时","2 hours")][m/60]+'</small><br><b>'+curveNumber(row.mean[i],study,times[i])+'</b> '+unit+'</div>';
   }).join("");
   const dispersion=row.sd||row.sem;
-  const table=times.map((m,i)=>'<tr><td>'+m+'</td><td>'+row.mean[i].toFixed(2)+'</td><td>'+(dispersion?.[i]!=null?dispersion[i].toFixed(2):"—")+'</td></tr>').join("");
+  const table=times.map((m,i)=>'<tr><td>'+m+'</td><td>'+curveNumber(row.mean[i],study,times[i])+'</td><td>'+(dispersion?.[i]!=null?dispersion[i].toFixed(2):"—")+'</td></tr>').join("");
   return '<p><b>'+esc(foodName(row))+'</b> · '+esc(titleOf(study))+'</p><p class="foodSource">'+esc(english?row.portionEn:row.portionZh)+' · n = '+esc(row.n)+(Number.isFinite(row.gi)?' · GI '+esc(row.gi):'')+'</p>'+
     '<div class="seriesStats">'+stats+'</div><p class="axisLabel">'+label+' ('+unit+')</p>'+chart(row,study)+'<p class="foodSource">'+t("横轴 · 进餐后分钟数","Horizontal axis · minutes after eating")+'</p>'+simFoodLink(study,row)+evidenceBlock(evidenceForCurve(row,study))+
     '<details><summary>'+t("数值与研究方法","Values and study methods")+'</summary><table><thead><tr><th>min</th><th>'+label+' ('+unit+')</th><th>'+(row.sem?"SEM":"SD")+' ('+unit+')</th></tr></thead><tbody>'+table+'</tbody></table><p>'+esc(english?study.methodEn:study.methodZh)+'</p></details>';

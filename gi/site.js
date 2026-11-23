@@ -30,6 +30,12 @@ function sources(){
   ];
 }
 const signed = n => (n > 0 ? "+" : "") + n.toFixed(2);
+function curveNumber(value,study,minute) {
+  return value==null?t("未报告","Unreported"):value.toFixed(study.evidenceKind==="digitized"&&!(minute===0&&study.baselineFromText)?1:2);
+}
+function curveMetric(study) {
+  return study.measure==="absolute"?t("组平均葡萄糖","Group mean glucose"):t("较餐前平均变化","Mean change from baseline");
+}
 function chart(row,study){
   const times=study.minutes,w=700,h=210,left=46,right=25,top=15,bottom=32;
   const min=Math.floor(Math.min(...row.mean)),max=Math.max(min+1, Math.ceil(Math.max(...row.mean)));
@@ -39,18 +45,18 @@ function chart(row,study){
   const path=points.map(([a,b],i)=>(i?"L":"M")+a+","+b).join(" ");
   let ticks="";
   for(let v=min;v<=max;v+=Math.ceil((max-min)/4))ticks+='<line x1="'+left+'" x2="'+(w-right)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#dce5dc" stroke-dasharray="3 5"/><text x="30" text-anchor="end" y="'+(y(v)+4)+'">'+v+'</text>';
-  const labels=times.map((m,i)=>'<text x="'+x(m)+'" y="'+(h-7)+'" text-anchor="middle">'+m+'</text><circle cx="'+x(m)+'" cy="'+points[i][1]+'" r="4.6" fill="#f3f8e8" stroke="#16715b" stroke-width="2.5"><title>'+m+' min · '+row.mean[i].toFixed(2)+' '+esc(study.unit)+'</title></circle>').join("");
-  return '<svg class="plot" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(titleOf(row)+t("的平均葡萄糖值。详细值见下表。"," mean glucose. Values follow in the table."))+'"><path d="'+path+' L'+x(times.at(-1))+','+y(min)+' L'+x(times[0])+','+y(min)+' Z" fill="#e4efdf"/>'+ticks+'<path d="'+path+'" fill="none" stroke="#16674e" stroke-width="3.3" stroke-linejoin="round"/>'+labels+'</svg>';
+  const labels=times.map((m,i)=>'<text x="'+x(m)+'" y="'+(h-7)+'" text-anchor="middle">'+m+'</text><circle cx="'+x(m)+'" cy="'+points[i][1]+'" r="4.6" fill="#f3f8e8" stroke="#16715b" stroke-width="2.5"><title>'+m+' min · '+curveNumber(row.mean[i],study,times[i])+' '+esc(study.unit)+'</title></circle>').join("");
+  return '<svg class="plot" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(titleOf(row)+" · "+curveMetric(study)+t("，各时间点见下表。",". Time-point values follow in the table."))+'">'+(times.length>2?'<path d="'+path+' L'+x(times.at(-1))+','+y(min)+' L'+x(times[0])+','+y(min)+' Z" fill="#e4efdf"/>':"")+ticks+(times.length>2?'<path d="'+path+'" fill="none" stroke="#16674e" stroke-width="3.3" stroke-linejoin="round"/>':"")+labels+'</svg>';
 }
 function curveView(){
   const studies=curvesByStudy(), study=studies[studyIndex], times=study.minutes;
   const row=study.foods[foodIndex],name=titleOf(row),unit=study.unit;
   const dispersion=row.sd||row.sem;
-  const labels=[t("餐前／起始值","Baseline"),t("1 小时变化","1-hour change"),t("2 小时变化","2-hour change")];
-  const deltas=row.mean.map(value=>signed(value-row.mean[0]));
-  const stats=[0,times.indexOf(60),times.indexOf(120)].map((i,j)=>'<div class="stat"><span>'+labels[j]+'</span><strong>'+(i===0?row.mean[0].toFixed(2):deltas[i])+'</strong></div>').join("");
-  const table=times.map((m,i)=>'<tr><td>'+m+'</td><td>'+row.mean[i].toFixed(2)+'</td><td>'+(dispersion?dispersion[i].toFixed(2):"—")+'</td><td>'+deltas[i]+'</td></tr>').join("");
-  $("work").innerHTML='<h2>'+t("餐后实测曲线","Measured post-meal curves")+'</h2><p class="sub">'+t("先选择研究人群，再比较有餐后 60、120 分钟读数的食物或餐食。","Choose a study population and explore foods or meals with 60- and 120-minute measurements.")+'</p><div class="controls"><label for="study">'+t("研究与人群","Study and population")+'</label><select id="study">'+studies.map((s,i)=>'<option value="'+i+'">'+esc(titleOf(s))+'</option>').join("")+'</select></div><div class="analysis"><article class="panel"><div class="chartTop"><h3>'+esc(name)+'</h3><span class="meta">'+t("组平均葡萄糖","Group mean glucose")+' · '+unit+'</span></div><div class="foodTabs">'+study.foods.map((f,i)=>'<button data-food="'+i+'" aria-pressed="'+(i===foodIndex)+'">'+esc(titleOf(f))+'</button>').join("")+'</div>'+chart(row,study)+'<p class="note">'+t("相对于进餐的时间（分钟）","Minutes relative to the meal")+'</p><details><summary>'+t("各时间点的数值","Time-point values")+'</summary><div class="tableWrap"><table><thead><tr>'+[t("分钟","Minutes"),t("均值","Mean"),row.sem?t("均值标准误","SEM"):t("标准差","SD"),t("较起始值变化","Change")].map(x=>'<th>'+x+'</th>').join("")+'</tr></thead><tbody>'+table+'</tbody></table></div></details></article><aside class="side"><h3>'+t("这份食物的餐后变化","Response to this portion")+'</h3><small>'+esc(english?row.portionEn:row.portionZh)+' · n = '+row.n+' · '+unit+'</small>'+stats+'<p class="note">'+esc(english?study.methodEn:study.methodZh)+'</p>'+link(study.url,t("核对原研究","Open original study"))+'</aside></div>';
+  const labels=[study.measure==="absolute"?t("餐前均值","Mean baseline"):t("起点变化量","Starting change"),t("1 小时变化","1-hour change"),t("2 小时变化","2-hour change")];
+  const deltas=row.mean.map(value=>(value>row.mean[0]?"+":"")+curveNumber(value-row.mean[0],study));
+  const stats=[0,times.indexOf(60),times.indexOf(120)].map((i,j)=>'<div class="stat"><span>'+labels[j]+'</span><strong>'+(i<0?t("未报告","Unreported"):i===0?curveNumber(row.mean[0],study,0):deltas[i])+'</strong></div>').join("");
+  const table=times.map((m,i)=>'<tr><td>'+m+'</td><td>'+curveNumber(row.mean[i],study,times[i])+'</td><td>'+(dispersion?dispersion[i].toFixed(2):"—")+'</td><td>'+deltas[i]+'</td></tr>').join("");
+  $("work").innerHTML='<h2>'+t("餐后实测曲线","Measured post-meal curves")+'</h2><p class="sub">'+t("选择研究人群和食物，查看原文报告的餐后时间点。","Choose a study population and food to explore the reported time points.")+'</p><div class="controls"><label for="study">'+t("研究与人群","Study and population")+'</label><select id="study">'+studies.map((s,i)=>'<option value="'+i+'">'+esc(titleOf(s))+'</option>').join("")+'</select></div><div class="analysis"><article class="panel"><div class="chartTop"><h3>'+esc(name)+'</h3><span class="meta">'+curveMetric(study)+' · '+unit+'</span></div><div class="foodTabs">'+study.foods.map((f,i)=>'<button data-food="'+i+'" aria-pressed="'+(i===foodIndex)+'">'+esc(titleOf(f))+'</button>').join("")+'</div>'+chart(row,study)+'<p class="note">'+t("相对于进餐的时间（分钟）","Minutes relative to the meal")+'</p><details><summary>'+t("各时间点的数值","Time-point values")+'</summary><div class="tableWrap"><table><thead><tr>'+[t("分钟","Minutes"),t("均值","Mean"),row.sem?t("均值标准误","SEM"):t("标准差","SD"),t("较起始值变化","Change")].map(x=>'<th>'+x+'</th>').join("")+'</tr></thead><tbody>'+table+'</tbody></table></div></details></article><aside class="side"><h3>'+t("这份食物的餐后变化","Response to this portion")+'</h3><small>'+esc(english?row.portionEn:row.portionZh)+' · n = '+row.n+' · '+unit+'</small>'+stats+'<p class="note">'+esc(english?study.methodEn:study.methodZh)+'</p>'+link(study.url,t("核对原研究","Open original study"))+'</aside></div>';
   $("work").querySelector(".side").insertAdjacentHTML("beforeend",simFoodLink(study,row)+evidenceBlock(evidenceForCurve(row,study)));
   $("study").value=studyIndex;$("study").onchange=e=>{studyIndex=Number(e.target.value);foodIndex=0;curveView();$("study").focus({preventScroll:true})};
 }
@@ -91,6 +97,9 @@ function render(){
     t("Adediran 等（2019）。32 名非糖尿病对照、27 名 2 型糖尿病参与者，试餐均含 50 克碳水化合物。","Adediran et al. (2019). The study compared 32 controls and 27 participants with type 2 diabetes using portions containing 50 g of carbohydrate."),
     t("餐前及餐后 30、60、90、120 分钟静脉血浆葡萄糖均值，见原刊表 3。","Mean venous plasma glucose at baseline, 30, 60, 90 and 120 minutes, Table 3."),
     [[bananaStudy.dataUrl,t("原刊表 3","Original Table 3")],[bananaStudy.url,"DOI"]]]);
+  for(const study of window.atlasStapleStudies.filter(s=>s.cohort==="normal")){
+    extra.push([t("人体研究","Human study"),titleOf(study),study.foods.map(foodName).join(t("、",", ")),"",[[study.url,t("原始研究","Original study")],...(study.journalUrl?[[study.journalUrl,t("期刊版本","Journal article")]]:[])]]);
+  }
   const items=[...sources(),...moreSources(),...extra,...newEvidenceSources()];
   $("sourcesTitle").textContent=t("研究与数据来源","Studies & data sources");
   $("sourceCount").textContent=t(items.length+" 个来源",items.length+" sources");

@@ -112,7 +112,7 @@ function evidenceForGI(row) {
 }
 
 function evidenceForCurve(row,study) {
-  if(row.locatorZh && row.locatorEn) return atlasCitation(study.dataUrl||study.url,row.locatorZh,row.locatorEn);
+  if(row.locatorZh && row.locatorEn) return atlasCitation(row.dataUrl||study.dataUrl||study.url,row.locatorZh,row.locatorEn);
   const nameMap=atlasTrialLabels;
   if (study.id==="stanford-2025") {
     const food=nameMap.stanford[row.en];
