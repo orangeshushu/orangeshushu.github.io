@@ -148,6 +148,10 @@
 #sortLabel select {max-width:100%}
 .rankedPreview,.riseGap {display:grid;min-width:0}
 .rankedPreview {gap:6px}
-.riseGap {padding-inline:3px;color:var(--ink);font-size:.85rem;font-variant-numeric:tabular-nums}
-.riseGap strong {font-size:1rem}
-.riseGap small {font-size:.77rem;color:var(--mute)}
+.riseGap {gap:4px;color:var(--ink);font-size:.8rem;font-variant-numeric:tabular-nums}
+.gapColumns {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+.gapColumn {display:grid;align-content:start;gap:2px;min-width:0;padding:5px;border:1px solid var(--line);border-radius:6px}
+.gapColumn strong {font-size:1.1rem;line-height:1.1}
+.gapColumn small {color:var(--mute);font-size:.75rem;line-height:1.25}
+.gapSelected {border-color:#50755f;background:#edf5ee}
+.gapTrend {font-weight:600}
