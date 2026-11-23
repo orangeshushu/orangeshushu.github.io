@@ -146,7 +146,7 @@ function simulatorView() {
     '<label for="simFood">'+t("食物与做法（"+eligible.length+" 种）","Food and preparation ("+eligible.length+")")+'</label><select id="simFood">'+simOptions(eligible)+'</select>'+
     '<p class="simPortion">'+t("研究份量 · ","Test portion · ")+esc(english?ref.row.portionEn:ref.row.portionZh)+'</p>'+
     '<p class="simPortion">'+active.map(e=>simCohortLabel(e.cohort)+" n="+e.row.n).join(" · ")+'</p>'+
-    '<p class="simSource">'+link(ref.study.url,t("查看原始研究 ↗","Open original study ↗"))+'</p>'+
+    '<p class="simSource">'+link(ref.study.url,t("查看原始研究","Open original study"))+'</p>'+
     (sourceNote?'<p class="simPortion">'+esc(sourceNote)+'</p>':"")+
     '<label for="simBaseline">'+t("餐前血糖","Pre-meal glucose")+'</label><div class="simInputRow"><input type="number" id="simBaseline" inputmode="decimal" step="any" autocomplete="off" aria-describedby="simError" value="'+esc(simState.input)+'"><select id="simUnit" aria-label="'+t("血糖单位","Glucose unit")+'"><option>mmol/L</option><option>mg/dL</option></select></div><p id="simError" role="status"></p>'+
     '<p class="simCaution">'+t("教学估算，实际反应因人而异。请勿据此调整用药。","Educational estimates. Individual responses vary. Do not adjust medication using these values.")+'</p><details class="simMethod"><summary>'+t("这些数值怎么算？","How is this calculated?")+'</summary><p>'+t("把研究中每个时点相对餐前的平均变化，加到你输入的餐前值上。份量固定为试验份量。","Each time point adds the study group’s mean change from baseline to your starting value. The portion is fixed to the study serving.")+'</p><p>'+t("这种平移计算尚未验证为个人预测。用药、活动和进食份量会影响实际结果，请以实测血糖为准。","This shift has not been validated as an individual prediction. Medication, activity and serving size affect the result. Use measured readings for care.")+'</p></details></section>'+
