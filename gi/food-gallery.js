@@ -102,10 +102,10 @@ function previewCurve(entries) {
 
 let gapTrendFilter="";
 let minGapChange=0;
-function isDirectionalTrend(trend) {
-  return trend==="widened" || trend==="narrowed";
+function supportsChangeMinimum(trend) {
+  return trend==="both" || trend==="widened" || trend==="narrowed";
 }
-const gapTrendLabels={"":["全部","All"],widened:["扩大","Widened"],narrowed:["缩小","Narrowed"],unchanged:["持平","Unchanged"]};
+const gapTrendLabels={"":["全部","All"],both:["扩大和缩小","Both directions"],widened:["扩大","Widened"],narrowed:["缩小","Narrowed"],unchanged:["持平","Unchanged"]};
 const gapMinutes={gap1h:60, gap2h:120};
 
 // Catalogue pairs are ordered [without diabetes, type 2 diabetes].
@@ -123,7 +123,7 @@ function hourlyGapSummary(gaps, sortMinute) {
   const change=gaps.change;
   let trend=t("差距持平","Gap unchanged");
   if(change!==0) {
-    const verb=change>0?t("差距扩大 ","Gap widened by "):t("差距缩小 ","Gap narrowed by ");
+    const verb=change>0?t("差距扩大了 ","Gap widened by "):t("差距缩小了 ","Gap narrowed by ");
     trend=verb+formatGap(Math.abs(change))+" mmol/L";
   }
   const columns=[60,120].map(minute=>{
@@ -134,7 +134,7 @@ function hourlyGapSummary(gaps, sortMinute) {
       t(hour+" 小时",hour+" h")+'</small><strong>'+formatGap(Math.abs(signed))+'</strong><small>'+higher+'</small></span>';
   }).join("");
   return '<span class="riseGap"><span>'+t("升幅差距","Rise gap")+' (mmol/L)</span><span class="gapColumns">'+
-    columns+'</span><span class="gapTrend">'+trend+'</span></span>';
+    columns+'</span><span class="gapTrend'+(gapTrendFilter==="both"?(change>0?" gapWidened":" gapNarrowed"):"")+'">'+trend+'</span></span>';
 }
 
 function foodCard(group, rows, minute, gaps) {
@@ -203,6 +203,7 @@ function giView() {
   $("gapTrendFilters").onclick=e=>{
     const button=e.target.closest("[data-gap-trend]");
     if(!button) return;
+    if(button.dataset.gapTrend==="both" && gapTrendFilter!=="both" && !minGapChange) minGapChange=1;
     gapTrendFilter=button.dataset.gapTrend;
     if(gapTrendFilter) sortBy="change";
     listing.page=0;
@@ -280,9 +281,9 @@ function giResults() {
     if(gapMinutes[sortBy] || sortBy==="change") sortBy="source";
   }
   $("gapTrendFilters").hidden=!complete;
-  const directional=isDirectionalTrend(gapTrendFilter);
-  if(!directional) minGapChange=0;
-  $("gapThreshold").hidden=!directional;
+  const allowMinimum=supportsChangeMinimum(gapTrendFilter);
+  if(!allowMinimum) minGapChange=0;
+  $("gapThreshold").hidden=!allowMinimum;
   if(document.activeElement!==$("minChange")) $("minChange").value=minGapChange || "";
   for(const button of $("gapThreshold").querySelectorAll("[data-min-change]")) {
     button.setAttribute("aria-pressed",String(minGapChange===Number(button.dataset.minChange)));
@@ -298,7 +299,8 @@ function giResults() {
   $("sort").value=sortBy;
   const tokens = normalized(query).split(" ").filter(Boolean);
   const restrictRows = listing.source!=="all" || Boolean(listing.region);
-  const trendCounts={"":0,widened:0,narrowed:0,unchanged:0};
+  const bothMinimum=gapTrendFilter==="both"?minGapChange:(minGapChange || 1);
+  const trendCounts={"":0,both:0,widened:0,narrowed:0,unchanged:0};
   const matches=[];
   for (const group of groups.values()) {
     if (selectedCategory!=="all" && group.category!==selectedCategory) continue;
@@ -313,9 +315,10 @@ function giResults() {
       gaps.change=Number((Math.abs(gaps[120])-Math.abs(gaps[60])).toFixed(10));
       const trend=gaps.change>0?"widened":gaps.change<0?"narrowed":"unchanged";
       trendCounts[""]++;
-      if(isDirectionalTrend(trend) && Math.abs(gaps.change)<minGapChange) continue;
+      if(trend!=="unchanged" && Math.abs(gaps.change)>=bothMinimum) trendCounts.both++;
+      if(trend!=="unchanged" && Math.abs(gaps.change)<minGapChange) continue;
       trendCounts[trend]++;
-      if(gapTrendFilter && gapTrendFilter!==trend) continue;
+      if(gapTrendFilter==="both" ? trend==="unchanged" : gapTrendFilter && gapTrendFilter!==trend) continue;
     }
     const rank=sortBy==="change"?-Math.abs(gaps.change):minute?-Math.abs(gaps[minute]):sortBy==="asc"?Math.min(...numbers):sortBy==="desc"?-Math.max(...numbers):
       (group.pair?.[0].row.shortcut?-2:group.pair?0:group.series.length?2:4)+(group.photo?0:1);
@@ -324,7 +327,8 @@ function giResults() {
   if(complete) {
     for(const button of $("gapTrendFilters").querySelectorAll("[data-gap-trend]")) {
       const key=button.dataset.gapTrend;
-      button.textContent=t(...gapTrendLabels[key])+" "+trendCounts[key];
+      const minimumLabel=key==="both" && bothMinimum>0?" ≥ "+bothMinimum+" mmol/L":"";
+      button.textContent=t(...gapTrendLabels[key])+minimumLabel+" · "+trendCounts[key];
       button.setAttribute("aria-pressed",String(gapTrendFilter===key));
     }
   }
@@ -333,7 +337,7 @@ function giResults() {
   listing.page=Math.max(0,Math.min(listing.page,pages-1));
   const start=listing.page*listing.size;
   const url=new URL(location.href);
-  const active={minChange:minGapChange || "",trend:gapTrendFilter,sort:complete || sortBy!=="source"?sortBy:"",category:selectedCategory==="all"?"":selectedCategory,source:listing.source==="all"?"":listing.source,q:query,curves:curveFilter==="measured"?"1":curveFilter,layout:displayStyle==="list"?"list":""};
+  const active={minChange:gapTrendFilter==="both"?String(minGapChange):minGapChange || "",trend:gapTrendFilter,sort:complete || sortBy!=="source"?sortBy:"",category:selectedCategory==="all"?"":selectedCategory,source:listing.source==="all"?"":listing.source,q:query,curves:curveFilter==="measured"?"1":curveFilter,layout:displayStyle==="list"?"list":""};
   for(const [name,value] of Object.entries(active)) {if(value)url.searchParams.set(name,value);else url.searchParams.delete(name)}
   if(url.href!==location.href)history.replaceState(null,"",url);
   $("groupHeading").textContent=selectedCategory==="all"?t("全部食物","All foods"):categoryName(selectedCategory);
