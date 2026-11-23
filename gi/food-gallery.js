@@ -138,6 +138,12 @@ function hourlyGapSummary(gaps, sortMinute) {
 }
 
 const giBands={low:["低","Low"],medium:["中","Medium"],high:["高","High"]};
+const giFilterLabels={
+  "":["不限","Any"],
+  ...Object.fromEntries(Object.entries(giBands).map(([key,labels])=>[key,labels.map(label=>label+" GI")])),
+  mixed:["跨等级","Multiple GI bands"],
+  missing:["暂无 GI 数值","No numeric GI"]
+};
 let selectedGiBand="";
 function giBandKey(value) {
   if(value<=55) return "low";
@@ -199,9 +205,8 @@ function giView() {
     '<label class="catMobile">'+t("分类浏览","Browse by category")+' <select id="categorySelect">'+options.map(([id,label,count])=>'<option value="'+id+'">'+label+' ('+count+')</option>').join("")+'</select></label></aside>'+
     '<section class="catalogPanel"><div class="resultHeading"><h2 id="groupHeading"></h2><div class="viewSwitch"><button id="cardMode">'+t("卡片","Cards")+'</button><button id="listMode">'+t("列表","List")+'</button></div></div>'+
     '<div id="giBandFilters" class="foodTools" role="group" aria-label="'+t("按 GI 等级筛选","Filter by GI band")+'"><span>'+t("GI 等级","GI band")+'</span>'+
-    '<button type="button" data-gi-band="">'+t("不限","Any")+'</button>'+
-    Object.entries(giBands).map(([key,labels])=>'<button type="button" data-gi-band="'+key+'">'+t(...labels)+' GI <span data-band-count="'+key+'"></span></button>').join("")+'</div>'+
-    '<p id="giBandNote" class="chartKey" hidden>'+t("仅收录已有 GI 数值均在所选等级内的食物。","Includes foods whose reported GI values all fall within the selected band.")+'</p>'+
+    Object.entries(giFilterLabels).map(([key,labels])=>'<button type="button" data-gi-band="'+key+'">'+t(...labels)+' <span data-band-count="'+key+'"></span></button>').join("")+'</div>'+
+    '<p id="giBandNote" class="chartKey" hidden></p>'+
     (missingRequest?'<p class="foodSource">'+t("此名称未收录在当前目录。如来自国际研究工作簿，请先载入下方的扩展检索。","This name is unavailable in the current catalogue. For international entries, load the workbook below.")+'</p>':"")+
     '<div class="foodTools">'+curveButtons+'<button id="evaluatedFoods"></button><details class="foodFilterPanel"><summary>'+t("来源与排序","Sources & sorting")+'</summary><div class="foodTools">'+
     '<select id="giSource" aria-label="'+t("GI 来源","GI source")+'"><option value="all">'+t("所有 GI 来源","All GI sources")+'</option>'+sourceOptions()+'</select>'+
@@ -225,7 +230,7 @@ function giView() {
     const button=e.target.closest("[data-gi-band]");
     if(!button) return;
     selectedGiBand=button.dataset.giBand;
-    if(selectedGiBand) sortBy="asc";
+    if(selectedGiBand) sortBy=selectedGiBand==="missing"?"source":"asc";
     listing.page=0;
     giResults();
   };
@@ -319,6 +324,10 @@ function giResults() {
   }
   const minute=complete?gapMinutes[sortBy]:null;
   $("giBandNote").hidden=!selectedGiBand;
+  $("giBandNote").textContent=selectedGiBand==="mixed"
+    ?t("同一食物或做法的 GI 记录分属两个或更多等级。","This food or preparation has reported GI values in two or more bands.")
+    :selectedGiBand==="missing"?t("当前来源没有可用于分级的单一 GI 数值。部分食物仍有实测血糖曲线或分组结果。","The current sources provide no single numeric GI for classification. Some foods still have measured glucose curves or subgroup results.")
+    :t("仅收录已有 GI 数值均在所选等级内的食物。","Includes foods whose reported GI values all fall within the selected band.");
   for(const button of $("giBandFilters").querySelectorAll("button")) {
     button.setAttribute("aria-pressed",String(button.dataset.giBand===selectedGiBand));
   }
@@ -335,7 +344,7 @@ function giResults() {
   const restrictRows = listing.source!=="all" || Boolean(listing.region);
   const bothMinimum=gapTrendFilter==="both"?minGapChange:(minGapChange || 1);
   const trendCounts={"":0,both:0,widened:0,narrowed:0,unchanged:0};
-  const bandCounts={low:0,medium:0,high:0};
+  const bandCounts=Object.fromEntries(Object.keys(giFilterLabels).map(key=>[key,0]));
   const matches=[];
   for (const group of groups.values()) {
     if (selectedCategory!=="all" && group.category!==selectedCategory) continue;
@@ -345,8 +354,8 @@ function giResults() {
       (!listing.region || [r.region,r.country].includes(listing.region))) : group.rows;
     if (restrictRows&&!rows.length) continue;
     const numbers=rows.map(r=>r.gi).filter(Number.isFinite);
-    const firstBand=numbers.length?giBandKey(numbers[0]):null;
-    const band=firstBand && numbers.every(value=>giBandKey(value)===firstBand)?firstBand:null;
+    const firstBand=numbers.length?giBandKey(numbers[0]):"missing";
+    const band=numbers.every(value=>giBandKey(value)===firstBand)?firstBand:"mixed";
     const matchesBand=!selectedGiBand || selectedGiBand===band;
     const gaps=complete?{60:signedRiseGap(group.pair,60),120:signedRiseGap(group.pair,120)}:null;
     if(gaps) {
@@ -360,7 +369,8 @@ function giResults() {
       if(matchesBand) trendCounts[trend]++;
       if(gapTrendFilter==="both" ? trend==="unchanged" : gapTrendFilter && gapTrendFilter!==trend) continue;
     }
-    if(band) bandCounts[band]++;
+    bandCounts[""]++;
+    bandCounts[band]++;
     if(!matchesBand) continue;
     const rank=sortBy==="change"?-Math.abs(gaps.change):minute?-Math.abs(gaps[minute]):sortBy==="asc"?Math.min(...numbers):sortBy==="desc"?-Math.max(...numbers):
       (group.pair?.[0].row.shortcut?-2:group.pair?0:group.series.length?2:4)+(group.photo?0:1);
