@@ -101,6 +101,10 @@ function previewCurve(entries) {
 }
 
 let gapTrendFilter="";
+let minGapChange=0;
+function isDirectionalTrend(trend) {
+  return trend==="widened" || trend==="narrowed";
+}
 const gapTrendLabels={"":["全部","All"],widened:["扩大","Widened"],narrowed:["缩小","Narrowed"],unchanged:["持平","Unchanged"]};
 const gapMinutes={gap1h:60, gap2h:120};
 
@@ -187,6 +191,10 @@ function giView() {
     '<option value="source">'+t("实测曲线优先","Measured curves first")+'</option><option value="asc">'+t("最低 GI 升序","Lowest GI first")+'</option><option value="desc">'+t("最高 GI 降序","Highest GI first")+'</option></select></label></span></div></details><button id="clearFilters">'+t("清除筛选","Clear filters")+'</button></div>'+
     '<div id="gapTrendFilters" class="foodTools" role="group" aria-label="'+t("1 到 2 小时的差距变化","Gap change from 1 to 2 hours")+'" hidden><span>'+t("差距变化","Gap change")+'</span>'+
     Object.keys(gapTrendLabels).map(key=>'<button type="button" data-gap-trend="'+key+'"></button>').join("")+'</div>'+
+    '<div id="gapThreshold" class="foodTools" role="group" aria-label="'+t("变化幅度下限","Minimum change magnitude")+'" hidden>'+
+    '<button type="button" data-min-change="0">'+t("不限幅度","Any magnitude")+'</button><button type="button" data-min-change="1">'+t("至少 1 mmol/L","At least 1 mmol/L")+'</button>'+
+    '<label for="minChange">'+t("自定义下限","Custom minimum")+' <input id="minChange" type="number" inputmode="decimal" min="0" step="any" placeholder="0" aria-describedby="minChangeUnit minChangeError"> <span id="minChangeUnit">mmol/L</span></label>'+
+    '<span id="minChangeError" role="status"></span></div>'+
     '<div id="completeSort" class="foodTools" hidden></div>'+
     '<div class="foodBar"><span id="giCount" role="status"></span><div class="foodPager"><label>'+t("每页 ","Per page ")+'<select id="pageSize">'+[60,120,240].map(n=>'<option>'+n+'</option>').join("")+'</select></label><span id="topPager"></span></div></div>'+
     '<p id="chartKey" class="chartKey"></p>'+
@@ -199,6 +207,35 @@ function giView() {
     if(gapTrendFilter) sortBy="change";
     listing.page=0;
     giResults();
+  };
+  const thresholdInput=$("minChange");
+  const updateMinimum=value=>{
+    minGapChange=value;
+    listing.page=0;
+    sortBy="change";
+    giResults();
+  };
+  $("gapThreshold").onclick=e=>{
+    const preset=e.target.closest("[data-min-change]");
+    if(!preset) return;
+    const value=Number(preset.dataset.minChange);
+    thresholdInput.value=value || "";
+    updateMinimum(value);
+  };
+  thresholdInput.oninput=()=>{
+    if(!thresholdInput.validity.valid) {
+      thresholdInput.setAttribute("aria-invalid","true");
+      $("minChangeError").textContent=t("请输入非负数。","Enter a nonnegative number.");
+      return;
+    }
+    thresholdInput.removeAttribute("aria-invalid");
+    $("minChangeError").textContent="";
+    updateMinimum(thresholdInput.valueAsNumber || 0);
+  };
+  thresholdInput.onblur=()=>{
+    thresholdInput.value=minGapChange || "";
+    thresholdInput.removeAttribute("aria-invalid");
+    $("minChangeError").textContent="";
   };
   const categoryChange=id=>{selectedCategory=id; listing.page=0;giResults()};
   $("categorySelect").onchange=e=>categoryChange(e.target.value);
@@ -243,6 +280,13 @@ function giResults() {
     if(gapMinutes[sortBy] || sortBy==="change") sortBy="source";
   }
   $("gapTrendFilters").hidden=!complete;
+  const directional=isDirectionalTrend(gapTrendFilter);
+  if(!directional) minGapChange=0;
+  $("gapThreshold").hidden=!directional;
+  if(document.activeElement!==$("minChange")) $("minChange").value=minGapChange || "";
+  for(const button of $("gapThreshold").querySelectorAll("[data-min-change]")) {
+    button.setAttribute("aria-pressed",String(minGapChange===Number(button.dataset.minChange)));
+  }
   const minute=complete?gapMinutes[sortBy]:null;
   const sortHost=$(complete?"completeSort":"usualSort");
   if($("sortLabel").parentNode!==sortHost) sortHost.append($("sortLabel"));
@@ -269,6 +313,7 @@ function giResults() {
       gaps.change=Number((Math.abs(gaps[120])-Math.abs(gaps[60])).toFixed(10));
       const trend=gaps.change>0?"widened":gaps.change<0?"narrowed":"unchanged";
       trendCounts[""]++;
+      if(isDirectionalTrend(trend) && Math.abs(gaps.change)<minGapChange) continue;
       trendCounts[trend]++;
       if(gapTrendFilter && gapTrendFilter!==trend) continue;
     }
@@ -288,7 +333,7 @@ function giResults() {
   listing.page=Math.max(0,Math.min(listing.page,pages-1));
   const start=listing.page*listing.size;
   const url=new URL(location.href);
-  const active={trend:gapTrendFilter,sort:complete || sortBy!=="source"?sortBy:"",category:selectedCategory==="all"?"":selectedCategory,source:listing.source==="all"?"":listing.source,q:query,curves:curveFilter==="measured"?"1":curveFilter,layout:displayStyle==="list"?"list":""};
+  const active={minChange:minGapChange || "",trend:gapTrendFilter,sort:complete || sortBy!=="source"?sortBy:"",category:selectedCategory==="all"?"":selectedCategory,source:listing.source==="all"?"":listing.source,q:query,curves:curveFilter==="measured"?"1":curveFilter,layout:displayStyle==="list"?"list":""};
   for(const [name,value] of Object.entries(active)) {if(value)url.searchParams.set(name,value);else url.searchParams.delete(name)}
   if(url.href!==location.href)history.replaceState(null,"",url);
   $("groupHeading").textContent=selectedCategory==="all"?t("全部食物","All foods"):categoryName(selectedCategory);

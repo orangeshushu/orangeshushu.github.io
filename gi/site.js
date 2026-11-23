@@ -125,6 +125,10 @@ const requestedSort=requestedFilters.get("sort");
 if(curveFilter==="complete") {
   const initialTrend=requestedFilters.get("trend");
   if(Object.hasOwn(gapTrendLabels,initialTrend)) gapTrendFilter=initialTrend;
+  const minimum=requestedFilters.get("minChange");
+  if(isDirectionalTrend(gapTrendFilter) && minimum && /^[+]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i.test(minimum) && Number.isFinite(Number(minimum))) {
+    minGapChange=Number(minimum);
+  }
   sortBy=gapTrendFilter?"change":"gap1h";
 }
 if(["source","asc","desc"].includes(requestedSort) || (curveFilter==="complete" && (Object.hasOwn(gapMinutes,requestedSort) || requestedSort==="change"))) sortBy=requestedSort;
