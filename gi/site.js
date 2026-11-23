@@ -87,7 +87,7 @@ function render(){
   $("foodSearch").onsubmit=e=>{e.preventDefault();searchNow(true)};
   $("giQuery").oninput=()=>searchNow();
   $("suggestions").innerHTML=[t("大米","Rice"),t("苹果","Apple"),t("燕麦","Oats")].map(s=>'<button type="button">'+s+'</button>').join("");
-  $("suggestions").onclick=e=>{const b=e.target.closest("button");if(!b)return; $("giQuery").value=b.textContent;selectedCategory="all";listing.source="all";listing.region="";curveOnly=false;searchNow(true);giView()};
+  $("suggestions").onclick=e=>{const b=e.target.closest("button");if(!b)return; $("giQuery").value=b.textContent;selectedCategory="all";listing.source="all";listing.region="";if(curveFilter==="measured")curveFilter="";searchNow(true);giView()};
 
   $("navData").textContent=t("查数据","Explore");$("navSources").textContent=t("来源","Sources");$("language").textContent=t("EN","中文");$("language").setAttribute("aria-label",t("Switch to English","切换为中文"));
   renderWork();
@@ -118,7 +118,9 @@ if(Object.hasOwn(foodCategories,initialCategory))selectedCategory=initialCategor
 const initialSource=requestedFilters.get("source");
 if(giSources().some(s=>s.id===initialSource))listing.source=initialSource;
 query=requestedFilters.get("q")||"";
-curveOnly=requestedFilters.get("curves")==="1";
+const initialCurves=requestedFilters.get("curves");
+if(initialCurves==="1") curveFilter="measured";
+if(initialCurves==="paired" || initialCurves==="complete") curveFilter=initialCurves;
 if(requestedFilters.get("layout")==="list")displayStyle="list";
 
 if(mode==="simulate"){

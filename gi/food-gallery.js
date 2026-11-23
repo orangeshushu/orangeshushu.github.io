@@ -1,7 +1,17 @@
 "use strict";
 
 let foodCache;
-let curveOnly = false;
+let curveFilter = "";
+
+function matchesCurveFilter(group, filter) {
+  if (filter==="measured") return group.series.length>0;
+  if (filter==="paired") return Boolean(group.pair);
+  if (filter==="complete") {
+    return Boolean(group.pair && group.pair.every(({row,study})=>
+      [60,120].every(minute=>Number.isFinite(row.mean[study.minutes.indexOf(minute)]))));
+  }
+  return true;
+}
 
 const foodKey = row => normalized(row.en || row.zh);
 const foodName = row => (english ? row.en : row.zh) || row.en || row.zh;
@@ -122,11 +132,19 @@ function giView() {
   const regionOptions = [...regionsUsed].sort().map(k=>'<option value="'+esc(k)+'">'+esc(regionName(k))+'</option>').join("");
   const groups=[...foodCatalogue().groups.values()];
   const options=[["all",t("全部类别","All categories"),groups.length],...Object.keys(foodCategories).map(id=>[id,categoryName(id),groups.filter(g=>g.category===id).length]).filter(x=>x[2])];
+  const curveChoices=[
+    ["allFoods","",t("全部记录","All records")],
+    ["curveFoods","measured",t("有餐后实测","Measured after eating")],
+    ["pairedFoods","paired",t("只看双组对比","Both groups")],
+    ["completeFoods","complete",t("双组 1、2 小时齐全","Both groups at 1 & 2 h")]
+  ];
+  const curveButtons=curveChoices.map(([id,filter,label])=>
+    '<button type="button" id="'+id+'" data-curve-filter="'+filter+'">'+esc(label)+'</button>').join("");
   $("work").innerHTML='<div class="atlasLayout"><aside class="categoryRail"><h2>'+t("食物分类","Food categories")+'</h2><div class="catMenu">'+options.map(([id,label,count])=>'<button type="button" data-category="'+id+'" aria-pressed="'+(id===selectedCategory)+'"><span>'+label+'</span><small>'+numberText(count)+'</small></button>').join("")+'</div>'+
     '<label class="catMobile">'+t("分类浏览","Browse by category")+' <select id="categorySelect">'+options.map(([id,label,count])=>'<option value="'+id+'">'+label+' ('+count+')</option>').join("")+'</select></label></aside>'+
     '<section class="catalogPanel"><div class="resultHeading"><h2 id="groupHeading"></h2><div class="viewSwitch"><button id="cardMode">'+t("卡片","Cards")+'</button><button id="listMode">'+t("列表","List")+'</button></div></div>'+
     (missingRequest?'<p class="foodSource">'+t("此名称未收录在当前目录。如来自国际研究工作簿，请先载入下方的扩展检索。","This name is unavailable in the current catalogue. For international entries, load the workbook below.")+'</p>':"")+
-    '<div class="foodTools"><button id="allFoods"></button><button id="curveFoods"></button><button id="evaluatedFoods"></button><details class="foodFilterPanel"><summary>'+t("来源与排序","Sources & sorting")+'</summary><div class="foodTools">'+
+    '<div class="foodTools">'+curveButtons+'<button id="evaluatedFoods"></button><details class="foodFilterPanel"><summary>'+t("来源与排序","Sources & sorting")+'</summary><div class="foodTools">'+
     '<select id="giSource" aria-label="'+t("GI 来源","GI source")+'"><option value="all">'+t("所有 GI 来源","All GI sources")+'</option>'+sourceOptions()+'</select>'+
     '<select id="giRegion" aria-label="'+t("地区","Region")+'"><option value="">'+t("全部 GI 地区","All GI regions")+'</option>'+regionOptions+'</select>'+
     '<select id="sort" aria-label="'+t("排序","Sort")+'"><option value="source">'+t("实测曲线优先","Measured curves first")+'</option><option value="asc">'+t("最低 GI 升序","Lowest GI first")+'</option><option value="desc">'+t("最高 GI 降序","Highest GI first")+'</option></select></div></details><button id="clearFilters">'+t("清除筛选","Clear filters")+'</button></div>'+
@@ -139,17 +157,23 @@ function giView() {
   document.querySelector(".catMenu").onclick=e=>{const b=e.target.closest("[data-category]");if(b)categoryChange(b.dataset.category)};
   $("cardMode").onclick=()=>{displayStyle="cards";giResults()};
   $("listMode").onclick=()=>{displayStyle="list";giResults()};
-  const setOnly = flag => {curveOnly=flag; if(listing.source==="chtc-product-gi")listing.source="all";$("giSource").value=listing.source;listing.page=0;giResults()};
-  $("evaluatedFoods").onclick=()=>{curveOnly=false;listing.source="chtc-product-gi";listing.page=0;$("giSource").value=listing.source;giResults()};
-  $("allFoods").onclick=()=>setOnly(false);
-  $("curveFoods").onclick=()=>setOnly(true);
+  for (const [id,filter] of curveChoices) {
+    $(id).onclick=()=>{
+      curveFilter=filter;
+      if(listing.source==="chtc-product-gi") listing.source="all";
+      $("giSource").value=listing.source;
+      listing.page=0;
+      giResults();
+    };
+  }
+  $("evaluatedFoods").onclick=()=>{curveFilter="";listing.source="chtc-product-gi";listing.page=0;$("giSource").value=listing.source;giResults()};
   for (const [id, prop] of [["giSource","source"],["giRegion","region"],["pageSize","size"]]) {
     $(id).value=listing[prop];
     $(id).onchange=e=>{listing[prop]=prop==="size"?Number(e.target.value):e.target.value; listing.page=0; giResults()};
   }
   $("sort").value=sortBy;
   $("sort").onchange=e=>{sortBy=e.target.value; listing.page=0; giResults()};
-  $("clearFilters").onclick=()=>{query=""; $("giQuery").value=""; listing.page=0; listing.source="all"; listing.region=""; selectedCategory="all"; sortBy="source"; curveOnly=false; giView()};
+  $("clearFilters").onclick=()=>{query=""; $("giQuery").value=""; listing.page=0; listing.source="all"; listing.region=""; selectedCategory="all"; sortBy="source"; curveFilter=""; giView()};
   $("foodGrid").onclick=e=>{const card=e.target.closest("[data-open-food]"); if(card) openFood(card.dataset.openFood)};
   for (const id of ["topPager","bottomPager"]) $(id).onclick=e=>{
     const control=e.target.closest("[data-page-step]");
@@ -169,7 +193,7 @@ function giResults() {
   const matches=[];
   for (const group of groups.values()) {
     if (selectedCategory!=="all" && group.category!==selectedCategory) continue;
-    if ((curveOnly&&!group.series.length) || !tokens.every(k=>group.search.includes(k))) continue;
+    if (!matchesCurveFilter(group,curveFilter) || !tokens.every(k=>group.search.includes(k))) continue;
     const rows = restrictRows ? group.rows.filter(r=>
       (listing.source==="all"||listing.source===r.source||(r.source===intlId&&listing.source==="T"+r.table)) &&
       (!listing.region || [r.region,r.country].includes(listing.region))) : group.rows;
@@ -184,22 +208,22 @@ function giResults() {
   listing.page=Math.max(0,Math.min(listing.page,pages-1));
   const start=listing.page*listing.size;
   const url=new URL(location.href);
-  const active={category:selectedCategory==="all"?"":selectedCategory,source:listing.source==="all"?"":listing.source,q:query,curves:curveOnly?"1":"",layout:displayStyle==="list"?"list":""};
+  const active={category:selectedCategory==="all"?"":selectedCategory,source:listing.source==="all"?"":listing.source,q:query,curves:curveFilter==="measured"?"1":curveFilter,layout:displayStyle==="list"?"list":""};
   for(const [name,value] of Object.entries(active)) {if(value)url.searchParams.set(name,value);else url.searchParams.delete(name)}
   if(url.href!==location.href)history.replaceState(null,"",url);
   $("groupHeading").textContent=selectedCategory==="all"?t("全部食物","All foods"):categoryName(selectedCategory);
   $("categorySelect").value=selectedCategory;
   document.querySelectorAll("[data-category]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.category===selectedCategory)));
-  $("allFoods").textContent=t("全部记录","All records");
-  $("curveFoods").textContent=t("有餐后实测","Measured after eating");
-  $("clearFilters").hidden=!(query||curveOnly||selectedCategory!=="all"||restrictRows||sortBy!=="source");
+  $("clearFilters").hidden=!(query||curveFilter||selectedCategory!=="all"||restrictRows||sortBy!=="source");
   $("cardMode").setAttribute("aria-pressed",String(displayStyle==="cards"));
   $("listMode").setAttribute("aria-pressed",String(displayStyle==="list"));
   $("foodGrid").classList.toggle("listStyle",displayStyle==="list");
   $("evaluatedFoods").textContent=t("机构评价产品","Evaluated products");
   $("evaluatedFoods").setAttribute("aria-pressed",String(listing.source==="chtc-product-gi"));
-  $("allFoods").setAttribute("aria-pressed",String(!curveOnly && listing.source!=="chtc-product-gi"));
-  $("curveFoods").setAttribute("aria-pressed",String(curveOnly));
+  document.querySelectorAll("[data-curve-filter]").forEach(button=>{
+    const filter=button.dataset.curveFilter;
+    button.setAttribute("aria-pressed",String(curveFilter===filter && (filter!=="" || listing.source!=="chtc-product-gi")));
+  });
   $("giCount").textContent=total?t("显示 ","Showing ")+numberText(start+1)+"–"+numberText(Math.min(start+listing.size,total))+t("，共 "," of ")+numberText(total)+t(" 项"," foods & preparations"):t("没有匹配的食物。可清除筛选或换一个关键词。","No matching foods. Clear filters or try another term.");
   const pageFoods=matches.slice(start,start+listing.size);
   $("chartKey").hidden=!pageFoods.some(m=>m.group.series.length);
