@@ -137,11 +137,14 @@ function hourlyGapSummary(gaps, sortMinute) {
     columns+'</span><span class="gapTrend'+(gapTrendFilter==="both"?(change>0?" gapWidened":" gapNarrowed"):"")+'">'+trend+'</span></span>';
 }
 
-function giBand(value) {
-  if(value<=55) return t("低","Low");
-  if(value<70) return t("中","Medium");
-  return t("高","High");
+const giBands={low:["低","Low"],medium:["中","Medium"],high:["高","High"]};
+let selectedGiBand="";
+function giBandKey(value) {
+  if(value<=55) return "low";
+  if(value<70) return "medium";
+  return "high";
 }
+function giBand(value) {return t(...giBands[giBandKey(value)]);}
 
 function giGuide() {
   return '<details class="giGuide"><summary>'+t("怎么看升糖指数（GI）？","How to read the glycemic index (GI)")+'</summary><p>'+
@@ -195,6 +198,10 @@ function giView() {
   $("work").innerHTML='<div class="atlasLayout"><aside class="categoryRail"><h2>'+t("食物分类","Food categories")+'</h2><div class="catMenu">'+options.map(([id,label,count])=>'<button type="button" data-category="'+id+'" aria-pressed="'+(id===selectedCategory)+'"><span>'+label+'</span><small>'+numberText(count)+'</small></button>').join("")+'</div>'+
     '<label class="catMobile">'+t("分类浏览","Browse by category")+' <select id="categorySelect">'+options.map(([id,label,count])=>'<option value="'+id+'">'+label+' ('+count+')</option>').join("")+'</select></label></aside>'+
     '<section class="catalogPanel"><div class="resultHeading"><h2 id="groupHeading"></h2><div class="viewSwitch"><button id="cardMode">'+t("卡片","Cards")+'</button><button id="listMode">'+t("列表","List")+'</button></div></div>'+
+    '<div id="giBandFilters" class="foodTools" role="group" aria-label="'+t("按 GI 等级筛选","Filter by GI band")+'"><span>'+t("GI 等级","GI band")+'</span>'+
+    '<button type="button" data-gi-band="">'+t("不限","Any")+'</button>'+
+    Object.entries(giBands).map(([key,labels])=>'<button type="button" data-gi-band="'+key+'">'+t(...labels)+' GI</button>').join("")+'</div>'+
+    '<p id="giBandNote" class="chartKey" hidden>'+t("仅收录已有 GI 数值均在所选等级内的食物。","Includes foods whose reported GI values all fall within the selected band.")+'</p>'+
     (missingRequest?'<p class="foodSource">'+t("此名称未收录在当前目录。如来自国际研究工作簿，请先载入下方的扩展检索。","This name is unavailable in the current catalogue. For international entries, load the workbook below.")+'</p>':"")+
     '<div class="foodTools">'+curveButtons+'<button id="evaluatedFoods"></button><details class="foodFilterPanel"><summary>'+t("来源与排序","Sources & sorting")+'</summary><div class="foodTools">'+
     '<select id="giSource" aria-label="'+t("GI 来源","GI source")+'"><option value="all">'+t("所有 GI 来源","All GI sources")+'</option>'+sourceOptions()+'</select>'+
@@ -202,7 +209,7 @@ function giView() {
     '<span id="usualSort"><label id="sortLabel"><span>'+t("排序","Sort by")+'</span> <select id="sort" aria-label="'+t("排序","Sort by")+'">'+
     '<option value="change">'+t("差距变化幅度：从大到小","Gap change · largest first")+'</option>'+
     '<option value="gap1h">'+t("1 小时升幅差距：从大到小","1 h rise gap · largest first")+'</option><option value="gap2h">'+t("2 小时升幅差距：从大到小","2 h rise gap · largest first")+'</option>'+
-    '<option value="source">'+t("实测曲线优先","Measured curves first")+'</option><option value="asc">'+t("最低 GI 升序","Lowest GI first")+'</option><option value="desc">'+t("最高 GI 降序","Highest GI first")+'</option></select></label></span></div></details><button id="clearFilters">'+t("清除筛选","Clear filters")+'</button></div>'+
+    '<option value="source">'+t("实测曲线优先","Measured curves first")+'</option><option value="asc">'+t("GI 从低到高（按最低值）","GI: low to high (by minimum)")+'</option><option value="desc">'+t("最高 GI 降序","Highest GI first")+'</option></select></label></span></div></details><button id="clearFilters">'+t("清除筛选","Clear filters")+'</button></div>'+
     '<div id="gapTrendFilters" class="foodTools" role="group" aria-label="'+t("1 到 2 小时的差距变化","Gap change from 1 to 2 hours")+'" hidden><span>'+t("差距变化","Gap change")+'</span>'+
     Object.keys(gapTrendLabels).map(key=>'<button type="button" data-gap-trend="'+key+'"></button>').join("")+'</div>'+
     '<div id="gapThreshold" class="foodTools" role="group" aria-label="'+t("变化幅度下限","Minimum change magnitude")+'" hidden>'+
@@ -214,6 +221,14 @@ function giView() {
     giGuide()+'<p id="chartKey" class="chartKey"></p>'+
     '<div id="foodGrid" class="foodGrid"></div><div class="foodBar"><span class="foodLegend">'+t("GI 以葡萄糖为 100。","GI uses glucose = 100.")+'</span><div id="bottomPager" class="foodPager"></div></div></section></div>'+
     '<details id="workbookRail" class="sourceRail"><summary>'+t("扩展检索 · 国际 GI 工作簿","Extended search · International GI workbook")+'</summary><div id="importer" class="importBar"></div></details>';
+  $("giBandFilters").onclick=e=>{
+    const button=e.target.closest("[data-gi-band]");
+    if(!button) return;
+    selectedGiBand=button.dataset.giBand;
+    if(selectedGiBand) sortBy="asc";
+    listing.page=0;
+    giResults();
+  };
   $("gapTrendFilters").onclick=e=>{
     const button=e.target.closest("[data-gap-trend]");
     if(!button) return;
@@ -274,7 +289,7 @@ function giView() {
   }
   $("sort").value=sortBy;
   $("sort").onchange=e=>{sortBy=e.target.value; listing.page=0; giResults()};
-  $("clearFilters").onclick=()=>{query=""; $("giQuery").value=""; listing.page=0; listing.source="all"; listing.region=""; selectedCategory="all"; sortBy="source"; curveFilter=""; giView()};
+  $("clearFilters").onclick=()=>{query=""; $("giQuery").value=""; listing.page=0; listing.source="all"; listing.region=""; selectedCategory="all"; selectedGiBand=""; sortBy="source"; curveFilter=""; giView()};
   $("foodGrid").onclick=e=>{const card=e.target.closest("[data-open-food]"); if(card) openFood(card.dataset.openFood)};
   for (const id of ["topPager","bottomPager"]) $(id).onclick=e=>{
     const control=e.target.closest("[data-page-step]");
@@ -303,9 +318,14 @@ function giResults() {
     button.setAttribute("aria-pressed",String(minGapChange===Number(button.dataset.minChange)));
   }
   const minute=complete?gapMinutes[sortBy]:null;
-  const sortHost=$(complete?"completeSort":"usualSort");
+  $("giBandNote").hidden=!selectedGiBand;
+  for(const button of $("giBandFilters").querySelectorAll("button")) {
+    button.setAttribute("aria-pressed",String(button.dataset.giBand===selectedGiBand));
+  }
+  const showSort=complete || Boolean(selectedGiBand);
+  const sortHost=$(showSort?"completeSort":"usualSort");
   if($("sortLabel").parentNode!==sortHost) sortHost.append($("sortLabel"));
-  $("completeSort").hidden=!complete;
+  $("completeSort").hidden=!showSort;
   for(const option of $("sort").options) {
     option.hidden=!complete && (Boolean(gapMinutes[option.value]) || option.value==="change");
     option.disabled=option.hidden;
@@ -324,6 +344,7 @@ function giResults() {
       (!listing.region || [r.region,r.country].includes(listing.region))) : group.rows;
     if (restrictRows&&!rows.length) continue;
     const numbers=rows.map(r=>r.gi).filter(Number.isFinite);
+    if(selectedGiBand && (!numbers.length || !numbers.every(value=>giBandKey(value)===selectedGiBand))) continue;
     const gaps=complete?{60:signedRiseGap(group.pair,60),120:signedRiseGap(group.pair,120)}:null;
     if(gaps) {
       gaps.change=Number((Math.abs(gaps[120])-Math.abs(gaps[60])).toFixed(10));
@@ -351,13 +372,13 @@ function giResults() {
   listing.page=Math.max(0,Math.min(listing.page,pages-1));
   const start=listing.page*listing.size;
   const url=new URL(location.href);
-  const active={minChange:gapTrendFilter==="both"?String(minGapChange):minGapChange || "",trend:gapTrendFilter,sort:complete || sortBy!=="source"?sortBy:"",category:selectedCategory==="all"?"":selectedCategory,source:listing.source==="all"?"":listing.source,q:query,curves:curveFilter==="measured"?"1":curveFilter,layout:displayStyle==="list"?"list":""};
+  const active={band:selectedGiBand,minChange:gapTrendFilter==="both"?String(minGapChange):minGapChange || "",trend:gapTrendFilter,sort:showSort || sortBy!=="source"?sortBy:"",category:selectedCategory==="all"?"":selectedCategory,source:listing.source==="all"?"":listing.source,q:query,curves:curveFilter==="measured"?"1":curveFilter,layout:displayStyle==="list"?"list":""};
   for(const [name,value] of Object.entries(active)) {if(value)url.searchParams.set(name,value);else url.searchParams.delete(name)}
   if(url.href!==location.href)history.replaceState(null,"",url);
   $("groupHeading").textContent=selectedCategory==="all"?t("全部食物","All foods"):categoryName(selectedCategory);
   $("categorySelect").value=selectedCategory;
   document.querySelectorAll("[data-category]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.category===selectedCategory)));
-  $("clearFilters").hidden=!(query||curveFilter||selectedCategory!=="all"||restrictRows||sortBy!=="source");
+  $("clearFilters").hidden=!(query||curveFilter||selectedGiBand||selectedCategory!=="all"||restrictRows||sortBy!=="source");
   $("cardMode").setAttribute("aria-pressed",String(displayStyle==="cards"));
   $("listMode").setAttribute("aria-pressed",String(displayStyle==="list"));
   $("foodGrid").classList.toggle("listStyle",displayStyle==="list");

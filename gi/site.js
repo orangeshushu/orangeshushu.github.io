@@ -136,6 +136,11 @@ if(curveFilter==="complete") {
   }
   sortBy=gapTrendFilter?"change":"gap1h";
 }
+const requestedBand=requestedFilters.get("band");
+if(Object.hasOwn(giBands,requestedBand)) {
+  selectedGiBand=requestedBand;
+  sortBy="asc";
+}
 if(["source","asc","desc"].includes(requestedSort) || (curveFilter==="complete" && (Object.hasOwn(gapMinutes,requestedSort) || requestedSort==="change"))) sortBy=requestedSort;
 if(requestedFilters.get("layout")==="list")displayStyle="list";
 
