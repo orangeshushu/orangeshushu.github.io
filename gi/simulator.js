@@ -58,6 +58,16 @@ function simFormat(mmol,delta=false) {
 function simRef({study,row}) {
   return evidenceBlock(evidenceForCurve(row,study));
 }
+function simObserved(entry) {
+  const change=entry.study.measure==="increment";
+  const label=change?t("原研究平均变化","Observed mean change"):t("原研究平均血糖","Observed mean glucose");
+  const points=[60,120].map(m=>{
+    const i=entry.study.minutes.indexOf(m);
+    const value=i<0?t("未报告","Unreported"):simFormat(entry.row.mean[i],change)+" "+simState.unit;
+    return m+t(" 分钟 "," min ")+value;
+  });
+  return '<p class="simObserved">'+label+' · '+points.join(' · ')+'</p>';
+}
 function simFoodLink(study,row) {
   const food=simFoods().find(f=>[f.normal,f.t2d].some(e=>e?.study.id===study.id&&e.row.en===row.en));
   if(!food)return "";
@@ -122,7 +132,7 @@ function simResults(food) {
     '<details><summary>'+t("查看各时间点及原研究","Time points and original evidence")+'</summary><table><thead><tr><th>min</th>'+cohorts.map(c=>'<th>'+simCohortLabel(c)+' ('+unit+')</th>').join("")+'</tr></thead><tbody>'+table+'</tbody></table>'+
     series.map(({entry})=>'<section class="simEvidence"><b>'+simCohortLabel(entry.cohort)+'</b> · n = '+entry.row.n+
       '<p>'+(entry.study.measure==="absolute"?t("研究实测餐前均值 ","Observed mean baseline ")+simFormat(entry.row.mean[0])+' '+unit:t("原文报告较餐前的平均变化","Study reports mean change from baseline"))+' · '+esc(english?entry.row.portionEn:entry.row.portionZh)+'</p>'+
-      simRef(entry)+'<p>'+esc(english?entry.study.methodEn:entry.study.methodZh)+'</p></section>').join("")+'</details>';
+      simObserved(entry)+simRef(entry)+'<p>'+esc(english?entry.study.methodEn:entry.study.methodZh)+'</p></section>').join("")+'</details>';
 }
 
 function simulatorView() {
@@ -142,8 +152,10 @@ function simulatorView() {
     ...active.filter(e=>!e.study.minutes.includes(120)).map(e=>simCohortLabel(e.cohort)+t("末次采样为餐后 "+e.study.minutes.at(-1)+" 分钟。"," was sampled through "+e.study.minutes.at(-1)+" minutes.")),
     ...active.filter(e=>e.study.noteZh).map(e=>english?e.study.noteEn:e.study.noteZh)
   ].filter(Boolean).join(" ");
-  const figureLink=ref.study.foodSection==="grainTubers"&&ref.study.dataUrl
-    ? ' · '+link(ref.study.dataUrl,t("核对原文图表","View source figure or table"))
+  const sourceFigures=new Set(active.map(({row,study})=>evidenceForCurve(row,study).url));
+  const figureUrl=sourceFigures.size===1?[...sourceFigures][0]:null;
+  const figureLink=figureUrl && figureUrl!==ref.study.url
+    ? ' · '+link(figureUrl,t("核对原文图表","View source figure or table"))
     : "";
   const shortcuts=foods.filter(f=>f.normal?.row.shortcut);
   const quickLinks=shortcuts.map(f=>{

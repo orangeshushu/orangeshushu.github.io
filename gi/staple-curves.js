@@ -936,5 +936,281 @@ window.atlasStapleStudies = [
       }
     ],
     "foodSection": "grainTubers"
+  },
+  {
+    "id": "adelaide-watson-potato-2019-normal",
+    "pairId": "adelaide-watson-potato-2019",
+    "en": "Adelaide potato test meal · age-matched nondiabetic controls",
+    "zh": "阿德莱德土豆试餐 · 年龄匹配的无糖尿病组",
+    "cohort": "normal",
+    "unit": "mmol/L",
+    "minutes": [
+      0,
+      15,
+      30,
+      60,
+      90,
+      120
+    ],
+    "measure": "absolute",
+    "evidenceKind": "digitized",
+    "url": "https://oup.silverchair-cdn.com/article-minimal/5421617",
+    "dataUrl": "https://oup.silverchair-cdn.com/article-minimal/5421617#label-136941219",
+    "methodEn": "Watson et al. (2019). Both groups ate the same meal over five minutes after an overnight fast. Time was measured from the first bite. A meter measured venous blood glucose in duplicate. The 18 older controls (mean age 65.4 years) included 14 with impaired glucose tolerance.",
+    "methodZh": "Watson 等（2019）。两组空腹过夜后在 5 分钟内吃完同一配方、同一份量的试餐，从开始进食计时。每个时点抽取静脉血，用血糖仪测量两次。18 名年长无糖尿病对照者平均 65.4 岁，其中 14 人糖耐量受损。",
+    "foods": [
+      {
+        "en": "Mashed potato with egg yolk and added glucose (Adelaide test meal)",
+        "zh": "蛋黄土豆泥（加葡萄糖的研究试餐）",
+        "n": 18,
+        "mean": [
+          5.9,
+          6.5,
+          7.8,
+          8.6,
+          8.3,
+          7.6
+        ],
+        "portionEn": "65 g powdered potato, 20 g glucose, 200 mL water and one egg yolk containing 100 µL of stable-isotope ¹³C-octanoic acid to track gastric emptying. Total carbohydrate 61.4 g.",
+        "portionZh": "65 克土豆粉、20 克葡萄糖、200 毫升水及 1 个蛋黄，整份含碳水化合物 61.4 克。蛋黄含 100 微升稳定同位素 ¹³C-辛酸，用于测胃排空。",
+        "locatorEn": "Table 1 reports the fasting mean. Timed means were read from Figure 1A (filled circles, older nondiabetic group) to the nearest 0.1 mmol/L.",
+        "locatorZh": "餐前组均值取自表 1。餐后读取图 1A 的实心圆（年长无糖尿病组），近似至 0.1 mmol/L。",
+        "shortcut": {
+          "en": "Potato mash with added glucose",
+          "zh": "加糖蛋黄土豆泥"
+        }
+      }
+    ],
+    "foodSection": "grainTubers",
+    "noteZh": "此对照组与 2 型组年龄相近，18 人中有 14 人糖耐量受损。",
+    "noteEn": "The controls were similar in age to the type 2 diabetes group. Fourteen of the 18 had impaired glucose tolerance."
+  },
+  {
+    "id": "adelaide-watson-potato-2019-t2d",
+    "pairId": "adelaide-watson-potato-2019",
+    "en": "Adelaide potato test meal · type 2 diabetes",
+    "zh": "阿德莱德土豆试餐 · 2 型糖尿病组",
+    "cohort": "t2d",
+    "unit": "mmol/L",
+    "minutes": [
+      0,
+      15,
+      30,
+      60,
+      90,
+      120
+    ],
+    "measure": "absolute",
+    "evidenceKind": "digitized",
+    "url": "https://oup.silverchair-cdn.com/article-minimal/5421617",
+    "dataUrl": "https://oup.silverchair-cdn.com/article-minimal/5421617#label-136941219",
+    "methodEn": "Watson et al. (2019). Both groups ate the same meal over five minutes after an overnight fast. Time was measured from the first bite. A meter measured venous blood glucose in duplicate. The 111 participants with type 2 diabetes (mean age 64.8 years) were managed by diet alone (52) or metformin alone (59).",
+    "methodZh": "Watson 等（2019）。两组空腹过夜后在 5 分钟内吃完同一配方、同一份量的试餐，从开始进食计时。每个时点抽取静脉血，用血糖仪测量两次。111 名 2 型糖尿病参与者平均 64.8 岁，其中 52 人仅以饮食管理，59 人仅服用二甲双胍。",
+    "foods": [
+      {
+        "en": "Mashed potato with egg yolk and added glucose (Adelaide test meal)",
+        "zh": "蛋黄土豆泥（加葡萄糖的研究试餐）",
+        "n": 111,
+        "mean": [
+          8.1,
+          8.4,
+          10.4,
+          13.5,
+          13.9,
+          13.0
+        ],
+        "portionEn": "65 g powdered potato, 20 g glucose, 200 mL water and one egg yolk containing 100 µL of stable-isotope ¹³C-octanoic acid to track gastric emptying. Total carbohydrate 61.4 g.",
+        "portionZh": "65 克土豆粉、20 克葡萄糖、200 毫升水及 1 个蛋黄，整份含碳水化合物 61.4 克。蛋黄含 100 微升稳定同位素 ¹³C-辛酸，用于测胃排空。",
+        "locatorEn": "Table 1 reports the fasting mean. Timed means were read from Figure 1A (filled triangles, full type 2 diabetes group) to the nearest 0.1 mmol/L.",
+        "locatorZh": "餐前组均值取自表 1。餐后读取图 1A 的实心三角形（2 型糖尿病全组），近似至 0.1 mmol/L。"
+      }
+    ],
+    "foodSection": "grainTubers"
+  },
+  {
+    "id": "japan-rice-1994-figure-1-normal",
+    "pairId": "japan-rice-1994-figure-1",
+    "en": "Japan · healthy women · Porridge and regular rice",
+    "zh": "日本 · 健康女性 · 大米粥与普通米饭",
+    "cohort": "normal",
+    "minutes": [
+      0,
+      30,
+      60,
+      120
+    ],
+    "unit": "mmol/L",
+    "measure": "absolute",
+    "evidenceKind": "digitized",
+    "url": "https://www.jstage.jst.go.jp/article/tonyobyo1958/37/10/37_10_731/_article/-char/en",
+    "dataUrl": "https://www.jstage.jst.go.jp/article/tonyobyo1958/37/10/37_10_731/_pdf#page=3",
+    "foods": [
+      {
+        "zh": "大米粥（全粥，409 克）",
+        "en": "Rice porridge (409 g)",
+        "n": 7,
+        "mean": [
+          4.6,
+          5.6,
+          5.0,
+          4.8
+        ],
+        "portionEn": "409 g cooked portion, 75 g carbohydrate; 60–90 mL hot water and 4 g seaweed relish offered",
+        "portionZh": "成品409克，含75克碳水化合物，另供热水60–90毫升及海苔佃煮4克",
+        "locatorZh": "柳泽等（1994），第733页，图1A上方血糖图（空心圆），原图数字化近似均值；人群及人数见表1和图注。",
+        "locatorEn": "Yanagisawa et al. (1994), p. 733, Fig. 1A, upper plasma glucose panel (open circles). Approximate digitized means; sample size from Table 1 and figure legend.",
+        "shortcut": {
+          "zh": "大米粥",
+          "en": "Rice porridge"
+        }
+      },
+      {
+        "zh": "普通米饭（196 克）",
+        "en": "Regular cooked rice (196 g)",
+        "n": 7,
+        "mean": [
+          4.6,
+          6.2,
+          5.4,
+          5.2
+        ],
+        "portionEn": "196 g cooked portion, 75 g carbohydrate; 60–90 mL hot water and 4 g seaweed relish offered",
+        "portionZh": "成品196克，含75克碳水化合物，另供热水60–90毫升及海苔佃煮4克",
+        "locatorZh": "柳泽等（1994），第733页，图1A上方血糖图（实心圆），原图数字化近似均值；人群及人数见表1和图注。 正文方法与英文摘要记196克，日文摘要记198克。",
+        "locatorEn": "Yanagisawa et al. (1994), p. 733, Fig. 1A, upper plasma glucose panel (filled circles). Approximate digitized means; sample size from Table 1 and figure legend. Methods and English abstract give 196 g, Japanese abstract gives 198 g."
+      }
+    ],
+    "methodZh": "柳泽等（1994），图1A上方血糖图，健康女性（7人）。早晨空腹试餐，各份含75克碳水化合物，另供热水60–90毫升及海苔佃煮4克。血浆葡萄糖在餐前和餐后30、60、120分钟测量。按原图标记中心读取组均值，mg/dL除以18后取至0.1 mmol/L。",
+    "methodEn": "Yanagisawa et al. (1994), upper glucose panel of Fig. 1A, healthy women (n=7). Each fasting morning meal provided 75 g carbohydrate, with 60–90 mL hot water and 4 g seaweed relish offered. Plasma glucose was measured at baseline, 30, 60 and 120 min. Group means digitized at marker centers, divided by 18 and rounded to 0.1 mmol/L."
+  },
+  {
+    "id": "japan-rice-1994-figure-1-t2d",
+    "pairId": "japan-rice-1994-figure-1",
+    "en": "Japan · better-controlled type 2 diabetes · Porridge and regular rice",
+    "zh": "日本 · 血糖控制较好的2型糖尿病组 · 大米粥与普通米饭",
+    "cohort": "t2d",
+    "minutes": [
+      0,
+      30,
+      60,
+      120
+    ],
+    "unit": "mmol/L",
+    "measure": "absolute",
+    "evidenceKind": "digitized",
+    "url": "https://www.jstage.jst.go.jp/article/tonyobyo1958/37/10/37_10_731/_article/-char/en",
+    "dataUrl": "https://www.jstage.jst.go.jp/article/tonyobyo1958/37/10/37_10_731/_pdf#page=3",
+    "foods": [
+      {
+        "zh": "大米粥（全粥，409 克）",
+        "en": "Rice porridge (409 g)",
+        "n": 5,
+        "mean": [
+          7.1,
+          11.5,
+          14.6,
+          13.5
+        ],
+        "portionEn": "409 g cooked portion, 75 g carbohydrate; 60–90 mL hot water and 4 g seaweed relish offered",
+        "portionZh": "成品409克，含75克碳水化合物，另供热水60–90毫升及海苔佃煮4克",
+        "locatorZh": "柳泽等（1994），第733页，图1B上方血糖图（空心圆），原图数字化近似均值；人群及人数见表1和图注。",
+        "locatorEn": "Yanagisawa et al. (1994), p. 733, Fig. 1B, upper plasma glucose panel (open circles). Approximate digitized means; sample size from Table 1 and figure legend."
+      },
+      {
+        "zh": "普通米饭（196 克）",
+        "en": "Regular cooked rice (196 g)",
+        "n": 5,
+        "mean": [
+          6.7,
+          9.9,
+          12.1,
+          12.4
+        ],
+        "portionEn": "196 g cooked portion, 75 g carbohydrate; 60–90 mL hot water and 4 g seaweed relish offered",
+        "portionZh": "成品196克，含75克碳水化合物，另供热水60–90毫升及海苔佃煮4克",
+        "locatorZh": "柳泽等（1994），第733页，图1B上方血糖图（实心圆），原图数字化近似均值；人群及人数见表1和图注。 正文方法与英文摘要记196克，日文摘要记198克。",
+        "locatorEn": "Yanagisawa et al. (1994), p. 733, Fig. 1B, upper plasma glucose panel (filled circles). Approximate digitized means; sample size from Table 1 and figure legend. Methods and English abstract give 196 g, Japanese abstract gives 198 g."
+      }
+    ],
+    "methodZh": "柳泽等（1994），图1B上方血糖图，血糖控制较好的2型糖尿病组（5人）。早晨空腹试餐，各份含75克碳水化合物，另供热水60–90毫升及海苔佃煮4克。血浆葡萄糖在餐前和餐后30、60、120分钟测量。按原图标记中心读取组均值，mg/dL除以18后取至0.1 mmol/L。本亚组按空腹血糖低于140 mg/dL且HbA1c低于8%界定。",
+    "methodEn": "Yanagisawa et al. (1994), upper glucose panel of Fig. 1B, better-controlled type 2 diabetes (n=5). Each fasting morning meal provided 75 g carbohydrate, with 60–90 mL hot water and 4 g seaweed relish offered. Plasma glucose was measured at baseline, 30, 60 and 120 min. Group means digitized at marker centers, divided by 18 and rounded to 0.1 mmol/L. This subgroup had fasting blood glucose below 140 mg/dL and HbA1c below 8%.",
+    "noteZh": "2 型组采用原图 B 中血糖控制较好的亚组。",
+    "noteEn": "The type 2 diabetes curve uses the better-controlled subgroup in panel B."
+  },
+  {
+    "id": "japan-rice-1994-figure-2-normal",
+    "pairId": "japan-rice-1994-figure-2",
+    "en": "Japan · healthy women · Firm-cooked rice",
+    "zh": "日本 · 健康女性 · 偏硬米饭",
+    "cohort": "normal",
+    "minutes": [
+      0,
+      30,
+      60,
+      120
+    ],
+    "unit": "mmol/L",
+    "measure": "absolute",
+    "evidenceKind": "digitized",
+    "url": "https://www.jstage.jst.go.jp/article/tonyobyo1958/37/10/37_10_731/_article/-char/en",
+    "dataUrl": "https://www.jstage.jst.go.jp/article/tonyobyo1958/37/10/37_10_731/_pdf#page=4",
+    "foods": [
+      {
+        "zh": "偏硬米饭（162 克）",
+        "en": "Firm-cooked rice (162 g)",
+        "n": 7,
+        "mean": [
+          4.6,
+          5.7,
+          4.6,
+          4.6
+        ],
+        "portionEn": "162 g cooked portion, 75 g carbohydrate; 60–90 mL hot water and 4 g seaweed relish offered",
+        "portionZh": "成品162克，含75克碳水化合物，另供热水60–90毫升及海苔佃煮4克",
+        "locatorZh": "柳泽等（1994），第734页，图2A上方血糖图（空心方块），原图数字化近似均值；人群及人数见表1和图注。",
+        "locatorEn": "Yanagisawa et al. (1994), p. 734, Fig. 2A, upper plasma glucose panel (open squares). Approximate digitized means; sample size from Table 1 and figure legend."
+      }
+    ],
+    "methodZh": "柳泽等（1994），图2A上方血糖图，健康女性（7人）。早晨空腹试餐，各份含75克碳水化合物，另供热水60–90毫升及海苔佃煮4克。血浆葡萄糖在餐前和餐后30、60、120分钟测量。按原图标记中心读取组均值，mg/dL除以18后取至0.1 mmol/L。",
+    "methodEn": "Yanagisawa et al. (1994), upper glucose panel of Fig. 2A, healthy women (n=7). Each fasting morning meal provided 75 g carbohydrate, with 60–90 mL hot water and 4 g seaweed relish offered. Plasma glucose was measured at baseline, 30, 60 and 120 min. Group means digitized at marker centers, divided by 18 and rounded to 0.1 mmol/L."
+  },
+  {
+    "id": "japan-rice-1994-figure-2-t2d",
+    "pairId": "japan-rice-1994-figure-2",
+    "en": "Japan · better-controlled type 2 diabetes · Firm-cooked rice",
+    "zh": "日本 · 血糖控制较好的2型糖尿病组 · 偏硬米饭",
+    "cohort": "t2d",
+    "minutes": [
+      0,
+      30,
+      60,
+      120
+    ],
+    "unit": "mmol/L",
+    "measure": "absolute",
+    "evidenceKind": "digitized",
+    "url": "https://www.jstage.jst.go.jp/article/tonyobyo1958/37/10/37_10_731/_article/-char/en",
+    "dataUrl": "https://www.jstage.jst.go.jp/article/tonyobyo1958/37/10/37_10_731/_pdf#page=4",
+    "foods": [
+      {
+        "zh": "偏硬米饭（162 克）",
+        "en": "Firm-cooked rice (162 g)",
+        "n": 7,
+        "mean": [
+          5.0,
+          9.6,
+          11.2,
+          10.6
+        ],
+        "portionEn": "162 g cooked portion, 75 g carbohydrate; 60–90 mL hot water and 4 g seaweed relish offered",
+        "portionZh": "成品162克，含75克碳水化合物，另供热水60–90毫升及海苔佃煮4克",
+        "locatorZh": "柳泽等（1994），第734页，图2B上方血糖图（空心方块），原图数字化近似均值；人群及人数见表1和图注。",
+        "locatorEn": "Yanagisawa et al. (1994), p. 734, Fig. 2B, upper plasma glucose panel (open squares). Approximate digitized means; sample size from Table 1 and figure legend."
+      }
+    ],
+    "methodZh": "柳泽等（1994），图2B上方血糖图，血糖控制较好的2型糖尿病组（7人）。早晨空腹试餐，各份含75克碳水化合物，另供热水60–90毫升及海苔佃煮4克。血浆葡萄糖在餐前和餐后30、60、120分钟测量。按原图标记中心读取组均值，mg/dL除以18后取至0.1 mmol/L。本亚组按空腹血糖低于140 mg/dL且HbA1c低于8%界定。",
+    "methodEn": "Yanagisawa et al. (1994), upper glucose panel of Fig. 2B, better-controlled type 2 diabetes (n=7). Each fasting morning meal provided 75 g carbohydrate, with 60–90 mL hot water and 4 g seaweed relish offered. Plasma glucose was measured at baseline, 30, 60 and 120 min. Group means digitized at marker centers, divided by 18 and rounded to 0.1 mmol/L. This subgroup had fasting blood glucose below 140 mg/dL and HbA1c below 8%.",
+    "noteZh": "2 型组采用原图 B 中血糖控制较好的亚组。",
+    "noteEn": "The type 2 diabetes curve uses the better-controlled subgroup in panel B."
   }
 ];
