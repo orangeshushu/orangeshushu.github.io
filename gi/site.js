@@ -75,7 +75,7 @@ function renderWork(){
 function render(){
   document.documentElement.lang=t("zh-CN","en");document.title=t("食物血糖图谱","Food Glucose Atlas")+" · NourishDay";
   $("siteTitle").textContent=t("食物血糖图谱","Food Glucose Atlas");
-  $("intro").textContent=t("查血糖生成指数（GI）和餐后 1、2 小时的血糖，点开食物查看原始数据。","Explore glycemic index (GI) and blood glucose one and two hours after eating. Open a food to check the evidence.");
+  $("intro").textContent=t("查食物 GI 和餐后血糖，点开卡片看原文。","Explore food GI and post-meal glucose. Open a card for the original study.");
   $("searchLabel").textContent=t("查找食物或做法","Find a food or preparation");
   $("giQuery").placeholder=t("输入食物、品种或做法","Enter a food, variety or preparation");
   $("giQuery").value=query;$("searchSubmit").textContent=t("搜索","Search");

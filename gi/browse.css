@@ -31,22 +31,40 @@
 .foodTools #clearFilters {border:0;text-decoration:underline;background:transparent}
 [hidden]{display:none!important}.foodFilterPanel[open] {width:100%;background:white;padding:8px 12px;border-radius:6px}
 .foodBar {margin:4px 0;color:#4e6259}.foodPager button {min-width:32px}
-.foodGrid {grid-template-columns:repeat(auto-fill,minmax(min(205px,100%),1fr));gap:9px;margin-top:8px}
-.foodGrid button.foodTile {display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;min-width:0;padding:11px 13px;text-align:start;background:#fff;border:1px solid #cfd9cf;border-radius:11px;box-shadow:0 1px 1px #17362608}
+.chartKey {margin:3px 0 10px;color:var(--mute);font-size:.86rem;line-height:1.45}
+.foodGrid {grid-template-columns:repeat(auto-fill,minmax(min(205px,100%),1fr));gap:10px;margin-top:8px}
+.foodGrid button.foodTile {display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;gap:10px;min-width:0;padding:12px;text-align:start;background:#fff;border:1px solid #cedbd1;border-radius:13px;box-shadow:0 2px 5px #21483108}
 .foodGrid button.foodTile:hover {border-color:#6e947d;box-shadow:0 2px 8px #294e3712}
-.tileHead {display:flex;align-items:center;gap:10px;min-height:45px}
-.tilePhoto:is(img) {width:45px;height:45px;border-radius:7px;flex:none}
-.tileText {display:flex;flex-direction:column;gap:2px}
-.tileKind {font-size:.77rem;color:#506b57;font-weight:510}
-.tileName {font-size:1rem;font-weight:690;line-height:1.3;overflow-wrap:anywhere}
-.tileGi {display:flex;align-items:baseline;gap:8px;margin:8px 0 4px;font-variant-numeric:tabular-nums}
-.tileGi small {color:var(--mute);font-size:.84rem}.tileGi b {font-size:1.12rem;color:#164b38}
-.tileEvidence {font-size:.78rem;color:#52665d;border-top:1px solid #e4e9e2;padding-top:4px}
-.tileReadings {display:flex;flex-wrap:wrap;gap:3px 11px;color:#47594d;font-size:.82rem;margin-top:3px}
-.tileReadings b {font-weight:670;color:var(--ink);font-variant-numeric:tabular-nums}
-.foodGrid.listStyle {display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
-.foodGrid.listStyle .foodTile {display:grid;grid-template-columns:minmax(0,1.8fr) minmax(98px,.65fr) minmax(115px,.7fr) minmax(130px,1fr);align-items:center;border-width:0 0 1px;border-radius:0;min-height:55px;gap:12px;padding:6px 12px}
-.listStyle .tileGi,.listStyle .tileReadings {margin:0}.listStyle .tileEvidence {border:0;padding:0}.listStyle .tilePhoto {width:36px;height:36px}
+.foodGrid button.foodTile:focus-visible {outline:3px solid #18654c;outline-offset:2px}
+.tileHead {display:flex;align-items:center;gap:8px;min-height:36px}
+.tilePhoto:is(img) {width:39px;height:39px;border-radius:9px;flex:none}
+.tileName {font-size:1rem;font-weight:690;line-height:1.3;overflow-wrap:anywhere;min-width:0}
+.tileGiBadge {margin-inline-start:auto;flex:none;padding:3px 6px;border-radius:6px;background:#edf2e9;color:#31553c;font-size:.76rem;font-weight:650;white-space:nowrap}
+.miniChart,.giSummary {background:#f1f7f3;border-radius:8px;font-variant-numeric:tabular-nums}
+.miniChart {display:grid;grid-template-columns:19px minmax(0,1fr);padding:5px 9px 4px 5px;row-gap:1px}
+.miniScale {position:relative;color:#506c60;font:500 .75rem/1 var(--body)}
+.miniTick {white-space:nowrap;position:absolute;right:3px;transform:translateY(-50%)}
+.miniChart svg {display:block;width:100%;height:59px;overflow:visible}
+.miniChart .miniGuide {stroke:#cfdfd4;stroke-width:1;vector-effect:non-scaling-stroke}
+.miniChart polyline {fill:none;stroke:#0f7057;stroke-width:2;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.miniChart circle {fill:#0d674e}
+.miniTime,.giEnds {display:flex;justify-content:space-between;color:#4f695c;font:500 .75rem/1.2 var(--body)}
+.miniTime {grid-column:2;position:relative}
+.miniTime span:nth-child(2) {position:absolute;left:50%;transform:translateX(-50%)}
+.giSummary {display:flex;flex-direction:column;justify-content:center;gap:3px;min-height:82px;padding:8px 12px;background:#f4f5ef}
+.giHeadline {display:flex;align-items:baseline;gap:7px;color:#41593c;font-size:.85rem}
+.giHeadline b {color:#29492c;font-size:1.5rem;line-height:1.15;font-weight:680}
+.giTrack {display:block;position:relative;background:#d6dfcc;height:3px;margin:6px 3px}
+.giTrack i {position:absolute;height:100%;background:#567248}
+.giTrack i::before,.giTrack i::after {content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:#47683b;top:50%;transform:translate(-50%,-50%)}
+.giTrack i::after {left:100%}
+.giGrouped {font-size:.9rem;color:#41593c}
+.foodGrid.listStyle {grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+.foodGrid.listStyle .foodTile {display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,200px);align-items:center;gap:16px;border-width:0 0 1px;border-radius:0;padding:6px 12px;min-height:58px;box-shadow:none}
+.listStyle .miniChart svg {height:39px}
+.listStyle .giSummary {min-height:51px;padding:4px 10px}
+.listStyle .giHeadline b {font-size:1.1rem}
+.listStyle .tilePhoto {width:34px;height:34px}
 .sourceProof {font-size:.86rem;line-height:1.5;margin:6px 0 8px;overflow-wrap:anywhere}
 .sourceProof span {display:block;font-size:.77rem;color:#516557}
 .foodDataRow {display:grid;grid-template-columns:minmax(85px,.28fr) minmax(0,1fr);align-items:start;border-bottom:1px solid #dee6db;padding-block:12px}
@@ -82,11 +100,12 @@
   .modes {gap:15px}.modes button {font-size:.85rem;min-height:44px}
   #work {padding-top:12px}.foodFilterPanel>summary {font-size:.83rem}
   .foodGrid {grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
-  .foodGrid button.foodTile {padding:8px}.tileName {font-size:.9rem}
-  .tileHead {gap:7px;min-height:35px}.tilePhoto:is(img) {width:33px;height:33px}.tileKind {font-size:.74rem}
-  .tileReadings {gap:3px 7px;font-size:.78rem}.tileGi {margin:5px 0 2px}
-  .foodGrid.listStyle .foodTile {grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:4px 10px}
-  .listStyle .tileHead {grid-row:span 3}.listStyle .tileEvidence,.listStyle .tileReadings {grid-column:2}
+  .foodGrid button.foodTile {padding:8px;gap:7px}.tileName {font-size:.92rem}
+  .tileHead {gap:5px;min-height:33px}.tileName {flex:1 1 auto}
+  .tilePhoto:is(img) {width:30px;height:30px}.tileGiBadge {padding:2px 4px}
+  .miniChart {padding:4px 6px 4px 3px;grid-template-columns:20px minmax(0,1fr)}
+  .miniChart svg {height:48px}.giSummary {min-height:68px;padding:5px 9px}
+  .foodGrid.listStyle .foodTile {grid-template-columns:minmax(0,1fr) minmax(116px,38%);gap:8px}
   .seriesStats>div {padding:6px}.foodDataRow {grid-template-columns:68px 1fr}
 }
 @media(max-width:340px){.foodGrid:not(.listStyle){grid-template-columns:1fr}}

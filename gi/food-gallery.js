@@ -47,29 +47,46 @@ function foodCatalogue() {
   return foodCache;
 }
 
-function giRange(rows) {
-  const values = rows.map(row=>row.gi).filter(Number.isFinite);
-  if (!values.length) return "";
-  const min = Math.min(...values), max = Math.max(...values);
-  return min === max ? String(min) : min + "–" + max;
+function previewCurve({row,study}) {
+  const times=study.minutes;
+  const changes=row.mean.map(v=>v-row.mean[0]);
+  const low=Math.min(-1,Math.floor(Math.min(...changes))), high=Math.max(5,Math.ceil(Math.max(...changes)));
+  const x=m=>2+196*m/120;
+  const y=v=>3+56*(high-v)/(high-low);
+  const points=changes.map((v,i)=>x(times[i]).toFixed(2)+','+y(v).toFixed(2)).join(' ');
+  const label=titleOf(study)+' · '+t("较餐前变化","Change from baseline")+' (mmol/L) · '+
+    times.map((m,i)=>m+' min: '+changes[i].toFixed(1)).join(', ');
+  const guide=v=>'<span class="miniTick" style="top:'+((y(v)/62)*100)+'%">'+(v>0?'+':'')+v+'</span>';
+  const dots=changes.map((v,i)=>'<circle cx="'+x(times[i])+'" cy="'+y(v)+'" r="1.8"/>').join('');
+  return '<span class="miniChart" role="img" aria-label="'+esc(label)+'" title="'+esc(label)+'">'+
+    '<span class="miniScale" aria-hidden="true">'+guide(4)+guide(0)+'</span>'+
+    '<svg viewBox="0 0 200 62" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+
+    [4,2,0].map(v=>'<line class="miniGuide" x1="2" x2="198" y1="'+y(v)+'" y2="'+y(v)+'"/>').join('')+
+    (times.length>2?'<polyline points="'+points+'"/>':'')+dots+'</svg>'+
+    '<span class="miniTime" aria-hidden="true"><span>'+t("餐前","Start")+'</span><span>'+t("1 小时","1 h")+'</span><span>'+t("2 小时","2 h")+'</span></span></span>';
 }
 
 function foodCard(group, rows) {
-  const range = giRange(rows);
-  const giLabel = range ? (range.includes("–")?t("GI 范围","GI range"):"GI") : "GI";
-  const giValue = range || (rows.length ? t("见分组","By group") : t("未收录","Unavailable"));
-  const photo = group.photo ? '<img class="tilePhoto" loading="lazy" decoding="async" alt="" src="'+esc(group.photo.src)+'">' : "";
+  const values=rows.map(r=>r.gi).filter(Number.isFinite);
+  const min=Math.min(...values), max=Math.max(...values);
+  const range=values.length?(min===max?String(min):min+'–'+max):'';
+  const photo=group.photo?'<img class="tilePhoto" loading="lazy" decoding="async" alt="" src="'+esc(group.photo.src)+'">':'';
   const first=group.series[0];
-  let reading;
+  const badge=first&&range?'<span class="tileGiBadge">GI '+esc(range)+'</span>':'';
+  let visual;
   if(first) {
-    const value=m=>curveNumber(first.row.mean[first.study.minutes.indexOf(m)],first.study);
-    reading='<span class="tileReadings"><span>'+t("1 小时","1 h")+' <b>'+value(60)+'</b></span><span>'+t("2 小时","2 h")+' <b>'+value(120)+'</b></span></span>';
+    visual=previewCurve(first);
+  } else if(range) {
+    const floor=Math.min(0,min), ceiling=Math.max(100,max);
+    const left=100*(min-floor)/(ceiling-floor), width=100*(max-min)/(ceiling-floor);
+    visual='<span class="giSummary"><span class="giHeadline"><span>GI</span><b>'+esc(range)+'</b></span>'+
+      '<span class="giTrack" aria-hidden="true"><i style="left:'+left+'%;width:'+width+'%"></i></span>'+
+      '<span class="giEnds" aria-hidden="true"><span>'+floor+'</span><span>'+ceiling+'</span></span></span>';
+  } else {
+    visual='<span class="giSummary giGrouped">'+t("查看 GI 分组结果","View GI group results")+'</span>';
   }
-  const dataLabel=first?(group.series.length>1?t("首组 · ","First cohort · "):"")+curveMetric(first.study)+" · "+first.study.unit:t("仅收录 GI","GI records only");
-  return '<button type="button" class="foodTile" data-open-food="'+esc(group.key)+'"><span class="tileHead">'+photo+
-    '<span class="tileText"><span class="tileKind">'+esc(categoryName(group.category))+'</span><span class="tileName">'+esc(foodName(group))+'</span></span></span>'+
-    '<span class="tileGi"><small>'+giLabel+'</small><b>'+esc(giValue)+'</b></span>'+
-    '<span class="tileEvidence">'+esc(dataLabel)+'</span>'+(reading||"")+'</button>';
+  return '<button type="button" class="foodTile" aria-haspopup="dialog" data-open-food="'+esc(group.key)+'">'+
+    '<span class="tileHead">'+photo+'<span class="tileName">'+esc(foodName(group))+'</span>'+badge+'</span>'+visual+'</button>';
 }
 
 let selectedCategory = "all";
@@ -90,7 +107,8 @@ function giView() {
     '<select id="giRegion" aria-label="'+t("地区","Region")+'"><option value="">'+t("全部 GI 地区","All GI regions")+'</option>'+regionOptions+'</select>'+
     '<select id="sort" aria-label="'+t("排序","Sort")+'"><option value="source">'+t("实测曲线优先","Measured curves first")+'</option><option value="asc">'+t("最低 GI 升序","Lowest GI first")+'</option><option value="desc">'+t("最高 GI 降序","Highest GI first")+'</option></select></div></details><button id="clearFilters">'+t("清除筛选","Clear filters")+'</button></div>'+
     '<div class="foodBar"><span id="giCount" role="status"></span><div class="foodPager"><label>'+t("每页 ","Per page ")+'<select id="pageSize">'+[60,120,240].map(n=>'<option>'+n+'</option>').join("")+'</select></label><span id="topPager"></span></div></div>'+
-    '<div id="foodGrid" class="foodGrid"></div><div class="foodBar"><span class="foodLegend">'+t("GI 以葡萄糖为 100。餐后读数是所示试验的人群均值。","GI uses glucose = 100. Post-meal readings are group means from the displayed trial.")+'</span><div id="bottomPager" class="foodPager"></div></div></section></div>'+
+    '<p id="chartKey" class="chartKey">'+t("血糖较餐前的变化（mmol/L）","Change from baseline (mmol/L)")+'</p>'+
+    '<div id="foodGrid" class="foodGrid"></div><div class="foodBar"><span class="foodLegend">'+t("GI 以葡萄糖为 100。","GI uses glucose = 100.")+'</span><div id="bottomPager" class="foodPager"></div></div></section></div>'+
     '<details id="workbookRail" class="sourceRail"><summary>'+t("扩展检索 · 国际 GI 工作簿","Extended search · International GI workbook")+'</summary><div id="importer" class="importBar"></div></details>';
   const categoryChange=id=>{selectedCategory=id; listing.page=0;giResults()};
   $("categorySelect").onchange=e=>categoryChange(e.target.value);
@@ -159,7 +177,9 @@ function giResults() {
   $("allFoods").setAttribute("aria-pressed",String(!curveOnly && listing.source!=="chtc-product-gi"));
   $("curveFoods").setAttribute("aria-pressed",String(curveOnly));
   $("giCount").textContent=total?t("显示 ","Showing ")+numberText(start+1)+"–"+numberText(Math.min(start+listing.size,total))+t("，共 "," of ")+numberText(total)+t(" 项"," foods & preparations"):t("没有匹配的食物。可清除筛选或换一个关键词。","No matching foods. Clear filters or try another term.");
-  $("foodGrid").innerHTML=matches.slice(start,start+listing.size).map(m=>foodCard(m.group,m.rows)).join("");
+  const pageFoods=matches.slice(start,start+listing.size);
+  $("chartKey").hidden=!pageFoods.some(m=>m.group.series.length);
+  $("foodGrid").innerHTML=pageFoods.map(m=>foodCard(m.group,m.rows)).join("");
   const pager='<button data-page-step="-1" '+(listing.page===0?"disabled":"")+' aria-label="'+t("上一页","Previous page")+'">‹</button> '+(listing.page+1)+" / "+pages+' <button data-page-step="1" '+(listing.page+1>=pages?"disabled":"")+' aria-label="'+t("下一页","Next page")+'">›</button>';
   $("topPager").innerHTML=pager; $("bottomPager").innerHTML=pager;
 }
