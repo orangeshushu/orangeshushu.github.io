@@ -143,3 +143,11 @@
   .listStyle .pairedPreview {min-width:0}
   .foodGrid.listStyle .foodTile:has(.pairedPreview) {grid-template-columns:minmax(0,1fr) minmax(148px,45%)}
 }
+
+#sortLabel {display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:.9rem}
+#sortLabel select {max-width:100%}
+.rankedPreview,.riseGap {display:grid;min-width:0}
+.rankedPreview {gap:6px}
+.riseGap {padding-inline:3px;color:var(--ink);font-size:.85rem;font-variant-numeric:tabular-nums}
+.riseGap strong {font-size:1rem}
+.riseGap small {font-size:.77rem;color:var(--mute)}

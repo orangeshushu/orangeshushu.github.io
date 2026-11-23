@@ -100,7 +100,16 @@ function previewCurve(entries) {
     readings+(paired?'</span>':'')+'</span>';
 }
 
-function foodCard(group, rows) {
+const gapMinutes={gap1h:60, gap2h:120};
+
+// Catalogue pairs are ordered [without diabetes, type 2 diabetes].
+function signedRiseGap(pair, minute) {
+  const [normal,t2d]=pair.map(({row,study})=>
+    row.mean[study.minutes.indexOf(minute)]-row.mean[study.minutes.indexOf(0)]);
+  return Number((t2d-normal).toFixed(10));
+}
+
+function foodCard(group, rows, minute, gap) {
   const values=rows.map(r=>r.gi).filter(Number.isFinite);
   const min=Math.min(...values), max=Math.max(...values);
   const range=values.length?(min===max?String(min):min+'–'+max):'';
@@ -110,6 +119,15 @@ function foodCard(group, rows) {
   let visual;
   if(first) {
     visual=previewCurve(group.pair || [first]);
+    if(minute) {
+      const hour=minute/60;
+      const direction=gap>0?t("2 型糖尿病组升幅更大","Greater rise with type 2 diabetes"):
+        gap<0?t("无糖尿病组升幅更大","Greater rise without diabetes"):t("两组变化相同","Equal change");
+      const magnitude=Math.abs(gap);
+      const amount=magnitude>0 && magnitude<0.05?"&lt;0.1":magnitude.toFixed(1);
+      visual='<span class="rankedPreview">'+visual+'<span class="riseGap"><span>'+
+        t(hour+" 小时相差 ",hour+" h gap ")+'<strong>'+amount+'</strong> mmol/L</span><small>'+direction+'</small></span></span>';
+    }
   } else if(range) {
     const floor=Math.min(0,min), ceiling=Math.max(100,max);
     const left=100*(min-floor)/(ceiling-floor), width=100*(max-min)/(ceiling-floor);
@@ -147,9 +165,12 @@ function giView() {
     '<div class="foodTools">'+curveButtons+'<button id="evaluatedFoods"></button><details class="foodFilterPanel"><summary>'+t("来源与排序","Sources & sorting")+'</summary><div class="foodTools">'+
     '<select id="giSource" aria-label="'+t("GI 来源","GI source")+'"><option value="all">'+t("所有 GI 来源","All GI sources")+'</option>'+sourceOptions()+'</select>'+
     '<select id="giRegion" aria-label="'+t("地区","Region")+'"><option value="">'+t("全部 GI 地区","All GI regions")+'</option>'+regionOptions+'</select>'+
-    '<select id="sort" aria-label="'+t("排序","Sort")+'"><option value="source">'+t("实测曲线优先","Measured curves first")+'</option><option value="asc">'+t("最低 GI 升序","Lowest GI first")+'</option><option value="desc">'+t("最高 GI 降序","Highest GI first")+'</option></select></div></details><button id="clearFilters">'+t("清除筛选","Clear filters")+'</button></div>'+
+    '<span id="usualSort"><label id="sortLabel"><span>'+t("排序","Sort by")+'</span> <select id="sort" aria-label="'+t("排序","Sort by")+'">'+
+    '<option value="gap1h">'+t("1 小时升幅差距：从大到小","1 h rise gap · largest first")+'</option><option value="gap2h">'+t("2 小时升幅差距：从大到小","2 h rise gap · largest first")+'</option>'+
+    '<option value="source">'+t("实测曲线优先","Measured curves first")+'</option><option value="asc">'+t("最低 GI 升序","Lowest GI first")+'</option><option value="desc">'+t("最高 GI 降序","Highest GI first")+'</option></select></label></span></div></details><button id="clearFilters">'+t("清除筛选","Clear filters")+'</button></div>'+
+    '<div id="completeSort" class="foodTools" hidden></div>'+
     '<div class="foodBar"><span id="giCount" role="status"></span><div class="foodPager"><label>'+t("每页 ","Per page ")+'<select id="pageSize">'+[60,120,240].map(n=>'<option>'+n+'</option>').join("")+'</select></label><span id="topPager"></span></div></div>'+
-    '<p id="chartKey" class="chartKey">'+t("血糖较餐前的变化（mmol/L）","Change from baseline (mmol/L)")+'</p>'+
+    '<p id="chartKey" class="chartKey"></p>'+
     '<div id="foodGrid" class="foodGrid"></div><div class="foodBar"><span class="foodLegend">'+t("GI 以葡萄糖为 100。","GI uses glucose = 100.")+'</span><div id="bottomPager" class="foodPager"></div></div></section></div>'+
     '<details id="workbookRail" class="sourceRail"><summary>'+t("扩展检索 · 国际 GI 工作簿","Extended search · International GI workbook")+'</summary><div id="importer" class="importBar"></div></details>';
   const categoryChange=id=>{selectedCategory=id; listing.page=0;giResults()};
@@ -159,6 +180,7 @@ function giView() {
   $("listMode").onclick=()=>{displayStyle="list";giResults()};
   for (const [id,filter] of curveChoices) {
     $(id).onclick=()=>{
+      if(filter==="complete" && curveFilter!=="complete") sortBy="gap1h";
       curveFilter=filter;
       if(listing.source==="chtc-product-gi") listing.source="all";
       $("giSource").value=listing.source;
@@ -188,6 +210,17 @@ function giView() {
 }
 function giResults() {
   const {groups} = foodCatalogue();
+  const complete=curveFilter==="complete";
+  if(!complete && gapMinutes[sortBy]) sortBy="source";
+  const minute=complete?gapMinutes[sortBy]:null;
+  const sortHost=$(complete?"completeSort":"usualSort");
+  if($("sortLabel").parentNode!==sortHost) sortHost.append($("sortLabel"));
+  $("completeSort").hidden=!complete;
+  for(const option of $("sort").options) {
+    option.hidden=!complete && Boolean(gapMinutes[option.value]);
+    option.disabled=option.hidden;
+  }
+  $("sort").value=sortBy;
   const tokens = normalized(query).split(" ").filter(Boolean);
   const restrictRows = listing.source!=="all" || Boolean(listing.region);
   const matches=[];
@@ -199,16 +232,17 @@ function giResults() {
       (!listing.region || [r.region,r.country].includes(listing.region))) : group.rows;
     if (restrictRows&&!rows.length) continue;
     const numbers=rows.map(r=>r.gi).filter(Number.isFinite);
-    const rank=sortBy==="asc"?Math.min(...numbers):sortBy==="desc"?-Math.max(...numbers):
+    const gap=minute?signedRiseGap(group.pair,minute):null;
+    const rank=minute?-Math.abs(gap):sortBy==="asc"?Math.min(...numbers):sortBy==="desc"?-Math.max(...numbers):
       (group.pair?.[0].row.shortcut?-2:group.pair?0:group.series.length?2:4)+(group.photo?0:1);
-    matches.push({group,rows,rank});
+    matches.push({group,rows,rank,gap});
   }
   matches.sort((a,b)=>a.rank-b.rank);
   const total=matches.length, pages=Math.max(1,Math.ceil(total/listing.size));
   listing.page=Math.max(0,Math.min(listing.page,pages-1));
   const start=listing.page*listing.size;
   const url=new URL(location.href);
-  const active={category:selectedCategory==="all"?"":selectedCategory,source:listing.source==="all"?"":listing.source,q:query,curves:curveFilter==="measured"?"1":curveFilter,layout:displayStyle==="list"?"list":""};
+  const active={sort:complete || sortBy!=="source"?sortBy:"",category:selectedCategory==="all"?"":selectedCategory,source:listing.source==="all"?"":listing.source,q:query,curves:curveFilter==="measured"?"1":curveFilter,layout:displayStyle==="list"?"list":""};
   for(const [name,value] of Object.entries(active)) {if(value)url.searchParams.set(name,value);else url.searchParams.delete(name)}
   if(url.href!==location.href)history.replaceState(null,"",url);
   $("groupHeading").textContent=selectedCategory==="all"?t("全部食物","All foods"):categoryName(selectedCategory);
@@ -226,8 +260,10 @@ function giResults() {
   });
   $("giCount").textContent=total?t("显示 ","Showing ")+numberText(start+1)+"–"+numberText(Math.min(start+listing.size,total))+t("，共 "," of ")+numberText(total)+t(" 项"," foods & preparations"):t("没有匹配的食物。可清除筛选或换一个关键词。","No matching foods. Clear filters or try another term.");
   const pageFoods=matches.slice(start,start+listing.size);
+  $("chartKey").textContent=t("血糖较餐前的变化（mmol/L）","Change from baseline (mmol/L)")+
+    (minute?t(" · 两组升幅先求差，再四舍五入。"," · Gaps are calculated before rounding."):"");
   $("chartKey").hidden=!pageFoods.some(m=>m.group.series.length);
-  $("foodGrid").innerHTML=pageFoods.map(m=>foodCard(m.group,m.rows)).join("");
+  $("foodGrid").innerHTML=pageFoods.map(m=>foodCard(m.group,m.rows,minute,m.gap)).join("");
   const pager='<button data-page-step="-1" '+(listing.page===0?"disabled":"")+' aria-label="'+t("上一页","Previous page")+'">‹</button> '+(listing.page+1)+" / "+pages+' <button data-page-step="1" '+(listing.page+1>=pages?"disabled":"")+' aria-label="'+t("下一页","Next page")+'">›</button>';
   $("topPager").innerHTML=pager; $("bottomPager").innerHTML=pager;
 }

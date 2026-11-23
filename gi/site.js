@@ -121,6 +121,9 @@ query=requestedFilters.get("q")||"";
 const initialCurves=requestedFilters.get("curves");
 if(initialCurves==="1") curveFilter="measured";
 if(initialCurves==="paired" || initialCurves==="complete") curveFilter=initialCurves;
+const requestedSort=requestedFilters.get("sort");
+if(curveFilter==="complete") sortBy="gap1h";
+if(["source","asc","desc"].includes(requestedSort) || (curveFilter==="complete" && Object.hasOwn(gapMinutes,requestedSort))) sortBy=requestedSort;
 if(requestedFilters.get("layout")==="list")displayStyle="list";
 
 if(mode==="simulate"){
